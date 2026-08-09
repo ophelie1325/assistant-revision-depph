@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" translate="no" class="notranslate">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F1F6F2">
+<meta name="google" content="notranslate">
+<meta name="google" content="nositelinkssearchbox">
 <title>Prépa DEPPH</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --fond:#F1F6F2; --carte:#FFFFFF; --encre:#16241F; --encre2:#5A6B65; --encre3:#8DA09A;
@@ -22,7 +21,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{-webkit-text-size-adjust:100%}
-body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:var(--fond);color:var(--encre);
+body{font-family:'Outfit','Segoe UI Variable','Segoe UI',system-ui,-apple-system,'Helvetica Neue',sans-serif;background:var(--fond);color:var(--encre);
   font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 input,select,textarea{font:inherit;color:inherit}
@@ -176,6 +175,61 @@ textarea{min-height:150px;resize:vertical;line-height:1.5}
 .semaine::before{content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--menthe)}
 .semaine .quand{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);text-transform:uppercase;letter-spacing:.08em}
 
+/* ---- thème sombre ---- */
+body.sombre{
+  --fond:#0F1A17; --carte:#182521; --encre:#E9F2ED; --encre2:#A6B7B0; --encre3:#75887F;
+  --trait:#27362F; --trait2:#1E2D28;
+  --menthe:#22C79C; --menthe-fonce:#0D7A5F; --menthe-pale:#123329;
+  --d1:#6FA6E0; --d2:#B583D6; --d3:#35B8A8; --d4:#E0A44E; --d5:#E4707E;
+  --or:#F0B429; --or-pale:#2F2717; --or-fonce:#E8B44A;
+  --rouge:#E4705C; --rouge-pale:#33201D;
+  --ombre:0 1px 2px rgba(0,0,0,.28), 0 6px 16px rgba(0,0,0,.30);
+}
+body.sombre .nav{background:rgba(24,37,33,.94)}
+body.sombre .alv .a.fait{border-color:#1C5145}
+body.sombre .diapo p{color:#CBD8D2}
+body.sombre .pts span{background:#2C3B35}
+body.sombre input,body.sombre select,body.sombre textarea{background:var(--carte);border-color:var(--trait)}
+
+/* ---- confort de lecture ---- */
+body.txtL .diapo p{font-size:17px} body.txtL .diapo h2{font-size:26px} body.txtL .diapo h3{font-size:22px}
+body.txtL .vocab li,body.txtL .encart,body.txtL .opt,body.txtL .chiffres li,body.txtL .verdict{font-size:16px}
+body.txtL .sousTitre,body.txtL .sources li{font-size:14.5px}
+body.txtL .carteAct .tx b,body.txtL .bloc-nom{font-size:16px}
+body.txtXL .diapo p{font-size:19px} body.txtXL .diapo h2{font-size:29px} body.txtXL .diapo h3{font-size:24px}
+body.txtXL .vocab li,body.txtXL .encart,body.txtXL .opt,body.txtXL .chiffres li,body.txtXL .verdict{font-size:17.5px}
+body.txtXL .sousTitre,body.txtXL .sources li{font-size:15.5px}
+body.txtXL .carteAct .tx b,body.txtXL .bloc-nom{font-size:17px}
+
+/* ---- outils sur exercice ---- */
+.outilsExo{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.outilsExo .btn{font-size:12.5px;padding:6px 10px;font-weight:500}
+.panEdit{background:var(--carte);border-radius:var(--r2);padding:12px 13px;margin-top:10px;box-shadow:var(--ombre)}
+.panEdit textarea{min-height:80px}
+.marqueur{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;
+  text-transform:uppercase;background:var(--or-pale);color:var(--or-fonce);padding:3px 7px;border-radius:6px;margin-left:6px}
+
+/* ---- vue ordinateur ---- */
+body.vueLarge .app{max-width:940px}
+body.vueLarge .nav .in{max-width:940px}
+body.vueLarge .ecran{padding:26px 30px 30px}
+body.vueLarge .lecon{padding:20px 30px calc(var(--hautNav) + 20px);max-width:940px;margin:0 auto}
+body.vueLarge .enTete h1{font-size:31px}
+body.vueLarge .diapo h2{font-size:31px}
+body.vueLarge .diapo h3{font-size:25px}
+body.vueLarge .diapo p{font-size:17px}
+body.vueLarge .vocab{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+body.vueLarge .vocab li{margin-bottom:0}
+body.vueLarge .chiffres{column-count:2;column-gap:26px}
+body.vueLarge .chiffres li{break-inside:avoid}
+body.vueLarge .sources{column-count:2;column-gap:26px}
+body.vueLarge .sources li{break-inside:avoid}
+body.vueLarge .illus{max-width:560px}
+body.vueLarge .opt{font-size:16px}
+.illus{margin:14px 0;background:var(--carte);border-radius:var(--r2);overflow:hidden;box-shadow:var(--ombre)}
+.illus img{display:block;width:100%;height:auto}
+.illus figcaption{font-size:12.5px;color:var(--encre2);padding:8px 11px;line-height:1.4}
+.illus figcaption b{display:block;font-weight:600;color:var(--encre);margin-bottom:1px}
 #impression{display:none}
 @media print{
   body{background:#fff}
@@ -199,8 +253,8 @@ textarea{min-height:150px;resize:vertical;line-height:1.5}
 </style>
 </head>
 <body>
-<div class="app" id="app"></div>
-<nav class="nav" id="nav"></nav>
+<div class="app notranslate" id="app" translate="no"></div>
+<nav class="nav notranslate" id="nav" translate="no"></nav>
 <div id="impression"></div>
 <script>
 "use strict";
@@ -271,8 +325,11 @@ let stockageOk = true;
 
 const etatVierge = () => ({
   version:1,
-  reglages:{moteur:"local", cleGemini:"", modele:"", modeles:[], dateExamen:"", debitVoix:1, voix:""},
-  cours:[], progres:{}, examens:[], prep:{}
+  reglages:{moteur:"local", cleGemini:"", modele:"", modeles:[], dateExamen:"", dateRentree:"",
+    debitVoix:1, voix:"", affichage:"auto", theme:"auto", texte:"normal", rappelExport:5,
+    datesUE:{}, minutesJour:45, joursOff:[]},
+  cours:[], progres:{}, examens:[], prep:{},
+  meta:{sessions:0, dernierExport:0, sessionsExport:0}
 });
 let S = etatVierge();
 
@@ -280,8 +337,20 @@ function charger(){
   try{
     const brut = localStorage.getItem(CLE);
     if(brut){ const o = JSON.parse(brut); S = Object.assign(etatVierge(), o);
-      S.reglages = Object.assign(etatVierge().reglages, o.reglages || {}); }
+      S.reglages = Object.assign(etatVierge().reglages, o.reglages || {});
+      S.meta = Object.assign(etatVierge().meta, o.meta || {}); }
   }catch(e){ stockageOk = false; }
+}
+function poidsDonnees(){
+  try{ return JSON.stringify(S).length; }catch(e){ return 0; }
+}
+function poidsLisible(n){
+  return n > 1048576 ? (n/1048576).toFixed(1) + " Mo" : Math.round(n/1024) + " ko";
+}
+function empreinte(t){
+  const n = normaliser(t); let h = 5381;
+  for(let i = 0; i < n.length; i++){ h = ((h << 5) + h + n.charCodeAt(i)) | 0; }
+  return String(h) + "-" + n.length;
 }
 function sauver(){
   if(!stockageOk){ memoire = S; return; }
@@ -301,6 +370,14 @@ function dateFr(iso){ if(!iso) return "—";
   const d = new Date(iso); if(isNaN(d)) return "—";
   return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"}); }
 function joursEntre(a,b){ return Math.round((new Date(b) - new Date(a)) / JOUR); }
+function minuit(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime(); }
+function joursJusqua(iso){
+  if(!iso) return null;
+  const m = String(iso).match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if(!m) return null;
+  const cible = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3])).getTime();
+  return Math.round((cible - minuit(new Date())) / JOUR);
+}
 function melanger(t){ const a = t.slice();
   for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
   return a; }
@@ -603,6 +680,120 @@ ctx,
   ].join("\n");
 }
 
+function decouperTexte(t, max){
+  if(t.length <= max) return [t];
+  const blocs = t.split(/\n\s*\n/);
+  const out = []; let cur = "";
+  blocs.forEach(b => {
+    if((cur + "\n\n" + b).length > max && cur){ out.push(cur); cur = b; }
+    else cur = cur ? cur + "\n\n" + b : b;
+  });
+  if(cur) out.push(cur);
+  return out.flatMap(x => {
+    if(x.length <= max) return [x];
+    const morceaux = [];
+    for(let i = 0; i < x.length; i += max) morceaux.push(x.slice(i, i + max));
+    return morceaux;
+  });
+}
+function fusionnerAnalyses(liste){
+  const f = {resume:"", definitions:[], points:[], chiffres:[], normes:[], pieges:[], sigles:[], procedures:[]};
+  let items = [];
+  const vus = {definitions:new Set(), points:new Set(), chiffres:new Set(), normes:new Set(), pieges:new Set(), sigles:new Set()};
+  liste.forEach(r => {
+    if(!f.resume && r.fiche.resume) f.resume = r.fiche.resume;
+    ["definitions","points","chiffres","normes","pieges","sigles"].forEach(k => {
+      (r.fiche[k] || []).forEach(x => {
+        const c = normaliser(x.terme || x.sigle || x.txt || "");
+        if(c && !vus[k].has(c)){ vus[k].add(c); f[k].push(x); }
+      });
+    });
+    (r.fiche.procedures || []).forEach(x => f.procedures.push(x));
+    items = items.concat(r.items);
+  });
+  return {fiche:f, items};
+}
+async function testerCle(){
+  const r = S.reglages;
+  const et = [];
+  const pousser = (nom, etat, detail) => { et.push({nom, etat, detail}); ui.testCle = {etapes:et.slice(), fini:false}; rendre(); };
+
+  if(!r.cleGemini){
+    ui.testCle = {etapes:[{nom:"Clé renseignée", etat:"ko", detail:"Aucune clé n'est saisie. Collez la clé obtenue sur Google AI Studio dans le champ ci-dessus."}], fini:true};
+    rendre(); return;
+  }
+  const cle = r.cleGemini.trim();
+  if(cle !== r.cleGemini){ S.reglages.cleGemini = cle; sauver(); }
+
+  // étape 1 : forme de la clé
+  if(/\s/.test(cle)) pousser("Forme de la clé", "ko", "La clé contient un espace ou un retour à la ligne. Recopiez-la sans rien autour.");
+  else if(cle.length < 30) pousser("Forme de la clé", "ko", "La clé paraît trop courte (" + cle.length + " caractères). Une clé Google AI Studio en compte une trentaine.");
+  else pousser("Forme de la clé", "ok", cle.length + " caractères, aucun espace parasite.");
+
+  // étape 2 : la clé est-elle acceptée
+  let modeles = null;
+  try{
+    modeles = await listerModeles(cle);
+    pousser("Clé acceptée par Google", "ok", modeles.length + " modèles accessibles avec cette clé.");
+    S.reglages.modeles = modeles; sauver();
+  }catch(e){
+    const m = String(e.message || e);
+    let aide = "Réponse inattendue du serveur.";
+    if(/Failed to fetch|NetworkError|Load failed/i.test(m))
+      aide = "Aucune réponse du serveur. Causes possibles : pas de connexion, réseau d'entreprise ou d'hôpital qui bloque le domaine, ou extension de navigateur qui filtre les requêtes.";
+    else if(/ 400/.test(m)) aide = "Clé refusée : elle est invalide, révoquée, ou recopiée partiellement. Régénérez-la sur Google AI Studio.";
+    else if(/ 403/.test(m)) aide = "Clé reconnue mais interdite d'usage ici : restriction par site ou par adresse IP dans la console Google, ou API Generative Language non activée sur le projet.";
+    else if(/ 429/.test(m)) aide = "Quota atteint pour cette clé. Attendez la réinitialisation ou changez de projet.";
+    pousser("Clé acceptée par Google", "ko", aide + " (" + m + ")");
+    ui.testCle.fini = true; rendre(); return;
+  }
+
+  // étape 3 : le modèle choisi existe-t-il
+  let modele = r.modele;
+  if(!modele){
+    const pref = modeles.find(x => /flash/i.test(x.id) && !/lite|preview|exp/i.test(x.id)) || modeles.find(x => /flash/i.test(x.id)) || modeles[0];
+    if(pref){ modele = S.reglages.modele = pref.id; sauver(); }
+  }
+  if(!modele){ pousser("Modèle sélectionné", "ko", "Aucun modèle disponible pour cette clé."); ui.testCle.fini = true; rendre(); return; }
+  if(!modeles.some(x => x.id === modele)){
+    pousser("Modèle sélectionné", "ko", "Le modèle « " + modele + " » n'est pas accessible avec cette clé. Choisissez-en un autre dans la liste.");
+    ui.testCle.fini = true; rendre(); return;
+  }
+  pousser("Modèle sélectionné", "ok", modele);
+
+  // étape 4 : une vraie génération, au format attendu par l'application
+  try{
+    const corps = {
+      contents:[{role:"user", parts:[{text:"Réponds uniquement par ce JSON, sans rien autour : {\"test\":\"ok\"}"}]}],
+      generationConfig:{temperature:0, responseMimeType:"application/json", maxOutputTokens:64}
+    };
+    const rep = await fetch(API + "/models/" + encodeURIComponent(modele) + ":generateContent?key=" + encodeURIComponent(cle),
+      {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(corps)});
+    if(!rep.ok){
+      let d = ""; try{ d = (await rep.json()).error.message; }catch(e){}
+      let aide = "Erreur " + rep.status + (d ? " : " + d : "") + ".";
+      if(rep.status === 404) aide = "Ce modèle n'accepte pas ce type de requête. Choisissez un modèle de la famille Flash ou Pro.";
+      if(rep.status === 429) aide = "Quota atteint. La clé fonctionne, mais Google refuse de nouvelles requêtes pour l'instant.";
+      pousser("Génération d'une réponse", "ko", aide);
+    } else {
+      const d = await rep.json();
+      const cand = (d.candidates || [])[0];
+      const brut = cand ? ((cand.content && cand.content.parts || []).map(x => x.text || "").join("")) : "";
+      if(!cand) pousser("Génération d'une réponse", "ko", "Le modèle n'a rien renvoyé. Réessayez, ou changez de modèle.");
+      else if(cand.finishReason && cand.finishReason !== "STOP")
+        pousser("Génération d'une réponse", "ko", "Réponse interrompue (" + cand.finishReason + "). Sur un vrai cours, découpez le texte en deux.");
+      else{
+        let o = null; try{ o = JSON.parse(brut.replace(/^```json\s*|```\s*$/g, "").trim()); }catch(e){}
+        if(o && o.test === "ok") pousser("Génération d'une réponse", "ok", "Réponse reçue et lisible au format JSON.");
+        else pousser("Génération d'une réponse", "ko", "Réponse reçue mais illisible : " + tronquer(brut, 90));
+      }
+    }
+  }catch(e){
+    pousser("Génération d'une réponse", "ko", "Requête interrompue : " + String(e.message || e));
+  }
+  ui.testCle.fini = true; rendre();
+}
+
 async function analyseGemini(texte, ueId, cle, modele){
   const corps = {
     systemInstruction:{parts:[{text:consigne(ueId)}]},
@@ -680,8 +871,21 @@ function majProg(id, juste, sur){
   p.prochain = Date.now() + DELAIS[p.boite] * JOUR;
   sauver();
 }
-function tousItems(){ return S.cours.flatMap(c => c.items.map(i => Object.assign({coursId:c.id, coursTitre:c.titre}, i))); }
-function itemsDus(){ const t = Date.now(); return tousItems().filter(i => { const p = S.progres[i.id]; return !p || p.prochain <= t; }); }
+function tousItems(){ return S.cours.flatMap(c => c.items.filter(i => !i.douteux)
+  .map(i => Object.assign({coursId:c.id, coursTitre:c.titre}, i))); }
+function itemsEcartes(){ return S.cours.flatMap(c => c.items.filter(i => i.douteux)); }
+function trouverItem(coursId, id){
+  const c = S.cours.find(x => x.id === coursId); if(!c) return null;
+  const i = c.items.find(x => x.id === id); return i ? {cours:c, item:i} : null;
+}
+function itemsDus(){
+  const t = Date.now();
+  const urg = (typeof uesUrgentes === "function") ? new Set(uesUrgentes()) : new Set();
+  return tousItems().filter(i => {
+    if(urg.has(i.ueId)) return true;
+    const p = S.progres[i.id]; return !p || p.prochain <= t;
+  });
+}
 function carnetErreurs(){ return tousItems().filter(i => { const p = S.progres[i.id]; return p && p.ko > 0 && p.boite === 1; }); }
 function erreursConfiantes(){ return tousItems().filter(i => { const p = S.progres[i.id]; return p && p.erreurConfiante; }); }
 function statsUE(ueId){
@@ -725,6 +929,58 @@ function imprimerFiche(id){
   $("#impression").innerHTML = h + `</div>`;
   window.print();
 }
+function reponseLisible(i){
+  if(i.type === "flash") return i.verso;
+  if(i.type === "qcm") return i.options[i.reponse];
+  if(i.type === "qcmMulti") return (i.reponses||[]).map(n => i.options[n]).join(" ; ");
+  if(i.type === "vf") return i.reponse ? "Vrai" : "Faux";
+  if(i.type === "cloze") return i.reponse;
+  if(i.type === "ordre") return i.etapes.join(" → ");
+  if(i.type === "paires") return i.paires.map(p => p[0] + " → " + p[1]).join(" ; ");
+  return i.attendu || (i.motsCles || []).join(", ");
+}
+function imprimerUE(ueId){
+  const u = UE(ueId); if(!u) return;
+  const L = LECONS[ueId], cours = S.cours.filter(c => c.ueId === ueId);
+  const exos = itemsExos(ueId).concat(tousItems().filter(i => i.ueId === ueId));
+  let h = `<div class="f-print"><div class="f-entete"><h1>${esc(u.id + " · " + u.nom)}</h1>
+    <div class="f-meta">domaine ${u.dom} · ${u.ects} ECTS<br>${dateFr(new Date().toISOString())}</div></div>`;
+  if(L){
+    h += `<h2>Leçon de préparation</h2>`;
+    L.diapos.forEach(d => {
+      if(d.t === "sources"){
+        h += `<div class="enc"><strong>Sources</strong><ul>` + d.liste.map(s =>
+          `<li>${esc(s.titre)} — ${esc(s.ref)}<br>${esc(s.url)}</li>`).join("") + `</ul>`+
+          (d.note ? `<p>${esc(d.note)}</p>` : "") + `</div>`;
+        return;
+      }
+      if(d.titre) h += `<p><strong>${esc(d.titre)}</strong></p>`;
+      if(d.texte) h += `<p>${esc(d.texte)}</p>`;
+      if(d.paras) h += d.paras.map(x => `<p>${esc(x)}</p>`).join("");
+      if(d.mots) h += `<ul>` + d.mots.map(m => `<li><strong>${esc(m.m)}</strong> — ${esc(m.d)}</li>`).join("") + `</ul>`;
+      if(d.etapes) h += `<ol>` + d.etapes.map(e => `<li>${esc(e)}</li>`).join("") + `</ol>`;
+      if(d.lignes) h += `<ul>` + d.lignes.map(l => `<li><strong>${esc(l.v)}</strong> — ${esc(l.l)}</li>`).join("") + `</ul>`;
+      if(d.encart) h += `<div class="enc">${esc(d.encart.titre || "")} ${esc(d.encart.texte)}</div>`;
+      if(d.t === "quiz") h += `<div class="enc">${esc(d.question)}<br>Réponse : ${esc(d.options[d.bonne])}<br>${esc(d.expl)}</div>`;
+      if(d.note) h += `<p>${esc(d.note)}</p>`;
+    });
+  }
+  cours.forEach(c => {
+    const f = c.fiche;
+    h += `<h2>Fiche · ${esc(c.titre)}</h2>`;
+    if(f.resume) h += `<p>${esc(f.resume)}</p>`;
+    if(f.definitions.length) h += `<ul>` + f.definitions.map(x => `<li><strong>${esc(x.terme)}</strong> — ${esc(x.def)}</li>`).join("") + `</ul>`;
+    if(f.points.length) h += `<ul>` + f.points.map(x => `<li>${esc(x.txt)}</li>`).join("") + `</ul>`;
+    if(f.chiffres.length) h += `<div class="enc"><ul>` + f.chiffres.map(x => `<li>${esc(x.txt)}</li>`).join("") + `</ul></div>`;
+  });
+  if(exos.length){
+    h += `<h2>Exercices et réponses (${exos.length})</h2><ul>`;
+    exos.forEach(i => h += `<li><strong>${esc(tronquer(i.question || i.recto || "", 240))}</strong><br>${esc(tronquer(reponseLisible(i), 300))}</li>`);
+    h += `</ul>`;
+  }
+  $("#impression").innerHTML = h + `</div>`;
+  window.print();
+}
 function imprimerErreurs(){
   const l = carnetErreurs();
   if(!l.length) return;
@@ -736,15 +992,7 @@ function imprimerErreurs(){
     const u = UE(id);
     h += `<h2>${u ? esc(u.id + " · " + u.nom) : esc(id)}</h2><ul>`;
     parUE[id].forEach(i => {
-      let rep = "";
-      if(i.type === "flash") rep = i.verso;
-      else if(i.type === "qcm") rep = i.options[i.reponse];
-      else if(i.type === "qcmMulti") rep = (i.reponses||[]).map(n => i.options[n]).join(" ; ");
-      else if(i.type === "vf") rep = i.reponse ? "Vrai" : "Faux";
-      else if(i.type === "cloze") rep = i.reponse;
-      else if(i.type === "ordre") rep = i.etapes.join(" → ");
-      else if(i.type === "paires") rep = i.paires.map(p => p[0] + " → " + p[1]).join(" ; ");
-      else rep = i.attendu || (i.motsCles || []).join(", ");
+      const rep = reponseLisible(i);
       h += `<li><strong>${esc(i.question || i.recto || "")}</strong><br>${esc(tronquer(rep, 260))}</li>`;
     });
     h += `</ul>`;
@@ -996,13 +1244,665 @@ UE3: {titre:"Prévention, information et éducation thérapeutique du patient", 
   {titre:"Décret n° 2020-1832 du 31 décembre 2020", ref:"Remplacement du régime d'autorisation par un régime de déclaration au 1er janvier 2021", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042845656"},
   {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Référentiel de compétences du DEPPH, compétence C3 et ses critères d'évaluation", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050066720"}],
   note:"Consulté le 8 août 2026."}
+]},
+
+UE4: {titre:"Chimiothérapie, nutrition parentérale, préparations stériles et non stériles", duree:"16 min", diapos:[
+ {t:"intro", kick:"UE4 · pour commencer", titre:"Fabriquer un médicament qui n'existe pas",
+  texte:"Quand aucune spécialité n'est adaptée au patient, la pharmacie fabrique. Une poche de chimiothérapie, un mélange de nutrition parentérale pour un nouveau-né, une gélule dosée pour un enfant : ce sont des médicaments sans autorisation de mise sur le marché, dont la seule garantie de qualité est le procédé suivi. D'où un référentiel opposable : les bonnes pratiques de préparation.",
+  img:{f:"ue4-01-preparation.jpg", leg:"Préparation pharmaceutique en établissement de santé"}},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"Les BPP de 2007 sont abrogées", type:"garde",
+  texte:"La décision de l'ANSM du 21 juillet 2023 met en vigueur au 20 septembre 2023 une nouvelle édition des bonnes pratiques de préparation. Elle abroge celle du 5 novembre 2007 ainsi qu'une décision intermédiaire du 20 septembre 2022. Si un cours, un QCM ou un manuel renvoie encore aux « BPP de 2007 » ou à la « décision du 5 novembre 2007 », il décrit un texte qui n'est plus applicable."},
+
+ {t:"notion", kick:"Le cadre", titre:"Trois préparations, trois définitions",
+  paras:["L'article L. 5121-1 du code de la santé publique distingue la préparation magistrale, préparée selon une prescription médicale destinée à un malade déterminé quand aucune spécialité adaptée ou disponible n'existe ; la préparation hospitalière, préparée selon les indications de la pharmacopée en l'absence de spécialité disponible ou adaptée, par une PUI ou l'établissement pharmaceutique de l'établissement de santé ; et la préparation officinale, inscrite à la pharmacopée ou au formulaire national.",
+   "La préparation hospitalière est dispensée sur prescription médicale à un ou plusieurs patients et fait l'objet d'une déclaration à l'ANSM. Les BPP demandent aux PUI de déclarer chaque nouvelle préparation hospitalière réalisée, ainsi que toute préparation cessée."],
+  encart:{type:"info", titre:"À retenir", texte:"Magistrale : un patient nommé. Hospitalière : plusieurs patients, en série, déclarée. Officinale : une formule inscrite au formulaire national."}},
+
+ {t:"notion", kick:"Le référentiel", titre:"Comment le guide est bâti",
+  paras:["Les BPP 2023 comprennent neuf chapitres généraux, quatre annexes, quatre lignes directrices et un glossaire. Les chapitres décrivent les conditions communes à toutes les préparations. Les lignes directrices ajoutent des règles propres à certains types : LD1 médicaments stériles, LD2 substances pouvant présenter un risque pour la santé et l'environnement, LD3 recherches impliquant la personne humaine, LD4 médicaments radiopharmaceutiques.",
+   "Le guide précise que lorsqu'une préparation relève de plusieurs lignes directrices, celles-ci s'appliquent simultanément."],
+  encart:{type:"astuce", titre:"L'exemple donné par le texte lui-même", texte:"Une chimiothérapie cytotoxique injectable suit les chapitres généraux, la LD1 et la LD2. Si elle est réalisée dans le cadre d'une recherche impliquant la personne humaine, la LD3 s'ajoute."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les mots du guide", mots:[
+  {m:"MPUP", d:"Matière première à usage pharmaceutique : tous les composants d'une préparation, substances actives, excipients et éléments de mise en forme comme les gélules vides."},
+  {m:"ZAC", d:"Zone d'atmosphère contrôlée : locaux et équipements dont les qualités microbiologique et particulaire sont maîtrisées, qualifiés et maintenus."},
+  {m:"Système clos", d:"Procédé de transfert où les systèmes de fermeture des contenants et le matériel de transfert restent en place pendant tout le processus : le produit n'est jamais en contact avec l'environnement."},
+  {m:"Système ouvert", d:"Dès qu'une seule étape de la préparation n'est pas réalisée en système clos."},
+  {m:"Vide de ligne", d:"Vérification faite avant chaque nouveau lot pour s'assurer qu'aucun élément du lot précédent ne peut être introduit dans le nouveau."},
+  {m:"Dossier de préparation", d:"Le dossier de fond, en trois parties, qui décrit la préparation, son procédé et ses contrôles. Il sert de matrice."},
+  {m:"Dossier de lot", d:"Le dossier d'un lot précis, en cinq parties : préparation, conditionnement, contrôle, libération pharmaceutique, gestion des anomalies."}]},
+
+ {t:"notion", kick:"Analyse de risque", titre:"Trois catégories de préparations",
+  paras:["L'annexe III classe les préparations en trois catégories selon la substance active, la voie d'administration, les opérations pharmaceutiques et le nombre de patients concernés par un lot. Catégorie 1, risque faible : formes liquides, solides ou semi-solides sans technique particulière, par exemple le mélange de deux pommades. Catégorie 2, risque moyen : formes demandant une technicité particulière, comme les suppositoires ou les gélules. Catégorie 3, risque élevé : formes stériles, substances CMR reconnues, préparations pédiatriques hors voie cutanée.",
+   "La règle de lecture est stricte : un seul critère en catégorie 3 suffit à y classer la préparation, et il devient alors inutile de poursuivre le questionnement. En cas de doute persistant, on retient la catégorie immédiatement supérieure."],
+  encart:{type:"info", titre:"Ce que la catégorie commande", texte:"La tenue, notamment. Catégorie 1 : tenue adaptée et propre, charlotte obligatoire. Catégories 2 et 3 : charlotte, sur-chaussures et sur-blouse ou tenue propre dédiée obligatoires, cache-barbe recommandé le cas échéant."}},
+
+ {t:"notion", kick:"Préparations stériles", titre:"Trois procédés, et un ordre de préférence",
+  paras:["La LD1 identifie trois procédés : la stérilisation terminale, la filtration stérilisante et la préparation aseptique. Selon la pharmacopée, la stérilisation terminale est la méthode de choix ; lorsqu'elle est envisageable et que l'établissement dispose de l'équipement, la stérilisation par la chaleur humide, c'est-à-dire l'autoclave, est la méthode de choix sauf justification.",
+   "Quand la MPUP est une spécialité pharmaceutique stérile — le cas courant à l'hôpital pour les chimiothérapies — la préparation aseptique est le procédé le plus approprié. Et parmi les préparations aseptiques, la LD1 note que le procédé en système clos est la méthode de choix."],
+  encart:{type:"piege", titre:"Le chiffre à ne pas rater", texte:"Les solutions sont filtrées sur un filtre stérile à usage unique dont le diamètre nominal des pores est inférieur ou égal à 0,22 µm. La préparation aseptique en système ouvert est associée à une filtration stérilisante à 0,22 µm, sauf exception justifiée."},
+  img:{f:"ue4-07-autoclave.jpg", leg:"Autoclave de stérilisation par la chaleur humide"}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les quatre classes de ZAC", lignes:[
+  {v:"A", l:"au repos comme en activité : 3 520 particules/m³ de 0,5 µm et plus, 20 de 5 µm et plus"},
+  {v:"B", l:"au repos identique à A ; en activité 352 000 et 2 900"},
+  {v:"C", l:"au repos 352 000 et 2 900 ; en activité 3 520 000 et 29 000"},
+  {v:"D", l:"au repos 3 520 000 et 29 000 ; en activité non défini"}],
+  note:"Tableau 1 de la LD1. Au repos, les classes A et B correspondent à ISO 5, la classe C à ISO 7, la classe D à ISO 8. « Au repos » : installation achevée et opérationnelle, sans opérateur à son poste. « En activité » : installation en fonctionnement avec le nombre prévu d'opérateurs."},
+
+ {t:"notion", kick:"Les équipements", titre:"Poste à flux unidirectionnel et isolateur",
+  paras:["Le poste à flux d'air unidirectionnel distribue l'air dans une seule direction, horizontale ou verticale, sur toute la surface à protéger. Le local qui le contient relève d'une classe B ou C selon le procédé.",
+   "L'isolateur est un équipement clos à barrière physique étanche, qui n'échange ni air non filtré ni contaminants avec l'environnement adjacent. Ses surfaces internes subissent régulièrement une stérilisation de contact selon un procédé et une fréquence validés, et tout objet introduit subit ce cycle. Ses gants ne sont pas réutilisables. Les isolateurs pour médicaments stériles sont essentiellement en surpression et sont situés au minimum dans une ZAC de classe D."],
+  encart:{type:"piege", titre:"Le cas des produits pulvérulents à risque", texte:"En système ouvert avec une MPUP pulvérulente, un isolateur en pression négative est préféré. Et la LD1 est catégorique : la ZAC contenant un isolateur en dépression est toujours de classe C."},
+  img:{f:"ue4-09-isolateur.jpg", leg:"Isolateur de préparation avec gants de manipulation"}},
+
+ {t:"chiffres", kick:"Le tableau qui tombe en examen", titre:"Quelle classe pour quelle opération", lignes:[
+  {v:"A dans C", l:"préparation aseptique en isolateur placé en dépression"},
+  {v:"A dans D", l:"préparation aseptique en isolateur placé en surpression"},
+  {v:"A dans B", l:"poste à flux unidirectionnel, procédé en système ouvert"},
+  {v:"A dans C", l:"poste à flux unidirectionnel, procédé en système clos"},
+  {v:"C puis A", l:"stérilisation terminale avec risque potentiel : préparation en C, remplissage en A dans un environnement C"},
+  {v:"D puis C", l:"stérilisation terminale sans risque potentiel : préparation en D, remplissage en C dans un environnement D"}],
+  note:"Tableaux 6, 7 et 8 de la LD1. La colonne indiquée après « dans » est l'environnement immédiat de la zone de préparation."},
+
+ {t:"etapes", kick:"Le déroulé", titre:"Une préparation, du début à la libération",
+  etapes:["Vide de ligne, vérification de la propreté de la zone et du matériel, contrôles d'environnement",
+   "Rassemblement des MPUP, articles de conditionnement, matériels et documents valides",
+   "Vérification des péremptions, de l'étiquetage, des qualités organoleptiques et de l'intégrité des emballages",
+   "Pesée ou mesure de volume, enregistrée, avec vérification de l'identité et de la quantité de chaque MPUP",
+   "Réalisation continue, sans conservation à un stade intermédiaire sauf justification technique",
+   "Conditionnement après un nouveau vide de ligne, puis bilan comparatif",
+   "Contrôles, puis libération pharmaceutique datée et signée, non modifiable ensuite"],
+  note:"Le guide demande de ne réaliser qu'une seule préparation à la fois sur une même zone de travail, de confier préférentiellement tout un lot à la même personne qualifiée, et de ne pas l'interrompre avant la fin."},
+
+ {t:"notion", kick:"LD2 · protection", titre:"Protéger l'opérateur sans exposer le produit",
+  paras:["La LD2 sépare deux logiques : le risque produit, c'est-à-dire la contamination microbiologique du patient, et le risque pour le personnel et l'environnement. Elle impose de déterminer le danger intrinsèque de la substance — mentions de danger du règlement CLP pour les matières premières, résumé des caractéristiques du produit pour les spécialités — puis le niveau d'exposition, réévalué chaque année pour chaque groupe de personnel exposé de la même façon.",
+   "Les équipements de protection collective priment : enceinte ventilée aspirante, isolateur ou boîte à gants selon le risque. Pour les substances chimiques, l'air traité des postes à flux unidirectionnel ou des isolateurs est rejeté à l'extérieur du bâtiment après passage sur un filtre HEPA."],
+  encart:{type:"piege", titre:"Les obligations nominatives de la LD2", texte:"Substances CMR manipulées hors isolateur ou boîte à gants : sur-blouse, manchons pour avant-bras et gants obligatoires. Danger respiratoire : masque FFP2, FFP3 ou appareil respiratoire isolant. Danger oculaire : lunettes ou écran facial obligatoires. Une trousse d'urgence à proximité, une douche oculaire ou un rince-œil installé."}},
+
+ {t:"notion", kick:"Nutrition parentérale", titre:"Pourquoi ce sujet est devenu sensible",
+  paras:["En décembre 2013, trois nourrissons meurent au centre hospitalier de Chambéry après administration de poches de nutrition parentérale contaminées. Une mission est confiée à l'IGAS, dont le rapport 2014-168R de janvier 2015 met en évidence une grande hétérogénéité des pratiques de prescription, de préparation, de contrôle et d'administration.",
+   "L'instruction DGOS/DGS n° 2015-85 du 20 mars 2015 en tire les conséquences : diagnostic de territoire par les ARS, fabrication de tout mélange nutritif placée sous responsabilité pharmaceutique, coopérations entre PUI encouragées. La HAS et la Société française de néonatalogie publient en avril 2018 une recommandation sur la nutrition parentérale en néonatologie."],
+  encart:{type:"info", titre:"La trace dans le référentiel", texte:"Le préambule des BPP 2023 cite expressément les recommandations de la mission IGAS 2014-168R parmi les raisons de la révision du guide. Un accident de terrain a directement modifié le référentiel opposable."},
+  img:{f:"ue4-13-nutrition.jpg", leg:"Poche de nutrition parentérale"}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE4", lignes:[
+  {v:"20/09/2023", l:"entrée en vigueur des BPP 2023, en remplacement de celles de 2007"},
+  {v:"0,22 µm", l:"diamètre nominal maximal des pores du filtre stérilisant"},
+  {v:"250 / 28 j", l:"nombre maximal de patients potentiellement traités par un lot, pour 28 jours de traitement"},
+  {v:"10 à 15 Pa", l:"écart de pression entre locaux adjacents de classes différentes"},
+  {v:"18 à 23 °C", l:"température ambiante d'une ZAC de préparation, sans dépasser 25 °C"},
+  {v:"1 fois/an", l:"requalification minimale des équipements, locaux et zones composant la ZAC"},
+  {v:"5 ans", l:"conservation du dossier de préparation après péremption du dernier lot produit"},
+  {v:"10 ans", l:"conservation du livre-registre des préparations"}]},
+
+ {t:"quiz", kick:"Vérification", question:"Vous préparez une poche de cytotoxique injectable. Quels textes des BPP vous appliquez-vous ?",
+  options:["Uniquement la ligne directrice LD1, puisque la préparation est stérile",
+   "Uniquement la ligne directrice LD2, puisque le produit est CMR",
+   "Les chapitres généraux, la LD1 et la LD2, qui s'appliquent simultanément"],
+  bonne:2,
+  expl:"Le préambule et la LD1 donnent exactement cet exemple : lorsqu'une préparation relève de plusieurs lignes directrices, elles s'appliquent en même temps. Rien ne se substitue aux chapitres généraux."},
+
+ {t:"quiz", kick:"Vérification", question:"Un isolateur est placé en dépression pour manipuler une poudre CMR en système ouvert. Quelle doit être la classe de la ZAC qui le contient ?",
+  options:["Classe D, comme pour un isolateur en surpression","Classe C, toujours","Classe B, à cause du système ouvert"],
+  bonne:1,
+  expl:"La LD1 l'énonce sans condition : la ZAC contenant un isolateur en dépression est toujours de classe C. L'isolateur en surpression, lui, est au minimum dans une ZAC de classe D."},
+
+ {t:"quiz", kick:"Vérification", question:"Une préparation pédiatrique par voie orale contient une substance inscrite sur la liste I. Dans quelle catégorie la classez-vous ?",
+  options:["Catégorie 1, il s'agit d'une forme orale simple","Catégorie 2, la voie orale relève de la technicité moyenne","Catégorie 3, risque élevé"],
+  bonne:2,
+  expl:"L'annexe III place en catégorie 3 toute substance vénéneuse destinée aux enfants de moins de 12 ans hors voie cutanée, ainsi que la liste I. Un seul critère en catégorie 3 suffit, et il est alors inutile de poursuivre le questionnement."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"ANSM, Bonnes pratiques de préparation, édition 2023", ref:"Préambule, champ d'application, chapitres 1 à 6, annexe III, lignes directrices LD1 et LD2 — texte intégral", url:"https://ansm.sante.fr/uploads/2023/08/02/20230802-bonnes-pratiques-de-preparation-08-2023.pdf"},
+  {titre:"Décision ANSM du 21 juillet 2023", ref:"Entrée en vigueur au 20 septembre 2023, abrogation des décisions du 5 novembre 2007 et du 20 septembre 2022", url:"https://ansm.sante.fr/actualites/decision-du-21-07-2023-relative-aux-bonnes-pratiques-de-preparation"},
+  {titre:"Code de la santé publique, article L. 5121-1", ref:"Définitions des préparations magistrale, hospitalière et officinale", url:"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000048701765"},
+  {titre:"Arrêté du 14 novembre 2014", ref:"Liste des préparations pouvant présenter un risque pour la santé", url:"https://www.legifrance.gouv.fr/loda/id/JORFTEXT000029762675/"},
+  {titre:"Instruction DGOS/PF2/DGS/PP2 n° 2015-85 du 20 mars 2015", ref:"Gestion des risques liés à la nutrition parentérale en néonatalogie et pédiatrie", url:"https://www.legifrance.gouv.fr/circulaire/id/39383"},
+  {titre:"HAS et Société française de néonatalogie, avril 2018", ref:"Nutrition parentérale en néonatologie — origine de la saisine et rapport IGAS 2014-168R", url:"https://www.has-sante.fr/upload/docs/application/pdf/2018-06/argu_np_neonat_2018-06-28_11-18-23_280.pdf"},
+  {titre:"ANSM, page de référence Bonnes pratiques de préparation", ref:"Étiquetage, sous-traitance, substances interdites ou restreintes", url:"https://ansm.sante.fr/documents/reference/bonnes-pratiques-de-preparation"}],
+  note:"Textes consultés le 9 août 2026, guide BPP lu dans son texte intégral. En cas d'écart avec le cours de votre centre de formation, c'est le cours qui fait foi pour l'examen — mais signalez l'écart à votre formateur."}
+]},
+
+UE5: {titre:"Radiopharmacie et radioprotection", duree:"16 min", diapos:[
+ {t:"intro", kick:"UE5 · pour commencer", titre:"Un médicament qui décroît pendant qu'on le prépare",
+  texte:"Un médicament radiopharmaceutique perd son activité minute après minute, ne peut pas être stérilisé dans son récipient final, et expose celui qui le manipule. Trois contraintes qui ne se retrouvent nulle part ailleurs à la pharmacie, et qui expliquent que la radiopharmacie ait son propre référentiel et son propre corps de règles de radioprotection."},
+
+ {t:"notion", kick:"Les fondations", titre:"Justification, optimisation, limitation",
+  paras:["La radioprotection française transpose la directive 2013/59/Euratom, dans le code du travail aux articles L. 4451-1 et suivants et R. 4451-1 et suivants, et dans le code de la santé publique aux articles L. 1333-1 et suivants. Elle réintroduit les neuf principes généraux de prévention sans renier les trois principes fondateurs de la radioprotection : justification, optimisation, limitation.",
+   "L'employeur doit supprimer ou réduire au minimum les risques, en tenant compte du progrès technique et de la disponibilité de mesures de maîtrise du risque à la source. La prévention est intégrée dès la conception des lieux de travail, la protection collective prime, l'équipement individuel vient en dernier ressort."],
+  encart:{type:"info", titre:"Deux risques distincts", texte:"L'exposition externe, où la source irradie à distance, et la contamination externe ou interne, où la substance radioactive se dépose ou entre dans l'organisme. Les parades ne sont pas les mêmes."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Ne pas confondre", mots:[
+  {m:"Dose efficace", d:"La grandeur qui exprime l'exposition de l'organisme entier. C'est elle qui porte la limite des 20 mSv."},
+  {m:"Dose équivalente", d:"La grandeur qui exprime l'exposition d'un organe ou d'un tissu : peau, extrémités, cristallin."},
+  {m:"Période", d:"Le temps au bout duquel l'activité d'un radionucléide a diminué de moitié."},
+  {m:"Zone délimitée", d:"Zone surveillée ou contrôlée, dont l'accès est réservé aux travailleurs autorisés par l'employeur."},
+  {m:"Conseiller en radioprotection", d:"Personne physique salariée, dite personne compétente en radioprotection, ou personne morale, dite organisme compétent en radioprotection."},
+  {m:"Radiopharmacien", d:"Seul à pouvoir assumer la responsabilité technique de la préparation et du contrôle des médicaments radiopharmaceutiques."},
+  {m:"MRP", d:"Médicament radiopharmaceutique, l'abréviation employée par la ligne directrice LD4 des BPP."}]},
+
+ {t:"notion", kick:"Le zonage", titre:"Des couleurs qui gradent le risque",
+  paras:["L'employeur identifie les lieux où l'exposition est susceptible de dépasser 0,08 mSv par mois pour l'organisme entier, 4 mSv par mois pour les extrémités ou la peau, ou 6 mSv par an pour le radon. L'évaluation se fait en considérant le lieu de travail occupé de manière permanente, soit 2 000 heures par an ou 170 heures par mois.",
+   "Il délimite alors des zones qui traduisent la gradation du risque : zone surveillée signalée en bleu, zone contrôlée verte, jaune, orange puis rouge. Si l'exposition des extrémités ou de la peau peut dépasser 4 mSv par mois, une zone d'extrémité est délimitée."],
+  encart:{type:"piege", titre:"Les conditions d'accès diffèrent", texte:"L'accès en zone contrôlée orange ou rouge fait l'objet d'une autorisation individuelle délivrée par l'employeur. Pour la zone rouge, cet accès est exceptionnel et donne lieu à un enregistrement nominatif à chaque entrée."},
+  img:{f:"ue5-04-zonage.jpg", leg:"Signalisation de zone contrôlée et trisecteur radiologique"}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les limites d'exposition des travailleurs", lignes:[
+  {v:"20 mSv", l:"dose efficace, organisme entier, sur douze mois consécutifs"},
+  {v:"500 mSv", l:"dose équivalente aux extrémités : mains, avant-bras, pieds, chevilles"},
+  {v:"500 mSv", l:"dose équivalente à la peau, sur tout cm² quelle que soit la surface exposée"},
+  {v:"20 mSv", l:"dose équivalente au cristallin depuis le 1er juillet 2023"},
+  {v:"6 mSv", l:"jeunes travailleurs de 16 à 18 ans, organisme entier"},
+  {v:"1 mSv", l:"enfant à naître, de la déclaration de grossesse à l'accouchement"}],
+  note:"Articles R. 4451-6 à R. 4451-8 du code du travail. Les femmes enceintes et les jeunes travailleurs de 16 à 18 ans sont exclus des travaux impliquant un classement en catégorie A. Une femme allaitant ne peut être affectée à un poste entraînant un risque d'exposition interne."},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"La limite au cristallin a été divisée par sept", type:"garde",
+  texte:"La valeur limite d'exposition du cristallin était de 150 mSv par an. Entre le 1er juillet 2018 et le 30 juin 2023, un régime transitoire a fixé une limite cumulée de 100 mSv sur cinq ans, sans dépasser 50 mSv une année donnée. Depuis le 1er juillet 2023, la limite est de 20 mSv sur douze mois consécutifs. Un support qui affiche encore 150 mSv au cristallin a plus de huit ans de retard."},
+
+ {t:"notion", kick:"L'organisation", titre:"Classement, dosimétrie, formation",
+  paras:["Sont classés en catégorie A les travailleurs susceptibles de recevoir sur douze mois consécutifs une dose efficace supérieure à 6 mSv, ou une dose équivalente supérieure à 150 mSv pour la peau ou les extrémités. Sont classés en catégorie B les autres travailleurs susceptibles de dépasser 1 mSv de dose efficace, ou 15 mSv au cristallin, ou 50 mSv à la peau ou aux extrémités.",
+   "Le classement suit une évaluation individuelle préalable, réalisée avant l'affectation au poste, et recueille l'avis du médecin du travail. Les travailleurs disposant d'une surveillance dosimétrique individuelle reçoivent une formation renouvelée au moins tous les trois ans."],
+  encart:{type:"astuce", titre:"Deux dosimètres, deux usages", texte:"Le dosimètre passif à lecture différée mesure la dose reçue a posteriori et alimente SISERI. Le dosimètre opérationnel, actif et à lecture directe, se porte en zone contrôlée, en zone d'extrémité et en zone d'opération ; il est muni d'alarmes sonores et visuelles qui doivent être activées."},
+  img:{f:"ue5-07-dosimetre.jpg", leg:"Dosimètres individuels portés par les travailleurs exposés"}},
+
+ {t:"notion", kick:"La radiopharmacie", titre:"Qui décide, et où",
+  paras:["Les préparations de médicaments radiopharmaceutiques ne sont pas autorisées en officine. Elles relèvent d'une PUI dont les locaux répondent aux textes sur les installations utilisant des radionucléides en sources non scellées, soumises à l'autorisation préalable de l'Autorité de sûreté nucléaire délivrée au responsable de l'activité nucléaire.",
+   "Seuls les radiopharmaciens peuvent avoir la responsabilité technique de la préparation et du contrôle des MRP ; en PUI, le radiopharmacien reçoit une délégation écrite du pharmacien gérant. Les préparateurs en pharmacie qui effectuent ces tâches sont placés sous son autorité technique."],
+  encart:{type:"info", titre:"Ce que le préparateur y fait", texte:"Il prépare et contrôle sous autorité technique du radiopharmacien, après avoir réussi l'évaluation de sa formation, laquelle comprend un test de remplissage aseptique, et après avoir été habilité par le radiopharmacien."}},
+
+ {t:"notion", kick:"LD4 · les locaux", titre:"Surpression dehors, dépression dedans",
+  paras:["Les locaux de préparation des MRP sont des zones d'atmosphère contrôlée dont les caractéristiques sont conformes à celles décrites dans la LD1. Ils sont munis d'un sas d'accès, dont les portes sont asservies et ne peuvent être ouvertes en même temps. Les locaux de préparation et leur sas sont placés en surpression par rapport à l'environnement extérieur, avec un écart d'au moins 10 pascals.",
+   "Les enceintes blindées, elles, sont ventilées en dépression pour assurer le confinement et empêcher la dispersion de la contamination radioactive, avec une filtration de l'air extrait adaptée aux gaz ou aérosols présents."],
+  encart:{type:"astuce", titre:"La logique à retenir", texte:"On protège le produit en mettant la salle en surpression, et on protège l'opérateur en mettant l'enceinte en dépression. Les deux exigences cohabitent parce qu'elles ne portent pas sur le même volume."},
+  img:{f:"ue5-09-enceinte.jpg", leg:"Enceinte blindée de radiopharmacie"}},
+
+ {t:"chiffres", kick:"Le tableau à connaître", titre:"Classes exigées selon le procédé", lignes:[
+  {v:"A dans D", l:"transfert en système clos en enceinte blindée : classe D minimum, classe C recommandée"},
+  {v:"A dans C", l:"préparation aseptique en système ouvert, enceinte blindée ou hotte à flux unidirectionnel"},
+  {v:"A dans C", l:"étape de filtration stérilisante"},
+  {v:"A dans C", l:"radiosynthèse automatisée selon un procédé aseptique"},
+  {v:"A dans C", l:"radiomarquage d'éléments figurés du sang en système ouvert"}],
+  note:"Points 72 à 82 de la LD4. Le radiomarquage d'éléments figurés du sang se fait dans un local uniquement dédié à cette activité, un seul radiomarquage à la fois sur une même zone de travail."},
+
+ {t:"notion", kick:"Le générateur", titre:"Faire venir un radionucléide qui ne voyage pas",
+  paras:["Le technétium-99m est le radionucléide de diagnostic le plus utilisé, mais sa période est trop courte pour être transporté. On transporte donc son père, le molybdène-99, fixé sur une colonne : c'est le générateur, que l'on élue pour récupérer le technétium en solution saline.",
+   "Le résumé des caractéristiques du produit indique que le molybdène-99 décroît avec une période de 66 heures en générant principalement le technétium-99m, qui décroît avec une période de 6 heures par émission gamma principale d'énergie 140 keV, en technétium-99 de période très longue."],
+  encart:{type:"info", titre:"Traçabilité des sources", texte:"Les sources radioactives détenues font l'objet d'un inventaire permettant de justifier en permanence de leur origine et de leur localisation. Les activités commandées sont strictement en rapport avec l'utilisation et avec les activités maximales autorisées."},
+  img:{f:"ue5-11-generateur.jpg", leg:"Générateur de technétium-99m"}},
+
+ {t:"notion", kick:"Étiquetage et délais", titre:"L'heure fait partie du médicament",
+  paras:["Toute indication d'activité indique la date et l'heure exacte de la mesure. L'étiquetage du blindage de protection comporte au minimum la dénomination de la préparation, son numéro d'enregistrement, l'activité, le volume, la date et l'heure exacte de mesure en fin de préparation, la date et l'heure limite d'utilisation, et le trisecteur normalisé signalant la présence de substances radioactives.",
+   "L'étiquetage de la dose destinée au patient ajoute l'identité du patient et l'activité de la dose avec sa date et son heure exacte."],
+  encart:{type:"piege", titre:"Le délai à retenir", texte:"La préparation d'une dose à administrer se fait le plus près possible de son heure d'administration. L'heure limite d'utilisation d'une dose à administrer ne doit pas excéder 30 minutes, sauf justification appropriée."}},
+
+ {t:"notion", kick:"Contrôle et libération", titre:"Personne différente, décision du radiopharmacien",
+  paras:["Les contrôles de qualité sont réalisés par une personne formée et habilitée, différente de celle qui a préparé le MRP, sauf exception justifiée. La libération est effectuée par le radiopharmacien, et aucune préparation n'est libérée ni délivrée avant qu'il ait certifié qu'elle répond aux spécifications du dossier de préparation.",
+   "La taille des lots ne permet pas de suivre les prescriptions de la pharmacopée européenne pour l'essai de stérilité : le radiopharmacien évalue alors le risque associé, en s'appuyant notamment sur la surveillance particulaire et microbiologique des ZAC."],
+  encart:{type:"info", titre:"Deux règles propres aux MRP", texte:"Une préparation peut être délivrée avant l'achèvement de tous les contrôles, mais cela ne supprime pas l'obligation d'une décision formellement enregistrée sur la conformité du lot. Toute préparation non conforme est considérée, après recherche des causes, comme un déchet radioactif et traitée comme tel. Sauf indication contraire, l'échantillothèque n'est pas requise."}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE5", lignes:[
+  {v:"66 h / 6 h", l:"périodes du molybdène-99 et du technétium-99m"},
+  {v:"140 keV", l:"énergie d'émission gamma principale du technétium-99m"},
+  {v:"30 min", l:"heure limite d'utilisation d'une dose à administrer, sauf justification"},
+  {v:"10 Pa", l:"écart minimal de pression entre le local de préparation et son sas"},
+  {v:"6 mois", l:"délai sans préparation au-delà duquel la formation théorique est à renouveler"},
+  {v:"3 ans", l:"périodicité minimale de renouvellement de la formation des travailleurs suivis"},
+  {v:"1 fois/an", l:"requalification des ZAC, essais d'étanchéité et d'intégrité des filtres HEPA"}]},
+
+ {t:"quiz", kick:"Vérification", question:"Un collègue affirme que la limite d'exposition du cristallin est de 150 mSv par an. Que répondez-vous ?",
+  options:["C'est exact, cette valeur n'a jamais bougé",
+   "C'était exact avant 2018 ; depuis le 1er juillet 2023 la limite est de 20 mSv sur douze mois consécutifs",
+   "C'est faux, la limite a toujours été de 20 mSv"],
+  bonne:1,
+  expl:"Un régime transitoire a fixé 100 mSv cumulés sur cinq ans entre le 1er juillet 2018 et le 30 juin 2023, sans dépasser 50 mSv par an. Depuis le 1er juillet 2023 la limite est de 20 mSv sur douze mois consécutifs, alignée sur celle du corps entier."},
+
+ {t:"quiz", kick:"Vérification", question:"Vous avez préparé une dose de MRP. Qui en réalise le contrôle de qualité ?",
+  options:["Vous-même, puisque vous connaissez la préparation",
+   "Une personne formée et habilitée, différente de celle qui a préparé, sauf exception justifiée",
+   "Le physicien médical, obligatoirement"],
+  bonne:1,
+  expl:"C'est la règle du point 90 de la LD4, cohérente avec le chapitre 6 des BPP qui exige un contrôle indépendant de l'activité de préparation. Le physicien médical intervient sur les contrôles de qualité de l'activimètre, pas sur la préparation."},
+
+ {t:"quiz", kick:"Vérification", question:"Pourquoi les locaux de préparation des MRP sont-ils en surpression alors que les enceintes blindées sont en dépression ?",
+  options:["C'est une incohérence historique du texte",
+   "La surpression protège la préparation de la contamination extérieure, la dépression confine la contamination radioactive dans l'enceinte",
+   "La dépression sert à accélérer la filtration stérilisante"],
+  bonne:1,
+  expl:"Les deux exigences portent sur des volumes différents : le local vis-à-vis de l'extérieur, l'enceinte vis-à-vis du local. La LD4 impose la surpression des locaux et de leur sas, et la ventilation en dépression des enceintes blindées."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"ANSM, Bonnes pratiques de préparation 2023, ligne directrice LD4", ref:"Préparation de médicaments radiopharmaceutiques : locaux, équipements, personnel, préparation, contrôle et libération", url:"https://ansm.sante.fr/uploads/2023/08/02/20230802-bonnes-pratiques-de-preparation-08-2023.pdf"},
+  {titre:"Code du travail, articles R. 4451-6 et suivants", ref:"Valeurs limites d'exposition professionnelle aux rayonnements ionisants", url:"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018491123/"},
+  {titre:"INRS, Rayonnements ionisants — réglementation et démarche de prévention", ref:"Valeurs limites, régime transitoire du cristallin, zonage, classement des travailleurs, conseiller en radioprotection", url:"https://www.inrs.fr/risques/rayonnements-ionisants/reglementation.html"},
+  {titre:"ASNR, modalités de surveillance de l'exposition des travailleurs", ref:"Catégories A et B, dosimétrie individuelle et système SISERI", url:"https://recherche-expertise.asnr.fr/savoir-comprendre/sante/modalites-surveillance-lexposition-travailleurs"},
+  {titre:"ANSM, résumé des caractéristiques du produit d'un générateur de technétium", ref:"Périodes du molybdène-99 et du technétium-99m, énergie gamma de 140 keV", url:"https://agence-prd.ansm.sante.fr/php/ecodex/rcp/R0229128.htm"}],
+  note:"Textes consultés le 9 août 2026. Les valeurs de dose sont celles du code du travail en vigueur ; vérifiez la date de votre support de cours avant de réviser des chiffres de radioprotection."}
+]},
+
+UE6: {titre:"Contrôles des préparations", duree:"14 min", diapos:[
+ {t:"intro", kick:"UE6 · pour commencer", titre:"Prouver que ce qu'on a fabriqué est bien ce qu'on croit",
+  texte:"Une préparation n'a pas d'autorisation de mise sur le marché. Personne n'a validé sa formule, sa stabilité ou sa pureté avant vous. Le contrôle est donc la seule chose qui sépare une intention thérapeutique d'un médicament réellement conforme. Le chapitre 6 des bonnes pratiques de préparation lui est entièrement consacré."},
+
+ {t:"notion", kick:"La définition", titre:"Mesurer, comparer, décider",
+  paras:["Le contrôle de la qualité pharmaceutique consiste à mettre en œuvre des opérations de mesure ou d'examen des caractéristiques des matières premières, des articles de conditionnement, des préparations en cours et des préparations terminées, en comparant les résultats obtenus aux exigences spécifiées.",
+   "L'objectif est double : déterminer si chaque caractéristique est conforme, et prendre pour chacun une décision d'acceptation ou de refus. Rien n'est libéré tant que la qualité n'a pas été jugée satisfaisante."],
+  encart:{type:"info", titre:"Ce que couvre le contrôle", texte:"Pas seulement l'analyse : aussi l'échantillonnage, l'établissement des spécifications, l'organisation, la documentation et les procédures de libération."}},
+
+ {t:"etapes", kick:"Le cycle", titre:"Cinq moments de contrôle",
+  etapes:["Le contrôle à réception : matières premières, articles de conditionnement, préparations sous-traitées",
+   "Le contrôle en cours de préparation, si nécessaire : enregistrements et autocontrôles",
+   "Le contrôle des préparations terminées",
+   "Le contrôle libératoire",
+   "Le cas échéant, le contrôle de stabilité et de l'absence d'interactions contenant-contenu"],
+  note:"Point 6.3 du chapitre 6. La nature du contrôle de la qualité est définie et justifiée en fonction de l'analyse de risque réalisée pour la préparation concernée : tout ne se contrôle pas de la même manière."},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les termes du chapitre 6", mots:[
+  {m:"Spécification", d:"L'exigence chiffrée ou qualitative à laquelle le résultat obtenu est comparé pour décider de la conformité."},
+  {m:"Certificat d'analyse", d:"Document signé du fournisseur, comportant le nom et l'adresse du fabricant d'origine et le référentiel des contrôles effectués."},
+  {m:"Recevabilité", d:"Vérification documentaire et visuelle à réception, sans analyse : concordance commande-produit, inviolabilité, certificat d'analyse, dénomination, numéro de lot, péremption."},
+  {m:"Échantillothèque", d:"Conservation d'échantillons de la préparation terminée, tracée dans le dossier de lot."},
+  {m:"Étalon primaire", d:"Étalon qualifié et certifié indiqué par la méthode officielle. Un étalon secondaire n'est utilisable que s'il est qualifié par rapport à un étalon primaire certifié."},
+  {m:"Contrôle libératoire", d:"L'ensemble des contrôles sur lesquels s'appuie la décision de libération pharmaceutique du lot."}]},
+
+ {t:"chiffres", kick:"La hiérarchie", titre:"Quel référentiel, dans quel ordre", lignes:[
+  {v:"1", l:"Pharmacopée européenne : monographies générales et spécifiques, prescriptions générales"},
+  {v:"2", l:"Pharmacopée française, et en particulier le Formulaire national"},
+  {v:"3", l:"Pharmacopées et formulaires nationaux des autres États membres de l'Union européenne"},
+  {v:"4", l:"Pharmacopées et formulaires de pays tiers, par exemple l'US Pharmacopeia"},
+  {v:"5", l:"À défaut : méthodes internes, méthodes des fabricants ou fournisseurs, littérature"}],
+  note:"Points 6.5 à 6.8. Si une monographie existe dans la Pharmacopée européenne ou française, son application est obligatoire. La validation des méthodes non officielles se fait selon des référentiels tels qu'ICH Q2."},
+
+ {t:"notion", kick:"Le principe cardinal", titre:"On ne contrôle pas son propre travail",
+  paras:["L'activité de contrôle est organisée de façon à permettre un contrôle indépendant de l'activité de préparation. Le guide va plus loin : sauf exception justifiée, les contrôles sont effectués par une personne différente de celle qui a réalisé la préparation.",
+   "Les locaux de contrôle sont en principe séparés des locaux de préparation. Le texte admet cependant que l'activité de contrôle s'effectue en zone de préparation pour limiter la dissémination de contaminants ou faciliter le contrôle en ligne."],
+  encart:{type:"piege", titre:"Attention à la nuance", texte:"Séparation des locaux : « en principe », avec des dérogations motivées. Séparation des personnes : « sauf exception justifiée ». Ce ne sont pas les mêmes niveaux d'exigence, et l'examen aime cette distinction."}},
+
+ {t:"notion", kick:"Matières premières", titre:"Le contrôle dépend du fournisseur",
+  paras:["L'un des paramètres critiques pour orienter le contrôle d'une matière première est sa source d'approvisionnement. Les BPP répartissent les MPUP en trois catégories.",
+   "Première catégorie : matière issue d'un établissement pharmaceutique de fabrication autorisé ou d'un établissement de fabrication ou de distribution autorisé ou déclaré dans l'Union européenne, avec certificat de conformité aux bonnes pratiques pour les substances actives, système d'inviolabilité et certificat d'analyse du lot. Une simple vérification de recevabilité suffit, et l'échantillothèque n'est pas obligatoire.",
+   "Troisième catégorie : autres établissements, distributeurs sans reconditionnement, importateurs, ou fournisseurs ni déclarés ni autorisés. Un contrôle complet s'impose, en plus des points de recevabilité."],
+  encart:{type:"astuce", titre:"Le réflexe", texte:"L'absence d'un seul des éléments — inviolabilité, certificat d'analyse, date de péremption ou de recontrôle, certificat de conformité aux BPF pour les substances actives — déclenche un contrôle complet, quel que soit le fournisseur."}},
+
+ {t:"notion", kick:"Cas particulier", titre:"Quand on part d'une spécialité",
+  paras:["Si, à défaut de matière première adaptée disponible, une spécialité pharmaceutique est utilisée, aucun contrôle de celle-ci n'est exigé au titre de matière première : elle a déjà été contrôlée par son fabricant dans le cadre de son autorisation de mise sur le marché.",
+   "Mais le déconditionnement fait toujours l'objet d'une évaluation de ses conséquences sur la qualité, la stabilité, la sécurité et l'efficacité de la préparation."],
+  encart:{type:"piege", titre:"Le piège classique", texte:"Partir d'une spécialité dispense du contrôle de la matière première, jamais du contrôle de la préparation terminée. Le texte le dit explicitement au point 6.44."}},
+
+ {t:"notion", kick:"L'environnement", titre:"Contrôler l'air, les surfaces, l'eau",
+  paras:["Parmi les contrôles possibles figurent les contrôles de recevabilité documentaire, physico-chimiques, pharmacotechniques, microbiologiques, de radioactivité le cas échéant, et de l'environnement — air, surfaces, eau.",
+   "Pour les préparations stériles, la LD1 fixe des limites recommandées de contamination microbiologique en activité : moins de 1 unité formant colonie par mètre cube en classe A, 10 en classe B, 100 en classe C, 200 en classe D. Les empreintes de gant à cinq doigts admettent moins de 1 ufc en classe A et 5 en classe B."],
+  encart:{type:"info", titre:"Les fréquences minimales", texte:"En classe A : gélose de sédimentation quotidienne au plan de travail, empreinte de gant quotidienne en fin de session, prélèvements de contact hebdomadaires, prélèvement d'air actif mensuel."},
+  img:{f:"ue6-09-gelose.jpg", leg:"Boîtes de Petri utilisées pour le contrôle microbiologique"}},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"La norme de biocontamination a été remplacée", type:"garde",
+  texte:"La maîtrise de la biocontamination en salles propres relevait des normes NF EN ISO 14698-1 et 14698-2. La norme NF EN 17141, homologuée en septembre 2020, les annule et les remplace. Les BPP 2023 citent d'ailleurs NF ISO 14644 et NF EN 17141 comme les référentiels adaptés au moment de leur publication, et renvoient à NF EN 17141 pour la maîtrise de la contamination microbiologique. Un cours qui cite encore l'ISO 14698 renvoie à une norme annulée."},
+
+ {t:"notion", kick:"La libération", titre:"Le dernier maillon, pas le seul",
+  paras:["Pour les préparations stériles, la LD1 rappelle que la garantie de stérilité ne repose pas sur un test final : elle est assurée par la validation et la maîtrise des procédés, la qualification des installations, la qualité des matières premières et des articles de conditionnement, les contrôles microbiologiques et particulaires de l'environnement et la formation du personnel.",
+   "L'essai de stérilité de la pharmacopée, ou une méthode équivalente validée, est considéré comme le dernier d'une série de contrôles permettant de garantir la stérilité. Une attention particulière est portée aux résultats de la surveillance des ZAC au moment de libérer."],
+  encart:{type:"astuce", titre:"La formule à retenir", texte:"La stérilité se construit pendant le procédé, elle ne se démontre pas à la fin. C'est exactement pour cela que le dossier de lot pèse autant dans la décision de libération."}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les durées d'archivage", lignes:[
+  {v:"5 ans", l:"dossier de préparation, après la date de péremption du dernier lot produit"},
+  {v:"1 an", l:"dossier de lot au moins, après la péremption du lot concerné"},
+  {v:"10 ans", l:"dossier de lot si les données servent à la traçabilité du livre-registre"},
+  {v:"10 ans", l:"livre-registre des préparations"},
+  {v:"5 ans", l:"cahiers de laboratoire, après péremption du dernier lot produit"}],
+  note:"Tableau du point 4.47. Le registre des contrôles réalisés à réception des MPUP relève, lui, du règlement interne de l'établissement."},
+
+ {t:"quiz", kick:"Vérification", question:"Vous avez réalisé une préparation ce matin. Le laboratoire de contrôle est débordé et vous propose de faire vous-même le dosage. Que dit le texte ?",
+  options:["C'est possible, rien ne l'interdit",
+   "Sauf exception justifiée, le contrôle est effectué par une personne différente de celle qui a réalisé la préparation",
+   "C'est interdit en toutes circonstances"],
+  bonne:1,
+  expl:"Le point 6.18 pose la règle avec sa réserve : « sauf exception justifiée ». L'exception existe mais elle doit être motivée et tracée, elle n'est pas laissée à l'organisation du moment."},
+
+ {t:"quiz", kick:"Vérification", question:"Une monographie de la préparation existe à la Pharmacopée européenne. Vous disposez aussi d'une méthode interne validée, plus rapide. Laquelle appliquez-vous ?",
+  options:["La méthode interne, puisqu'elle est validée",
+   "La monographie de la Pharmacopée européenne : son application est obligatoire",
+   "Au choix, les deux référentiels ont la même valeur"],
+  bonne:1,
+  expl:"Le point 6.6 est sans ambiguïté : si les monographies existent dans la Pharmacopée européenne ou française, leur application est obligatoire. Les méthodes internes n'interviennent qu'en l'absence de référentiel disponible."},
+
+ {t:"quiz", kick:"Vérification", question:"Vous préparez une solution injectable à partir d'une spécialité pharmaceutique, faute de matière première disponible. Quels contrôles ?",
+  options:["Aucun contrôle de la spécialité au titre de matière première, mais le contrôle de la préparation terminée reste dû",
+   "Contrôle complet de la spécialité avant emploi",
+   "Aucun contrôle, ni sur la spécialité ni sur la préparation"],
+  bonne:0,
+  expl:"Le point 6.42 dispense du contrôle de la spécialité au titre de matière première, et le point 6.44 précise que cela n'exonère pas du contrôle de la préparation terminée. Le déconditionnement, lui, fait l'objet d'une évaluation de ses conséquences."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"ANSM, Bonnes pratiques de préparation 2023, chapitre 6", ref:"Contrôle de la qualité pharmaceutique : principes, référentiels, organisation, contrôle des MPUP, stratégie libératoire", url:"https://ansm.sante.fr/uploads/2023/08/02/20230802-bonnes-pratiques-de-preparation-08-2023.pdf"},
+  {titre:"ANSM, BPP 2023, chapitre 4 point 4.47", ref:"Tableau des durées minimales de conservation des documents", url:"https://ansm.sante.fr/uploads/2023/08/02/20230802-bonnes-pratiques-de-preparation-08-2023.pdf"},
+  {titre:"ANSM, BPP 2023, ligne directrice LD1", ref:"Surveillance microbiologique des ZAC, fréquences de prélèvement, essai de stérilité et stratégie libératoire", url:"https://ansm.sante.fr/uploads/2023/08/02/20230802-bonnes-pratiques-de-preparation-08-2023.pdf"},
+  {titre:"AFNOR, norme NF EN 17141 (septembre 2020)", ref:"Maîtrise de la biocontamination ; annule et remplace NF EN ISO 14698-1 et NF EN ISO 14698-2", url:"https://www.boutique.afnor.org/fr-fr/norme/nf-en-17141/salles-propres-et-environnements-maitrises-apparentes-maitrise-de-la-biocon/fa187568/86055"},
+  {titre:"ICH, Quality Guidelines", ref:"Q2, validation des méthodes d'analyse, cité en note par les BPP 2023", url:"https://www.ich.org/page/quality-guidelines"}],
+  note:"Textes consultés le 9 août 2026, chapitre 6 et LD1 lus dans leur texte intégral. En cas d'écart avec le cours de votre centre de formation, c'est le cours qui fait foi pour l'examen."}
 ]}
+
 };
 const UES_PRETES = Object.keys(LECONS);
+
+/* =========================================================================
+   18 bis. BANQUE D'EXERCICES D'ENTRAÎNEMENT — onglet Préparation
+   Chaque exercice porte sa source : citation ou référence du texte lu.
+   ========================================================================= */
+const EXOS = {
+
+UE4: [
+ {t:"qcm", q:"À partir de quelle date les bonnes pratiques de préparation de 2007 ont-elles cessé de s'appliquer ?",
+  o:["Le 20 septembre 2022","Le 21 juillet 2023","Le 20 septembre 2023","Le 1er janvier 2024"], r:2,
+  c:"La décision du 21 juillet 2023 est la date de la décision ; son article 3 fixe l'entrée en vigueur au 20 septembre 2023.",
+  s:"Décision ANSM du 21/07/2023, article 3 : « La présente décision entre en vigueur le 20 septembre 2023 »."},
+
+ {t:"qcmMulti", q:"Lesquelles de ces lignes directrices s'appliquent à une chimiothérapie cytotoxique injectable préparée hors recherche clinique ?",
+  o:["Les chapitres généraux","LD1, préparations stériles","LD2, substances à risque pour la santé et l'environnement","LD3, recherches impliquant la personne humaine"], r:[0,1,2],
+  c:"La LD3 ne s'ajoute que si la préparation est réalisée dans le cadre d'une recherche impliquant la personne humaine.",
+  s:"BPP 2023, préambule : la préparation des chimiothérapies cytotoxiques injectables suit les chapitres généraux, la LD1 et la LD2."},
+
+ {t:"vf", q:"La stérilisation terminale par chaleur humide est, selon la Pharmacopée, la méthode de choix pour préparer un médicament stérile.",
+  r:true, c:"Exact. La LD1 précise que lorsqu'elle est envisageable et que l'établissement dispose de l'équipement, l'autoclave est la méthode de choix sauf justification.",
+  s:"BPP 2023, LD1 points 2 et 3."},
+
+ {t:"vf", q:"Lorsque la matière première est une spécialité pharmaceutique stérile, la stérilisation terminale reste le procédé le plus approprié.",
+  r:false, c:"Non : dans ce cas, la LD1 indique que la préparation aseptique est le procédé le plus approprié.",
+  s:"BPP 2023, LD1 point 2, note."},
+
+ {t:"cloze", q:"Les solutions sont filtrées sur un filtre stérile à usage unique à pores de diamètre nominal inférieur ou égal à _____.",
+  r:"0,22 µm", s:"BPP 2023, LD1 point 10."},
+
+ {t:"cloze", q:"Le nombre de patients potentiellement traités par un lot ne dépasse pas _____ pour une durée de traitement de 28 jours.",
+  r:"250", s:"BPP 2023, champ d'application et point 4.34."},
+
+ {t:"cloze", q:"Les écarts de pression entre locaux adjacents relevant de classes différentes sont compris entre 10 et _____ pascals.",
+  r:"15", s:"BPP 2023, LD1 point 51."},
+
+ {t:"qcm", q:"Une ZAC de classe B « en activité » admet au maximum combien de particules de 0,5 µm et plus par m³ ?",
+  o:["3 520","352 000","3 520 000","20"], r:1,
+  c:"3 520 correspond à la classe B au repos, identique à la classe A. En activité, la classe B admet 352 000.",
+  s:"BPP 2023, LD1 tableau 1."},
+
+ {t:"paires", q:"Associez chaque classe de ZAC à sa correspondance ISO au repos.",
+  p:[["Classe A","ISO 5"],["Classe B","ISO 5"],["Classe C","ISO 7"],["Classe D","ISO 8"]],
+  s:"BPP 2023, LD1 point 37, note de comparaison à la norme EN ISO 14644-1."},
+
+ {t:"qcm", q:"Un isolateur est placé en dépression pour manipuler une poudre CMR. Quelle classe pour la ZAC qui le contient ?",
+  o:["Classe D","Classe C","Classe B","Non classée"], r:1,
+  c:"La règle est sans condition dans le texte : la ZAC contenant un isolateur en dépression est toujours de classe C.",
+  s:"BPP 2023, LD1 point 81."},
+
+ {t:"qcm", q:"Préparation aseptique sous poste à flux d'air unidirectionnel, en système ouvert. Quel environnement immédiat ?",
+  o:["Classe B","Classe C","Classe D","Non classé"], r:0,
+  c:"En système clos, l'environnement immédiat peut être de classe C. C'est le système ouvert qui impose la classe B.",
+  s:"BPP 2023, LD1 tableau 8."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les étapes préalables et initiales d'une préparation.",
+  e:["Réaliser le vide de ligne et vérifier la propreté de la zone et du matériel",
+     "Vérifier la conformité des contrôles d'environnement avant utilisation de la zone",
+     "Mettre à disposition un dispositif de récupération des déchets identifié",
+     "Rassembler MPUP, articles de conditionnement, matériels et documents valides",
+     "Vérifier péremptions, étiquetage, qualités organoleptiques et intégrité des emballages",
+     "Revêtir la tenue et respecter les instructions d'habillage, d'hygiène et de sécurité"],
+  s:"BPP 2023, points 5.35 à 5.40, dispositions préliminaires."},
+
+ {t:"qcmMulti", q:"Quelles obligations d'équipement de protection individuelle la LD2 impose-t-elle nommément ?",
+  o:["Sur-blouse, manchons pour avant-bras et gants si des substances CMR sont manipulées hors isolateur ou boîte à gants",
+     "Masque FFP2, FFP3 ou appareil respiratoire isolant en cas de danger respiratoire",
+     "Lunettes de protection ou écran facial en cas de danger oculaire",
+     "Double paire de gants stériles en toutes circonstances"], r:[0,1,2],
+  c:"La LD2 ne fixe pas d'obligation générale de double gantage ; elle renvoie la fréquence de changement des gants à l'analyse de risque.",
+  s:"BPP 2023, LD2 points 39 à 42."},
+
+ {t:"vf", q:"En catégorie 1, seule une tenue adaptée et propre est exigée, sans couvre-chef.",
+  r:false, c:"Faux : pour les préparations de catégorie 1, l'utilisation d'une tenue adaptée et propre est obligatoire, charlotte incluse.",
+  s:"BPP 2023, point 2.22."},
+
+ {t:"qcm", q:"Une préparation présente un critère relevant de la catégorie 2 et un critère relevant de la catégorie 3. Comment la classez-vous ?",
+  o:["Catégorie 2, la moyenne des critères","Catégorie 3, risque élevé","Catégorie 1 si les autres critères sont favorables","Le classement est impossible"], r:1,
+  c:"Un seul critère en catégorie 3 suffit à y classer la préparation, et il devient inutile de poursuivre le questionnement.",
+  s:"BPP 2023, annexe III, règles de lecture du tableau."},
+
+ {t:"erreur", q:"Un préparateur commence un lot de gélules. Il pèse la substance active, est appelé au téléphone dix minutes, revient, termine la préparation puis enchaîne immédiatement sur une seconde préparation différente sur le même plan de travail sans autre formalité. Relevez les non-conformités et l'action corrective attendue.",
+  a:"Trois écarts : l'opération d'un lot doit être confiée préférentiellement à la même personne sans être interrompue avant la réalisation complète ; une seule préparation à la fois est réalisée sur une même zone de travail ; un vide de ligne doit être effectué avant le nouveau lot pour éliminer tout risque de contamination croisée. Action corrective : tracer l'interruption dans le relevé d'anomalies du dossier de lot, réaliser le vide de ligne et le nettoyage de la zone avant toute nouvelle préparation.",
+  m:["interruption","une seule préparation","vide de ligne","contamination croisée","dossier de lot"],
+  s:"BPP 2023, point 5.34 et note de bas de page sur le vide de ligne au point 5.35."},
+
+ {t:"situation", q:"Le pharmacien vous demande de préparer une poche de cytotoxique alors que l'alarme du système de traitement d'air de la ZAC s'est déclenchée il y a dix minutes. Que faites-vous et sur quoi vous appuyez-vous ?",
+  a:"On ne démarre pas. L'alimentation en air filtré doit être maintenue en toutes circonstances pour garantir la pression positive, et toute déficience détectée par l'alarme est portée sans délai à la connaissance du pharmacien désigné comme responsable des préparations. Les vérifications de conformité des contrôles d'environnement sont réalisées avant utilisation de la zone. L'incident est tracé, la conformité de la ZAC rétablie et vérifiée avant reprise.",
+  m:["alarme","pression positive","pharmacien désigné","contrôles d'environnement","tracé"],
+  s:"BPP 2023, LD1 points 51 et 52, et point 5.36."},
+
+ {t:"ouverte", q:"Quelle est la différence entre le dossier de préparation et le dossier de lot ?",
+  a:"Le dossier de préparation regroupe en trois parties la validité technico-réglementaire, la description du procédé et des spécifications, et la description des contrôles ; il sert de matrice et peut couvrir plusieurs préparations de même composition qualitative. Le dossier de lot concerne un lot précis et comporte cinq parties : préparation, conditionnement, contrôle, libération pharmaceutique, gestion des anomalies ou retours et réclamations.",
+  m:["trois parties","matrice","lot","cinq parties","libération"],
+  s:"BPP 2023, points 4.30, 4.31, 4.36 et 4.38."},
+
+ {t:"qcm", q:"Combien de temps le livre-registre des préparations est-il conservé ?",
+  o:["1 an","5 ans","10 ans","Selon le règlement interne de l'établissement"], r:2,
+  c:"Le dossier de préparation se conserve 5 ans après la péremption du dernier lot ; le dossier de lot 1 an au moins, ou 10 ans s'il sert à la traçabilité du livre-registre.",
+  s:"BPP 2023, tableau d'archivage du point 4.47."},
+
+ {t:"vf", q:"Les préparations de médicaments radiopharmaceutiques peuvent être réalisées en officine sur autorisation.",
+  r:false, c:"Faux. Le champ d'application des BPP l'énonce clairement : ces préparations ne sont pas autorisées en officine.",
+  s:"BPP 2023, champ d'application, renvoi à l'article L. 5125-1-1 du CSP."}
+],
+
+UE5: [
+ {t:"qcm", q:"Quelle est la valeur limite d'exposition d'un travailleur pour l'organisme entier, sur douze mois consécutifs ?",
+  o:["6 mSv","20 mSv","50 mSv","100 mSv"], r:1,
+  c:"6 mSv est le seuil de classement en catégorie A, pas une limite d'exposition. La limite est de 20 mSv de dose efficace.",
+  s:"Code du travail, article R. 4451-6, 1°."},
+
+ {t:"qcm", q:"Depuis le 1er juillet 2023, quelle est la valeur limite d'exposition au cristallin ?",
+  o:["15 mSv","20 mSv","50 mSv","150 mSv"], r:1,
+  c:"15 mSv est un seuil de classement en catégorie B et un seuil de mesurage, pas une limite. La limite est de 20 mSv sur douze mois consécutifs.",
+  s:"Code du travail, article R. 4451-6, 2° b ; régime transitoire clos le 30 juin 2023."},
+
+ {t:"cloze", q:"La dose équivalente aux extrémités et à la peau ne dépasse pas _____ millisieverts sur douze mois consécutifs.",
+  r:"500", s:"Code du travail, article R. 4451-6, 2° a."},
+
+ {t:"qcmMulti", q:"Quels critères entraînent un classement en catégorie A ?",
+  o:["Dose efficace susceptible de dépasser 6 mSv sur douze mois",
+     "Dose équivalente susceptible de dépasser 150 mSv à la peau ou aux extrémités",
+     "Dose efficace susceptible de dépasser 1 mSv sur douze mois",
+     "Dose équivalente susceptible de dépasser 15 mSv au cristallin"], r:[0,1],
+  c:"Les deux derniers critères définissent la catégorie B, qui regroupe les autres travailleurs exposés.",
+  s:"Code du travail, article R. 4451-57 ; synthèse INRS, réglementation rayonnements ionisants."},
+
+ {t:"paires", q:"Associez chaque zone à sa couleur ou à sa nature.",
+  p:[["Zone surveillée","Signalisation bleue"],["Zone contrôlée la moins exposée","Verte"],["Zone contrôlée où l'accès est exceptionnel et enregistré nominativement","Rouge"],["Zone délimitée lorsque les extrémités peuvent dépasser 4 mSv par mois","Zone d'extrémité"]],
+  s:"INRS, réglementation rayonnements ionisants, délimitation et signalisation des zones."},
+
+ {t:"cloze", q:"Les zones sont identifiées lorsque l'exposition est susceptible de dépasser une dose efficace de _____ millisievert par mois pour l'organisme entier.",
+  r:"0,08", s:"INRS, réglementation rayonnements ionisants, identification et délimitation des zones."},
+
+ {t:"vf", q:"Une femme enceinte peut être affectée à un poste impliquant un classement en catégorie A si elle porte un dosimètre opérationnel.",
+  r:false, c:"Faux. Les femmes enceintes et les jeunes travailleurs de 16 à 18 ans sont exclus des travaux impliquant un classement en catégorie A. L'exposition de l'enfant à naître doit rester inférieure à 1 mSv.",
+  s:"INRS, réglementation rayonnements ionisants, classement des travailleurs ; code du travail R. 4451-7."},
+
+ {t:"qcm", q:"Qui peut assumer la responsabilité technique de la préparation et du contrôle des médicaments radiopharmaceutiques ?",
+  o:["Tout pharmacien de la PUI","Le radiopharmacien seul","Le physicien médical","Le préparateur habilité"], r:1,
+  c:"En PUI, le radiopharmacien reçoit une délégation écrite du pharmacien gérant. Les préparateurs sont placés sous son autorité technique.",
+  s:"BPP 2023, LD4 points 50 et 51."},
+
+ {t:"qcm", q:"Préparation aseptique de MRP par transfert en système clos : quel est l'environnement minimal de l'enceinte blindée ?",
+  o:["Classe B","Classe C","Classe D","Non classé"], r:2,
+  c:"La LD4 admet la classe D au minimum pour ce cas, tout en recommandant la classe C. L'enceinte elle-même est de classe A et ventilée en dépression.",
+  s:"BPP 2023, LD4 point 72."},
+
+ {t:"qcm", q:"Radiosynthèse automatisée selon un procédé aseptique : quel environnement contrôlé au minimum ?",
+  o:["Classe B","Classe C","Classe D","Non classé"], r:1,
+  c:"L'automate est placé dans une enceinte blindée de classe A ventilée en dépression, elle-même dans un environnement contrôlé au minimum de classe C.",
+  s:"BPP 2023, LD4 point 78."},
+
+ {t:"vf", q:"Les locaux de préparation des MRP et leur sas sont placés en dépression par rapport à l'environnement extérieur.",
+  r:false, c:"Faux : ils sont placés en surpression, avec un écart d'au moins 10 pascals. Ce sont les enceintes blindées qui sont ventilées en dépression.",
+  s:"BPP 2023, LD4 points 17, 18 et 27."},
+
+ {t:"cloze", q:"L'heure limite d'utilisation d'une dose de MRP à administrer ne doit pas excéder _____ minutes, sauf justification appropriée.",
+  r:"30", s:"BPP 2023, LD4 point 88."},
+
+ {t:"cloze", q:"Le molybdène-99 décroît avec une période de _____ heures en générant principalement le technétium-99m.",
+  r:"66", s:"Résumé des caractéristiques du produit d'un générateur de technétium, base ANSM."},
+
+ {t:"qcm", q:"Quelle est l'énergie de l'émission gamma principale du technétium-99m ?",
+  o:["66 keV","140 keV","511 keV","1,25 MeV"], r:1,
+  c:"Le technétium-99m décroît avec une période de 6 heures par émission gamma principale de 140 keV.",
+  s:"Résumé des caractéristiques du produit d'un générateur de technétium, base ANSM."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les mentions minimales de l'étiquetage du blindage de protection d'une préparation radiopharmaceutique, telles que listées par la LD4.",
+  e:["Dénomination de la préparation radiopharmaceutique","Numéro d'enregistrement","Activité de la préparation","Volume","Date et heure exacte de mesure à la fin de la préparation","Date et heure limite exacte d'utilisation","Trisecteur normalisé signalant la présence de substances radioactives"],
+  s:"BPP 2023, LD4 point 86."},
+
+ {t:"erreur", q:"Un opérateur prépare une dose de MRP, la contrôle lui-même faute de collègue disponible, l'étiquette avec la seule dénomination du produit et l'activité mesurée, puis la range en attendant l'appel du service dans une heure. Relevez les non-conformités.",
+  a:"Trois écarts au moins : le contrôle de qualité doit être réalisé par une personne formée et habilitée différente de celle qui a préparé, sauf exception justifiée ; l'étiquetage de la dose destinée au patient doit comporter l'identité du patient, le numéro d'enregistrement, la date et l'heure limite d'utilisation, l'activité avec sa date et son heure exacte, et le trisecteur ; l'heure limite d'utilisation d'une dose à administrer ne doit pas excéder 30 minutes sauf justification, donc une heure d'attente n'est pas acceptable en l'état.",
+  m:["différente","identité du patient","trisecteur","heure","30 minutes"],
+  s:"BPP 2023, LD4 points 87, 88 et 90."},
+
+ {t:"situation", q:"Vous découvrez, en fin de session, qu'une préparation de MRP est non conforme au contrôle. Que devient-elle et quelle décision doit être formalisée ?",
+  a:"Après recherche des causes de l'anomalie, toute préparation non conforme est considérée comme un déchet radioactif et traitée comme telle, donc entreposée en décroissance dans le local prévu au plan de gestion des déchets radioactifs. La décision de conformité ou de non-conformité du lot appartient au radiopharmacien et doit être formellement enregistrée, y compris lorsque des préparations ont été délivrées avant l'achèvement de tous les contrôles.",
+  m:["déchet radioactif","recherche des causes","radiopharmacien","enregistrée","décroissance"],
+  s:"BPP 2023, LD4 points 23, 96 et 97."},
+
+ {t:"ouverte", q:"Expliquez la différence entre dosimètre passif et dosimètre opérationnel, et le rôle du système SISERI.",
+  a:"Le dosimètre passif, à lecture différée, mesure a posteriori la dose reçue par le corps entier ou une partie du corps et alimente le suivi réglementaire. Le dosimètre opérationnel est actif, à lecture directe, porté en zone contrôlée, en zone d'extrémité et en zone d'opération ; il mesure la dose en temps réel, est paramétré par le conseiller en radioprotection et dispose d'alarmes sonores et visuelles activées. SISERI centralise, consolide et conserve l'ensemble des résultats de la surveillance individuelle des travailleurs.",
+  m:["lecture différée","lecture directe","temps réel","alarmes","SISERI"],
+  s:"INRS, réglementation rayonnements ionisants ; ASNR, modalités de surveillance de l'exposition des travailleurs."},
+
+ {t:"vf", q:"Pour les préparations radiopharmaceutiques, la constitution d'une échantillothèque est obligatoire.",
+  r:false, c:"Faux : la LD4 indique que, sauf indication contraire, l'échantillothèque n'est pas requise.",
+  s:"BPP 2023, LD4 point 98."},
+
+ {t:"qcm", q:"À quelle fréquence la formation théorique à la préparation de MRP doit-elle être renouvelée en cas d'interruption d'activité ?",
+  o:["Après 3 mois sans préparation","Après 6 mois sans préparation","Après 1 an sans préparation","Elle n'est jamais renouvelée"], r:1,
+  c:"La LD4 recommande de renouveler la formation théorique si le personnel n'a pas réalisé de préparation de MRP pendant plus de 6 mois.",
+  s:"BPP 2023, LD4 tableau 2."}
+],
+
+UE6: [
+ {t:"ordre", q:"Remettez dans l'ordre les référentiels de contrôle, du plus prioritaire au moins prioritaire.",
+  e:["Pharmacopée européenne","Pharmacopée française et Formulaire national","Pharmacopées et formulaires des autres États membres de l'Union européenne","Pharmacopées et formulaires de pays tiers","Méthodes internes, méthodes des fabricants, littérature"],
+  s:"BPP 2023, points 6.6 à 6.8."},
+
+ {t:"vf", q:"Si une monographie de la préparation existe à la Pharmacopée européenne, son application est facultative dès lors qu'une méthode interne validée existe.",
+  r:false, c:"Faux : si les monographies existent dans ces référentiels, leur application est obligatoire.",
+  s:"BPP 2023, point 6.6."},
+
+ {t:"qcm", q:"Selon quel référentiel valide-t-on une méthode de contrôle non officielle ?",
+  o:["NF EN 17141","ISO 14644-1","ICH Q2","BPF annexe 1"], r:2,
+  c:"NF EN 17141 et ISO 14644 concernent l'environnement, pas la validation analytique.",
+  s:"BPP 2023, point 6.10 et note de bas de page renvoyant aux Quality Guidelines de l'ICH."},
+
+ {t:"qcmMulti", q:"Quels contrôles la liste du point 6.4 mentionne-t-elle ?",
+  o:["Contrôles de recevabilité documentaire","Contrôles physico-chimiques","Contrôles pharmacotechniques","Contrôles de rentabilité économique"], r:[0,1,2],
+  c:"La liste comprend également les contrôles microbiologiques, les contrôles de radioactivité le cas échéant et les contrôles de l'environnement portant sur l'air, les surfaces et l'eau.",
+  s:"BPP 2023, point 6.4."},
+
+ {t:"qcm", q:"Qui réalise les contrôles d'une préparation ?",
+  o:["La personne qui a préparé, pour garantir la continuité","Une personne différente, sauf exception justifiée","Obligatoirement un pharmacien","Un prestataire extérieur, obligatoirement"], r:1,
+  c:"L'activité de contrôle est organisée de façon à permettre un contrôle indépendant de l'activité de préparation, et les contrôles sont effectués par une personne différente sauf exception justifiée.",
+  s:"BPP 2023, points 6.14 et 6.18."},
+
+ {t:"vf", q:"Les locaux de contrôle doivent en toutes circonstances être séparés des locaux de préparation.",
+  r:false, c:"Faux : ils sont « en principe » séparés, mais l'activité de contrôle peut s'effectuer en zone de préparation pour limiter la dissémination de contaminants ou faciliter le contrôle en ligne.",
+  s:"BPP 2023, point 3.28."},
+
+ {t:"qcmMulti", q:"En quoi consiste la vérification de recevabilité d'une matière première ?",
+  o:["Concordance entre la commande et le produit reçu muni de son système d'inviolabilité",
+     "Présence d'un certificat d'analyse du lot et vérification de sa conformité",
+     "Adéquation entre dénomination, numéro de lot et date de péremption du conditionnement et du certificat",
+     "Dosage de la substance active par une méthode validée"], r:[0,1,2],
+  c:"Le dosage relève du contrôle complet, exigé pour la troisième catégorie de matières premières ou dès qu'un élément de recevabilité manque.",
+  s:"BPP 2023, point 6.39."},
+
+ {t:"qcm", q:"Une matière première arrive sans certificat d'analyse du lot, bien que le fournisseur soit un établissement pharmaceutique de fabrication autorisé. Que faites-vous ?",
+  o:["Une simple vérification de recevabilité suffit","Un contrôle complet s'impose","On refuse systématiquement le lot","On demande une dérogation à l'ANSM"], r:1,
+  c:"L'absence d'un seul des éléments listés — inviolabilité, certificat d'analyse, date de péremption ou de recontrôle, certificat de conformité aux BPF pour les substances actives — déclenche un contrôle complet.",
+  s:"BPP 2023, point 6.47."},
+
+ {t:"vf", q:"Lorsqu'une spécialité pharmaceutique est utilisée comme matière première, aucun contrôle n'est exigé au titre de matière première.",
+  r:true, c:"Exact, mais attention : cela n'exonère pas du contrôle de la préparation terminée, et le déconditionnement fait toujours l'objet d'une évaluation de ses conséquences.",
+  s:"BPP 2023, points 6.42, 6.43 et 6.44."},
+
+ {t:"cloze", q:"En classe A, la limite recommandée de contamination microbiologique de l'air en activité est inférieure à _____ unité formant colonie par mètre cube.",
+  r:"1", s:"BPP 2023, LD1 tableau 9."},
+
+ {t:"paires", q:"Associez chaque classe à sa limite recommandée d'échantillon d'air en ufc/m³.",
+  p:[["Classe A","moins de 1"],["Classe B","10"],["Classe C","100"],["Classe D","200"]],
+  s:"BPP 2023, LD1 tableau 9, surveillance microbiologique des ZAC durant la production."},
+
+ {t:"qcm", q:"En environnement de classe A, à quelle fréquence minimale réalise-t-on l'empreinte de gant de l'opérateur au contact du produit ?",
+  o:["À chaque manipulation","Quotidiennement en fin de session de travail","Hebdomadairement","Mensuellement"], r:1,
+  c:"Le prélèvement de contact à l'intérieur des zones classées est hebdomadaire en classe A, et le prélèvement d'air actif mensuel.",
+  s:"BPP 2023, LD1 tableau 10."},
+
+ {t:"qcm", q:"Quelle norme s'applique aujourd'hui à la maîtrise de la biocontamination en salles propres ?",
+  o:["NF EN ISO 14698-1 et 14698-2","NF EN 17141","NF ISO 14644-1","NF S 90-351"], r:1,
+  c:"NF EN 17141, homologuée en septembre 2020, annule et remplace les deux parties de l'ISO 14698. NF ISO 14644 reste la référence pour la classification particulaire.",
+  s:"AFNOR, fiche de la norme NF EN 17141 ; BPP 2023, note du point 6.11 et note du point 153 de la LD1."},
+
+ {t:"vf", q:"L'essai de stérilité suffit à garantir la stérilité d'une préparation.",
+  r:false, c:"Faux : il est considéré comme le dernier d'une série de contrôles. La garantie repose sur la validation et la maîtrise des procédés, la qualification des installations, la qualité des matières premières, les contrôles d'environnement et la formation du personnel.",
+  s:"BPP 2023, LD1 points 140 et 141."},
+
+ {t:"cloze", q:"Le dossier de préparation est conservé _____ ans après la date de péremption du dernier lot produit.",
+  r:"5", s:"BPP 2023, tableau d'archivage du point 4.47."},
+
+ {t:"paires", q:"Associez chaque document à sa durée minimale de conservation.",
+  p:[["Dossier de préparation","5 ans après péremption du dernier lot"],["Dossier de lot","1 an au moins après péremption du lot"],["Livre-registre des préparations","10 ans"],["Registre des contrôles à réception des MPUP","Selon le règlement interne de l'établissement"]],
+  s:"BPP 2023, tableau d'archivage du point 4.47."},
+
+ {t:"erreur", q:"Un laboratoire de contrôle utilise un étalon secondaire acheté chez un fournisseur, sans dossier ni compte rendu d'étalonnage, pour doser une préparation dont la monographie figure à la Pharmacopée européenne. Le résultat est enregistré sur une feuille volante. Relevez les non-conformités.",
+  a:"Trois écarts : les étalons primaires qualifiés et certifiés indiqués par la méthode officielle sont préférentiellement utilisés, et un étalon secondaire n'est admis que s'il est adapté et qualifié par rapport à un étalon primaire certifié officiel ; chaque étalon de référence possède un dossier comportant le certificat d'origine ou les comptes rendus d'analyse d'étalonnage ; les résultats de contrôle doivent être enregistrés et archivés selon les principes documentaires du chapitre 4, non consignés sur un support volant non maîtrisé.",
+  m:["étalon primaire","qualifié","dossier","certificat","enregistrés"],
+  s:"BPP 2023, points 6.23 à 6.25 et 6.28."},
+
+ {t:"situation", q:"Le pharmacien vous demande d'organiser le contrôle d'une nouvelle préparation hospitalière stérile. Quels éléments devez-vous réunir avant de commencer ?",
+  a:"Il faut identifier le référentiel applicable en respectant l'ordre de priorité, à commencer par une éventuelle monographie de la Pharmacopée européenne dont l'application serait obligatoire ; disposer des procédures précisant les types de contrôle, la technique, l'équipement, les réactifs et étalons, le mode opératoire, la procédure d'échantillonnage, le nombre d'essais, les spécifications attendues et le format de rendu et d'archivage ; vérifier que les équipements sont qualifiés et requalifiés périodiquement ; organiser le contrôle par une personne différente de celle qui prépare ; et prévoir la stratégie libératoire ainsi que les contrôles d'environnement de la ZAC.",
+  m:["référentiel","procédures","spécifications","qualifié","personne différente","libératoire"],
+  s:"BPP 2023, points 6.5 à 6.19 et 6.30."},
+
+ {t:"ouverte", q:"Pourquoi le contrôle de l'environnement fait-il partie du contrôle de la qualité d'une préparation stérile ?",
+  a:"Parce que la stérilité ne se démontre pas par un test final. Le point 6.4 range les contrôles de l'environnement, air, surfaces et eau, parmi les contrôles de la qualité, et la LD1 demande de porter une attention particulière aux résultats de la surveillance des ZAC au moment de la libération des préparations terminées. Un dépassement des seuils d'alerte ou d'action impose des mesures correctives définies par procédure.",
+  m:["environnement","surveillance","ZAC","libération","seuils"],
+  s:"BPP 2023, points 6.4 et 6.11 ; LD1 points 146 et 147."},
+
+ {t:"qcm", q:"Quelle est la conséquence du refus d'une matière première à réception ?",
+  o:["Elle est stockée avec les autres lots en attendant un nouveau contrôle",
+     "La décision est portée sur le registre et sur le récipient, et le produit est stocké isolé avec une étiquette « produit refusé »",
+     "Elle est immédiatement détruite sans formalité",
+     "Elle est utilisable pour des préparations non stériles"], r:1,
+  c:"Les produits refusés sont renvoyés au fournisseur dans les plus brefs délais ou détruits conformément aux textes ; dans l'attente, ils sont isolés et étiquetés.",
+  s:"BPP 2023, points 6.34 et 6.35."}
+]
+};
+
+function itemsExos(ue){
+  return (EXOS[ue] || []).map((x, i) => {
+    const b = {id:"px-" + ue + "-" + i, ueId:ue, type:x.t, origine:"prep",
+      source:x.s || "", correction:x.c || ""};
+    if(x.t === "qcm") return Object.assign(b, {question:x.q, options:x.o, reponse:x.r});
+    if(x.t === "qcmMulti") return Object.assign(b, {question:x.q, options:x.o, reponses:x.r});
+    if(x.t === "vf") return Object.assign(b, {question:x.q, reponse:x.r});
+    if(x.t === "cloze") return Object.assign(b, {question:x.q, reponse:x.r});
+    if(x.t === "paires") return Object.assign(b, {question:x.q, paires:x.p});
+    if(x.t === "ordre") return Object.assign(b, {question:x.q, etapes:x.e});
+    return Object.assign(b, {question:x.q, attendu:x.a || "", motsCles:x.m || []});
+  });
+}
+function statsExos(ue){
+  const l = itemsExos(ue);
+  const sus = l.filter(i => S.progres[i.id] && S.progres[i.id].boite === 3).length;
+  return {total:l.length, sus};
+}
+const UES_EXOS = Object.keys(EXOS);
+
 /* =========================================================================
    19. NAVIGATION ET ÉTAT D'INTERFACE
    ========================================================================= */
-let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtreUE:"",
+let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtreUE:"", testCle:null,
   importTexte:"", importUE:"", importTitre:"", avisRGPD:null, rgpdIgnore:false,
   occupe:false, message:null, densite:"detail", resultat:null, quizRep:null};
 
@@ -1013,11 +1913,34 @@ function progLecon(ue){
 function nbDiapos(ue){ return LECONS[ue] ? LECONS[ue].diapos.length : 0; }
 function leconsFaites(){ return UES_PRETES.filter(u => S.prep[u] && S.prep[u].termine).length; }
 
+function largeurVoulue(){
+  const v = S.reglages.affichage || "auto";
+  if(v === "large") return true;
+  if(v === "mobile") return false;
+  return window.innerWidth >= 900;
+}
+function sombreVoulu(){
+  const t = S.reglages.theme || "auto";
+  if(t === "sombre") return true;
+  if(t === "clair") return false;
+  return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+}
+function appliquerAffichage(){
+  const b = document.body;
+  b.classList.toggle("vueLarge", largeurVoulue());
+  const noir = sombreVoulu();
+  b.classList.toggle("sombre", noir);
+  b.classList.toggle("txtL", S.reglages.texte === "grand");
+  b.classList.toggle("txtXL", S.reglages.texte === "tresGrand");
+  const m = document.querySelector('meta[name="theme-color"]');
+  if(m) m.setAttribute("content", noir ? "#0F1A17" : "#F1F6F2");
+}
 function aller(tab, ecran){
   ui.tab = tab; ui.ecran = ecran || "accueil"; ui.message = null;
   rendre(); window.scrollTo(0,0);
 }
 function rendre(){
+  appliquerAffichage();
   $("#nav").innerHTML = `<div class="in">
     <button data-act="nav" data-tab="prep" class="${ui.tab==="prep"?"act":""}"><span class="ic">◈</span>Préparation</button>
     <button data-act="nav" data-tab="rev" class="${ui.tab==="rev"?"act":""}"><span class="ic">◇</span>Révision</button>
@@ -1026,7 +1949,8 @@ function rendre(){
     "prep/accueil":ecranPrep, "prep/lecon":ecranLecon,
     "rev/accueil":ecranRev, "rev/import":ecranImport, "rev/fiches":ecranFiches, "rev/fiche":ecranFiche,
     "rev/reviser":ecranReviser, "rev/session":ecranSession, "rev/examen":ecranExamen,
-    "rev/planning":ecranPlanning, "reglages":ecranReglages
+    "rev/planning":ecranPlanning, "rev/stats":ecranStats, "rev/recherche":ecranRecherche,
+    "reglages":ecranReglages
   };
   const f = ecrans[ui.ecran === "reglages" ? "reglages" : ui.tab + "/" + ui.ecran] || ecranPrep;
   let h = "";
@@ -1045,10 +1969,8 @@ function entete(titre, sous, badge){
     ${sous ? `<p class="sousTitre">${sous}</p>` : ""}`;
 }
 function joursRentree(){
-  const d = S.reglages.dateRentree;
-  if(!d) return null;
-  const j = joursEntre(new Date(), d);
-  return j >= 0 ? j : null;
+  const j = joursJusqua(S.reglages.dateRentree);
+  return j !== null && j >= 0 ? j : null;
 }
 
 /* =========================================================================
@@ -1086,6 +2008,23 @@ function ecranPrep(){
   h += suivante
     ? `<button class="cta" data-act="ouvrir-lecon" data-ue="${suivante}">${S.prep[suivante] && S.prep[suivante].index > 0 ? "Reprendre" : "Commencer"} ${suivante} · ${esc(tronquer(LECONS[suivante].titre, 34))}</button>`
     : `<div class="avis info"><b>Les trois premières leçons sont faites</b>Les UE suivantes s'ajouteront au fil des mises à jour. En attendant, l'onglet Révision travaille sur vos propres cours.</div>`;
+  if(UES_EXOS.length){
+    h += `<p class="kick" style="margin-top:20px">Entraînement</p>
+      <p class="sousTitre">Exercices d'application, corrigés et rattachés au texte source. Ils ne remplacent pas la leçon : faites-la d'abord.</p>`;
+    UES_EXOS.forEach(u => {
+      const st = statsExos(u), ue = UE(u), d = ue ? ue.dom : 1;
+      const err = itemsExos(u).filter(i => { const p = S.progres[i.id]; return p && p.ko > 0 && p.boite === 1; }).length;
+      h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
+        <span class="bloc-nom">${u} · ${esc(tronquer(ue ? ue.nom : "", 28))}</span>
+        <span class="bloc-meta">${st.sus}/${st.total} acquis</span></div>
+        <div class="jauge"><i style="width:${st.total ? Math.round(st.sus / st.total * 100) : 0}%"></i></div>
+        <div class="rang" style="margin-bottom:0">
+          <button class="btn plein mini" data-act="exos" data-ue="${u}">Tout (${st.total})</button>
+          <button class="btn mini" data-act="exos" data-ue="${u}" data-mode="neufs">Jamais vus</button>
+          <button class="btn mini" data-act="exos" data-ue="${u}" data-mode="erreurs"${err ? "" : " disabled"}>Mes erreurs${err ? " (" + err + ")" : ""}</button>
+        </div></div>`;
+    });
+  }
   h += `<div class="avis" style="margin-top:14px"><b>Ce que sont ces leçons</b>
     Une mise en route, pas un cours. Chaque leçon finit par ses sources et la date de vérification : en cas d'écart avec le cours de votre centre, c'est le cours qui fait foi.</div>`;
   return h + `</div>`;
@@ -1140,6 +2079,7 @@ function ecranLecon(){
       `<li><b>${esc(s.titre)}</b>${esc(s.ref)}<br><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(tronquer(s.url,58))}</a></li>`).join("") + `</ul>`;
     if(d.note) h += `<p style="font-size:13.5px;color:var(--encre2);margin-top:12px">${esc(d.note)}</p>`;
   }
+  if(d.img) h += illus(d.img);
   h += `</div>`;
   const dernier = i === L.diapos.length - 1;
   const bloque = d.t === "quiz" && ui.quizRep === null;
@@ -1149,6 +2089,12 @@ function ecranLecon(){
       ${bloque ? "Choisissez une réponse" : (dernier ? "Terminer la leçon" : "Continuer")}</button></div>`;
   return h + `</div>`;
 }
+const IMG_DOSSIER = "img/";
+function illus(o){
+  if(!o || !o.f) return "";
+  return `<figure class="illus"><img src="${IMG_DOSSIER}${esc(o.f)}" alt="${esc(o.leg||"")}" loading="lazy"
+    onerror="var f=this.closest('figure'); if(f){f.remove();}"><figcaption>${esc(o.leg||"")}</figcaption></figure>`;
+}
 function encartHtml(e){
   return `<div class="encart ${e.type}">${e.titre ? `<b class="et">${esc(e.titre)}</b>` : ""}${esc(e.texte)}</div>`;
 }
@@ -1156,10 +2102,27 @@ function encartHtml(e){
 /* =========================================================================
    21. ONGLET RÉVISION — accueil
    ========================================================================= */
+function rappelSauvegarde(){
+  const n = Number(S.reglages.rappelExport || 0);
+  if(!n || !S.cours.length) return "";
+  const depuis = S.meta.sessionsExport || 0;
+  const jours = S.meta.dernierExport ? Math.round((Date.now() - S.meta.dernierExport) / JOUR) : null;
+  if(depuis < n && (jours === null || jours < 30)) return "";
+  return `<div class="avis"><b>Pensez à exporter</b>
+    ${depuis} session${depuis>1?"s":""} depuis votre dernière sauvegarde${jours !== null ? ", soit " + jours + " jours" : ""}.
+    Un navigateur peut vider son stockage sans prévenir.
+    <div class="rang" style="margin-bottom:0"><button class="btn plein mini" data-act="exporter">Exporter maintenant</button>
+    <button class="btn mini" data-act="rappel-plus-tard">Plus tard</button></div></div>`;
+}
 function ecranRev(){
   const items = tousItems().length, dus = itemsDus().length, err = carnetErreurs().length;
   let h = `<div class="ecran">` + entete("Révision",
     "Fiches et exercices tirés de vos propres cours", items ? items + " exercices" : null);
+  h += rappelSauvegarde();
+  h += bandeauEcheances();
+  const _urg = uesUrgentes();
+  if(_urg.length) h += `<div class="avis info"><b>Moins de 72 heures</b>
+    ${_urg.join(", ")} : les délais de répétition espacée sont suspendus pour ces unités, tout revient en circulation.</div>`;
   if(!S.cours.length){
     h += `<div class="vide"><div class="em">◇</div><h3>Rien à réviser pour l'instant</h3>
       <p>Cet onglet ne contient que ce que vous y déposez : importez un cours et il en tire une fiche imprimable et des exercices.</p></div>
@@ -1173,7 +2136,11 @@ function ecranRev(){
   h += carte("▤", "Mes fiches", S.cours.length + " cours importé" + (S.cours.length>1?"s":""), "fiches");
   h += carte("＋", "Importer un cours", "coller un texte ou déposer un fichier", "import");
   h += carte("◷", "Examen blanc", "épreuve chronométrée sur vos exercices", "examen");
-  h += carte("▦", "Planning", S.reglages.dateExamen ? "rétroplanning actif" : "définir une date d'examen", "planning");
+  const _ech = prochainesEcheances(1)[0];
+  h += carte("▦", "Planning", _ech ? _ech.u.id + " dans " + _ech.j + " jour" + (_ech.j > 1 ? "s" : "") + " · séance du jour prête"
+    : "définir les dates des épreuves", "planning");
+  h += carte("▥", "Statistiques", "réussite par type, acquis par UE, examens", "stats");
+  h += carte("⌕", "Recherche", "retrouver une notion dans tout ce que contient l'application", "recherche");
   return h + `</div>`;
 }
 function carte(ic, titre, sous, ecran){
@@ -1298,13 +2265,13 @@ function motsTrouves(rep, cles){ const n = " " + normaliser(rep) + " ";
 function autoNoteExamen(it, rep){ const m = motsTrouves(rep||"", it.motsCles);
   return m.length ? m.filter(x=>x.ok).length / m.length >= .5 : false; }
 
-function ouvrirSession(liste, mode, limite){
+function ouvrirSession(liste, mode, limite, retour){
   if(!liste.length){ ui.message = {titre:"Rien ici", txt:"Aucun exercice ne correspond à ce filtre."}; rendre(); return; }
   ui.session = {liste:melanger(liste), i:0, mode, limite:limite||null, debut:Date.now(),
-    etat:"q", choix:null, sur:null, ordre:[], assoc:{}, resultats:[], melangeD:null};
+    etat:"q", choix:null, sur:null, ordre:[], assoc:{}, resultats:[], melangeD:null, retour:retour||null};
   if(mode === "sprint") ui.session.liste = ui.session.liste.slice(0,10);
   preparerQuestion();
-  ui.ecran = "session"; ui.tab = "rev"; rendre(); lancerMinuteur();
+  ui.ecran = "session"; ui.tab = retour ? retour.tab : "rev"; rendre(); lancerMinuteur();
 }
 function preparerQuestion(){
   const s = ui.session, it = s.liste[s.i];
@@ -1426,6 +2393,13 @@ function ecranSession(){
   }
   if(it.source) h += `<button class="src" data-act="src" data-cible="srcq">Voir le passage du cours</button>
     <div class="srcTxt" id="srcq">« ${esc(tronquer(it.source,380))} »</div>`;
+  if(it.coursId && !examen){
+    h += `<div class="outilsExo">
+      <button class="btn" data-act="exo-editer">Corriger cet exercice</button>
+      <button class="btn" data-act="exo-douteux">Écarter</button>
+      <button class="btn" data-act="exo-supprimer" style="color:var(--rouge)">Supprimer</button></div>`;
+    if(ui.editExo === it.id) h += panneauEdition(it);
+  }
   h += `</div>`;
   if(j === null || j === undefined || it.type === "flash"){
     h += `<div style="display:flex;gap:9px;align-items:center">
@@ -1436,6 +2410,52 @@ function ecranSession(){
   return h + `</div>`;
 }
 
+function panneauEdition(it){
+  let h = `<div class="panEdit"><label class="champ" for="ed-q">Énoncé</label>
+    <textarea id="ed-q">${esc(it.question || it.recto || "")}</textarea>`;
+  if(it.type === "cloze" || it.type === "flash"){
+    h += `<label class="champ" for="ed-r" style="margin-top:10px">${it.type === "flash" ? "Verso" : "Réponse attendue"}</label>
+      <input type="text" id="ed-r" value="${esc(it.type === "flash" ? it.verso : it.reponse)}">`;
+  } else if(it.type === "qcm"){
+    h += `<label class="champ" for="ed-r" style="margin-top:10px">Bonne réponse</label>
+      <select id="ed-r">${it.options.map((o,k) => `<option value="${k}"${k===it.reponse?" selected":""}>${esc(tronquer(o,60))}</option>`).join("")}</select>`;
+  } else if(it.type === "vf"){
+    h += `<label class="champ" for="ed-r" style="margin-top:10px">Bonne réponse</label>
+      <select id="ed-r"><option value="1"${it.reponse?" selected":""}>Vrai</option><option value="0"${!it.reponse?" selected":""}>Faux</option></select>`;
+  }
+  h += `<div class="rang" style="margin-bottom:0"><button class="btn plein mini" data-act="exo-enregistrer">Enregistrer</button>
+    <button class="btn mini" data-act="exo-annuler">Annuler</button></div>
+    <p style="font-size:12.5px;color:var(--encre3);margin-top:6px">La correction porte sur le cours importé, elle est conservée.</p></div>`;
+  return h;
+}
+function enregistrerEdition(){
+  const s = ui.session, it = s.liste[s.i];
+  const t = trouverItem(it.coursId, it.id); if(!t) return;
+  const q = document.getElementById("ed-q"), r = document.getElementById("ed-r");
+  if(q){ const v = q.value.trim(); if(v){ if(it.type === "flash"){ t.item.recto = v; it.recto = v; } else { t.item.question = v; it.question = v; } } }
+  if(r){
+    if(it.type === "cloze"){ t.item.reponse = r.value.trim(); it.reponse = t.item.reponse; }
+    else if(it.type === "flash"){ t.item.verso = r.value.trim(); it.verso = t.item.verso; }
+    else if(it.type === "qcm"){ t.item.reponse = Number(r.value); it.reponse = t.item.reponse; }
+    else if(it.type === "vf"){ t.item.reponse = r.value === "1"; it.reponse = t.item.reponse; }
+  }
+  sauver(); ui.editExo = null;
+  ui.message = {type:"info", titre:"Exercice corrigé", txt:"La modification est enregistrée dans votre fiche."};
+  rendre();
+}
+function retirerExercice(mode){
+  const s = ui.session, it = s.liste[s.i];
+  const t = trouverItem(it.coursId, it.id);
+  if(t){
+    if(mode === "douteux") t.item.douteux = true;
+    else { t.cours.items = t.cours.items.filter(x => x.id !== it.id); delete S.progres[it.id]; }
+    sauver();
+  }
+  s.liste = s.liste.filter((x, k) => k !== s.i);
+  ui.editExo = null;
+  if(!s.liste.length || s.i >= s.liste.length){ terminerSession(); return; }
+  preparerQuestion(); rendre();
+}
 function valider(){
   const s = ui.session, it = s.liste[s.i];
   if(["cloze","ouverte","erreur","situation"].includes(it.type)){
@@ -1463,10 +2483,26 @@ function terminerSession(){
     ui.resultat = r; ui.session = null; ui.ecran = "examen"; rendre(); return;
   }
   const t = s.resultats.length, b = s.resultats.filter(x => x.juste).length;
-  ui.session = null; ui.ecran = "reviser";
+  S.meta.sessions = (S.meta.sessions || 0) + 1;
+  S.meta.sessionsExport = (S.meta.sessionsExport || 0) + 1;
+  sauver();
+  const r = s.retour;
+  ui.session = null;
+  if(r){ ui.tab = r.tab; ui.ecran = r.ecran; } else ui.ecran = "reviser";
   ui.message = {type:"info", titre:"Session terminée",
     txt: t ? b + " réussite" + (b>1?"s":"") + " sur " + t + "." : "Session close."};
   rendre();
+}
+function lancerExosPrep(ue, mode){
+  let l = itemsExos(ue);
+  if(mode === "erreurs") l = l.filter(i => { const p = S.progres[i.id]; return p && p.ko > 0 && p.boite === 1; });
+  else if(mode === "neufs") l = l.filter(i => !S.progres[i.id] || !S.progres[i.id].vus);
+  if(!l.length){
+    ui.message = {type:"info", titre:"Rien à reprendre ici",
+      txt: mode === "erreurs" ? "Aucune erreur en attente sur cette unité." : "Tous les exercices de cette unité ont déjà été vus."};
+    rendre(); return;
+  }
+  ouvrirSession(l, "libre", null, {tab:"prep", ecran:"accueil"});
 }
 function lancerSession(source, ue, id){
   let l = [];
@@ -1476,6 +2512,10 @@ function lancerSession(source, ue, id){
   else if(source === "ue") l = tousItems().filter(i => i.ueId === ue);
   else if(source === "cours"){ const c = S.cours.find(x => x.id === id); l = c ? c.items.slice() : []; }
   else if(source === "sprint"){ l = itemsDus(); if(l.length < 10) l = tousItems(); }
+  else if(source === "jour"){
+    l = planJour().liste;
+    ouvrirSession(l, "libre", null, {tab:"rev", ecran:"planning"}); return;
+  }
   ouvrirSession(l, source === "sprint" ? "sprint" : "libre");
 }
 
@@ -1543,29 +2583,315 @@ function ecranExamen(){
   }
   return h + `</div>`;
 }
-function ecranPlanning(){
-  const d = S.reglages.dateExamen;
-  let h = `<div class="ecran">` + retour("accueil", "Planning");
-  h += `<label class="champ" for="p-date">Date de l'examen</label>
-    <input type="date" id="p-date" data-bind="dateExamen" value="${esc(d)}">`;
-  if(!d) return h + `<div class="avis info" style="margin-top:14px"><b>Aucune date</b>Renseignez-la pour construire le rétroplanning.</div></div>`;
-  const j = joursEntre(new Date(), d);
-  if(j <= 0) return h + `<div class="avis" style="margin-top:14px"><b>Date passée</b>Choisissez une date à venir.</div></div>`;
-  const actives = UES.filter(u => statsUE(u.id).total > 0);
-  if(!actives.length) return h + `<div class="avis" style="margin-top:14px"><b>Aucun cours importé</b>Le plan se construit sur les UE que vous alimentez.</div></div>`;
-  const sem = Math.max(1, Math.min(12, Math.ceil(j/7)));
-  const scores = actives.map(u => { const s = statsUE(u.id);
-    return {u, poids:u.ects * (1 + (100-s.part)/100), part:s.part, total:s.total}; })
-    .sort((a,b) => b.poids - a.poids);
-  h += `<p class="sousTitre" style="margin-top:14px">${j} jours, soit ${sem} semaine${sem>1?"s":""} de travail.</p>`;
-  for(let k = 0; k < sem; k++){
-    const lot = scores.filter((_,i) => i % sem === k);
-    h += `<div class="semaine"><div class="quand">Semaine ${k+1} — dès le ${dateFr(new Date(Date.now()+k*7*JOUR).toISOString())}</div>
-      <h4 style="font-size:15px">${lot.length ? lot.map(x => x.u.id).join(" · ") : "Reprise libre"}</h4>
-      ${lot.map(x => `<div style="font-size:13.5px;color:var(--encre2)">${esc(tronquer(x.u.nom,52))} — ${x.total} exercices, ${x.part}% acquis</div>`).join("")}</div>`;
-  }
-  return h + `<p style="font-size:12.5px;color:var(--encre3)">La révision du jour reste prioritaire : elle suit les échéances des trois boîtes.</p></div>`;
+/* =========================================================================
+   24 bis. PLANNING PAR UNITÉ D'ENSEIGNEMENT
+   Une date par UE, plusieurs UE pouvant partager la même date.
+   ========================================================================= */
+const PASSAGES = [[14,"Passage complet"],[7,"Reprise"],[3,"Reprise ciblée"],[1,"Dernière relecture"]];
+const NOMS_JOURS = ["dimanche","lundi","mardi","mercredi","jeudi","vendredi","samedi"];
+const SEC_PAR_EXO = 45;
+
+function datesUE(){ if(!S.reglages.datesUE) S.reglages.datesUE = {}; return S.reglages.datesUE; }
+function dateUE(id){ return datesUE()[id] || S.reglages.dateExamen || ""; }
+function joursAvant(id){ return joursJusqua(dateUE(id)); }
+function itemsUE(id){ return tousItems().filter(i => i.ueId === id).concat(itemsExos(id)); }
+function bilanUE(id){
+  const l = itemsUE(id);
+  let sus = 0, faibles = 0, vus = 0;
+  l.forEach(i => { const p = S.progres[i.id]; if(!p || !p.vus) return;
+    vus++; if(p.boite === 3) sus++; if(p.boite === 1 && p.ko > 0) faibles++; });
+  return {total:l.length, vus, sus, faibles, part: l.length ? Math.round(sus / l.length * 100) : 0};
 }
+function uesUrgentes(){
+  return UES.filter(u => { const j = joursAvant(u.id); return j !== null && j >= 0 && j <= 3 && bilanUE(u.id).total; })
+    .map(u => u.id);
+}
+function prioriteUE(u){
+  const b = bilanUE(u.id);
+  if(!b.total) return null;
+  const j = joursAvant(u.id);
+  const urgence = j === null ? 0.30 : (j <= 0 ? 1 : 1 / (1 + j / 7));
+  const lacune = 1 - b.sus / b.total;
+  const poids = u.ects / 4;
+  const bonus = j === null ? 0 : (j <= 3 ? 30 : (j <= 7 ? 15 : 0));
+  const score = Math.min(100, Math.round((urgence * 0.50 + lacune * 0.35 + poids * 0.15) * 100) + bonus);
+  const motifs = [];
+  if(j !== null && j >= 0 && j <= 3) motifs.push("dernière ligne droite");
+  if(j !== null) motifs.push(j <= 0 ? "épreuve passée ou aujourd'hui" : j + " jour" + (j > 1 ? "s" : ""));
+  motifs.push(u.ects + " ECTS");
+  motifs.push(b.part + " % acquis");
+  if(b.faibles) motifs.push(b.faibles + " en boîte 1");
+  return {score, jours:j, bilan:b, motifs};
+}
+function classementUE(){
+  return UES.map(u => ({u, p:prioriteUE(u)})).filter(x => x.p)
+    .sort((a,b) => b.p.score - a.p.score);
+}
+function prochainesEcheances(n){
+  return UES.map(u => ({u, j:joursAvant(u.id), d:dateUE(u.id)}))
+    .filter(x => x.j !== null && x.j >= 0)
+    .sort((a,b) => a.j - b.j).slice(0, n || 3);
+}
+function itemsDusTous(){
+  const t = Date.now(), urg = new Set(uesUrgentes());
+  const prep = UES_EXOS.flatMap(u => itemsExos(u)).filter(i => {
+    if(urg.has(i.ueId)) return true;
+    const p = S.progres[i.id]; return !p || p.prochain <= t;
+  });
+  return itemsDus().concat(prep);
+}
+function planJour(){
+  const budget = Math.max(5, Number(S.reglages.minutesJour) || 45);
+  const off = (S.reglages.joursOff || []).map(Number);
+  const repos = off.includes(new Date().getDay());
+  const cap = Math.max(1, Math.floor(budget * 60 / SEC_PAR_EXO));
+  const urg = new Set(uesUrgentes());
+  const rang = {};
+  classementUE().forEach(x => rang[x.u.id] = x.p.score);
+  const tri = itemsDusTous().slice().sort((a,b) => {
+    const ua = urg.has(a.ueId) ? 1 : 0, ub = urg.has(b.ueId) ? 1 : 0;
+    if(ua !== ub) return ub - ua;
+    return (rang[b.ueId] || 0) - (rang[a.ueId] || 0);
+  });
+  const liste = tri.slice(0, cap);
+  const parUE = {};
+  liste.forEach(i => parUE[i.ueId] = (parUE[i.ueId] || 0) + 1);
+  return {repos, cap, budget, liste, total:tri.length, parUE, urgentes:[...urg]};
+}
+function passagesPrevus(){
+  const out = [];
+  UES.forEach(u => {
+    const d = dateUE(u.id); if(!d) return;
+    if(!bilanUE(u.id).total) return;
+    const base = new Date(d).getTime();
+    if(isNaN(base)) return;
+    PASSAGES.forEach(([k, lib]) => {
+      const t = base - k * JOUR;
+      if(t < Date.now() - JOUR) return;
+      out.push({t, ue:u.id, lib, reste:k});
+    });
+    if(base >= Date.now()) out.push({t:base, ue:u.id, lib:"Épreuve", reste:0});
+  });
+  return out.sort((a,b) => a.t - b.t).slice(0, 16);
+}
+function alertesPlanning(){
+  const a = [];
+  UES.forEach(u => {
+    const j = joursAvant(u.id); if(j === null || j < 0) return;
+    if(j <= 14 && !bilanUE(u.id).total)
+      a.push({type:"err", titre:u.id + " : épreuve dans " + j + " jour" + (j > 1 ? "s" : "") + ", aucun contenu",
+        txt:"Ni cours importé ni banque d'exercices pour cette unité. C'est le trou le plus coûteux de votre planning."});
+  });
+  const parDate = {};
+  UES.forEach(u => { const d = dateUE(u.id), j = joursAvant(u.id);
+    if(d && j !== null && j >= 0) (parDate[d] = parDate[d] || []).push(u.id); });
+  Object.keys(parDate).sort().forEach(d => {
+    if(parDate[d].length > 1)
+      a.push({type:"", titre:parDate[d].length + " épreuves le " + dateFr(d),
+        txt:parDate[d].join(", ") + " tombent le même jour. Avancez le travail sur les jours qui précèdent."});
+  });
+  const dernier = S.examens[S.examens.length - 1];
+  if(dernier) (dernier.ues || []).filter(x => x.note < 8).forEach(x => {
+    const u = UE(x.id);
+    a.push({type:"err", titre:x.id + " sous 8/20 au dernier examen blanc",
+      txt:"En dessous de 8, l'unité n'est pas compensable : elle fait tomber tout le domaine " +
+        (u ? u.dom + ", « " + DOMAINES[u.dom].nom + " »" : "") + ", quelles que soient les autres notes."});
+  });
+  return a;
+}
+function bandeauEcheances(){
+  const e = prochainesEcheances(3);
+  if(!e.length) return "";
+  return `<div class="liste-puces">` + e.map(x =>
+    `<span class="puce mono">${x.u.id} · J–${x.j}</span>`).join("") + `</div>`;
+}
+
+function ecranPlanning(){
+  let h = `<div class="ecran">` + retour("accueil", "Planning");
+  const urg = uesUrgentes();
+  const alertes = alertesPlanning();
+  alertes.forEach(a => h += `<div class="avis ${a.type}"><b>${esc(a.titre)}</b>${esc(a.txt)}</div>`);
+
+  if(urg.length) h += `<div class="avis info"><b>Dernière ligne droite</b>
+    ${urg.join(", ")} : moins de 72 heures. Pour ces unités, les délais des boîtes sont ignorés et tout est remis en circulation, les erreurs d'abord.</div>`;
+
+  // --- aujourd'hui
+  const p = planJour();
+  h += `<p class="kick">Aujourd'hui</p>`;
+  if(p.repos){
+    h += `<div class="avis"><b>Jour de repos</b>Vous avez marqué ${NOMS_JOURS[new Date().getDay()]} comme jour sans révision. Rien n'est planifié, mais vous pouvez lancer une session quand même.</div>`;
+  }
+  if(!p.total){
+    h += `<div class="avis info"><b>Rien à échéance</b>Aucun exercice n'arrive à échéance aujourd'hui. Importez un cours, ou entraînez-vous sur une UE depuis l'onglet Préparation.</div>`;
+  } else {
+    h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:var(--menthe)"></span>
+      <span class="bloc-nom">${p.liste.length} exercice${p.liste.length>1?"s":""} · ${Math.round(p.liste.length*SEC_PAR_EXO/60)} min</span>
+      <span class="bloc-meta">${p.total} à échéance</span></div>
+      <div class="liste-puces" style="margin-bottom:10px">${Object.keys(p.parUE).map(u =>
+        `<span class="puce mono">${u} · ${p.parUE[u]}</span>`).join("")}</div>
+      <button class="cta" data-act="session" data-source="jour">Commencer la séance du jour</button></div>
+      <p style="font-size:12.5px;color:var(--encre3);margin-top:-2px">Budget de ${p.budget} min, soit ${p.cap} exercices sur la base de ${SEC_PAR_EXO} secondes chacun. Le reste attendra demain.</p>`;
+  }
+
+  // --- réglage du rythme
+  h += `<p class="kick" style="margin-top:20px">Mon rythme</p>
+    <label class="champ" for="p-min">Minutes par jour</label>
+    <input type="number" id="p-min" data-bind="minutesJour" min="5" max="240" step="5" value="${esc(String(S.reglages.minutesJour || 45))}">
+    <label class="champ" for="p-off" style="margin-top:12px">Jours sans révision</label>
+    <div class="liste-puces" id="p-off">${NOMS_JOURS.map((n,k) =>
+      `<button class="puce${(S.reglages.joursOff||[]).map(Number).includes(k)?" on":""}" data-act="jour-off" data-k="${k}">${n.slice(0,3)}</button>`).join("")}</div>`;
+
+  // --- priorités
+  const cl = classementUE();
+  h += `<p class="kick" style="margin-top:20px">Ordre de priorité</p>`;
+  if(!cl.length){
+    h += `<div class="avis info"><b>Rien à classer</b>Le classement se construit sur les UE qui contiennent des exercices : leçons de préparation ou cours importés.</div>`;
+  } else {
+    cl.forEach(x => {
+      const u = x.u, pr = x.p;
+      h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[u.dom].coul}"></span>
+        <span class="bloc-nom">${u.id} · ${esc(tronquer(u.nom, 26))}</span>
+        <span class="bloc-meta">${pr.score}</span></div>
+        <div class="jauge"><i style="width:${pr.bilan.part}%"></i></div>
+        <div style="font-size:12.5px;color:var(--encre2);margin-top:7px">${esc(pr.motifs.join(" · "))}</div>
+        <div class="rang" style="margin-bottom:0">
+          <button class="btn mini" data-act="session" data-source="ue" data-ue="${u.id}"${bilanUE(u.id).total?"":" disabled"}>Réviser</button>
+          ${EXOS[u.id] ? `<button class="btn mini" data-act="exos" data-ue="${u.id}">Exercices</button>` : ""}
+        </div></div>`;
+    });
+    h += `<p style="font-size:12.5px;color:var(--encre3)">Le score combine l'urgence de la date, la part non acquise et le poids en ECTS. Il n'a pas d'autre sens que de trier.</p>`;
+  }
+
+  // --- rétroplanning
+  const pas = passagesPrevus();
+  h += `<p class="kick" style="margin-top:20px">Rétroplanning</p>`;
+  if(!pas.length){
+    h += `<div class="avis info"><b>Aucune date renseignée</b>Indiquez au moins une date d'épreuve ci-dessous pour voir apparaître les passages.</div>`;
+  } else {
+    pas.forEach(x => {
+      h += `<div class="semaine"><div class="quand">${dateFr(new Date(x.t).toISOString())} — ${x.reste ? "J–" + x.reste : "jour J"}</div>
+        <h4 style="font-size:15px">${x.ue} · ${esc(x.lib)}</h4></div>`;
+    });
+  }
+
+  // --- dates
+  h += `<p class="kick" style="margin-top:20px">Dates des épreuves</p>
+    <label class="champ" for="p-defaut">Date par défaut, pour les UE sans date propre</label>
+    <input type="date" id="p-defaut" data-bind="dateExamen" value="${esc(S.reglages.dateExamen || "")}">`;
+  for(let d = 1; d <= 5; d++){
+    h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
+      <span class="bloc-nom">${esc(DOMAINES[d].nom)}</span></div>`;
+    UES.filter(u => u.dom === d).forEach(u => {
+      const propre = datesUE()[u.id] || "";
+      h += `<div style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+        <span class="puce mono" style="flex:none">${u.id}</span>
+        <input type="date" data-dateue="${u.id}" value="${esc(propre)}" style="flex:1">
+        ${propre ? `<button class="btn mini" data-act="date-vider" data-ue="${u.id}">✕</button>` : ""}</div>`;
+    });
+    h += `</div>`;
+  }
+  h += `<p style="font-size:12.5px;color:var(--encre3)">Une UE sans date propre suit la date par défaut. Plusieurs UE peuvent partager la même date : l'application le signale plus haut.</p>`;
+  return h + `</div>`;
+}
+
+function ecranStats(){
+  let h = `<div class="ecran">` + retour("accueil", "Statistiques");
+  const its = tousItems();
+  if(!its.length) return h + `<div class="vide"><div class="em">▥</div><h3>Rien à mesurer</h3>
+    <p>Les statistiques se construisent sur vos exercices.</p></div></div>`;
+  const parType = {};
+  its.concat(UES_EXOS.flatMap(u => itemsExos(u))).forEach(i => {
+    const p = S.progres[i.id]; if(!p || !p.vus) return;
+    const e = parType[i.type] = parType[i.type] || {vus:0, ok:0};
+    e.vus += p.vus; e.ok += p.ok;
+  });
+  const lignes = Object.keys(parType).sort((a,b) =>
+    (parType[a].ok/parType[a].vus) - (parType[b].ok/parType[b].vus));
+  if(lignes.length){
+    h += `<p class="kick">Réussite par type d'exercice</p><table class="tableau">
+      <thead><tr><th>Type</th><th>Tentatives</th><th>Réussite</th></tr></thead><tbody>`;
+    lignes.forEach(t => {
+      const e = parType[t], part = Math.round(e.ok / e.vus * 100);
+      h += `<tr><td>${esc(TYPES[t] || t)}</td><td class="n">${e.vus}</td>
+        <td class="n" style="color:${part<50?"var(--rouge)":(part<75?"var(--or-fonce)":"var(--menthe-fonce)")}">${part}%</td></tr>`;
+    });
+    h += `</tbody></table><p style="font-size:12.5px;color:var(--encre3);margin-top:8px">
+      Les types en tête de liste sont ceux que vous ratez le plus. C'est là qu'il y a du terrain à gagner.</p>`;
+  } else h += `<div class="avis info"><b>Pas encore de tentative</b>Faites une session, les chiffres apparaîtront.</div>`;
+
+  h += `<p class="kick" style="margin-top:20px">Acquis par unité d'enseignement</p>`;
+  UES.forEach(u => {
+    const s = statsUE(u.id), e = UES_EXOS.indexOf(u.id) >= 0 ? statsExos(u.id) : {total:0, sus:0};
+    const tot = s.total + e.total, sus = s.sus + e.sus;
+    if(!tot) return;
+    h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[u.dom].coul}"></span>
+      <span class="bloc-nom">${u.id} · ${esc(tronquer(u.nom, 26))}</span>
+      <span class="bloc-meta">${sus}/${tot}</span></div>
+      <div class="jauge"><i style="width:${Math.round(sus/tot*100)}%"></i></div></div>`;
+  });
+  if(S.examens.length){
+    h += `<p class="kick" style="margin-top:20px">Examens blancs</p><table class="tableau">
+      <thead><tr><th>Date</th><th>Score</th><th>Domaines validés</th></tr></thead><tbody>`;
+    S.examens.slice().reverse().forEach(e => {
+      const pres = (e.domaines || []).filter(d => d.presente);
+      const val = pres.filter(d => d.valide).length;
+      h += `<tr><td>${dateFr(e.date)}</td><td class="n">${e.bons}/${e.questions}</td>
+        <td class="n">${val}/${pres.length}</td></tr>`;
+    });
+    h += `</tbody></table>`;
+  }
+  return h + `</div>`;
+}
+
+function chercher(q){
+  const n = normaliser(q); if(n.length < 3) return [];
+  const out = [];
+  const test = (t) => normaliser(t || "").includes(n);
+  Object.keys(LECONS).forEach(ue => {
+    LECONS[ue].diapos.forEach((d, i) => {
+      const bloc = [d.titre, d.texte, (d.paras||[]).join(" "), (d.mots||[]).map(m => m.m + " " + m.d).join(" "),
+        (d.etapes||[]).join(" "), (d.lignes||[]).map(l => l.v + " " + l.l).join(" "),
+        d.encart ? d.encart.texte : "", d.question || "", d.note || ""].join(" ");
+      if(test(bloc)) out.push({ou:"Leçon " + ue, titre:d.titre || d.question || ("Écran " + (i+1)),
+        extrait:tronquer(bloc.replace(/\s+/g, " "), 150), act:"lecon", ue, index:i});
+    });
+  });
+  S.cours.forEach(c => {
+    const f = c.fiche;
+    const bloc = [f.resume, (f.definitions||[]).map(x => x.terme + " " + x.def).join(" "),
+      (f.points||[]).map(x => x.txt).join(" "), (f.chiffres||[]).map(x => x.txt).join(" "),
+      (f.normes||[]).map(x => x.txt).join(" "), (f.pieges||[]).map(x => x.txt).join(" ")].join(" ");
+    if(test(c.titre) || test(bloc)) out.push({ou:"Fiche " + (c.ueId || ""), titre:c.titre,
+      extrait:tronquer(bloc.replace(/\s+/g, " "), 150), act:"fiche", id:c.id});
+  });
+  UES_EXOS.forEach(ue => {
+    itemsExos(ue).forEach(i => {
+      if(test(i.question) || test(i.source)) out.push({ou:"Exercice " + ue, titre:tronquer(i.question, 70),
+        extrait:tronquer(i.source, 140), act:"exos", ue});
+    });
+  });
+  return out.slice(0, 40);
+}
+function ecranRecherche(){
+  let h = `<div class="ecran">` + retour("accueil", "Recherche");
+  h += `<label class="champ" for="q-txt">Chercher dans les leçons, les fiches et les exercices</label>
+    <input type="text" id="q-txt" data-bind="requete" value="${esc(ui.requete || "")}" placeholder="stérilisation, 0,22, cristallin…">`;
+  const q = (ui.requete || "").trim();
+  if(q.length < 3) return h + `<div class="avis info" style="margin-top:14px"><b>Trois lettres minimum</b>La recherche ignore les accents et la casse.</div></div>`;
+  const r = chercher(q);
+  if(!r.length) return h + `<div class="vide"><div class="em">◌</div><h3>Aucun résultat</h3><p>Essayez un mot plus court ou une autre formulation.</p></div></div>`;
+  h += `<p class="sousTitre" style="margin-top:14px">${r.length} résultat${r.length>1?"s":""}</p>`;
+  r.forEach(x => {
+    const attr = x.act === "lecon" ? `data-act="aller-lecon" data-ue="${x.ue}" data-i="${x.index}"`
+      : x.act === "fiche" ? `data-act="ouvrir-fiche" data-id="${x.id}"`
+      : `data-act="exos" data-ue="${x.ue}"`;
+    h += `<button class="carteAct" ${attr}><span class="tx">
+      <b>${esc(tronquer(x.titre, 60))}</b><small>${esc(x.ou)} — ${esc(x.extrait)}</small></span>
+      <span class="fl">›</span></button>`;
+  });
+  return h + `</div>`;
+}
+
 function ecranReglages(){
   const r = S.reglages;
   const voix = (window.speechSynthesis ? speechSynthesis.getVoices() : []).filter(v => /fr/i.test(v.lang));
@@ -1575,6 +2901,30 @@ function ecranReglages(){
     <input type="date" id="r-rentree" data-bind="dateRentree" value="${esc(r.dateRentree||"")}">
     <label class="champ" for="r-exam" style="margin-top:12px">Examen</label>
     <input type="date" id="r-exam" data-bind="dateExamen" value="${esc(r.dateExamen||"")}">`;
+  if(ui.importJSON){
+    h += `<div class="avis"><b>Sauvegarde lue</b>
+      Ce fichier contient ${ui.importJSON.total} cours, dont ${ui.importJSON.neufs} absent${ui.importJSON.neufs>1?"s":""} de vos données actuelles.
+      <div class="rang" style="margin-bottom:0">
+        <button class="btn plein mini" data-act="json-fusion">Fusionner (${ui.importJSON.neufs} ajout${ui.importJSON.neufs>1?"s":""})</button>
+        <button class="btn mini" data-act="json-remplacer" style="color:var(--rouge)">Tout remplacer</button>
+        <button class="btn mini" data-act="json-annuler">Annuler</button></div></div>`;
+  }
+  h += `<p class="kick" style="margin-top:20px">Thème</p>
+    <div class="liste-puces">
+      <button class="puce${(r.theme||"auto")==="auto"?" on":""}" data-act="theme" data-v="auto">Automatique</button>
+      <button class="puce${r.theme==="clair"?" on":""}" data-act="theme" data-v="clair">Clair</button>
+      <button class="puce${r.theme==="sombre"?" on":""}" data-act="theme" data-v="sombre">Sombre</button></div>
+    <p class="kick" style="margin-top:20px">Taille du texte</p>
+    <div class="liste-puces">
+      <button class="puce${(r.texte||"normal")==="normal"?" on":""}" data-act="texte" data-v="normal">Normale</button>
+      <button class="puce${r.texte==="grand"?" on":""}" data-act="texte" data-v="grand">Grande</button>
+      <button class="puce${r.texte==="tresGrand"?" on":""}" data-act="texte" data-v="tresGrand">Très grande</button></div>`;
+  h += `<p class="kick" style="margin-top:20px">Affichage</p>
+    <div class="liste-puces">
+      <button class="puce${(r.affichage||"auto")==="auto"?" on":""}" data-act="affichage" data-v="auto">Automatique</button>
+      <button class="puce${r.affichage==="mobile"?" on":""}" data-act="affichage" data-v="mobile">Téléphone</button>
+      <button class="puce${r.affichage==="large"?" on":""}" data-act="affichage" data-v="large">Ordinateur</button></div>
+    <p style="font-size:13px;color:var(--encre2)">En automatique, la mise en page bascule en large au-delà de 900 pixels. Forcez « Téléphone » si vous préférez la colonne étroite sur grand écran.</p>`;
   h += `<p class="kick" style="margin-top:20px">Moteur d'analyse</p>
     <div class="liste-puces">
       <button class="puce${r.moteur==="local"?" on":""}" data-act="moteur" data-v="local">Local</button>
@@ -1583,12 +2933,20 @@ function ecranReglages(){
     h += `<p style="font-size:14px;color:var(--encre2)">Rien ne quitte l'appareil. L'analyse repère définitions, valeurs chiffrées, normes, pièges et suites d'étapes.</p>`;
   } else {
     h += `<label class="champ" for="g-cle">Clé Google AI Studio</label>
-      <input type="password" id="g-cle" data-bind="cleGemini" value="${esc(r.cleGemini)}" placeholder="AIza…">
+      <input type="${ui.cleVisible ? "text" : "password"}" id="g-cle" data-bind="cleGemini" value="${esc(r.cleGemini)}" placeholder="AIza…">
+      <div class="rang"><button class="btn mini" data-act="voir-cle">${ui.cleVisible ? "Masquer la clé" : "Afficher la clé"}</button></div>
       <label class="champ" for="g-mod" style="margin-top:12px">Modèle</label>
       <select id="g-mod" data-bind="modele">${r.modeles.length ? r.modeles.map(m =>
         `<option value="${esc(m.id)}"${r.modele===m.id?" selected":""}>${esc(m.nom)}</option>`).join("")
         : `<option value="">— charger la liste —</option>`}</select>
-      <div class="rang"><button class="btn mini" data-act="charger-modeles">Charger les modèles</button></div>
+      <div class="rang"><button class="btn mini" data-act="charger-modeles">Charger les modèles</button>
+        <button class="btn plein mini" data-act="tester-cle">Tester la clé</button></div>
+      ${ui.testCle ? `<div class="bloc" style="margin-top:4px"><div class="bloc-t">
+        <span class="point" style="background:${ui.testCle.fini ? (ui.testCle.etapes.every(x=>x.etat==="ok") ? "var(--menthe)" : "var(--rouge)") : "var(--or)"}"></span>
+        <span class="bloc-nom">Diagnostic de la clé</span>
+        <span class="bloc-meta">${ui.testCle.fini ? "terminé" : "en cours…"}</span></div>
+        <ul class="vocab">${ui.testCle.etapes.map(x => `<li><b>${x.etat==="ok"?"✓":"✗"} ${esc(x.nom)}</b><span>${esc(x.detail)}</span></li>`).join("")}</ul>
+        </div>` : ""}
       <p style="font-size:13px;color:var(--encre2)">La clé reste sur cet appareil. Sur l'offre gratuite, Google peut utiliser les contenus transmis pour entraîner ses modèles : aucune donnée de patient.</p>`;
   }
   h += `<p class="kick" style="margin-top:20px">Lecture audio</p>
@@ -1597,11 +2955,35 @@ function ecranReglages(){
       ${voix.map(v => `<option value="${esc(v.name)}"${r.voix===v.name?" selected":""}>${esc(v.name)}</option>`).join("")}</select>
     <label class="champ" for="v-deb" style="margin-top:12px">Débit</label>
     <input type="number" id="v-deb" data-bind="debitVoix" min="0.5" max="2" step="0.1" value="${r.debitVoix}">`;
+  const poids = poidsDonnees();
   h += `<p class="kick" style="margin-top:20px">Sauvegarde</p>
     <div class="rang"><button class="btn mini" data-act="exporter">Exporter</button>
       <label class="btn mini" for="i-json">Importer</label>
-      <input type="file" id="i-json" accept=".json" style="display:none">
-      <button class="btn mini" data-act="tout-effacer" style="color:var(--rouge)">Tout effacer</button></div>
+      <input type="file" id="i-json" accept=".json" style="display:none"></div>
+    <label class="champ" for="r-rap">Me rappeler d'exporter toutes les</label>
+    <select id="r-rap" data-bind="rappelExport">
+      ${[0,3,5,10,20].map(n => `<option value="${n}"${Number(r.rappelExport)===n?" selected":""}>${n ? n + " sessions" : "jamais"}</option>`).join("")}</select>
+    <p style="font-size:12.5px;color:var(--encre2);margin-top:8px">
+      Dernière sauvegarde : ${S.meta.dernierExport ? dateFr(new Date(S.meta.dernierExport).toISOString()) : "jamais"}.
+      Données stockées : ${poidsLisible(poids)}.</p>
+    ${poids > 3500000 ? `<div class="avis"><b>Stockage bientôt saturé</b>
+      Vos données approchent la limite habituelle des navigateurs. Exportez, puis supprimez les cours dont vous n'avez plus besoin.</div>` : ""}`;
+
+  h += `<p class="kick" style="margin-top:20px">Effacement ciblé</p>
+    <label class="champ" for="ef-ue">Remettre à zéro une unité d'enseignement</label>
+    <select id="ef-ue" data-bind="effacerUE"><option value="">— choisir —</option>
+      ${UES.map(u => `<option value="${u.id}"${ui.effacerUE===u.id?" selected":""}>${u.id} · ${esc(tronquer(u.nom,38))}</option>`).join("")}</select>
+    <div class="rang"><button class="btn mini" data-act="effacer-ue"${ui.effacerUE?"":" disabled"} style="color:var(--rouge)">Effacer la progression de cette UE</button>
+      <button class="btn mini" data-act="imprimer-ue"${ui.effacerUE?"":" disabled"}>Imprimer cette UE</button></div>
+    <p style="font-size:12.5px;color:var(--encre3)">L'effacement porte sur la progression : boîtes, erreurs et avancement de la leçon. Les cours importés et leurs fiches sont conservés.</p>`;
+
+  const ecartes = itemsEcartes().length;
+  h += `<p class="kick" style="margin-top:20px">Exercices écartés</p>
+    <p style="font-size:14px;color:var(--encre2)">${ecartes ? ecartes + " exercice" + (ecartes>1?"s":"") + " ne tombent plus en session." : "Aucun exercice écarté."}</p>
+    ${ecartes ? `<div class="rang"><button class="btn mini" data-act="reintegrer">Tous les réintégrer</button></div>` : ""}`;
+
+  h += `<p class="kick" style="margin-top:20px">Zone sensible</p>
+    <div class="rang"><button class="btn mini" data-act="tout-effacer" style="color:var(--rouge)">Tout effacer</button></div>
     <p style="font-size:12.5px;color:var(--encre3)">Les leçons de préparation ne sont pas effacées par ce bouton : seuls vos cours, exercices et résultats le sont.</p>`;
   return h + `</div>`;
 }
@@ -1616,6 +2998,13 @@ async function analyser(){
   }
   const al = sonderDonnees(texte);
   if(al.length && !ui.rgpdIgnore){ ui.avisRGPD = al; rendre(); return; }
+  const emp = empreinte(texte);
+  const jumeau = S.cours.find(c => c.emp === emp);
+  if(jumeau && !ui.doublonIgnore){
+    ui.message = {titre:"Ce cours semble déjà importé",
+      txt:"Un cours au contenu identique existe déjà sous le titre « " + jumeau.titre + " ». Réimporter créerait des exercices en double. Relancez l'analyse pour passer outre."};
+    ui.doublonIgnore = true; rendre(); return;
+  }
   const ueId = ui.importUE || detecterUE(texte);
   if(!ueId){ ui.message = {titre:"Unité à préciser", txt:"Elle n'a pas pu être déduite du texte : choisissez-la dans la liste."}; rendre(); return; }
   ui.occupe = true; ui.message = null; rendre();
@@ -1623,7 +3012,16 @@ async function analyser(){
   try{
     if(origine === "gemini"){
       if(!S.reglages.cleGemini || !S.reglages.modele) throw new Error("Renseignez la clé et le modèle dans les réglages, ou repassez en mode local.");
-      res = await analyseGemini(texte, ueId, S.reglages.cleGemini, S.reglages.modele);
+      const morceaux = decouperTexte(texte, 16000);
+      if(morceaux.length > 1){
+        const parts = [];
+        for(let k = 0; k < morceaux.length; k++){
+          ui.message = {type:"info", titre:"Cours long", txt:"Analyse du morceau " + (k+1) + " sur " + morceaux.length + "…"};
+          rendre();
+          parts.push(await analyseGemini(morceaux[k], ueId, S.reglages.cleGemini, S.reglages.modele));
+        }
+        res = fusionnerAnalyses(parts);
+      } else res = await analyseGemini(texte, ueId, S.reglages.cleGemini, S.reglages.modele);
     } else res = analyseLocale(texte, ueId);
   }catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Analyse interrompue", txt:e.message}; rendre(); return; }
   if(!res.items.length){
@@ -1634,7 +3032,7 @@ async function analyser(){
   }
   const titre = (ui.importTitre||"").trim() || res.fiche.titreDetecte || UE(ueId).nom;
   const c = {id:uid(), titre, ueId, date:new Date().toISOString(), origine, fiche:res.fiche,
-    items:res.items.map(i => Object.assign(i, {ueId})), texte};
+    items:res.items.map(i => Object.assign(i, {ueId})), texte, emp:empreinte(texte)};
   S.cours.push(c); sauver();
   ui.occupe = false; ui.importTexte = ""; ui.importTitre = ""; ui.importUE = "";
   ui.avisRGPD = null; ui.rgpdIgnore = false; ui.fiche = c.id; ui.ecran = "fiche";
@@ -1671,7 +3069,8 @@ document.addEventListener("click", async e => {
       if(p.index >= L.diapos.length - 1){
         p.termine = true; p.index = L.diapos.length - 1; sauver();
         ui.ecran = "accueil"; ui.quizRep = null;
-        ui.message = {type:"info", titre:"Leçon terminée", txt:L.titre + " — vous pouvez la reprendre quand vous voulez."};
+        ui.message = {type:"info", titre:"Leçon terminée",
+          txt: L.titre + (EXOS[ui.ue] ? " — les exercices de cette unité vous attendent plus bas." : " — vous pouvez la reprendre quand vous voulez.")};
       } else { p.index++; ui.quizRep = null; sauver(); }
       rendre(); window.scrollTo(0,0); break;
     }
@@ -1696,6 +3095,7 @@ document.addEventListener("click", async e => {
     case "rgpd-ignorer": ui.rgpdIgnore = true; ui.avisRGPD = null; rendre(); break;
 
     /* --- sessions --- */
+    case "exos": lancerExosPrep(el.dataset.ue, el.dataset.mode || ""); break;
     case "session": lancerSession(el.dataset.source, el.dataset.ue, el.dataset.id); break;
     case "choix": {
       const it = s.liste[s.i];
@@ -1721,7 +3121,43 @@ document.addEventListener("click", async e => {
     }
 
     /* --- réglages --- */
-    case "moteur": S.reglages.moteur = el.dataset.v; sauver(); rendre(); break;
+    case "jour-off": {
+      const k = Number(el.dataset.k);
+      const l = (S.reglages.joursOff || []).map(Number);
+      S.reglages.joursOff = l.includes(k) ? l.filter(x => x !== k) : l.concat([k]);
+      sauver(); rendre(); break;
+    }
+    case "date-vider": { delete datesUE()[el.dataset.ue]; sauver(); rendre(); break; }
+    case "moteur": S.reglages.moteur = el.dataset.v; ui.testCle = null; sauver(); rendre(); break;
+    case "affichage": S.reglages.affichage = el.dataset.v; sauver(); appliquerAffichage(); rendre(); break;
+    case "theme": S.reglages.theme = el.dataset.v; sauver(); appliquerAffichage(); rendre(); break;
+    case "texte": S.reglages.texte = el.dataset.v; sauver(); appliquerAffichage(); rendre(); break;
+    case "voir-cle": ui.cleVisible = !ui.cleVisible; rendre(); break;
+    case "rappel-plus-tard": S.meta.sessionsExport = 0; S.meta.dernierExport = Date.now(); sauver(); rendre(); break;
+    case "reintegrer": S.cours.forEach(c => c.items.forEach(i => { delete i.douteux; })); sauver(); rendre(); break;
+    case "imprimer-ue": if(ui.effacerUE) imprimerUE(ui.effacerUE); break;
+    case "effacer-ue": {
+      const u = ui.effacerUE; if(!u) break;
+      if(confirm("Remettre à zéro toute la progression de " + u + " ?")){
+        S.cours.filter(c => c.ueId === u).forEach(c => c.items.forEach(i => delete S.progres[i.id]));
+        itemsExos(u).forEach(i => delete S.progres[i.id]);
+        if(S.prep[u]) S.prep[u] = {index:0, termine:false, quiz:{}};
+        sauver();
+        ui.message = {type:"info", titre:"Progression effacée", txt:"Tout ce qui concerne " + u + " repart de zéro."};
+        rendre();
+      } break;
+    }
+    case "aller-lecon": {
+      ui.ue = el.dataset.ue;
+      const p = progLecon(ui.ue); p.index = Number(el.dataset.i) || 0;
+      ui.quizRep = null; ui.tab = "prep"; ui.ecran = "lecon"; sauver(); rendre(); window.scrollTo(0,0); break;
+    }
+    case "exo-editer": ui.editExo = ui.editExo === s.liste[s.i].id ? null : s.liste[s.i].id; rendre(); break;
+    case "exo-annuler": ui.editExo = null; rendre(); break;
+    case "exo-enregistrer": enregistrerEdition(); break;
+    case "exo-douteux": retirerExercice("douteux"); break;
+    case "exo-supprimer": if(confirm("Supprimer définitivement cet exercice ?")) retirerExercice("supprimer"); break;
+    case "tester-cle": ui.testCle = {etapes:[], fini:false}; rendre(); await testerCle(); break;
     case "charger-modeles": {
       if(!S.reglages.cleGemini){ ui.message = {titre:"Clé manquante", txt:"Collez d'abord votre clé Google AI Studio."}; rendre(); break; }
       el.textContent = "Chargement…";
@@ -1736,7 +3172,32 @@ document.addEventListener("click", async e => {
       }catch(err){ ui.message = {type:"err", titre:"Clé refusée", txt:err.message}; }
       rendre(); break;
     }
-    case "exporter": telecharger("prepa-depph-" + new Date().toISOString().slice(0,10) + ".json", JSON.stringify(S, null, 1)); break;
+    case "json-annuler": ui.importJSON = null; rendre(); break;
+    case "json-remplacer":
+      if(confirm("Remplacer toutes vos données actuelles ? Cette action est définitive.")){
+        S = Object.assign(etatVierge(), ui.importJSON.donnees);
+        S.reglages = Object.assign(etatVierge().reglages, ui.importJSON.donnees.reglages || {});
+        S.meta = Object.assign(etatVierge().meta, ui.importJSON.donnees.meta || {});
+        ui.importJSON = null; sauver(); ui.fiche = null; aller("rev","accueil");
+      } break;
+    case "json-fusion": {
+      const o = ui.importJSON.donnees;
+      const connus = new Set(S.cours.map(c => c.emp || c.id));
+      let n = 0;
+      (o.cours || []).forEach(c => { if(!connus.has(c.emp || c.id)){ S.cours.push(c); n++; } });
+      Object.keys(o.progres || {}).forEach(k => { if(!S.progres[k]) S.progres[k] = o.progres[k]; });
+      Object.keys(o.prep || {}).forEach(k => {
+        const a = S.prep[k], b = o.prep[k];
+        if(!a || (b && (b.termine && !a.termine || (b.index || 0) > (a.index || 0)))) S.prep[k] = b;
+      });
+      (o.examens || []).forEach(e => { if(!S.examens.some(x => x.date === e.date)) S.examens.push(e); });
+      ui.importJSON = null; sauver();
+      ui.message = {type:"info", titre:"Fusion effectuée", txt:n + " cours ajouté" + (n>1?"s":"") + ", vos données existantes sont intactes."};
+      rendre(); break;
+    }
+    case "exporter":
+      telecharger("prepa-depph-" + new Date().toISOString().slice(0,10) + ".json", JSON.stringify(S, null, 1));
+      S.meta.dernierExport = Date.now(); S.meta.sessionsExport = 0; sauver(); rendre(); break;
     case "tout-effacer":
       if(confirm("Effacer vos cours, fiches, exercices et résultats ? La progression des leçons est conservée.")){
         const prep = S.prep, regl = S.reglages;
@@ -1767,11 +3228,17 @@ document.addEventListener("change", async e => {
     try{
       const o = JSON.parse(await t.files[0].text());
       if(!o || !Array.isArray(o.cours)) throw new Error("Ce fichier ne contient pas de sauvegarde.");
-      if(confirm("Remplacer les données actuelles ?")){
-        S = Object.assign(etatVierge(), o); sauver(); ui.fiche = null; aller("rev","accueil");
-      }
+      const connus = new Set(S.cours.map(c => c.emp || c.id));
+      const neufs = o.cours.filter(c => !connus.has(c.emp || c.id));
+      ui.importJSON = {donnees:o, neufs:neufs.length, total:o.cours.length};
+      ui.message = null; ui.ecran = "reglages"; rendre();
     }catch(err){ ui.message = {type:"err", titre:"Import impossible", txt:err.message}; rendre(); }
-    return;
+    t.value = ""; return;
+  }
+  if(t.dataset.dateue){
+    const v = t.value;
+    if(v) datesUE()[t.dataset.dateue] = v; else delete datesUE()[t.dataset.dateue];
+    sauver(); rendre(); return;
   }
   const act = t.closest("[data-act]");
   if(act && act.dataset.act === "assoc"){ ui.session.assoc[Number(act.dataset.i)] = t.value; return; }
@@ -1787,16 +3254,28 @@ document.addEventListener("change", async e => {
     }
   } else {
     S.reglages[b] = t.value; sauver();
-    if(["dateExamen","dateRentree","voix","debitVoix"].includes(b)) rendre();
+    if(b === "cleGemini" || b === "modele") ui.testCle = null;
+    if(["dateExamen","dateRentree","voix","debitVoix","modele","rappelExport","minutesJour"].includes(b)) rendre();
   }
 });
 document.addEventListener("input", e => {
   const b = e.target.dataset.bind;
   if(b === "importTexte" || b === "importTitre") ui[b] = e.target.value;
+  if(b === "requete"){
+    ui.requete = e.target.value;
+    clearTimeout(window.__rech);
+    window.__rech = setTimeout(() => {
+      const pos = document.getElementById("q-txt") ? document.getElementById("q-txt").selectionStart : null;
+      rendre();
+      const c = document.getElementById("q-txt");
+      if(c){ c.focus(); if(pos !== null) try{ c.setSelectionRange(pos, pos); }catch(err){} }
+    }, 260);
+  }
 });
 document.addEventListener("keydown", e => {
   if(e.key === "Enter" && e.target.id === "rep" && e.target.tagName === "INPUT"){ e.preventDefault(); valider(); }
 });
+window.addEventListener("resize", () => { if((S.reglages.affichage || "auto") === "auto") appliquerAffichage(); });
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { if(ui.ecran === "reglages") rendre(); };
 
 charger();
