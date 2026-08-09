@@ -1685,6 +1685,752 @@ UE6: {titre:"Contrôles des préparations", duree:"14 min", diapos:[
   {titre:"AFNOR, norme NF EN 17141 (septembre 2020)", ref:"Maîtrise de la biocontamination ; annule et remplace NF EN ISO 14698-1 et NF EN ISO 14698-2", url:"https://www.boutique.afnor.org/fr-fr/norme/nf-en-17141/salles-propres-et-environnements-maitrises-apparentes-maitrise-de-la-biocon/fa187568/86055"},
   {titre:"ICH, Quality Guidelines", ref:"Q2, validation des méthodes d'analyse, cité en note par les BPP 2023", url:"https://www.ich.org/page/quality-guidelines"}],
   note:"Textes consultés le 9 août 2026, chapitre 6 et LD1 lus dans leur texte intégral. En cas d'écart avec le cours de votre centre de formation, c'est le cours qui fait foi pour l'examen."}
+]},
+
+UE7: {titre:"Bon usage et référencement des dispositifs médicaux", duree:"15 min", diapos:[
+ {t:"intro", kick:"UE7 · pour commencer", titre:"Un médicament agit, un dispositif fonctionne",
+  texte:"Une compresse, un stent, une prothèse de hanche, un logiciel d'aide à la décision : ce sont tous des dispositifs médicaux. Ils ne relèvent ni de l'autorisation de mise sur le marché ni de la pharmacovigilance, mais d'un marquage CE et d'une vigilance qui leur est propre. Confondre les deux régimes est l'erreur qui coûte le plus cher en examen.",
+  img:{f:"ue7-01-dispositifs.jpg", leg:"Dispositifs médicaux stériles conditionnés"}},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"Les directives ont laissé place à un règlement", type:"garde",
+  texte:"Le règlement (UE) 2017/745 du 5 avril 2017, dit MDR, abroge les directives 90/385/CEE et 93/42/CEE. Il s'applique depuis le 26 mai 2020, et depuis le 27 mai 2025 aucun dispositif ne peut plus être mis sur le marché au titre des anciennes directives. Les certificats délivrés par les organismes notifiés sous l'empire des directives ont été invalidés le 25 mai 2024. Un cours qui parle encore de « la directive 93/42 » décrit un texte abrogé."},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les mots à distinguer", mots:[
+  {m:"Marquage CE", d:"Apposé de façon visible, lisible et indélébile sur le dispositif ou sur le conditionnement qui en garantit la stérilité. Il atteste la conformité au règlement, pas l'efficacité clinique au sens d'une AMM."},
+  {m:"Organisme notifié", d:"Organisme habilité qui évalue la conformité. Il intervient pour toutes les classes au-dessus de la classe I simple."},
+  {m:"DMI", d:"Dispositif médical implantable, soumis à une traçabilité renforcée jusqu'au patient."},
+  {m:"IUD", d:"Identifiant unique des dispositifs, qui permet de retrouver un dispositif précis dans toute la chaîne."},
+  {m:"EUDAMED", d:"Base de données européenne dans laquelle les fabricants enregistrent leurs dispositifs."},
+  {m:"Matériovigilance", d:"Surveillance des incidents et risques d'incidents mettant en cause un dispositif médical après sa mise sur le marché."},
+  {m:"Correspondant local", d:"Le correspondant local de matériovigilance, désigné dans l'établissement, qui enregistre, analyse et valide les signalements."}]},
+
+ {t:"notion", kick:"La classification", titre:"Quatre classes, un principe de risque croissant",
+  paras:["Les dispositifs sont répartis en quatre classes, du risque le plus faible au plus élevé : classe I, comme les compresses, les lunettes ou les béquilles ; classe IIa, comme les lentilles de contact, les appareils d'échographie ou les couronnes dentaires ; classe IIb, comme les préservatifs ou les produits de désinfection des lentilles ; classe III, comme les implants mammaires, les stents ou les prothèses de hanche.",
+   "La classe dépend de la destination du dispositif, du niveau de risque lié à son utilisation — durée, partie du corps exposée, intérieur ou extérieur du corps — et des risques potentiels pour la santé publique. Les règles figurent à l'annexe VIII du règlement."],
+  encart:{type:"astuce", titre:"La règle de prudence", texte:"Lorsqu'un doute subsiste sur la classe d'un dispositif, c'est la classe de risque la plus élevée qui est retenue."}},
+
+ {t:"notion", kick:"La classification", titre:"Les trois classes I qui ne sont pas comme les autres",
+  paras:["Pour un dispositif de classe I mis sur le marché non stérile, sans fonction de mesurage et qui n'est pas un instrument chirurgical réutilisable, la certification se fait sans intervention d'un organisme notifié : le fabricant s'auto-certifie.",
+   "Trois sous-catégories échappent à cette règle et exigent un organisme notifié : la classe Im, avec fonction de mesurage, la classe Is, mise sur le marché à l'état stérile, et la classe Ir, instruments chirurgicaux réutilisables. Comme pour les classes IIa, IIb et III."],
+  encart:{type:"piege", titre:"Le piège d'examen", texte:"« Classe I, donc pas d'organisme notifié » est faux dès que le dispositif est stérile, mesure quelque chose, ou est un instrument chirurgical réutilisable."}},
+
+ {t:"chiffres", kick:"Le calendrier", titre:"Les dates du règlement 2017/745", lignes:[
+  {v:"26/05/2020", l:"date d'application du règlement"},
+  {v:"26/05/2021", l:"obligations IUD pour les implantables et la classe III"},
+  {v:"26/11/2021", l:"enregistrement des dispositifs dans EUDAMED par les fabricants"},
+  {v:"26/05/2023", l:"obligations IUD pour les classes IIa et IIb"},
+  {v:"25/05/2024", l:"invalidation des certificats délivrés sous les anciennes directives"},
+  {v:"26/05/2025", l:"obligations IUD pour la classe I"},
+  {v:"27/05/2025", l:"plus aucune mise sur le marché au titre des directives"}]},
+
+ {t:"notion", kick:"Matériovigilance", titre:"Signaler sans délai",
+  paras:["Les professionnels de santé et les utilisateurs professionnels signalent sans délai les incidents graves au sens du règlement (UE) 2017/745, et peuvent signaler tous les autres incidents qu'ils constatent ou dont ils ont connaissance.",
+   "Le signalement se fait auprès du correspondant local de matériovigilance lorsqu'on exerce dans un établissement, ou directement auprès du directeur général de l'ANSM lorsqu'on exerce à titre indépendant ou au sein d'une structure de prévention ou associative."],
+  encart:{type:"info", titre:"Ce que fait le correspondant local", texte:"Il enregistre, analyse et valide tout incident ou risque d'incident signalé, recommande le cas échéant les mesures conservatoires, conseille les déclarants, sensibilise les utilisateurs, et signale au centre régional de pharmacovigilance les incidents provoqués par des dispositifs destinés à administrer des médicaments."}},
+
+ {t:"notion", kick:"Traçabilité", titre:"Retrouver un implant, des années après",
+  paras:["La traçabilité de certains dispositifs médicaux repose sur le décret n° 2006-1497 et l'arrêté du 26 janvier 2007 qui précise les dispositifs concernés. Elle est placée sous la responsabilité des utilisateurs, avec un objectif de sécurité sanitaire et dans le cadre de l'obligation d'information du patient prévue à l'article L. 5212-3 du code de la santé publique.",
+   "Un guide d'application à l'intention des établissements de santé a été rédigé par Euro-Pharmat en collaboration avec l'ANSM en 2007, complété par une version de 2016 qui précise les définitions et les types de dispositifs à tracer."],
+  encart:{type:"astuce", titre:"La question à se poser", texte:"Si ce dispositif faisait l'objet d'un rappel de lot dans cinq ans, saurait-on dire quel patient l'a reçu, quand et par qui ? Toute la traçabilité tient dans cette question."},
+  img:{f:"ue7-08-implant.jpg", leg:"Dispositif médical implantable et son étiquetage de traçabilité"}},
+
+ {t:"notion", kick:"Usage unique", titre:"Ce qui est à usage unique le reste",
+  paras:["La réglementation française interdit de réutiliser les dispositifs médicaux à usage unique. Le système qualité de la stérilisation prévu par le code de la santé publique précise les procédures assurant que les dispositifs à usage unique ne sont pas réutilisés.",
+   "L'interdiction ne souffre pas d'exception liée au coût, à la pénurie ou à l'apparence du dispositif : un dispositif à usage unique retraité n'a plus aucune garantie de conformité, et le retraitement transfère sur l'établissement la responsabilité du fabricant."],
+  encart:{type:"piege", titre:"À ne pas confondre", texte:"Usage unique n'est pas synonyme de jetable après un patient : c'est un statut réglementaire porté par le fabricant, qui figure sur l'étiquetage sous forme du pictogramme barré."}},
+
+ {t:"etapes", kick:"Le référencement", titre:"D'un besoin à un dispositif référencé",
+  etapes:["Expression du besoin par les utilisateurs, souvent une équipe de soins",
+   "Analyse du besoin et recherche des dispositifs répondant à la destination visée",
+   "Vérification du marquage CE et de la classe, et donc du niveau de contrôle appliqué",
+   "Évaluation technique et essais cliniques d'utilisation par les utilisateurs",
+   "Décision de référencement, inscription au livret des dispositifs médicaux",
+   "Achat dans le respect des règles de la commande publique",
+   "Suivi en vie réelle : matériovigilance, traçabilité, réévaluation périodique"],
+  note:"Le référencement n'est pas un acte d'achat : c'est la décision collégiale d'inscrire un dispositif dans l'arsenal de l'établissement, avec l'évaluation qui la fonde et la réévaluation qui la prolonge."},
+
+ {t:"quiz", kick:"Vérification", question:"Un fabricant vous affirme que son instrument chirurgical réutilisable est de classe I et qu'il n'a donc pas eu besoin d'organisme notifié. Que répondez-vous ?",
+  options:["C'est exact, la classe I est en auto-certification",
+   "C'est faux : les instruments chirurgicaux réutilisables, classe Ir, exigent l'intervention d'un organisme notifié",
+   "Cela dépend du pays de fabrication"],
+  bonne:1,
+  expl:"L'ANSM le précise sans ambiguïté : les classes Im, Is et Ir relèvent d'un organisme notifié, comme les classes IIa, IIb et III. Seule la classe I non stérile, sans fonction de mesurage et non réutilisable est en auto-certification."},
+
+ {t:"quiz", kick:"Vérification", question:"Une infirmière constate qu'un cathéter s'est rompu pendant la pose, sans conséquence pour le patient. Que faites-vous ?",
+  options:["Rien, il n'y a pas eu de dommage",
+   "Un signalement de matériovigilance auprès du correspondant local de l'établissement",
+   "Une déclaration de pharmacovigilance au centre régional"],
+  bonne:1,
+  expl:"Les incidents graves sont signalés sans délai, et tous les autres incidents peuvent l'être. Un risque d'incident se signale même sans dommage : c'est précisément ce que la matériovigilance cherche à capter avant l'accident."},
+
+ {t:"quiz", kick:"Vérification", question:"Quel texte encadre aujourd'hui la mise sur le marché des dispositifs médicaux en Europe ?",
+  options:["La directive 93/42/CEE","Le règlement (UE) 2017/745","Le règlement (UE) 2017/746, qui vise tous les dispositifs"],
+  bonne:1,
+  expl:"Le règlement 2017/745 vise les dispositifs médicaux et abroge les directives 90/385 et 93/42. Le règlement 2017/746, lui, vise les dispositifs médicaux de diagnostic in vitro, classés de A à D."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Règlement (UE) 2017/745 du 5 avril 2017", ref:"Texte intégral : marquage CE, classification à l'annexe VIII, abrogation des directives 90/385 et 93/42", url:"https://eur-lex.europa.eu/legal-content/FR/ALL/?uri=CELEX:32017R0745"},
+  {titre:"ANSM", ref:"Classifier un dispositif médical ou un dispositif médical de diagnostic in vitro : quatre classes, exemples, classes Im, Is et Ir", url:"https://ansm.sante.fr/documents/reference/classifier-un-dispositif-medical-ou-un-dispositif-medical-de-diagnostic-in-vitro"},
+  {titre:"Code de la santé publique, chapitre Matériovigilance", ref:"Articles R. 5212-1 et suivants : signalement sans délai des incidents graves, missions du correspondant local", url:"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000006178666/"},
+  {titre:"ANSM", ref:"Réglementation relative à la matériovigilance et textes d'application", url:"https://ansm.sante.fr/documents/reference/reglementation-relative-aux-differentes-vigilances/reglementation-relative-a-la-materiovigilance"},
+  {titre:"ANSM", ref:"Traçabilité des dispositifs médicaux : décret n° 2006-1497, arrêté du 26 janvier 2007, guide Euro-Pharmat et ANSM", url:"https://ansm.sante.fr/documents/reference/reglementation-relative-aux-dispositifs-medicaux-dm-et-aux-dispositifs-medicaux-de-diagnostic-in-vitro-dmdiv/tracabilite-des-dispositifs-medicaux"},
+  {titre:"SF2H, guide de bonnes pratiques de traitement des dispositifs médicaux, 2022", ref:"Interdiction de réutiliser les dispositifs médicaux à usage unique", url:"https://www.sf2h.net/k-stock/data/uploads/2022/11/Guide_DM_22_SF2H.pdf"}],
+  note:"Textes consultés le 9 août 2026. Le calendrier du règlement a été modifié à plusieurs reprises depuis 2017 : vérifiez les dates avant l'épreuve si votre support est antérieur à 2024."}
+]},
+
+UE8: {titre:"Préparation et contrôles du processus de stérilisation", duree:"15 min", diapos:[
+ {t:"intro", kick:"UE8 · pour commencer", titre:"Un état qu'on ne peut pas vérifier sur chaque pièce",
+  texte:"On ne peut pas ouvrir un sachet pour vérifier qu'il est stérile : le vérifier, c'est le contaminer. La stérilité d'un dispositif ne se contrôle donc pas à l'arrivée, elle se construit à chaque étape et se prouve par la maîtrise du procédé. Tout le métier de la stérilisation tient dans cette contrainte.",
+  img:{f:"ue8-01-sterilisation.jpg", leg:"Unité de stérilisation hospitalière"}},
+
+ {t:"notion", kick:"Le cadre", titre:"Trois textes qui se répondent",
+  paras:["Les bonnes pratiques de pharmacie hospitalière, annexées à l'arrêté du 22 juin 2001, contiennent la ligne directrice particulière n° 1 consacrée à la préparation des dispositifs médicaux stériles. C'est le texte de référence du métier.",
+   "L'arrêté du 3 juin 2002 rend opposables aux établissements de santé un ensemble de normes de stérilisation, dont la NF EN ISO 14937 sur la caractérisation d'un agent stérilisant et la validation d'un procédé. Le code de la santé publique impose enfin à l'établissement un système permettant d'assurer la qualité de la stérilisation."],
+  encart:{type:"info", titre:"Qui est responsable", texte:"En établissement de santé, l'unité de stérilisation est placée sous la responsabilité du pharmacien gérant, qui peut désigner un pharmacien responsable de cette activité. C'est une activité à risques particuliers, dont l'autorisation vaut sept ans."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les mots du circuit", mots:[
+  {m:"DMR", d:"Dispositif médical réutilisable, l'objet même du processus de stérilisation."},
+  {m:"Prédésinfection", d:"Premier traitement effectué au plus près du soin, avant le nettoyage. Elle protège le personnel et facilite l'étape suivante."},
+  {m:"Recomposition", d:"Reconstitution d'un plateau ou d'une boîte d'instruments selon sa composition de référence, avant conditionnement."},
+  {m:"Charge", d:"Ensemble des dispositifs stérilisés au cours d'un même cycle."},
+  {m:"Libération", d:"Décision pharmaceutique attestant que la charge est conforme et peut être mise à disposition."},
+  {m:"Traçabilité", d:"Ensemble des enregistrements permettant de relier un dispositif à son cycle, à ses opérateurs et au patient."},
+  {m:"ATNC", d:"Agent transmissible non conventionnel, autrement dit le prion, caractérisé par sa résistance aux procédés habituels d'inactivation."}]},
+
+ {t:"etapes", kick:"Le processus", titre:"De la salle d'opération au stockage",
+  etapes:["Prédésinfection au plus près de l'utilisation",
+   "Lavage, manuel ou en laveur-désinfecteur",
+   "Séchage, contrôle de propreté et de fonctionnalité",
+   "Recomposition des plateaux selon leur composition de référence",
+   "Conditionnement adapté au procédé de stérilisation retenu",
+   "Stérilisation, le plus souvent à la vapeur d'eau saturée",
+   "Contrôle des paramètres du cycle, puis libération pharmaceutique",
+   "Stockage à l'abri, puis distribution aux services"],
+  note:"L'ensemble des étapes fait l'objet d'une traçabilité, informatisée dans les établissements. Chaque unité d'emploi porte les éléments permettant de la relier à son cycle."},
+
+ {t:"notion", kick:"Les procédés", titre:"La vapeur d'eau, et les autres",
+  paras:["Trois catégories de procédés sont distinguées après conditionnement : la stérilisation à la vapeur d'eau saturée, la stérilisation à basse température par le peroxyde d'hydrogène gazeux associé ou non à d'autres gaz, et la stérilisation par irradiation, qui en France n'est utilisée que dans l'industrie.",
+   "La stérilisation par la chaleur sèche est proscrite. L'oxyde d'éthylène et le formaldéhyde ne sont plus utilisés dans les établissements de santé français. Dans tous les cas, les recommandations du fabricant du dispositif mentionnent le procédé applicable : c'est lui qui commande, pas l'habitude du service."],
+  encart:{type:"piege", titre:"Attention à l'oxyde d'éthylène", texte:"L'efficacité des procédés à l'oxyde d'éthylène et au peroxyde d'hydrogène gazeux n'a pas été évaluée pour l'inactivation des agents transmissibles non conventionnels. Un procédé peut être stérilisant sans rien garantir contre le prion."},
+  img:{f:"ue8-05-autoclave.jpg", leg:"Autoclave de stérilisation à vapeur d'eau"}},
+
+ {t:"notion", kick:"Risque prion", titre:"L'instruction 449, et pourquoi elle existe",
+  paras:["Les agents transmissibles non conventionnels se caractérisent par leur grande résistance aux procédés chimiques et physiques. L'instruction n° DGS/RI3/2011/449 du 1er décembre 2011 actualise les recommandations visant à réduire les risques de transmission lors des actes invasifs, et abroge la circulaire n° 138 du 14 mars 2001.",
+   "Elle intègre la classification des tissus selon leur niveau d'infectiosité publiée par l'OMS en 2010, et renforce le niveau de traitement appliqué aux dispositifs médicaux réutilisables. En France, l'évaluation du risque prion est obligatoire avant tout acte invasif."],
+  encart:{type:"info", titre:"Le chiffre à retenir", texte:"La stérilisation par autoclave à vapeur d'eau à 134 °C pendant 18 minutes assure une inactivation importante des ATNC, mais une infectiosité résiduelle reste détectable. C'est pourquoi le texte prévoit, dans certains cas, une étape d'inactivation totale distincte de la stérilisation."}},
+
+ {t:"notion", kick:"Risque prion", titre:"Ce qu'on fait quand le dispositif ne supporte pas 134 °C",
+  paras:["Pour un dispositif médical réutilisable non compatible avec la vapeur saturée à 134 °C pendant 18 minutes, l'instruction prévoit une hiérarchie : vapeur saturée à température inférieure ou procédé basse température par vapeur de peroxyde d'hydrogène, et à défaut une désinfection de haut niveau avec rinçage terminal à l'eau stérile.",
+   "Lorsque le procédé basse température, conforme à la norme NF EN ISO 14937, ou la désinfection permet aussi une inactivation totale des ATNC selon le protocole standard prion en vigueur, les étapes d'inactivation totale et de stérilisation basse température ou de désinfection sont confondues."],
+  encart:{type:"piege", titre:"Le protocole standard prion", texte:"Le PSP est la méthode de référence publiée par l'agence pour évaluer les produits et procédés revendiquant une activité contre les ATNC. Un produit n'est « inactivant total » que s'il figure sur la liste publiée au regard du PSP en vigueur — pas parce que son fabricant l'annonce."}},
+
+ {t:"notion", kick:"Le contrôle", titre:"Prouver plutôt que vérifier",
+  paras:["Puisqu'on ne peut pas ouvrir un sachet pour savoir s'il est stérile, le contrôle porte sur le procédé : validation initiale, contrôle de routine des paramètres de chaque cycle, enregistrement, et libération sur la base de ces éléments.",
+   "La norme NF EN ISO 14937, rendue opposable, définit les exigences générales pour caractériser un agent stérilisant et pour le développement, la validation et la vérification de routine d'un processus de stérilisation. C'est le cadre méthodologique qui remplace la seule confiance dans la machine."],
+  encart:{type:"astuce", titre:"À formuler ainsi en examen", texte:"La stérilité est une probabilité, pas une observation. On ne prouve pas qu'un dispositif est stérile : on prouve que le procédé qui l'a traité était maîtrisé, validé et correctement exécuté."}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE8", lignes:[
+  {v:"22/06/2001", l:"arrêté relatif aux bonnes pratiques de pharmacie hospitalière, ligne directrice n° 1"},
+  {v:"03/06/2002", l:"arrêté fixant les normes opposables pour la stérilisation des dispositifs médicaux"},
+  {v:"134 °C", l:"température du cycle d'inactivation des ATNC"},
+  {v:"18 min", l:"durée du plateau de ce même cycle"},
+  {v:"01/12/2011", l:"instruction 449, qui abroge la circulaire 138 du 14 mars 2001"},
+  {v:"7 ans", l:"durée de l'autorisation de l'activité de stérilisation, activité à risques particuliers"}]},
+
+ {t:"quiz", kick:"Vérification", question:"Un bloc vous renvoie un instrument thermosensible utilisé chez un patient suspect d'ATNC. Que ne pouvez-vous pas faire ?",
+  options:["Recourir à un procédé basse température par vapeur de peroxyde d'hydrogène",
+   "Appliquer le cycle vapeur 134 °C pendant 18 minutes, puisque l'instrument ne le supporte pas",
+   "Recourir à une désinfection de haut niveau avec rinçage terminal à l'eau stérile"],
+  bonne:1,
+  expl:"Un dispositif thermosensible ne peut pas passer le cycle à 134 °C. L'instruction 449 prévoit précisément la hiérarchie de repli : vapeur saturée à température inférieure ou basse température au peroxyde d'hydrogène, à défaut désinfection de haut niveau avec rinçage à l'eau stérile."},
+
+ {t:"quiz", kick:"Vérification", question:"Quelle affirmation est exacte à propos du cycle 134 °C pendant 18 minutes ?",
+  options:["Il élimine totalement l'infectiosité liée aux ATNC",
+   "Il assure une inactivation importante, mais une infectiosité résiduelle reste détectable",
+   "Il n'a aucun effet sur les ATNC"],
+  bonne:1,
+  expl:"C'est la formulation même de l'instruction 449. C'est pour cette raison qu'une étape d'inactivation totale, distincte de la stérilisation, est prévue dans certaines situations."},
+
+ {t:"quiz", kick:"Vérification", question:"Quel procédé de stérilisation est proscrit dans les établissements de santé français ?",
+  options:["La vapeur d'eau saturée","Le peroxyde d'hydrogène gazeux","La chaleur sèche"],
+  bonne:2,
+  expl:"La chaleur sèche est proscrite. L'oxyde d'éthylène et le formaldéhyde, eux, ne sont plus utilisés dans les établissements de santé français, et l'irradiation est réservée à l'industrie."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Arrêté du 22 juin 2001", ref:"Bonnes pratiques de pharmacie hospitalière, ligne directrice particulière n° 1 : préparation des dispositifs médicaux stériles", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000393840"},
+  {titre:"Bonnes pratiques de pharmacie hospitalière, texte intégral", ref:"Chapitres généraux et ligne directrice particulière n° 1", url:"https://www.omedit-centre.fr/Formationnouveauxarrivants_web_gen_web/res/BPPH.pdf"},
+  {titre:"Arrêté du 3 juin 2002", ref:"Normes opposables pour la stérilisation des dispositifs médicaux, dont NF EN ISO 14937", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000230729"},
+  {titre:"Instruction n° DGS/RI3/2011/449 du 1er décembre 2011", ref:"Risque ATNC lors des actes invasifs, inactivation, séquestration", url:"https://www.legifrance.gouv.fr/circulaire/id/34277"},
+  {titre:"Instruction 449, texte publié au Bulletin officiel", ref:"Cycle 134 °C pendant 18 minutes, infectiosité résiduelle, protocole standard prion", url:"https://sante.gouv.fr/fichiers/bo/2012/12-01/ste_20120001_0100_0098.pdf"},
+  {titre:"SF2S, société française des sciences de la stérilisation", ref:"Procédés de stérilisation utilisés en France, risque prion, conduite à tenir", url:"https://bonnespratiques.sf2s-sterilisation.fr/processus-operationnel/risque-prion/"},
+  {titre:"ANSM", ref:"Protocole standard prion et listes de produits et procédés inactivants", url:"https://ansm.sante.fr/vos-demarches/industriel/protocole-standard-prion-v2018"}],
+  note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas des tests de routine des autoclaves ni des indicateurs de passage et de stérilisation : je n'ai pas pu en lire une source primaire accessible, et je préfère ne rien écrire plutôt qu'une approximation. Reportez-vous au cours de votre centre pour ce point."}
+]},
+
+UE9: {titre:"Prévention du risque infectieux et contrôle de l'environnement", duree:"14 min", diapos:[
+ {t:"intro", kick:"UE9 · pour commencer", titre:"Ce qu'on ne voit pas se compte quand même",
+  texte:"Une salle propre n'est pas une salle qui a l'air propre. C'est une salle dont on connaît le nombre de particules par mètre cube et le nombre d'unités formant colonie par boîte de Petri, mesurés selon des normes, à des fréquences définies. Le risque infectieux se gère avec des chiffres, pas avec une impression."},
+
+ {t:"notion", kick:"Le socle", titre:"Les précautions standard",
+  paras:["Les précautions standard sont les mesures appliquées pour tout patient, quel que soit son statut infectieux, par tout professionnel. La SF2H en a publié l'actualisation en juin 2017.",
+   "Le document couvre l'hygiène des mains, les équipements de protection individuelle, l'hygiène respiratoire, la prévention des accidents avec exposition au sang, la gestion des excreta et la gestion de l'environnement. Ce ne sont pas des mesures réservées aux patients réputés contagieux : c'est le socle appliqué à tous, tout le temps."],
+  encart:{type:"info", titre:"La logique", texte:"On ne sait jamais avec certitude qui est porteur de quoi. Les précautions standard partent de ce constat : elles protègent le soignant du patient et le patient du soignant, sans avoir besoin de savoir."}},
+
+ {t:"notion", kick:"Hygiène des mains", titre:"La friction avant le lavage",
+  paras:["La friction hydro-alcoolique est la technique de référence de l'hygiène des mains ; elle remplace le lavage hygiénique. Elle est plus rapide, ne nécessite pas de point d'eau, et laisse la peau en meilleur état grâce aux émollients intégrés au produit.",
+   "Deux règles pratiques comptent autant que la technique elle-même : ne pas faire systématiquement un lavage simple des mains avant une friction, car cela provoque des irritations cutanées, et attendre l'évaporation complète du produit avant de toucher le patient, son environnement ou le matériel."],
+  encart:{type:"piege", titre:"Les normes des produits", texte:"Un produit hydro-alcoolique destiné à la friction hygiénique répond à la norme NF EN 1500. Pour la désinfection chirurgicale des mains par friction, la norme applicable est la NF EN 12791. Ce ne sont pas les mêmes exigences ni les mêmes produits."},
+  img:{f:"ue9-03-friction.jpg", leg:"Friction hydro-alcoolique des mains"}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Ce que mesurent les contrôles", mots:[
+  {m:"Contrôle particulaire", d:"Comptage des particules en suspension dans l'air, par taille et par mètre cube. Il caractérise la classe de propreté."},
+  {m:"Contrôle microbiologique", d:"Dénombrement des micro-organismes viables dans l'air et sur les surfaces, exprimé en unités formant colonie."},
+  {m:"ufc", d:"Unité formant colonie : une colonie visible sur milieu de culture, issue d'un ou de plusieurs micro-organismes viables."},
+  {m:"Gélose de sédimentation", d:"Boîte de Petri laissée ouverte pour recueillir les particules viables qui se déposent, pendant une durée définie."},
+  {m:"Aérobiocollecteur", d:"Appareil de prélèvement d'air dit « actif », qui aspire un volume connu et l'impacte sur un milieu de culture."},
+  {m:"Empreinte de gant", d:"Prélèvement des cinq doigts sur milieu gélosé, qui contrôle l'opérateur au poste de travail."},
+  {m:"Seuils d'alerte et d'action", d:"Valeurs définies par procédure au-delà desquelles une investigation, puis des mesures correctives, sont déclenchées."}]},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"La norme de biocontamination a été remplacée", type:"garde",
+  texte:"La maîtrise de la biocontamination en salles propres relevait des normes NF EN ISO 14698-1 et 14698-2. La norme NF EN 17141, homologuée en septembre 2020, les annule et les remplace. Les bonnes pratiques de préparation de 2023 citent d'ailleurs NF ISO 14644 et NF EN 17141 comme les référentiels adaptés au moment de leur publication. Un support qui cite encore l'ISO 14698 renvoie à une norme annulée."},
+
+ {t:"chiffres", kick:"Les valeurs", titre:"Contamination microbiologique en activité", lignes:[
+  {v:"< 1", l:"classe A : ufc/m³ dans l'air, ufc par boîte de Petri en 4 heures, ufc par gélose de contact, ufc par gant"},
+  {v:"10", l:"classe B : ufc/m³ dans l'air ; 5 pour les autres prélèvements"},
+  {v:"100", l:"classe C : ufc/m³ dans l'air ; 50 en boîte de Petri, 25 en gélose de contact"},
+  {v:"200", l:"classe D : ufc/m³ dans l'air ; 100 en boîte de Petri, 50 en gélose de contact"}],
+  note:"Tableau 9 de la ligne directrice LD1 des bonnes pratiques de préparation 2023. Ce sont des valeurs moyennes et des limites recommandées, à ne pas confondre avec les seuils particulaires du tableau 1, qui relèvent d'un autre contrôle."},
+
+ {t:"notion", kick:"La surveillance", titre:"À quelle fréquence prélever",
+  paras:["En environnement de classe A, la surveillance est quotidienne : une gélose de sédimentation au niveau du plan de travail, à raison d'une gélose par session de quatre heures au maximum, et une empreinte de gant de l'opérateur en fin de session de travail.",
+   "Le programme de prélèvements de contact à l'intérieur des zones classées est hebdomadaire en classe A et mensuel dans l'environnement immédiat. Les prélèvements d'air actifs sont mensuels en classe A et en classe B, trimestriels en classe C, semestriels en classe D."],
+  encart:{type:"astuce", titre:"Le principe qui sous-tend le tableau", texte:"Plus la classe est exigeante, plus la fréquence est élevée. Ce n'est pas une liste à apprendre bêtement : c'est une gradation, et la connaître comme une gradation suffit à retrouver les cases."}},
+
+ {t:"notion", kick:"Quand ça dépasse", titre:"Seuils d'alerte, seuils d'action",
+  paras:["Des seuils d'alerte et d'action appropriés sont définis dans une procédure pour les résultats de la surveillance particulaire et microbiologique. En cas de dépassement, des procédures imposent des mesures correctives.",
+   "Ces seuils tiennent compte de la nature du germe, de sa pathogénicité et de son potentiel de dissémination : la présence d'un champignon filamenteux, par exemple, ne s'interprète pas comme celle d'un germe cutané banal."],
+  encart:{type:"piege", titre:"Le lien avec la libération", texte:"Il convient de porter une attention particulière aux résultats de la surveillance des zones à atmosphère contrôlée au moment de libérer les préparations terminées. Un dépassement environnemental peut donc bloquer un lot, même si tous les contrôles du produit sont conformes."}},
+
+ {t:"notion", kick:"Le nettoyage", titre:"Une fréquence pour chaque surface",
+  paras:["Le nettoyage et la désinfection des zones classées suivent une procédure validée, et le choix de la solution désinfectante comme de son système de diffusion est validé.",
+   "Les fréquences minimales recommandées distinguent le quotidien — plans de travail hors zone de préparation, sols, surfaces fréquemment touchées comme les poignées de porte et les interrupteurs — du mensuel — surfaces externes des équipements, accessoires — et du trimestriel, pour les murs et les plafonds."],
+  encart:{type:"info", titre:"Ce qui prime sur la fréquence", texte:"Ces fréquences sont indicatives et s'adaptent à l'activité. Une souillure constatée impose un nettoyage immédiat, quel que soit le calendrier."}},
+
+ {t:"quiz", kick:"Vérification", question:"Un collègue se lave les mains au savon puis enchaîne systématiquement avec une friction hydro-alcoolique. Que lui dites-vous ?",
+  options:["C'est la bonne pratique, les deux se complètent",
+   "Il ne faut pas faire systématiquement un lavage simple avant une friction : cela provoque des irritations cutanées",
+   "Il faut inverser l'ordre : friction puis lavage"],
+  bonne:1,
+  expl:"La friction est la technique de référence et remplace le lavage hygiénique. Le lavage simple garde ses indications propres, notamment les mains visiblement souillées, mais ne se cumule pas systématiquement avec la friction."},
+
+ {t:"quiz", kick:"Vérification", question:"Quelle norme s'applique aujourd'hui à la maîtrise de la biocontamination en salles propres ?",
+  options:["NF EN ISO 14698-1 et 14698-2","NF EN 17141","NF EN 12791"],
+  bonne:1,
+  expl:"NF EN 17141, homologuée en septembre 2020, annule et remplace les deux parties de l'ISO 14698. La NF EN 12791, elle, concerne les produits de désinfection chirurgicale des mains par friction."},
+
+ {t:"quiz", kick:"Vérification", question:"En classe A, à quelle fréquence réalise-t-on un prélèvement d'air actif par aérobiocollecteur ?",
+  options:["Quotidiennement","Hebdomadairement","Mensuellement"],
+  bonne:2,
+  expl:"Le quotidien concerne la gélose de sédimentation et l'empreinte de gant, l'hebdomadaire les prélèvements de contact en zone classée. Le prélèvement d'air actif est mensuel en classe A."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"SF2H, Précautions standard, juin 2017", ref:"Hygiène des mains, équipements de protection individuelle, hygiène respiratoire, accidents avec exposition au sang, excreta, environnement", url:"https://www.sf2h.net/k-stock/data/uploads/2017/06/HY_XXV_PS_versionSF2H.pdf"},
+  {titre:"SF2H, Hygiène des mains et soins : du choix du produit à son utilisation", ref:"Normes NF EN 1500 pour la friction hygiénique et NF EN 12791 pour la friction chirurgicale", url:"https://www.sf2h.net/k-stock/data/uploads/2018/03/HY_XXVI_1_SF2H-1.pdf"},
+  {titre:"CPias et SF2H", ref:"Technique de friction : ne pas laver systématiquement avant, attendre l'évaporation complète", url:"https://cpias-occitanie.fr/wp-content/uploads/2018/06/2.SF2H-DIAPOS-Guide-mains.pdf"},
+  {titre:"ANSM, Bonnes pratiques de préparation 2023, ligne directrice LD1", ref:"Tableaux 9 et 10 : limites de contamination microbiologique et fréquences de surveillance ; tableaux 2 et 3 : fréquences de nettoyage", url:"https://ansm.sante.fr/uploads/2023/08/02/20230802-bonnes-pratiques-de-preparation-08-2023.pdf"},
+  {titre:"AFNOR, norme NF EN 17141 (septembre 2020)", ref:"Maîtrise de la biocontamination ; annule et remplace NF EN ISO 14698-1 et 14698-2", url:"https://www.boutique.afnor.org/fr-fr/norme/nf-en-17141/salles-propres-et-environnements-maitrises-apparentes-maitrise-de-la-biocon/fa187568/86055"}],
+  note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas de la norme NF S 90-351 sur le traitement de l'air des établissements de santé ni de la classification des zones à risque qui en découle : je n'ai pas pu en consulter le texte, et je ne l'écris donc pas."}
+]},
+
+UE10: {titre:"Gestion des flux et stocks de médicaments, dispositifs et fluides médicaux", duree:"13 min", diapos:[
+ {t:"intro", kick:"UE10 · pour commencer", titre:"Le stock, c'est du soin immobilisé",
+  texte:"Un stock trop faible, et le service manque le jour où il faut. Un stock trop élevé, et l'argent dort pendant que des produits périment. Entre les deux, il n'y a pas d'intuition : il y a des règles de gestion, des inventaires, des dates de péremption et des procédures d'achat.",
+  img:{f:"ue10-01-stock.jpg", leg:"Rayonnages de stockage d'une pharmacie à usage intérieur"}},
+
+ {t:"notion", kick:"Le référentiel", titre:"Ce que le diplôme attend de vous",
+  paras:["La compétence C9 de l'arrêté du 31 juillet 2024 énonce la mission : gérer les flux et les stocks de médicaments, de dispositifs et de fluides médicaux au sein de la PUI et dans les stocks déportés dans les unités de soins et les plateaux techniques, dans le respect des procédures.",
+   "Elle comprend l'organisation des stocks et de leur élimination, la participation aux procédures d'achats et la réalisation des commandes, l'approvisionnement selon les données de stock pour éviter toute rupture, et l'archivage manuel ou informatisé des données."],
+  encart:{type:"info", titre:"Le mot qui compte", texte:"« Stocks déportés » : le stock n'est pas seulement celui de la pharmacie. Les dotations des services et des plateaux techniques relèvent aussi de votre responsabilité de gestion."}},
+
+ {t:"chiffres", kick:"Les critères d'évaluation", titre:"Sur quoi vous serez jugé", lignes:[
+  {v:"Inventaires", l:"réalisés périodiquement selon les procédures en vigueur"},
+  {v:"Stockage", l:"conditions permettant la conservation de la qualité et de l'intégrité des produits"},
+  {v:"Péremptions", l:"disponibilité vérifiée en tenant compte des dates ; produits périmés identifiés et éliminés"},
+  {v:"Commandes", l:"passées selon les procédures et les directives du pharmacien, auprès de fournisseurs agréés"},
+  {v:"Ruptures", l:"les ruptures de stock sont évitées"},
+  {v:"Archivage", l:"sauvegardes quotidiennes réalisées, périodes de conservation respectées"}],
+  note:"Indicateurs de la compétence C9, annexe II de l'arrêté du 31 juillet 2024. Ces formulations sont celles du texte : elles peuvent servir de grille de relecture avant une épreuve pratique."},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les mots de la gestion", mots:[
+  {m:"MITM", d:"Médicament d'intérêt thérapeutique majeur : médicament ou classe pour lesquels une interruption de traitement est susceptible de mettre en jeu le pronostic vital à court ou moyen terme, ou de représenter une perte de chance importante."},
+  {m:"Rupture de stock", d:"Impossibilité de fabriquer ou d'exploiter un médicament. Elle peut être la cause d'une rupture d'approvisionnement."},
+  {m:"Stock de sécurité", d:"Nombre d'unités de produit fini prêtes à être distribuées sur le territoire français, couvrant une durée de besoins calculée sur le volume des ventes des douze derniers mois glissants."},
+  {m:"Plan de gestion des pénuries", d:"Document du laboratoire identifiant les situations à risque de tension et proposant des solutions pour poursuivre les traitements. Adressé chaque année à l'ANSM."},
+  {m:"Contingentement", d:"Mesure de réduction de l'impact d'une tension : quantitatif, ou qualitatif par réservation du stock à certaines indications."},
+  {m:"Stock déporté", d:"Stock détenu hors de la PUI, dans une unité de soins ou un plateau technique, mais géré sous la responsabilité pharmaceutique."}]},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"Le stock de sécurité est obligatoire depuis 2021", type:"garde",
+  texte:"Le décret n° 2021-349 du 30 mars 2021, entré en vigueur le 1er septembre 2021, impose aux titulaires d'AMM et aux exploitants de constituer un stock de sécurité destiné au marché national, situé en France. Ce dispositif a été créé par l'article 48 de la loi de financement de la sécurité sociale pour 2020. Un cours antérieur à 2021 ne décrit pas cette obligation, ni les sanctions financières que l'ANSM peut prononcer en cas de manquement."},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les durées de stock de sécurité", lignes:[
+  {v:"2 mois", l:"couverture minimale pour un médicament d'intérêt thérapeutique majeur"},
+  {v:"1 semaine", l:"couverture pour les autres médicaments"},
+  {v:"1 mois", l:"pour les médicaments non MITM contribuant à une politique de santé publique définie par le ministre"},
+  {v:"4 mois", l:"plafond : l'ANSM peut porter le stock jusqu'à cette durée après une rupture dans les deux années civiles précédentes"}],
+  note:"Décret n° 2021-349 du 30 mars 2021. Les durées se calculent sur la base du volume des ventes en France des douze derniers mois glissants."},
+
+ {t:"notion", kick:"Les ruptures", titre:"Qui signale, et à qui",
+  paras:["Les titulaires d'AMM et les entreprises exploitant un médicament d'intérêt thérapeutique majeur informent l'ANSM dès qu'ils en ont connaissance de tout risque de rupture de stock ou de toute rupture de ce médicament, selon les modalités fixées par décision du directeur général de l'agence.",
+   "Le phénomène n'est pas marginal : l'ANSM a enregistré 2 446 signalements de ruptures ou de risques de rupture en 2020, contre 1 504 en 2019. Entre 5 et 10 % de ces signalements nécessitent des mesures de réduction d'impact : contingentement quantitatif ou qualitatif, importation de médicaments similaires provenant d'autres pays."],
+  encart:{type:"astuce", titre:"Votre place dans le dispositif", texte:"Vous ne signalez pas à l'ANSM : ce sont les industriels qui le font. En revanche vous êtes en première ligne pour repérer la tension, alerter le pharmacien, appliquer le contingentement décidé et informer les services."}},
+
+ {t:"notion", kick:"Fluides médicaux", titre:"Trois statuts, une même bouteille",
+  paras:["Les gaz à usage médical sont des produits de santé, mais tous n'ont pas le même statut. Les gaz médicinaux sont des médicaments et disposent d'une autorisation de mise sur le marché : oxygène, protoxyde d'azote, monoxyde d'azote, MEOPA, xénon. D'autres gaz sont des dispositifs médicaux et portent un marquage CE : dioxyde de carbone pour cœlioscopie, gaz pour chirurgie ophtalmique, argon pour chirurgie laser, azote liquide. D'autres enfin n'ont ni AMM ni marquage CE : air médical, vide, aspiration médicale.",
+   "Pour l'oxygène, l'AMM est accordée pour le gaz contenu, la bouteille et son robinet, et le cas échéant le détendeur intégré au robinet. Ce n'est pas seulement le gaz qui est autorisé : c'est l'ensemble."],
+  encart:{type:"piege", titre:"Le piège à éviter", texte:"Les gaz à usage médical se distinguent des gaz à usage technique, qui ne sont pas des produits de santé — un gaz de laboratoire par exemple. Même apparence, même contenant, régime juridique sans rapport."},
+  img:{f:"ue10-08-bouteilles.jpg", leg:"Bouteilles de gaz à usage médical"}},
+
+ {t:"notion", kick:"Fluides médicaux", titre:"Qui commande l'oxygène",
+  paras:["L'oxygène médical destiné à des patients hospitalisés est commandé par le pharmacien de la PUI de l'établissement, auprès d'un établissement pharmaceutique exploitant ou distributeur en gros de gaz à usage médical.",
+   "Les PUI gèrent également les autres gaz médicinaux disposant d'une AMM ainsi que les gaz ayant le statut de dispositif médical stérile. Le remplissage de bouteilles et de réservoirs cryogéniques mobiles est une opération de fabrication : il ne peut être réalisé que dans un établissement disposant d'une autorisation d'ouverture."],
+  encart:{type:"info", titre:"Ce qui reste au laboratoire", texte:"La qualité analytique du produit livré, conforme aux spécifications de l'AMM, relève du laboratoire pharmaceutique fabricant. Le changement des bouteilles sur une rampe d'approvisionnement, lui, relève du pharmacien hospitalier."}},
+
+ {t:"etapes", kick:"En pratique", titre:"Le cycle d'un produit dans la PUI",
+  etapes:["Évaluation du besoin, qualitative et quantitative, en fonction de l'activité",
+   "Commande selon les procédures et les directives du pharmacien, auprès de fournisseurs agréés",
+   "Réception : contrôle de conformité de la livraison et traçabilité de l'approvisionnement",
+   "Rangement dans des conditions préservant la qualité et l'intégrité du produit",
+   "Suivi des dates de péremption et rotation des lots",
+   "Délivrance aux unités de soins ou reconstitution des dotations, avec traçabilité",
+   "Inventaires périodiques et rapprochement avec les données informatiques",
+   "Élimination des produits périmés selon les procédures et la réglementation"],
+  note:"Séquence construite à partir des indicateurs de la compétence C9 de l'annexe II de l'arrêté du 31 juillet 2024."},
+
+ {t:"quiz", kick:"Vérification", question:"Quel est le stock de sécurité minimal imposé pour un médicament d'intérêt thérapeutique majeur ?",
+  options:["Une semaine de couverture des besoins","Deux mois de couverture des besoins","Quatre mois de couverture des besoins"],
+  bonne:1,
+  expl:"Une semaine correspond aux autres médicaments, quatre mois au plafond que l'ANSM peut imposer après une rupture survenue dans les deux années civiles précédentes."},
+
+ {t:"quiz", kick:"Vérification", question:"Un cadre vous demande de commander du dioxyde de carbone pour la cœlioscopie du bloc. Quel est son statut ?",
+  options:["Médicament sous AMM","Dispositif médical portant un marquage CE","Gaz sans statut de produit de santé"],
+  bonne:1,
+  expl:"Le dioxyde de carbone pour cœlioscopie est un gaz dispositif médical. L'air médical, le vide et l'aspiration médicale, eux, n'ont ni AMM ni marquage CE."},
+
+ {t:"quiz", kick:"Vérification", question:"Qui informe l'ANSM d'un risque de rupture de stock d'un MITM ?",
+  options:["La PUI qui constate la tension","Le titulaire de l'AMM ou l'entreprise qui exploite le médicament","L'ARS après remontée des établissements"],
+  bonne:1,
+  expl:"L'obligation pèse sur l'industriel, dès qu'il en a connaissance. La PUI, elle, applique les mesures décidées et alerte en interne."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Arrêté du 31 juillet 2024, annexes I et II", ref:"Activité 4 et compétence C9 : gestion et approvisionnement des médicaments, dispositifs et fluides médicaux, critères d'évaluation", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"},
+  {titre:"Décret n° 2021-349 du 30 mars 2021", ref:"Stock de sécurité destiné au marché national, articles R. 5124-49-1 et R. 5124-49-4 du CSP", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000043306277"},
+  {titre:"ANSM", ref:"Entrée en vigueur de l'obligation de stock de deux mois pour les MITM, plans de gestion des pénuries, chiffres des signalements 2019 et 2020", url:"https://ansm.sante.fr/actualites/disponibilite-des-medicaments-les-medicaments-dinteret-therapeutique-majeur-doivent-desormais-disposer-dun-stock-de-securite-de-deux-mois"},
+  {titre:"Vie publique", ref:"Durées de stock par catégorie de médicament et plafond de quatre mois", url:"https://www.vie-publique.fr/en-bref/281379-penuries-de-medicaments-un-stock-minimal-obligatoire"},
+  {titre:"Ordre national des pharmaciens", ref:"Dispensation de l'oxygène à usage médical : commande par le pharmacien de la PUI, gaz médicinaux et gaz dispositifs médicaux", url:"https://www.ordre.pharmacien.fr/je-suis/pharmacien/pharmacien/mon-exercice-professionnel/les-fiches-professionnelles/dispensation-de-l-oxygene-a-usage-medical"},
+  {titre:"OMéDIT Pays de la Loire", ref:"Les trois statuts des gaz à usage médical et leurs exemples", url:"https://www.omedit-paysdelaloire.fr/bon-usage-des-produits-de-sante/gaz-medicaux/"},
+  {titre:"ANSM", ref:"Statut de médicament de la bouteille d'oxygène à usage médical, périmètre de l'AMM", url:"https://ansm.sante.fr/actualites/point-dinformation-bouteille-doxygene-a-usage-medical"}],
+  note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas de la comptabilité hospitalière ni du suivi budgétaire, qui figurent pourtant parmi les objectifs de l'UE : je n'ai pas pu consulter de source primaire à jour sur ce point et je préfère ne rien écrire. Reportez-vous au cours de votre centre."}
+]},
+
+UE11: {titre:"Santé publique, économie de la santé, droit, éthique et communication", duree:"13 min", diapos:[
+ {t:"intro", kick:"UE11 · pour commencer", titre:"Le patient n'est pas un dossier",
+  texte:"Cette UE ne parle pas de technique. Elle parle de ce qui encadre la technique : les droits de la personne soignée, le secret que vous devez, les règles de transmission d'informations dans une équipe, et la manière de communiquer sans trahir ni l'un ni l'autre."},
+
+ {t:"notion", kick:"Le texte fondateur", titre:"La loi du 4 mars 2002",
+  paras:["La loi n° 2002-303 du 4 mars 2002 relative aux droits des malades et à la qualité du système de santé réaffirme des droits jusque-là éparpillés dans plusieurs textes, dont la charte du patient hospitalisé de 1995. Elle consacre notamment l'accès direct du patient à son dossier médical.",
+   "Le décret n° 2002-637 du 29 avril 2002 en précise les modalités. La consultation sur place des informations est gratuite ; lorsque le demandeur souhaite des copies, les frais laissés à sa charge ne peuvent excéder le coût de la reproduction et, le cas échéant, de l'envoi."],
+  encart:{type:"info", titre:"L'expression à connaître", texte:"On parle de « démocratie sanitaire » : le patient devient acteur, ce qui suppose information, consentement et participation active. L'expression est apparue lors des États généraux de la santé, en 1998-1999."}},
+
+ {t:"notion", kick:"Le secret", titre:"Ce que couvre exactement le secret professionnel",
+  paras:["L'article L. 1110-4 du code de la santé publique, introduit par la loi du 4 mars 2002, en fait un droit du patient : excepté dans les cas de dérogation expressément prévus par la loi, le secret couvre l'ensemble des informations concernant la personne venues à la connaissance du professionnel de santé.",
+   "Sa violation est sanctionnée par l'article 226-13 du code pénal. Le référentiel du diplôme le rappelle sans détour : le préparateur en pharmacie hospitalière est soumis au secret professionnel."],
+  encart:{type:"piege", titre:"Trois erreurs fréquentes", texte:"Le secret vaut aussi à l'égard des proches du patient. Il ne cesse pas au décès : certaines informations peuvent être transmises aux ayants droit, sauf si le malade s'y était opposé de son vivant. Et il couvre tout ce que vous apprenez, pas seulement ce qu'on vous a dit officiellement."}},
+
+ {t:"notion", kick:"Le secret partagé", titre:"L'équipe de soins, une exception organisée",
+  paras:["Lorsque la personne est prise en charge par une équipe de soins dans un établissement de santé, les informations la concernant sont réputées confiées par le malade à l'ensemble de l'équipe. C'est ce qui rend possible le travail collectif sans violer le secret.",
+   "Cette exception a une limite simple à retenir : elle ne justifie que la transmission des informations nécessaires à la prise en charge, aux personnes qui y participent. Elle n'autorise pas la conversation de couloir."],
+  encart:{type:"astuce", titre:"Le test à s'appliquer", texte:"Avant de transmettre une information : est-ce que cette personne participe à la prise en charge, et est-ce que cette information lui est nécessaire pour le faire ? Si l'une des deux réponses est non, on se tait."}},
+
+ {t:"notion", kick:"L'information", titre:"Le droit d'être informé",
+  paras:["L'article L. 1111-2 du code de la santé publique pose que toute personne a le droit d'être informée sur son état de santé. Cette information porte sur les investigations, traitements ou actions de prévention proposés, leur utilité, leur urgence éventuelle, leurs conséquences, les risques fréquents ou graves normalement prévisibles, ainsi que sur les autres solutions possibles.",
+   "L'information est délivrée oralement, de préférence au cours d'un entretien qui lui est spécifiquement consacré ; elle peut s'appuyer sur des documents écrits, mais ceux-ci ne la remplacent pas."],
+  encart:{type:"info", titre:"Le lien avec votre métier", texte:"Les critères d'évaluation du diplôme reprennent cette exigence à leur manière : le vocabulaire utilisé est adapté à l'interlocuteur, la compréhension de l'interlocuteur est vérifiée, et des mesures adaptées sont prises pour les personnes en situation de handicap ou de fragilité."}},
+
+ {t:"notion", kick:"Communication", titre:"Transmettre sans trahir",
+  paras:["La compétence C10 de l'arrêté du 31 juillet 2024 demande de transmettre informations et données en lien avec la personne soignée, en utilisant les outils numériques, aux membres d'une équipe pluriprofessionnelle, dans un but de coopération et de continuité de service.",
+   "Elle impose de respecter les règles de sécurité numérique et la réglementation relative aux données de santé, et de sécuriser son environnement numérique de travail. Communiquer avec la personne soignée, son entourage et les autres professionnels se fait dans le respect des droits du patient et du secret professionnel."],
+  encart:{type:"astuce", titre:"Les indicateurs du texte", texte:"Les données transmises doivent être fiables et conformes, organisées et hiérarchisées donc exploitables, les anomalies ou incohérences ciblées, et le vocabulaire adapté aux interlocuteurs et à la situation."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les notions à ne pas confondre", mots:[
+  {m:"Déontologie", d:"Ensemble des devoirs professionnels, inscrits dans des codes et opposables. Le manquement expose à une sanction."},
+  {m:"Éthique", d:"Réflexion sur ce qu'il est juste de faire quand les règles ne tranchent pas, ou se contredisent."},
+  {m:"Secret professionnel", d:"Obligation légale de ne pas révéler les informations connues à raison de sa profession, sanctionnée pénalement."},
+  {m:"Secret partagé", d:"Transmission, au sein de l'équipe de soins, des seules informations nécessaires à la prise en charge."},
+  {m:"Démocratie sanitaire", d:"Reconnaissance de droits individuels et collectifs des usagers, et de leur participation aux décisions de santé."},
+  {m:"Ayant droit", d:"Personne qui peut, après le décès du patient et sous conditions, accéder à certaines informations du dossier médical."}]},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE11", lignes:[
+  {v:"1995", l:"charte du patient hospitalisé, l'un des textes que la loi de 2002 vient rassembler"},
+  {v:"1998-1999", l:"États généraux de la santé, où apparaît l'expression « démocratie sanitaire »"},
+  {v:"4 mars 2002", l:"loi relative aux droits des malades et à la qualité du système de santé"},
+  {v:"29 avril 2002", l:"décret précisant les modalités d'accès aux informations de santé"},
+  {v:"L. 1110-4", l:"secret professionnel, érigé en droit du patient"},
+  {v:"L. 1111-2", l:"droit d'être informé sur son état de santé"},
+  {v:"226-13", l:"article du code pénal sanctionnant la violation du secret professionnel"}]},
+
+ {t:"quiz", kick:"Vérification", question:"Le fils d'une patiente hospitalisée vous demande quels médicaments elle prend. Que faites-vous ?",
+  options:["Je réponds, il s'agit d'un proche",
+   "Je ne réponds pas : le secret vaut aussi à l'égard des proches, et j'oriente vers l'équipe médicale et la patiente elle-même",
+   "Je réponds si la patiente est âgée"],
+  bonne:1,
+  expl:"Le secret professionnel doit être maintenu à l'égard des proches du patient. Seule la patiente peut décider de ce qui est partagé avec sa famille."},
+
+ {t:"quiz", kick:"Vérification", question:"Quel article du code de la santé publique fonde le secret professionnel comme un droit du patient ?",
+  options:["L'article L. 1111-2","L'article L. 1110-4","L'article 226-13 du code pénal"],
+  bonne:1,
+  expl:"L'article L. 1110-4 a été introduit par la loi du 4 mars 2002. L'article L. 1111-2 porte sur le droit à l'information, et l'article 226-13 du code pénal sanctionne la violation du secret."},
+
+ {t:"quiz", kick:"Vérification", question:"Un patient demande une copie de son dossier médical. Que peut-on lui facturer ?",
+  options:["Rien, tout est gratuit dans tous les cas",
+   "Au plus le coût de la reproduction et, le cas échéant, de l'envoi",
+   "Un forfait fixé librement par l'établissement"],
+  bonne:1,
+  expl:"La consultation sur place est gratuite. Pour les copies, les frais laissés à la charge du demandeur ne peuvent excéder le coût de la reproduction et de l'envoi."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Loi n° 2002-303 du 4 mars 2002", ref:"Droits des malades et qualité du système de santé : accès au dossier, gratuité de la consultation sur place, frais de copie", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000227015/"},
+  {titre:"AP-HP, direction des affaires juridiques", ref:"Le secret médical : portée de l'article L. 1110-4, secret à l'égard des proches, cas du patient décédé", url:"https://affairesjuridiques.aphp.fr/textes/le-secret-medical/"},
+  {titre:"AP-HP, direction des affaires juridiques", ref:"Accès au dossier médical : loi du 4 mars 2002 et décret n° 2002-637 du 29 avril 2002", url:"https://affairesjuridiques.aphp.fr/textes/acces-au-dossier-medical/"},
+  {titre:"Conseil national de l'Ordre des médecins", ref:"Secret professionnel : article 226-13 du code pénal, article L. 1110-4 du CSP, définition extensive de l'équipe de soins", url:"https://www.conseil-national.medecin.fr/code-deontologie/devoirs-generaux-medecins-art-2-31/article-4-secret-professionnel"},
+  {titre:"Arrêté du 31 juillet 2024, annexes I et II", ref:"Préparateur soumis au secret professionnel ; compétence C10 et ses critères d'évaluation", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"}],
+  note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas de l'économie de la santé ni des modalités de financement des soins, qui figurent parmi les objectifs de l'UE : je n'ai pas pu consulter de source primaire à jour et je préfère ne rien écrire plutôt qu'un chiffre approximatif. Reportez-vous au cours de votre centre pour cette partie."}
+]},
+
+UE12: {titre:"Pédagogie, tutorat, projet personnel et engagement", duree:"13 min", diapos:[
+ {t:"intro", kick:"UE12 · pour commencer", titre:"Un jour, ce sera vous le tuteur",
+  texte:"Vous êtes en formation aujourd'hui ; dans quelques mois, un étudiant vous suivra en stage et le texte prévoit que ce soit un préparateur en pharmacie hospitalière qui l'encadre. Cette UE prépare ce basculement, et elle porte aussi sur votre propre parcours : portfolio, démarche réflexive, projet professionnel.",
+  img:{f:"ue12-01-tutorat.jpg", leg:"Accompagnement d'un étudiant en milieu professionnel"}},
+
+ {t:"notion", kick:"Le cadre", titre:"Qui peut être tuteur",
+  paras:["Chaque étudiant se voit attribuer un tuteur de stage. Celui-ci est un préparateur en pharmacie hospitalière. En l'absence de préparateur dans la structure d'accueil, un cadre de santé ou un pharmacien praticien hospitalier peut être désigné tuteur.",
+   "Les terrains de stage sont agréés par le directeur du centre de formation, et une convention de stage est signée entre l'apprenant, l'organisme d'accueil et le centre de formation."],
+  encart:{type:"info", titre:"L'ordre de priorité", texte:"Le préparateur est le tuteur de droit commun. Le cadre de santé et le pharmacien praticien hospitalier ne viennent qu'à défaut. C'est une reconnaissance de la profession, pas une formalité."}},
+
+ {t:"chiffres", kick:"La formation", titre:"Les chiffres du diplôme", lignes:[
+  {v:"1 400 h", l:"durée totale de la formation, travail personnel de l'étudiant inclus"},
+  {v:"700 h", l:"formation en milieu professionnel, soit 20 semaines"},
+  {v:"60 ECTS", l:"dont 40 pour la théorie et 20 pour les périodes en milieu professionnel"},
+  {v:"1 semaine = 1 ECTS", l:"règle de conversion des périodes en milieu professionnel"},
+  {v:"35 h", l:"base hebdomadaire des stages, dont 5 à 7 heures dédiées aux travaux de l'étudiant"},
+  {v:"70 h", l:"franchise maximale d'absence, soit 5 % de la durée totale de la formation"},
+  {v:"25 h", l:"durée maximale d'enseignement par semaine recommandée"}]},
+
+ {t:"etapes", kick:"Le parcours de stage", titre:"Comment se répartissent les 20 semaines",
+  etapes:["17 semaines en pharmacie à usage intérieur",
+   "Dont 5 semaines en stérilisation et dispositifs médicaux, avec une semaine vers les blocs, plateaux techniques, équipes opérationnelles d'hygiène ou services de soins",
+   "Dont 5 semaines en secteur de production : 3 en cytotoxiques injectables et préparations stériles et non stériles, 2 en radiopharmacie",
+   "Dont 7 semaines dans les autres secteurs : logistique, essais cliniques, médicaments, services de soins",
+   "3 semaines choisies en concertation avec l'équipe pédagogique selon le projet professionnel, dont une semaine pour le service sanitaire"],
+  note:"Une adaptation locale de cette répartition est possible selon le projet du centre de formation et l'offre de stage sur le territoire. Le service sanitaire concerne les apprenants à compter de la rentrée universitaire 2025-2026."},
+
+ {t:"notion", kick:"Le portfolio", titre:"À quoi il sert vraiment",
+  paras:["Le portfolio est un outil de suivi qui sert à mesurer la progression de l'apprenant en milieu professionnel. Il est centré sur l'acquisition des compétences, des activités et des actes du préparateur en pharmacie hospitalière. L'étudiant le renseigne lui-même.",
+   "Le référent pédagogique en charge du suivi fait le bilan des acquisitions avec l'apprenant, le conseille et le guide pour la suite de son parcours. Ce n'est donc pas un carnet de présence : c'est le support d'un dialogue sur ce qui est acquis et ce qui ne l'est pas encore."],
+  encart:{type:"piege", titre:"L'erreur à ne pas commettre", texte:"Remplir le portfolio la veille du bilan. Il documente une progression : rempli après coup, il ne documente plus rien et l'entretien perd son objet."}},
+
+ {t:"notion", kick:"L'évaluation en stage", titre:"Trois mots, et rien d'autre",
+  paras:["La feuille d'évaluation mesure la progression de l'apprenant et son degré d'acquisition des compétences, à partir des critères et indicateurs du référentiel de compétences. Trois critères d'évaluation seulement sont retenus : non pratiqué, non acquis, acquis.",
+   "Dans chaque période, les professionnels du lieu de formation renseignent la feuille par une argumentation précise et factuelle, en présence de l'apprenant. En cas de difficulté d'apprentissage, un entretien entre le tuteur professionnel, l'enseignant référent et l'apprenant est préconisé."],
+  encart:{type:"astuce", titre:"Ce que « non pratiqué » veut dire", texte:"Ce n'est pas un échec : c'est l'absence d'occasion. Le distinguer de « non acquis » est essentiel, pour l'étudiant comme pour le tuteur, et c'est ce que le texte impose en n'offrant que trois cases."}},
+
+ {t:"notion", kick:"Accompagner", titre:"Ce qu'on attend d'un tuteur",
+  paras:["La compétence C11 demande d'accompagner les pairs, les personnes en formation et les autres professionnels, dans la limite de son champ de compétences, en tenant compte d'éventuels besoins spécifiques des personnes en situation de handicap.",
+   "Elle se décline en trois temps : organiser et superviser l'accueil, l'information et les activités d'apprentissage dans un climat de confiance et bienveillant ; mettre en œuvre des actions de transmission de savoir-faire par conseils, démonstrations, explications et analyse commentée de sa propre pratique ; évaluer les compétences mises en œuvre à l'aide des outils de suivi."],
+  encart:{type:"info", titre:"Les indicateurs du texte", texte:"Une démarche d'accueil est mise en œuvre et les objectifs d'apprentissage sont formalisés ; les méthodes pédagogiques sont adaptées à l'apprenant et à la situation ; une procédure d'évaluation est appliquée et l'évaluation donne lieu à un échange avec la personne évaluée."}},
+
+ {t:"notion", kick:"Votre parcours", titre:"Démarche réflexive et projet personnel",
+  paras:["L'UE vise à se positionner en tant que tuteur et à contribuer au développement de la démarche réflexive dans un contexte de pluridisciplinarité, mais aussi à prendre des initiatives et des engagements, notamment dans le champ de la formation ou professionnel.",
+   "La compétence C12 précise ce qu'analyser sa pratique veut dire : la confronter à celle de ses pairs et d'autres professionnels, identifier ses points forts et ses difficultés, analyser ces difficultés et proposer des améliorations, en utilisant les grilles d'habilitation aux postes de travail pour s'auto-évaluer."],
+  encart:{type:"astuce", titre:"Une piste concrète", texte:"Les grilles d'habilitation existent déjà dans votre service. S'en servir comme outil d'auto-évaluation est explicitement prévu par le texte, et c'est le moyen le plus simple de repérer un besoin de formation avant qu'il ne devienne un écart."}},
+
+ {t:"encart", kick:"Bon à savoir", titre:"Les règles de validation, en une phrase", type:"garde",
+  texte:"Une note au moins égale à 10 sur 20 est requise pour valider un domaine de compétences. Au sein d'un même domaine, les unités d'enseignement dont le résultat est au moins équivalent à 8 sur 20 peuvent être compensées entre elles. Ne peuvent jamais être compensées entre elles les UE de deux domaines différents, ni les UE théoriques et celles de formation en milieu professionnel. Deux sessions d'examen sont prévues ; lorsqu'une UE a été présentée aux deux, c'est la note de la deuxième session qui est retenue."},
+
+ {t:"quiz", kick:"Vérification", question:"Dans une structure sans préparateur en pharmacie hospitalière, qui peut être désigné tuteur de stage ?",
+  options:["Personne, le stage ne peut pas avoir lieu",
+   "Un cadre de santé ou un pharmacien praticien hospitalier",
+   "N'importe quel professionnel de l'équipe"],
+  bonne:1,
+  expl:"Le tuteur est en principe un préparateur en pharmacie hospitalière. Le texte prévoit explicitement ces deux solutions de remplacement, et elles seulement."},
+
+ {t:"quiz", kick:"Vérification", question:"Vous n'avez jamais eu l'occasion de manipuler en radiopharmacie pendant votre période de stage. Que porte le tuteur sur la feuille d'évaluation ?",
+  options:["Non acquis","Non pratiqué","Acquis avec réserve"],
+  bonne:1,
+  expl:"Les trois seuls critères sont non pratiqué, non acquis et acquis. « Non pratiqué » signale une absence d'occasion, pas un échec : la nuance est précisément ce que le texte permet de tracer."},
+
+ {t:"quiz", kick:"Vérification", question:"Une UE du domaine 3 est notée 7 sur 20, une autre du même domaine 15 sur 20. Que se passe-t-il ?",
+  options:["Les deux se compensent, le domaine est validé",
+   "Aucune compensation possible : sous 8 sur 20, l'UE n'est pas compensable",
+   "La compensation est possible avec une UE d'un autre domaine"],
+  bonne:1,
+  expl:"La compensation ne joue qu'au-dessus de 8 sur 20 et seulement entre UE d'un même domaine. Jamais entre domaines, jamais entre théorie et stage."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Arrêté du 31 juillet 2024, articles 11 à 19", ref:"Durée de la formation, tutorat, portfolio, convention de stage, franchise d'absence, règles de validation et de compensation", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"},
+  {titre:"Arrêté du 31 juillet 2024, annexe III", ref:"Répartition des 20 semaines de formation en milieu professionnel, portfolio, feuille d'évaluation et ses trois critères", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"},
+  {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Compétences C11 et C12, critères d'évaluation et indicateurs", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"},
+  {titre:"Légifrance", ref:"Arrêté du 31 juillet 2024 relatif au diplôme d'État de préparateur en pharmacie hospitalière, texte officiel", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050066720"},
+  {titre:"ANFH", ref:"Grade de licence et modification des référentiels ; décret n° 2024-855 du 31 juillet 2024", url:"https://www.anfh.fr/actualites/de-preparateur-en-pharmacie-hospitaliere-grade-licence-et-modification-des-referentiels"}],
+  note:"Textes consultés le 9 août 2026, arrêté lu dans son texte intégral. C'est la seule leçon dont la source principale décrit directement votre propre formation : en cas de doute sur une modalité, c'est ce texte qui fait foi, et votre centre qui l'applique."}
+]},
+
+UE13: {titre:"Initiation à la démarche de recherche", duree:"13 min", diapos:[
+ {t:"intro", kick:"UE13 · pour commencer", titre:"Savoir d'où vient ce qu'on vous affirme",
+  texte:"Un fournisseur vous montre une étude, un collègue cite un article, une revue annonce un résultat. Cette UE apprend deux choses : comment une recherche impliquant des personnes est encadrée en France, et comment juger le poids réel d'un résultat avant de changer une pratique."},
+
+ {t:"notion", kick:"Le cadre", titre:"La loi Jardé",
+  paras:["La loi n° 2012-300 du 5 mars 2012, dite loi Jardé, encadre les recherches impliquant la personne humaine. Ses décrets d'application ont été promulgués le 16 novembre 2016 avec le décret n° 2016-1537, à effet immédiat.",
+   "Elle a changé le vocabulaire : les termes « recherche biomédicale » et « recherche en soins courants » sont obsolètes. On parle désormais de recherche impliquant la personne humaine, en abrégé RIPH."],
+  encart:{type:"garde", titre:"Attention, ça a changé", texte:"Si votre cours parle encore de « recherche biomédicale » au sens de la loi Huriet-Sérusclat de 1988, ou de « recherche en soins courants » issue de la loi de 2004, il décrit un vocabulaire abandonné depuis 2016."}},
+
+ {t:"chiffres", kick:"Le cœur de l'UE", titre:"Les trois catégories de RIPH", lignes:[
+  {v:"RIPH 1", l:"recherches interventionnelles comportant une intervention sur la personne non justifiée par sa prise en charge habituelle"},
+  {v:"RIPH 2", l:"recherches interventionnelles ne comportant que des risques et des contraintes minimes"},
+  {v:"RIPH 3", l:"recherches non interventionnelles, sans aucun risque ni contrainte pour les participants"}],
+  note:"Article L. 1121-1 du code de la santé publique. Les listes permettant de classer une recherche en catégorie 2 ou 3 sont fixées par deux arrêtés du 12 avril 2018, publiés au Journal officiel du 18 avril 2018."},
+
+ {t:"notion", kick:"Les autorisations", titre:"Qui doit dire oui, et à quel titre",
+  paras:["Toutes les catégories requièrent l'avis favorable d'un comité de protection des personnes. Le CPP est devenu la seule instance éthique pour l'ensemble des RIPH, avec une demande d'avis obligatoire pour les trois catégories.",
+   "En revanche, l'autorisation de l'ANSM n'est obligatoire que pour la catégorie 1. Pour les catégories 2 et 3, l'agence est informée : on lui transmet une copie de l'avis favorable du CPP et le résumé de la recherche."],
+  encart:{type:"astuce", titre:"Le schéma à retenir", texte:"CPP pour les trois catégories, toujours. ANSM : autorisation en catégorie 1, information en catégories 2 et 3. C'est la question qui tombe le plus souvent sur ce chapitre."}},
+
+ {t:"notion", kick:"Le participant", titre:"Consentement ou non-opposition",
+  paras:["Les recherches de catégories 1 et 2 nécessitent le consentement des personnes concernées. Les recherches de catégorie 3 se limitent à leur information et au recueil de leur non-opposition.",
+   "Toutes les RIPH sont diffusées dans un répertoire public, et chacune porte un numéro d'identification, l'ID-RCB, demandé auprès de l'ANSM."],
+  encart:{type:"piege", titre:"Le piège", texte:"« Pas de consentement » ne veut pas dire « pas d'information ». En catégorie 3, la personne doit être informée et pouvoir s'opposer : c'est une exigence, pas une formalité facultative."}},
+
+ {t:"notion", kick:"L'organisation", titre:"Le tirage au sort des comités",
+  paras:["Les comités de protection des personnes ne sont plus choisis dans l'inter-région de l'investigateur coordonnateur : ils sont désignés par tirage au sort, après dépôt du dossier auprès d'un guichet unique.",
+   "La loi Jardé a créé la commission nationale des recherches impliquant la personne humaine, la CNRIPH, chargée notamment d'assurer la formation des membres des comités, de les réunir au moins une fois par an et d'homogénéiser leurs pratiques. Son secrétariat assure le tirage au sort des dossiers."],
+  encart:{type:"info", titre:"Pourquoi ce tirage au sort", texte:"Il rompt le lien géographique entre le promoteur et le comité qui l'évalue. C'est une mesure d'indépendance, pas une complication administrative."}},
+
+ {t:"chiffres", kick:"Lire la littérature", titre:"Les quatre niveaux de preuve", lignes:[
+  {v:"Niveau 1", l:"essais comparatifs randomisés de forte puissance sans biais majeur, méta-analyses d'essais randomisés"},
+  {v:"Niveau 2", l:"essais comparatifs randomisés de faible puissance, études comparatives non randomisées bien menées, études de cohorte"},
+  {v:"Niveau 3", l:"études cas-témoins"},
+  {v:"Niveau 4", l:"études comparatives à biais importants, études rétrospectives, séries de cas, études épidémiologiques descriptives"}],
+  note:"Grille de gradation utilisée en France par la HAS, issue du guide d'analyse de la littérature de l'ANAES. Le niveau de preuve caractérise la capacité d'une étude à répondre à la question posée."},
+
+ {t:"notion", kick:"Lire la littérature", titre:"Du niveau de preuve au grade",
+  paras:["À chaque niveau correspond un grade de recommandation. Grade A : preuve scientifique établie, fondée sur des études de niveau 1. Grade B : présomption scientifique, fondée sur des études de niveau 2. Grade C : études de moindre niveau de preuve, niveaux 3 et 4.",
+   "S'il n'y a pas de précision, la recommandation s'appuie sur un accord professionnel. Et la gradation d'une recommandation ne présume pas obligatoirement du degré de sa force : une recommandation de grade C peut être forte."],
+  encart:{type:"piege", titre:"L'erreur de raisonnement", texte:"Confondre niveau de preuve et importance clinique. Le niveau décrit la solidité de la démonstration, pas l'ampleur du bénéfice ni l'urgence d'appliquer le résultat."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les mots de la méthode", mots:[
+  {m:"Randomisation", d:"Attribution par tirage au sort du groupe de traitement, pour rendre les groupes comparables."},
+  {m:"Puissance", d:"Capacité d'une étude à mettre en évidence une différence qui existe réellement. Une étude de faible puissance peut conclure à tort à l'absence d'effet."},
+  {m:"Biais", d:"Erreur systématique qui fausse le résultat dans un sens donné. Un biais ne se corrige pas en augmentant l'effectif."},
+  {m:"Méta-analyse", d:"Synthèse quantitative de plusieurs essais portant sur la même question."},
+  {m:"Étude de cohorte", d:"Suivi d'un groupe exposé et d'un groupe non exposé dans le temps, sans attribution du traitement par l'investigateur."},
+  {m:"Étude cas-témoins", d:"Comparaison rétrospective de personnes atteintes et non atteintes, à la recherche d'une exposition passée."},
+  {m:"Promoteur", d:"Personne ou organisme qui prend l'initiative de la recherche et en assure la gestion."}]},
+
+ {t:"notion", kick:"Votre rôle", titre:"Ce que le référentiel attend de vous",
+  paras:["La compétence C12 demande de rechercher et d'analyser les publications scientifiques et professionnelles et les ressources documentaires internationales, afin de suivre les évolutions des connaissances dans une démarche d'amélioration continue.",
+   "Elle demande aussi de conduire des actions de recherche ou des études à visée professionnelle en lien avec l'exercice de préparateur, et d'élaborer des documents professionnels et scientifiques en vue de leur communication orale et écrite."],
+  encart:{type:"astuce", titre:"Les indicateurs du texte", texte:"Les données pertinentes sont recherchées et sélectionnées dans les documents professionnels et scientifiques en français et en anglais ; les bases documentaires sont utilisées correctement et avec discernement, y compris les sources internet."}},
+
+ {t:"quiz", kick:"Vérification", question:"Une étude non interventionnelle par questionnaire, qui ne modifie pas la prise en charge, est envisagée dans votre PUI. Quelles démarches ?",
+  options:["Aucune, elle sort du champ de la loi",
+   "Avis d'un CPP, et information de l'ANSM par transmission de l'avis favorable et du résumé",
+   "Avis d'un CPP et autorisation de l'ANSM"],
+  bonne:1,
+  expl:"C'est une RIPH de catégorie 3 : l'avis du CPP est requis comme pour les trois catégories, mais l'autorisation de l'ANSM n'est exigée qu'en catégorie 1."},
+
+ {t:"quiz", kick:"Vérification", question:"Un article rapporte une série de cas favorable à une nouvelle pratique. Quel niveau de preuve ?",
+  options:["Niveau 1","Niveau 2","Niveau 4"],
+  bonne:2,
+  expl:"Les séries de cas relèvent du niveau 4, avec les études rétrospectives et les études descriptives. Cela ne rend pas le résultat faux, mais il ne peut pas à lui seul fonder un changement de pratique."},
+
+ {t:"quiz", kick:"Vérification", question:"Comment le comité de protection des personnes chargé d'un dossier est-il désigné ?",
+  options:["Par le promoteur, dans sa région","Par tirage au sort","Par l'ARS de l'établissement investigateur"],
+  bonne:1,
+  expl:"Le tirage au sort a remplacé le rattachement à l'inter-région de l'investigateur coordonnateur. Le secrétariat de la CNRIPH l'assure."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Université de Lorraine, cellule éthique et intégrité scientifique", ref:"Les trois catégories de RIPH selon l'article L. 1121-1 du CSP, consentement et non-opposition, démarches ANSM", url:"https://www.univ-lorraine.fr/luniversite-de-lorraine/ethique-deontologie-integrite-scientifique/ethique/la-loi-jarde-et-son-application/"},
+  {titre:"SFRMS", ref:"Loi Jardé en pratique : rôle du CPP par catégorie, arrêtés du 12 avril 2018, création et missions de la CNRIPH, tirage au sort", url:"https://www.sfrms-sommeil.org/loi-jarde-application-pratique/"},
+  {titre:"Comité de protection des personnes Sud-Méditerranée II", ref:"Loi n° 2012-300 du 5 mars 2012, décret n° 2016-1537 du 16 novembre 2016, guichet unique et tirage au sort", url:"https://www.cpp-sudmed2.fr/Soumission-des-dossiers"},
+  {titre:"HAS", ref:"Niveau de preuve et gradation des recommandations de bonne pratique — état des lieux", url:"https://www.has-sante.fr/jcms/c_1600564/fr/niveau-de-preuve-et-gradation-des-recommandations-de-bonne-pratique-etat-des-lieux"},
+  {titre:"Ministère chargé de la santé", ref:"Tableau de gradation des recommandations et des niveaux de preuve", url:"https://sante.gouv.fr/IMG/pdf/02_Gradation_et_niveau_de_preuve.pdf"},
+  {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Compétence C12 et ses critères d'évaluation", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"}],
+  note:"Textes consultés le 9 août 2026. Les catégories de RIPH et les circuits d'autorisation évoluent régulièrement : vérifiez la date de votre support avant de réviser ce chapitre."}
+]},
+
+UE14: {titre:"Anglais", duree:"12 min", diapos:[
+ {t:"intro", kick:"UE14 · pour commencer", titre:"Reading, not speaking",
+  texte:"L'objectif de cette UE n'est pas de tenir une conversation : c'est d'acquérir les connaissances en anglais permettant d'appréhender la lecture d'articles scientifiques, et de communiquer en anglais dans le domaine de la santé et des soins. Autrement dit, comprendre un résumé, une notice, un étiquetage — pas discuter météo."},
+
+ {t:"notion", kick:"Pourquoi l'anglais", titre:"Ce que le référentiel exige, exactement",
+  paras:["L'annexe III de l'arrêté du 31 juillet 2024 fixe deux objectifs pour l'UE Anglais : acquérir les connaissances permettant d'appréhender la lecture d'articles scientifiques, et communiquer en anglais dans le domaine de la santé et des soins.",
+   "Un indicateur de la compétence C12 le confirme : les données pertinentes sont recherchées et sélectionnées dans les documents professionnels et scientifiques en français et en anglais. L'anglais n'est pas un supplément culturel, c'est un outil de veille."],
+  encart:{type:"info", titre:"Ce qui est évalué", texte:"L'évaluation de cette UE peut être écrite, orale, ou prendre la forme d'un dossier individuel ou collectif. Elle vaut 2 ECTS, dans le domaine 5."}},
+
+ {t:"vocab", kick:"Core vocabulary", titre:"Les mots du métier", mots:[
+  {m:"Pharmaceutical dose form", d:"Forme pharmaceutique. Terme officiel des Standard Terms, à préférer à « dosage form » dans un contexte réglementaire européen."},
+  {m:"Route of administration", d:"Voie d'administration."},
+  {m:"Container, closure, delivery device", d:"Récipient, système de fermeture, dispositif d'administration."},
+  {m:"Batch, lot", d:"Lot de fabrication."},
+  {m:"Shelf life", d:"Durée de conservation."},
+  {m:"Storage conditions", d:"Conditions de conservation."},
+  {m:"Compounding", d:"Réalisation de préparations."},
+  {m:"Adverse event", d:"Événement indésirable, sans préjuger du lien de causalité."},
+  {m:"Adverse reaction", d:"Effet indésirable, c'est-à-dire un événement pour lequel un lien avec le produit est suspecté."},
+  {m:"SmPC", d:"Summary of Product Characteristics, le résumé des caractéristiques du produit."}]},
+
+ {t:"notion", kick:"Une base de référence", titre:"Les Standard Terms de l'EDQM",
+  paras:["La base Standard Terms, créée à la demande de la Commission européenne et gérée par l'EDQM, contient les termes et définitions décrivant les formes pharmaceutiques, les voies et méthodes d'administration, les unités de présentation, les récipients, systèmes de fermeture et dispositifs d'administration, pour les médicaments à usage humain et vétérinaire.",
+   "Elle donne l'équivalent de plus de 900 termes dans 35 langues, dont le français et l'anglais. Elle contient aussi des termes combinés, et des patient-friendly terms, plus courts, utilisables sur certaines étiquettes lorsque la place est limitée."],
+  encart:{type:"astuce", titre:"L'usage à en faire", texte:"C'est un dictionnaire bilingue officiel de votre métier, gratuit et en ligne. Pour traduire « comprimé pelliculé » ou « solution pour perfusion » sans risque d'erreur, c'est la source à utiliser, pas un traducteur automatique."},
+  img:{f:"ue14-04-etiquetage.jpg", leg:"Étiquetage d'un médicament en anglais"}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE14", lignes:[
+  {v:"900+", l:"termes disponibles dans la base Standard Terms"},
+  {v:"35", l:"langues couvertes par la base"},
+  {v:"1996", l:"première liste de Standard Terms, publiée dans une édition spéciale de Pharmeuropa"},
+  {v:"2014", l:"refonte complète de la base, dont l'accès devient gratuit"},
+  {v:"30/06/2022", l:"usage des termes EDQM rendu obligatoire pour les déclarations à EudraVigilance"}]},
+
+ {t:"notion", kick:"Reading", titre:"Ce que l'on cherche dans un résumé",
+  paras:["Un résumé d'article scientifique répond toujours aux mêmes questions, quel que soit le vocabulaire employé : quelle était la question posée, sur qui ou sur quoi, avec quelle méthode, quel résultat chiffré, et quelle conclusion les auteurs en tirent.",
+   "Repérer ces cinq éléments suffit pour décider si l'article mérite une lecture complète. Le reste du vocabulaire s'apprend en lisant, pas en apprenant des listes par cœur."],
+  encart:{type:"piege", titre:"Le réflexe à garder", texte:"La conclusion d'un résumé est écrite par les auteurs, qui ont intérêt à ce que leur travail paraisse utile. Le chiffre du résultat, lui, ne ment pas : c'est celui qu'il faut lire en premier."}},
+
+ {t:"vocab", kick:"False friends", titre:"Les faux amis à ne pas rater", mots:[
+  {m:"Drug", d:"Médicament ou substance active, selon le contexte. Ce n'est pas systématiquement une drogue au sens français."},
+  {m:"Preservative", d:"Conservateur d'une préparation. « Préservatif » se dit condom."},
+  {m:"Assist", d:"Aider, seconder. « Assister à » se dit attend."},
+  {m:"Actually", d:"En réalité, en fait. « Actuellement » se dit currently."},
+  {m:"Eventually", d:"Finalement, à terme. « Éventuellement » se dit possibly."},
+  {m:"Injury", d:"Lésion, blessure. Ce n'est pas une injure."},
+  {m:"Prescription", d:"Ordonnance. Le mot français « prescription » au sens juridique de délai se dit statute of limitations."}]},
+
+ {t:"notion", kick:"Writing", titre:"Communiquer par écrit dans un contexte de soins",
+  paras:["Le second objectif de l'UE est de communiquer en anglais dans le domaine de la santé et des soins. Dans un service, cela veut dire des choses simples et précises : signaler une rupture, transmettre une modalité de reconstitution, demander une confirmation de dosage.",
+   "La règle utile est la même qu'en français : une information par phrase, les unités toujours écrites, et la vérification de la compréhension de l'interlocuteur, que le référentiel exige quelle que soit la langue employée."],
+  encart:{type:"info", titre:"Le point d'attention", texte:"Les unités et les séparateurs décimaux ne s'écrivent pas de la même façon selon les pays. Un chiffre mal recopié depuis un document anglophone est une erreur médicamenteuse en puissance : recopier l'unité en toutes lettres lève l'ambiguïté."}},
+
+ {t:"quiz", kick:"Vérification", question:"Dans un document réglementaire européen, comment traduit-on « forme pharmaceutique » ?",
+  options:["Drug shape","Pharmaceutical dose form","Medicine type"],
+  bonne:1,
+  expl:"C'est le terme officiel des Standard Terms de l'EDQM, base créée à la demande de la Commission européenne et utilisée notamment dans les autorisations de mise sur le marché et les étiquetages."},
+
+ {t:"quiz", kick:"Vérification", question:"Quelle est la différence entre « adverse event » et « adverse reaction » ?",
+  options:["Aucune, ce sont deux synonymes",
+   "L'événement indésirable survient sans préjuger d'un lien de causalité, l'effet indésirable suppose un lien suspecté avec le produit",
+   "L'adverse reaction est toujours plus grave"],
+  bonne:1,
+  expl:"La distinction est la même qu'en français entre événement indésirable et effet indésirable. La confondre fausse toute lecture d'un article de pharmacovigilance."},
+
+ {t:"quiz", kick:"Vérification", question:"Un article indique que the study eventually included 240 patients. Que signifie « eventually » ?",
+  options:["Éventuellement, peut-être","Finalement, à terme","Régulièrement"],
+  bonne:1,
+  expl:"C'est l'un des faux amis les plus fréquents. « Éventuellement » se traduit par possibly, et « actuellement » par currently."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Arrêté du 31 juillet 2024, annexes II et III", ref:"Objectifs pédagogiques de l'UE Anglais, 2 ECTS ; indicateur de la compétence C12 sur les documents en français et en anglais", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"},
+  {titre:"EDQM, Standard Terms database", ref:"Contenu de la base : formes pharmaceutiques, voies d'administration, récipients, termes combinés, patient-friendly terms, 900 termes en 35 langues", url:"https://www.edqm.eu/en/standard-terms-database"},
+  {titre:"EDQM, Standard Terms", ref:"Historique de la base : première liste dans Pharmeuropa en 1996, refonte et gratuité en 2014", url:"https://standardterms.edqm.eu/"},
+  {titre:"EMA", ref:"Usage obligatoire des terminologies EDQM pour les formes et voies d'administration dans les déclarations à EudraVigilance depuis le 30 juin 2022", url:"https://www.ema.europa.eu/en/documents/other/mandatory-use-iso-icsrich-e2br3-and-edqm-terminology-dosage-forms-df-and-routes-administration-roa_en.pdf"}],
+  note:"Consulté le 9 août 2026. Cette leçon est volontairement centrée sur le vocabulaire réglementaire vérifiable et sur les faux amis : je n'ai pas construit de cours de grammaire ni de liste d'expressions toutes faites, faute de source institutionnelle sur laquelle les appuyer. Le cours de votre centre reste la référence pour la partie linguistique."}
+]},
+
+UE15: {titre:"Démarche qualité et gestion des risques", duree:"14 min", diapos:[
+ {t:"intro", kick:"UE15 · pour commencer", titre:"Ce qui transforme une erreur en enseignement",
+  texte:"Toute organisation produit des erreurs. Ce qui distingue une organisation sûre d'une organisation dangereuse, ce n'est pas leur absence : c'est ce qu'elle en fait. Signaler, analyser les causes, corriger, vérifier que la correction tient. Cette UE décrit ce cycle et les instances qui le rendent obligatoire."},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les mots de la qualité", mots:[
+  {m:"Non-conformité", d:"Écart constaté entre ce qui était prévu et ce qui a été fait ou obtenu."},
+  {m:"Événement indésirable", d:"Fait survenu au cours de la prise en charge, susceptible de causer un dommage."},
+  {m:"EIGS", d:"Événement indésirable grave associé à des soins, dont la déclaration est obligatoire."},
+  {m:"Action corrective", d:"Mesure prise pour supprimer la cause d'un écart déjà survenu et éviter sa répétition."},
+  {m:"Action préventive", d:"Mesure prise pour supprimer la cause d'un écart potentiel, avant qu'il ne survienne."},
+  {m:"Procédure", d:"Document décrivant la manière de réaliser une activité, opposable dans le système qualité."},
+  {m:"Structure régionale d'appui", d:"La SRA : structure mise en place par l'ARS pour aider les professionnels à analyser les causes d'un EIGS."}]},
+
+ {t:"notion", kick:"Les vigilances", titre:"Cinq vigilances nommées par le référentiel",
+  paras:["La compétence C13 demande de mettre en œuvre les principes et règles de vigilance dans toute activité, pour assurer la qualité et la traçabilité des interventions. Le texte en nomme cinq : pharmacovigilance, matériovigilance, réactovigilance, identitovigilance et vigilance informatique.",
+   "L'indicateur associé est bref et sans ambiguïté : les principes et règles de vigilance sont expliqués, et tout événement indésirable est signalé à l'interlocuteur approprié."],
+  encart:{type:"astuce", titre:"Le réflexe de tri", texte:"Un médicament : pharmacovigilance. Un dispositif médical : matériovigilance. Un dispositif de diagnostic in vitro ou un réactif : réactovigilance. Une erreur d'identité de patient : identitovigilance. Un dysfonctionnement du système d'information : vigilance informatique."}},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"La déclaration des EIGS est obligatoire depuis 2016", type:"garde",
+  texte:"Le décret n° 2016-1606 du 25 novembre 2016, pris en application de l'article 161 de la loi du 26 janvier 2016, a créé un dispositif national de déclaration des événements indésirables graves associés à des soins et institué les structures régionales d'appui à la qualité des soins et à la sécurité des patients. Un support antérieur à 2017 ne décrit ni ce circuit, ni le rôle des SRA."},
+
+ {t:"etapes", kick:"Le circuit", titre:"Comment se déclare un EIGS",
+  etapes:["Tout professionnel de santé, quel que soit son lieu et son mode d'exercice, ou le représentant légal de l'établissement, constate l'événement",
+   "Il le déclare au directeur général de l'ARS au moyen d'un formulaire dont la forme et le contenu sont fixés par arrêté",
+   "Première partie, adressée sans délai : nature de l'événement, circonstances de survenue, premières mesures prises localement, mention de l'information donnée",
+   "Analyse approfondie des causes par les professionnels concernés, avec l'aide de la structure régionale d'appui",
+   "Seconde partie, dans les trois mois : descriptif de la gestion, éléments de retour d'expérience, plan d'actions correctrices avec échéances de mise en œuvre et d'évaluation",
+   "Transmission des deux parties par l'ARS à la HAS, sans le nom du déclarant ni l'adresse du lieu de survenue"],
+  note:"La HAS élabore un bilan annuel des déclarations reçues, accompagné de préconisations pour l'amélioration de la sécurité des patients. Ce rapport est transmis au ministre chargé de la santé et rendu public."},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères du dispositif EIGS", lignes:[
+  {v:"Sans délai", l:"envoi de la première partie de la déclaration"},
+  {v:"3 mois", l:"délai d'envoi de la seconde partie, après analyse"},
+  {v:"31 mars", l:"date avant laquelle la structure régionale d'appui remet son rapport d'activité annuel"},
+  {v:"Anonyme", l:"la transmission à la HAS ne comporte ni les nom et prénoms du déclarant, ni l'adresse du lieu de survenue"}]},
+
+ {t:"notion", kick:"La certification", titre:"Le sixième cycle",
+  paras:["La certification des établissements de santé existe depuis vingt-cinq ans. La HAS a lancé en 2025 son sixième cycle, applicable aux visites d'établissements à compter du mois de septembre 2025. Fin 2024, 87 % des structures étaient certifiées.",
+   "Le référentiel reste organisé selon trois chapitres : le patient, les équipes de soins, l'établissement. Cette structuration permet l'analyse croisée entre le résultat pour le patient, les pratiques mises en œuvre par les équipes et la dynamique impulsée par la gouvernance."],
+  encart:{type:"garde", titre:"Attention, ça a changé", texte:"Le nombre d'objectifs est passé de 15 dans la version précédente à 12 dans la version 2025, soit quatre par chapitre. Un support qui annonce quinze objectifs décrit le cycle antérieur."},
+  img:{f:"ue15-07-qualite.jpg", leg:"Réunion d'analyse des pratiques en établissement de santé"}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Le référentiel de certification 2025", lignes:[
+  {v:"3", l:"chapitres : le patient, les équipes de soins, l'établissement"},
+  {v:"12", l:"objectifs, soit quatre par chapitre"},
+  {v:"118", l:"critères au total"},
+  {v:"92", l:"critères standards"},
+  {v:"21", l:"critères impératifs"},
+  {v:"5", l:"critères avancés"},
+  {v:"09/2025", l:"application aux visites d'établissements"}],
+  note:"Le référentiel comporte 86 critères génériques applicables à tous les établissements et 32 critères spécifiques liés à des champs d'application particuliers."},
+
+ {t:"notion", kick:"Analyser", titre:"Remonter aux causes, pas aux coupables",
+  paras:["La compétence C13 demande d'analyser les non-conformités et les événements indésirables et leurs causes, afin de déterminer et mettre en œuvre les mesures curatives ou correctives adaptées à la situation.",
+   "Les indicateurs précisent la méthode attendue : les non-conformités et les événements indésirables sont identifiés et caractérisés, la méthode de recherche des causes est logique et pertinente, et les mesures correctives et curatives proposées sont adaptées à la situation et justifiées."],
+  encart:{type:"piege", titre:"Ce qui fait échouer une analyse", texte:"S'arrêter à la première cause trouvée, presque toujours humaine. Une analyse utile continue : pourquoi cette personne a-t-elle pu se tromper, qu'est-ce qui, dans l'organisation, le document ou le matériel, l'a rendu possible ?"}},
+
+ {t:"notion", kick:"Formaliser", titre:"Écrire une procédure qui serve",
+  paras:["Le référentiel attend que vous sachiez élaborer des procédures et des modes opératoires dans le cadre de votre activité. Les indicateurs décrivent ce qu'est une bonne procédure : adaptée à la situation, élaborée en concertation avec l'équipe, prenant en compte les règles actualisées.",
+   "Sa formalisation — déroulement, enchaînement des activités — doit respecter la démarche qualité, et le document doit être clair, compréhensible et exploitable."],
+  encart:{type:"astuce", titre:"Le test le plus simple", texte:"Une procédure est exploitable si une personne qui n'a pas participé à sa rédaction peut exécuter l'activité en la lisant. Si elle a besoin de demander, la procédure est à revoir."}},
+
+ {t:"quiz", kick:"Vérification", question:"Dans quel délai la seconde partie de la déclaration d'un EIGS doit-elle être transmise ?",
+  options:["Sans délai, comme la première","Dans les trois mois suivants","Dans l'année civile"],
+  bonne:1,
+  expl:"La première partie part sans délai avec les premiers éléments ; la seconde, après analyse approfondie des causes, comporte le retour d'expérience et le plan d'actions correctrices avec ses échéances."},
+
+ {t:"quiz", kick:"Vérification", question:"Un réactif de laboratoire s'avère défectueux. De quelle vigilance relève ce signalement ?",
+  options:["Pharmacovigilance","Réactovigilance","Identitovigilance"],
+  bonne:1,
+  expl:"La réactovigilance concerne les dispositifs médicaux de diagnostic in vitro et les réactifs. La pharmacovigilance vise les médicaments, l'identitovigilance les erreurs d'identité de patient."},
+
+ {t:"quiz", kick:"Vérification", question:"Combien d'objectifs comporte le référentiel de certification 2025 de la HAS ?",
+  options:["9 objectifs","12 objectifs","15 objectifs"],
+  bonne:1,
+  expl:"Douze objectifs, soit quatre par chapitre pour les trois chapitres. Quinze était le nombre de la version précédente : c'est le piège de cette question."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Décret n° 2016-1606 du 25 novembre 2016", ref:"Déclaration des EIGS en deux parties, délais, structures régionales d'appui, bilan annuel de la HAS", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000033479591"},
+  {titre:"Code de la santé publique, articles R. 1413-67 à R. 1413-73", ref:"Contenu des deux parties du formulaire, transmission anonymisée à la HAS", url:"https://www.legifrance.gouv.fr/codes/id/LEGIARTI000033496381/2016-11-28/"},
+  {titre:"AP-HP, direction des affaires juridiques", ref:"Détail du contenu de chaque partie de la déclaration et rôle de la structure régionale d'appui", url:"https://affairesjuridiques.aphp.fr/textes/decret-n-2016-1606-du-25-novembre-2016-relatif-la-declaration-des-evenements-indesirables-graves-associes-des-soins-et-aux-structures-regionales-dappui-la-qualite-des-soins-et-la-securi/"},
+  {titre:"HAS", ref:"Certification des établissements de santé : ouverture du sixième cycle en 2025, trois chapitres, douze objectifs, application aux visites à compter de septembre 2025", url:"https://www.has-sante.fr/jcms/p_3579049/fr/certification-des-etablissements-de-sante-un-6e-cycle-s-ouvre-en-2025"},
+  {titre:"HAS", ref:"Référentiel de certification des établissements de santé pour la qualité des soins, version 2025 : structure, critères génériques et spécifiques", url:"https://www.has-sante.fr/upload/docs/application/pdf/2025-01/referentiel_certification_es_qualite_des_soins_version_2025.pdf"},
+  {titre:"ARS Hauts-de-France", ref:"Répartition des 118 critères : 92 standards, 21 impératifs, 5 avancés", url:"https://www.hauts-de-france.ars.sante.fr/la-certification-des-etablissements-de-sante"},
+  {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Compétence C13, les cinq vigilances nommées, critères d'évaluation sur l'analyse des causes et la rédaction des procédures", url:"https://www.fhf.fr/sites/default/files/2024-08/Arr%C3%AAt%C3%A9%20du%2031%20juillet%202024%20relatif%20au%20DE%20de%20PPH.pdf"}],
+  note:"Textes consultés le 9 août 2026. La certification évolue par cycles : vérifiez systématiquement la version décrite par votre support de cours avant de mémoriser des chiffres."}
 ]}
 
 };
@@ -2006,6 +2752,944 @@ UE3: [
 
  {t:"cloze", q:"Un programme d'ETP est mis en œuvre par au moins _____ professionnels de santé de professions différentes.",
   r:"deux", s:"Décret n° 2010-904 du 2 août 2010, repris par la HAS."}
+],
+
+UE7: [
+ {t:"qcm", q:"Quel texte encadre la mise sur le marché des dispositifs médicaux dans l'Union européenne ?",
+  o:["La directive 93/42/CEE","Le règlement (UE) 2017/745","Le règlement (UE) 2017/746","La directive 90/385/CEE"], r:1,
+  c:"Le règlement 2017/746 vise les dispositifs médicaux de diagnostic in vitro. Les deux directives citées sont abrogées.",
+  s:"Règlement (UE) 2017/745 du 5 avril 2017, abrogeant les directives 90/385/CEE et 93/42/CEE."},
+
+ {t:"cloze", q:"Depuis le 27 mai _____, plus aucun dispositif ne peut être mis sur le marché au titre des anciennes directives.",
+  r:"2025", s:"Calendrier d'application du règlement (UE) 2017/745."},
+
+ {t:"ordre", q:"Classez ces dispositifs du risque le plus faible au plus élevé, selon les exemples donnés par l'ANSM.",
+  e:["Compresses, lunettes, béquilles","Lentilles de contact, appareils d'échographie","Préservatifs, produits de désinfection des lentilles","Implants mammaires, stents, prothèses de hanche"],
+  s:"ANSM, Classifier un dispositif médical : exemples par classe I, IIa, IIb et III."},
+
+ {t:"qcmMulti", q:"Quelles sous-catégories de classe I nécessitent l'intervention d'un organisme notifié ?",
+  o:["Classe Im, avec fonction de mesurage","Classe Is, mise sur le marché à l'état stérile","Classe Ir, instruments chirurgicaux réutilisables","Classe I non stérile sans fonction de mesurage"], r:[0,1,2],
+  c:"Seule la dernière relève d'une certification sans organisme notifié.",
+  s:"ANSM, Classifier un dispositif médical ou un dispositif médical de diagnostic in vitro."},
+
+ {t:"vf", q:"Lorsqu'un doute subsiste sur la classe d'un dispositif médical, on retient la classe de risque la plus faible.",
+  r:false, c:"Faux : c'est la classe de risque la plus élevée qui est privilégiée.",
+  s:"Règles de classification du règlement (UE) 2017/745, annexe VIII."},
+
+ {t:"qcm", q:"Où le marquage CE est-il apposé ?",
+  o:["Uniquement sur la notice",
+     "De façon visible, lisible et indélébile sur le dispositif ou sur le conditionnement qui en garantit la stérilité",
+     "Uniquement sur le bon de livraison",
+     "Sur le dossier technique du fabricant"], r:1,
+  c:"Si la nature du dispositif ne permet pas cette apposition ou ne le justifie pas, le marquage est apposé sur le conditionnement.",
+  s:"Règlement (UE) 2017/745, dispositions relatives au marquage CE."},
+
+ {t:"qcm", q:"Un incident grave mettant en cause un dispositif médical doit être signalé :",
+  o:["Dans le mois qui suit","Sans délai","Lors de la revue annuelle de matériovigilance","Seulement si le patient a subi un dommage"], r:1,
+  c:"Les autres incidents peuvent également être signalés, sans obligation.",
+  s:"Code de la santé publique, chapitre Matériovigilance, articles R. 5212-1 et suivants."},
+
+ {t:"qcm", q:"Vous exercez en établissement de santé. À qui adressez-vous un signalement de matériovigilance ?",
+  o:["Directement au fabricant","Au correspondant local de matériovigilance","À l'ARS","Au centre régional de pharmacovigilance"], r:1,
+  c:"Le signalement direct au directeur général de l'ANSM concerne ceux qui exercent à titre indépendant ou au sein d'une structure de prévention ou associative.",
+  s:"Code de la santé publique, obligations des intervenants en matériovigilance."},
+
+ {t:"qcmMulti", q:"Que fait le correspondant local de matériovigilance ?",
+  o:["Il enregistre, analyse et valide tout incident ou risque d'incident signalé",
+     "Il recommande le cas échéant les mesures conservatoires",
+     "Il signale au centre régional de pharmacovigilance les incidents dus à des dispositifs destinés à administrer des médicaments",
+     "Il délivre le marquage CE aux dispositifs de l'établissement"], r:[0,1,2],
+  c:"Le marquage CE relève du fabricant et, selon la classe, d'un organisme notifié : jamais de l'établissement.",
+  s:"Code de la santé publique, missions des correspondants locaux de matériovigilance."},
+
+ {t:"vf", q:"Un dispositif médical à usage unique peut être retraité par la stérilisation de l'établissement en cas de pénurie.",
+  r:false, c:"Faux : la réglementation française interdit de réutiliser les dispositifs médicaux à usage unique, sans exception liée au contexte.",
+  s:"SF2H, guide de bonnes pratiques de traitement des dispositifs médicaux, 2022."},
+
+ {t:"paires", q:"Associez chaque sigle à ce qu'il désigne.",
+  p:[["IUD","Identifiant unique des dispositifs"],
+     ["EUDAMED","Base de données européenne des dispositifs"],
+     ["DMI","Dispositif médical implantable"],
+     ["MDR","Le règlement européen relatif aux dispositifs médicaux"]],
+  s:"Règlement (UE) 2017/745 et documentation ANSM associée."},
+
+ {t:"cloze", q:"Les obligations liées à l'identifiant unique s'appliquent depuis le 26 mai _____ pour les dispositifs implantables et de classe III.",
+  r:"2021", s:"Calendrier d'application du règlement (UE) 2017/745."},
+
+ {t:"qcm", q:"Sur quoi repose la traçabilité de certains dispositifs médicaux en France ?",
+  o:["Sur le seul règlement européen",
+     "Sur le décret n° 2006-1497 et l'arrêté du 26 janvier 2007",
+     "Sur une recommandation de la HAS",
+     "Sur une norme ISO non opposable"], r:1,
+  c:"Ces textes placent la traçabilité sous la responsabilité des utilisateurs, dans le cadre de l'obligation d'information du patient prévue à l'article L. 5212-3 du CSP.",
+  s:"ANSM, Traçabilité des dispositifs médicaux."},
+
+ {t:"vf", q:"Un guide d'application de la traçabilité a été rédigé par Euro-Pharmat en collaboration avec l'ANSM.",
+  r:true, c:"Exact : rédigé en 2007, il a été complété par une version de 2016 précisant les définitions et les types de dispositifs à tracer.",
+  s:"ANSM, Traçabilité des dispositifs médicaux."},
+
+ {t:"qcm", q:"Les dispositifs médicaux de diagnostic in vitro sont classés :",
+  o:["De I à III comme les dispositifs médicaux","De A à D","De 1 à 4","Ils ne sont pas classés"], r:1,
+  c:"Le règlement (UE) 2017/746 les répartit en classes A, B, C et D selon leur destination et les risques inhérents.",
+  s:"ANSM, classification des DMDIV selon le règlement (UE) 2017/746."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les étapes du référencement d'un dispositif médical.",
+  e:["Expression du besoin par les utilisateurs",
+     "Analyse du besoin et recherche des dispositifs répondant à la destination visée",
+     "Vérification du marquage CE et de la classe",
+     "Évaluation technique et essais d'utilisation",
+     "Décision de référencement et inscription au livret des dispositifs",
+     "Achat dans le respect des règles de la commande publique",
+     "Suivi en vie réelle : matériovigilance, traçabilité, réévaluation"],
+  s:"Démarche de référencement décrite dans la leçon, articulée sur les obligations du règlement (UE) 2017/745 et de la matériovigilance."},
+
+ {t:"erreur", q:"Un cadre de bloc vous appelle : une agrafeuse chirurgicale à usage unique s'est bloquée en peropératoire, sans conséquence pour le patient. Il propose de la renvoyer au fabricant pour analyse, de ne rien déclarer puisqu'il n'y a pas eu de dommage, et de restériliser les deux autres agrafeuses du même lot pour ne pas les perdre. Relevez les non-conformités.",
+  a:"Trois écarts. Un incident ou risque d'incident se signale même en l'absence de dommage : les incidents graves sans délai, les autres pouvant l'être également, auprès du correspondant local de matériovigilance. Le dispositif ne doit pas être renvoyé sans avoir été conservé pour l'investigation, puisque le correspondant local doit enregistrer, analyser et valider l'incident et recommander les mesures conservatoires. Enfin, les dispositifs médicaux à usage unique ne peuvent pas être réutilisés ni restérilisés, quelle que soit la justification économique.",
+  m:["signale","correspondant local","conservatoires","usage unique"],
+  s:"Code de la santé publique, matériovigilance ; SF2H, guide de traitement des dispositifs médicaux 2022."},
+
+ {t:"situation", q:"Une équipe chirurgicale demande le référencement d'un nouvel implant. Quelles vérifications menez-vous avant toute décision ?",
+  a:"Il faut vérifier que le dispositif porte le marquage CE et identifier sa classe, ce qui détermine le niveau de contrôle appliqué et l'intervention d'un organisme notifié ; s'assurer que la destination revendiquée correspond au besoin exprimé ; organiser une évaluation technique et des essais d'utilisation par les utilisateurs ; vérifier les modalités de traçabilité, puisqu'un implant relève d'une traçabilité renforcée sous la responsabilité des utilisateurs et de l'obligation d'information du patient ; puis instruire la décision de référencement et l'achat dans le respect des règles de la commande publique.",
+  m:["marquage CE","classe","destination","traçabilité","référencement"],
+  s:"Règlement (UE) 2017/745 ; ANSM, traçabilité des dispositifs médicaux."},
+
+ {t:"ouverte", q:"Pourquoi ne peut-on pas raisonner sur un dispositif médical comme sur un médicament ?",
+  a:"Un médicament est autorisé par une autorisation de mise sur le marché délivrée après évaluation par une autorité, et sa surveillance relève de la pharmacovigilance. Un dispositif médical est mis sur le marché sous marquage CE, attestant sa conformité au règlement (UE) 2017/745 ; selon sa classe, un organisme notifié intervient, mais il n'y a pas d'AMM. Sa surveillance relève de la matériovigilance, avec signalement sans délai des incidents graves au correspondant local. Les deux régimes ne se recouvrent pas.",
+  m:["marquage CE","organisme notifié","matériovigilance","pharmacovigilance"],
+  s:"Règlement (UE) 2017/745 ; code de la santé publique, matériovigilance."},
+
+ {t:"vf", q:"Les certificats délivrés par les organismes notifiés au titre des anciennes directives ont été invalidés le 25 mai 2024.",
+  r:true, c:"Exact, et depuis le 27 mai 2025 plus aucun dispositif ne peut être mis sur le marché au titre des directives.",
+  s:"Calendrier d'application du règlement (UE) 2017/745."}
+],
+
+UE8: [
+ {t:"qcm", q:"Quel texte contient la ligne directrice particulière n° 1 relative à la préparation des dispositifs médicaux stériles ?",
+  o:["L'arrêté du 3 juin 2002","L'arrêté du 22 juin 2001 relatif aux bonnes pratiques de pharmacie hospitalière","Les bonnes pratiques de préparation 2023","L'instruction du 1er décembre 2011"], r:1,
+  c:"L'arrêté du 3 juin 2002 fixe les normes opposables ; les BPP 2023 visent les préparations de médicaments, pas les dispositifs.",
+  s:"Arrêté du 22 juin 2001 relatif aux bonnes pratiques de pharmacie hospitalière."},
+
+ {t:"cloze", q:"Le cycle d'inactivation des ATNC est un plateau à 134 °C pendant _____ minutes.",
+  r:"18", s:"Instruction n° DGS/RI3/2011/449 du 1er décembre 2011."},
+
+ {t:"qcm", q:"Que peut-on affirmer du cycle 134 °C pendant 18 minutes vis-à-vis des ATNC ?",
+  o:["Il élimine totalement l'infectiosité",
+     "Il assure une inactivation importante, mais une infectiosité résiduelle reste détectable",
+     "Il est sans effet",
+     "Il n'a jamais été évalué"], r:1,
+  c:"C'est pour cette raison qu'une étape d'inactivation totale, distincte de la stérilisation, est prévue dans certaines situations.",
+  s:"Instruction n° DGS/RI3/2011/449, texte publié au Bulletin officiel."},
+
+ {t:"vf", q:"L'instruction 449 du 1er décembre 2011 a abrogé la circulaire n° 138 du 14 mars 2001.",
+  r:true, c:"Exact. Elle intègre en outre la classification des tissus par niveau d'infectiosité publiée par l'OMS en 2010 et renforce le traitement appliqué aux dispositifs réutilisables.",
+  s:"SF2S, risque prion ; instruction n° DGS/RI3/2011/449."},
+
+ {t:"qcm", q:"Quel procédé de stérilisation est proscrit dans les établissements de santé français ?",
+  o:["La vapeur d'eau saturée","Le peroxyde d'hydrogène gazeux","La chaleur sèche","La vapeur d'eau à basse température"], r:2,
+  c:"L'oxyde d'éthylène et le formaldéhyde ne sont plus utilisés en établissement de santé, et l'irradiation est réservée à l'industrie.",
+  s:"SF2S, procédés de stérilisation ; bonnes pratiques de pharmacie hospitalière."},
+
+ {t:"vf", q:"L'efficacité des procédés à l'oxyde d'éthylène et au peroxyde d'hydrogène gazeux vis-à-vis des ATNC a été évaluée et démontrée.",
+  r:false, c:"Faux : elle n'a pas été évaluée pour l'inactivation des agents transmissibles non conventionnels, qui doit être recherchée par les procédés décrits par les textes prion.",
+  s:"Arrêté du 3 juin 2002, annexe et note relative aux ATNC."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les étapes du traitement d'un dispositif médical réutilisable.",
+  e:["Prédésinfection au plus près de l'utilisation",
+     "Lavage, manuel ou en laveur-désinfecteur",
+     "Séchage, contrôle de propreté et de fonctionnalité",
+     "Recomposition des plateaux",
+     "Conditionnement",
+     "Stérilisation",
+     "Contrôle des paramètres puis libération",
+     "Stockage puis distribution"],
+  s:"Bonnes pratiques de pharmacie hospitalière, ligne directrice particulière n° 1."},
+
+ {t:"qcm", q:"Sous quelle responsabilité est placée l'unité de stérilisation d'un établissement de santé ?",
+  o:["Du cadre de bloc","Du pharmacien gérant, qui peut désigner un pharmacien responsable de l'activité","Du directeur des soins","De l'équipe opérationnelle d'hygiène"], r:1,
+  c:"Il s'agit d'une activité à risques particuliers, soumise à autorisation valable sept ans.",
+  s:"Bonnes pratiques de pharmacie hospitalière ; régime des activités à risques particuliers des PUI."},
+
+ {t:"cloze", q:"L'autorisation de l'activité de stérilisation, activité à risques particuliers, est valable _____ ans.",
+  r:"7", s:"Régime d'autorisation des activités à risques particuliers en PUI."},
+
+ {t:"qcm", q:"Quelle norme, rendue opposable, définit les exigences générales de caractérisation d'un agent stérilisant et de validation d'un procédé ?",
+  o:["NF EN 17141","NF EN ISO 14937","NF EN 12791","NF EN ISO 14644-1"], r:1,
+  c:"Les autres normes citées concernent la biocontamination, la désinfection chirurgicale des mains et la classification particulaire.",
+  s:"Arrêté du 3 juin 2002 relatif à la stérilisation des dispositifs médicaux, annexe."},
+
+ {t:"paires", q:"Associez chaque terme à sa définition.",
+  p:[["Prédésinfection","Premier traitement effectué au plus près du soin, avant le nettoyage"],
+     ["Recomposition","Reconstitution d'un plateau selon sa composition de référence"],
+     ["Charge","Ensemble des dispositifs stérilisés au cours d'un même cycle"],
+     ["Libération","Décision pharmaceutique attestant la conformité de la charge"]],
+  s:"Bonnes pratiques de pharmacie hospitalière, ligne directrice n° 1 et glossaire."},
+
+ {t:"qcm", q:"Un dispositif thermosensible doit être traité chez un patient à risque d'ATNC. Que prévoit l'instruction 449 ?",
+  o:["Le cycle 134 °C pendant 18 minutes malgré tout",
+     "Vapeur saturée à température inférieure ou basse température au peroxyde d'hydrogène, à défaut désinfection de haut niveau avec rinçage terminal à l'eau stérile",
+     "La destruction systématique du dispositif",
+     "Aucune mesure particulière"], r:1,
+  c:"La destruction n'intervient que si le dispositif ne supporte pas le procédé d'inactivation totale requis.",
+  s:"SF2S, risque prion ; instruction n° DGS/RI3/2011/449."},
+
+ {t:"vf", q:"En France, l'évaluation du risque prion est obligatoire avant tout acte invasif.",
+  r:true, c:"Exact : elle conditionne le circuit de traitement appliqué aux dispositifs utilisés.",
+  s:"SF2S, risque prion, en application de l'instruction n° DGS/RI3/2011/449."},
+
+ {t:"qcm", q:"Qu'est-ce que le protocole standard prion ?",
+  o:["Une procédure interne à chaque établissement",
+     "La méthode de référence permettant d'évaluer les performances des produits et procédés revendiquant une activité vis-à-vis des ATNC",
+     "Un cycle d'autoclave particulier",
+     "Une norme européenne de conditionnement"], r:1,
+  c:"L'agence publie et met à jour la liste des produits et procédés inactivants au regard du PSP en vigueur.",
+  s:"ANSM, protocole standard prion ; instruction n° DGS/RI3/2011/449."},
+
+ {t:"vf", q:"Un produit peut être considéré comme inactivant total dès lors que son fabricant le revendique.",
+  r:false, c:"Faux : il doit figurer sur la liste publiée par l'agence au regard du protocole standard prion en vigueur.",
+  s:"ANSM, protocole standard prion."},
+
+ {t:"cloze", q:"Le procédé de stérilisation applicable à un dispositif est mentionné par les recommandations du _____.",
+  r:"fabricant", s:"SF2S, procédés de stérilisation des dispositifs médicaux réutilisables."},
+
+ {t:"erreur", q:"Un agent de stérilisation reçoit un plateau du bloc, non prédésinfecté et sec depuis plusieurs heures. Il le passe directement en laveur-désinfecteur, recompose le plateau sans contrôler la fonctionnalité des instruments, puis lance un cycle vapeur en se fiant au voyant vert de l'autoclave pour libérer la charge. Relevez les non-conformités.",
+  a:"Quatre écarts. La prédésinfection est le premier traitement, effectué au plus près de l'utilisation : son absence compromet le nettoyage et expose le personnel. Le contrôle de propreté et de fonctionnalité précède la recomposition : un instrument défectueux ne doit pas repartir en circulation. La recomposition suit la composition de référence du plateau, qui doit être vérifiée. Enfin, la libération est une décision pharmaceutique fondée sur le contrôle des paramètres du cycle et sur l'ensemble des enregistrements, pas sur un voyant : la stérilité se prouve par la maîtrise du procédé.",
+  m:["prédésinfection","fonctionnalité","composition de référence","libération","paramètres"],
+  s:"Bonnes pratiques de pharmacie hospitalière, ligne directrice particulière n° 1."},
+
+ {t:"situation", q:"Pourquoi ne peut-on pas contrôler la stérilité de chaque sachet avant de le distribuer, et comment garantit-on alors la qualité ?",
+  a:"Ouvrir le conditionnement pour vérifier la stérilité le détruit : le contrôle serait destructif et porterait sur un échantillon non représentatif. La garantie repose donc sur la maîtrise du procédé : validation initiale conforme aux normes opposables, dont la NF EN ISO 14937, contrôle de routine des paramètres de chaque cycle, enregistrement de ces paramètres, traçabilité de chaque unité d'emploi jusqu'au cycle et aux opérateurs, puis libération pharmaceutique fondée sur ces éléments.",
+  m:["destructif","validation","paramètres","traçabilité","libération"],
+  s:"Arrêté du 3 juin 2002 ; bonnes pratiques de pharmacie hospitalière, ligne directrice n° 1."},
+
+ {t:"ouverte", q:"Quelles sont les trois catégories de procédés de stérilisation mises en œuvre après conditionnement, et laquelle domine en France ?",
+  a:"La stérilisation à la vapeur d'eau saturée, la stérilisation à basse température par le peroxyde d'hydrogène gazeux associé ou non à d'autres gaz, et la stérilisation par irradiation, qui en France n'est utilisée que dans l'industrie. La vapeur d'eau domine en établissement de santé. La chaleur sèche est proscrite, et l'oxyde d'éthylène comme le formaldéhyde ne sont plus utilisés en établissement de santé français.",
+  m:["vapeur","peroxyde","irradiation","chaleur sèche"],
+  s:"SF2S, procédés de stérilisation."},
+
+ {t:"qcm", q:"Que doit préciser le système qualité de la stérilisation prévu par le code de la santé publique ?",
+  o:["Le prix de revient de chaque cycle",
+     "Les procédures assurant notamment que les dispositifs médicaux à usage unique ne sont pas réutilisés",
+     "La composition de l'équipe opérationnelle d'hygiène",
+     "Le nombre d'autoclaves par établissement"], r:1,
+  c:"Le système s'inscrit dans le respect des bonnes pratiques de pharmacie hospitalière et des normes techniques arrêtées par le ministre chargé de la santé.",
+  s:"SF2H, guide de traitement des dispositifs médicaux 2022, citant le code de la santé publique."}
+],
+
+UE9: [
+ {t:"qcm", q:"À qui s'appliquent les précautions standard ?",
+  o:["Aux seuls patients porteurs d'une bactérie multirésistante",
+     "À tout patient, quel que soit son statut infectieux, par tout professionnel",
+     "Aux seuls blocs opératoires",
+     "Aux patients isolés uniquement"], r:1,
+  c:"C'est précisément parce qu'on ignore qui est porteur de quoi que ces mesures s'appliquent à tous, tout le temps.",
+  s:"SF2H, Précautions standard, actualisation de juin 2017."},
+
+ {t:"qcmMulti", q:"Quels domaines l'actualisation des précautions standard de 2017 couvre-t-elle ?",
+  o:["Hygiène des mains et équipements de protection individuelle",
+     "Hygiène respiratoire et prévention des accidents avec exposition au sang",
+     "Gestion des excreta et gestion de l'environnement",
+     "Prescription des antibiotiques"], r:[0,1,2],
+  c:"L'antibiothérapie relève du bon usage des anti-infectieux, pas des précautions standard.",
+  s:"SF2H, Précautions standard, juin 2017, sommaire du document."},
+
+ {t:"qcm", q:"Quelle est la technique de référence de l'hygiène des mains ?",
+  o:["Le lavage simple au savon doux","La friction hydro-alcoolique","Le lavage hygiénique au savon antiseptique","Le port systématique de gants"], r:1,
+  c:"La friction remplace le lavage hygiénique. Le port de gants ne remplace jamais l'hygiène des mains.",
+  s:"SF2H et CPias, recommandations sur l'hygiène des mains."},
+
+ {t:"vf", q:"Il faut réaliser systématiquement un lavage simple des mains avant chaque friction hydro-alcoolique.",
+  r:false, c:"Faux : cette pratique provoque des irritations cutanées et n'est pas recommandée.",
+  s:"CPias et SF2H, fiches techniques sur la friction hydro-alcoolique."},
+
+ {t:"cloze", q:"Lors d'une friction, il faut attendre l'_____ complète du produit avant de toucher le patient, son environnement ou le matériel.",
+  r:"évaporation", s:"SF2H, guide sur l'hygiène des mains."},
+
+ {t:"paires", q:"Associez chaque usage à sa norme.",
+  p:[["Friction hygiénique des mains","NF EN 1500"],
+     ["Désinfection chirurgicale des mains par friction","NF EN 12791"],
+     ["Classification particulaire des salles propres","NF ISO 14644"],
+     ["Maîtrise de la biocontamination","NF EN 17141"]],
+  s:"SF2H, Hygiène des mains et soins ; BPP 2023, références normatives."},
+
+ {t:"qcm", q:"Quelle norme a remplacé NF EN ISO 14698-1 et 14698-2 ?",
+  o:["NF ISO 14644-1","NF EN 17141","NF EN ISO 14937","NF EN 12791"], r:1,
+  c:"NF EN 17141 a été homologuée en septembre 2020 et annule les deux parties de l'ISO 14698.",
+  s:"AFNOR, fiche de la norme NF EN 17141."},
+
+ {t:"cloze", q:"En classe A, la limite recommandée de contamination microbiologique de l'air en activité est inférieure à _____ unité formant colonie par mètre cube.",
+  r:"1", s:"BPP 2023, ligne directrice LD1, tableau 9."},
+
+ {t:"paires", q:"Associez chaque classe à sa limite recommandée d'échantillon d'air en ufc/m³.",
+  p:[["Classe A","moins de 1"],["Classe B","10"],["Classe C","100"],["Classe D","200"]],
+  s:"BPP 2023, ligne directrice LD1, tableau 9."},
+
+ {t:"qcm", q:"En classe A, à quelle fréquence réalise-t-on un prélèvement d'air actif ?",
+  o:["Quotidiennement","Hebdomadairement","Mensuellement","Trimestriellement"], r:2,
+  c:"Le quotidien concerne la gélose de sédimentation et l'empreinte de gant, l'hebdomadaire les prélèvements de contact en zone classée.",
+  s:"BPP 2023, ligne directrice LD1, tableau 10."},
+
+ {t:"qcm", q:"À quelle fréquence l'empreinte de gant de l'opérateur au contact du produit est-elle réalisée en classe A ?",
+  o:["À chaque manipulation","Quotidiennement, en fin de session de travail","Hebdomadairement","Mensuellement"], r:1,
+  c:"La gélose de sédimentation au plan de travail est elle aussi quotidienne, à raison d'une gélose par session de quatre heures au maximum.",
+  s:"BPP 2023, ligne directrice LD1, tableau 10."},
+
+ {t:"vf", q:"Les prélèvements d'air actifs sont semestriels en classe D.",
+  r:true, c:"Exact : mensuels en classes A et B, trimestriels en classe C, semestriels en classe D.",
+  s:"BPP 2023, ligne directrice LD1, tableau 10."},
+
+ {t:"qcmMulti", q:"Que déclenche le dépassement d'un seuil lors de la surveillance de l'environnement ?",
+  o:["Une investigation selon la procédure définie","Des mesures correctives","Une attention particulière au moment de la libération des préparations","L'arrêt définitif de l'activité"], r:[0,1,2],
+  c:"L'arrêt définitif n'est pas la réponse prévue : le texte impose des mesures correctives et une vigilance renforcée à la libération.",
+  s:"BPP 2023, points 6.11 et LD1, surveillance des ZAC."},
+
+ {t:"cloze", q:"Les seuils définis par procédure pour la surveillance de l'environnement sont des seuils d'alerte et des seuils d'_____.",
+  r:"action", s:"BPP 2023, ligne directrice LD1, surveillance particulaire et microbiologique."},
+
+ {t:"qcm", q:"Que mesure une gélose de sédimentation ?",
+  o:["Les particules inertes en suspension","Les particules viables qui se déposent pendant une durée définie","La température de la zone","La pression différentielle"], r:1,
+  c:"Le contrôle particulaire, lui, compte les particules par taille et par mètre cube et caractérise la classe de propreté.",
+  s:"BPP 2023, ligne directrice LD1, méthodes de surveillance microbiologique."},
+
+ {t:"vf", q:"Le contrôle particulaire et le contrôle microbiologique mesurent la même chose.",
+  r:false, c:"Faux : le premier compte les particules en suspension par taille et par mètre cube, le second dénombre les micro-organismes viables en unités formant colonie. Ce sont deux tableaux distincts.",
+  s:"BPP 2023, ligne directrice LD1, tableaux 1 et 9."},
+
+ {t:"qcm", q:"À quelle fréquence minimale nettoie-t-on les murs et les plafonds d'une zone classée ?",
+  o:["Quotidiennement","Mensuellement","Trimestriellement","Annuellement"], r:2,
+  c:"Le quotidien concerne notamment les sols et les surfaces fréquemment touchées, le mensuel les surfaces externes des équipements et les accessoires.",
+  s:"BPP 2023, ligne directrice LD1, fréquences de nettoyage."},
+
+ {t:"erreur", q:"Dans une ZAC, un opérateur constate une souillure au sol en milieu de matinée. Il note qu'un nettoyage est prévu le soir et poursuit son travail. En fin de session, il oublie l'empreinte de gant, et le résultat d'air actif du mois dernier, au-dessus du seuil d'alerte, n'a donné lieu à aucune action. Relevez les non-conformités.",
+  a:"Trois écarts. Les fréquences de nettoyage sont des minima indicatifs : une souillure constatée impose un nettoyage immédiat, indépendamment du calendrier. L'empreinte de gant de l'opérateur en classe A est quotidienne, en fin de session de travail : son omission prive la surveillance de sa donnée la plus proche du produit. Enfin, un dépassement de seuil d'alerte déclenche une investigation puis des mesures correctives définies par procédure, et impose une attention particulière aux résultats de la surveillance au moment de libérer les préparations terminées.",
+  m:["immédiat","empreinte de gant","seuil","correctives","libérer"],
+  s:"BPP 2023, ligne directrice LD1, nettoyage et surveillance des ZAC."},
+
+ {t:"situation", q:"Un nouvel arrivant vous demande pourquoi l'hygiène des mains reste la mesure la plus importante alors qu'il porte des gants. Que lui répondez-vous ?",
+  a:"Le port de gants ne remplace pas l'hygiène des mains : une hygiène des mains est pratiquée après avoir retiré les gants, comme après avoir retiré un masque ou une protection de la tenue. Les gants se contaminent, se percent et se retirent mal. La friction hydro-alcoolique est la technique de référence, plus rapide, mieux tolérée et efficace sur la flore transitoire, à condition d'attendre l'évaporation complète avant de toucher le patient ou le matériel. C'est une mesure des précautions standard, appliquée pour tout patient quel que soit son statut.",
+  m:["ne remplace pas","après avoir retiré","friction","évaporation","précautions standard"],
+  s:"SF2H, Précautions standard juin 2017 ; recommandations sur l'hygiène des mains."},
+
+ {t:"ouverte", q:"Pourquoi dit-on qu'une salle propre ne se juge pas à l'œil ?",
+  a:"Parce que la propreté d'une zone classée est définie par des mesures : un nombre maximal de particules par taille et par mètre cube, qui détermine la classe selon NF ISO 14644, et des limites de contamination microbiologique exprimées en unités formant colonie, contrôlées selon NF EN 17141, avec des fréquences de prélèvement définies et des seuils d'alerte et d'action. Une surface peut sembler impeccable et dépasser les seuils, et inversement. Seuls les prélèvements, tracés et interprétés, permettent de conclure.",
+  m:["particules","classe","unités formant colonie","seuils","prélèvements"],
+  s:"BPP 2023, ligne directrice LD1 ; normes NF ISO 14644 et NF EN 17141."}
+],
+
+UE10: [
+ {t:"qcm", q:"Quel est le stock de sécurité minimal imposé pour un médicament d'intérêt thérapeutique majeur ?",
+  o:["Une semaine","Un mois","Deux mois","Quatre mois"], r:2,
+  c:"Une semaine correspond aux autres médicaments, un mois aux non-MITM contribuant à une politique de santé publique, quatre mois au plafond que l'ANSM peut imposer.",
+  s:"Décret n° 2021-349 du 30 mars 2021 relatif au stock de sécurité destiné au marché national."},
+
+ {t:"cloze", q:"Le décret sur le stock de sécurité destiné au marché national est entré en vigueur le 1er septembre _____.",
+  r:"2021", s:"Décret n° 2021-349 du 30 mars 2021, entrée en vigueur au 1er septembre 2021."},
+
+ {t:"paires", q:"Associez chaque catégorie de médicament à sa durée de stock de sécurité.",
+  p:[["Médicament d'intérêt thérapeutique majeur","Deux mois"],
+     ["Médicament non MITM contribuant à une politique de santé publique","Un mois"],
+     ["Autres médicaments","Une semaine"],
+     ["Plafond après une rupture dans les deux années précédentes","Quatre mois"]],
+  s:"Décret n° 2021-349 du 30 mars 2021 ; synthèse Vie publique."},
+
+ {t:"qcm", q:"Comment se définit une rupture de stock au sens du code de la santé publique ?",
+  o:["Un retard de livraison du grossiste",
+     "L'impossibilité de fabriquer ou d'exploiter un médicament",
+     "Une commande refusée par le fournisseur",
+     "Un inventaire non conforme"], r:1,
+  c:"La rupture de stock peut être la cause d'une rupture d'approvisionnement, qui est la notion plus large.",
+  s:"Article R. 5124-49-1 du CSP, modifié par le décret n° 2021-349."},
+
+ {t:"vf", q:"C'est la pharmacie à usage intérieur qui informe l'ANSM d'un risque de rupture de stock d'un MITM.",
+  r:false, c:"Faux : l'obligation pèse sur le titulaire de l'AMM et sur l'entreprise qui exploite le médicament, dès qu'ils en ont connaissance.",
+  s:"Article R. 5124-49-1 du CSP, modifié par le décret n° 2021-349."},
+
+ {t:"cloze", q:"Le stock de sécurité se calcule sur la base du volume des ventes en France des _____ derniers mois glissants.",
+  r:"douze", s:"Article R. 5124-49-4 du CSP."},
+
+ {t:"qcm", q:"Qu'est-ce qu'un plan de gestion des pénuries ?",
+  o:["Un plan interne à chaque établissement de santé",
+     "Un document du laboratoire identifiant les situations à risque et proposant des solutions, adressé chaque année à l'ANSM",
+     "Une liste de médicaments substituables publiée par l'ARS",
+     "Un tableau de bord budgétaire"], r:1,
+  c:"Il est également adressé à l'ANSM en cas de signalement de rupture ou de risque de rupture d'un MITM.",
+  s:"ANSM, obligations liées au stock de sécurité et aux plans de gestion des pénuries."},
+
+ {t:"qcmMulti", q:"Quelles mesures l'ANSM peut-elle mettre en œuvre pour réduire l'impact d'une tension d'approvisionnement ?",
+  o:["Contingentement quantitatif","Contingentement qualitatif, par réservation du stock à certaines indications",
+     "Importation de médicaments similaires provenant d'autres pays","Autorisation de préparer une copie du médicament en officine"], r:[0,1,2],
+  c:"Entre 5 et 10 % des signalements nécessitent de telles mesures.",
+  s:"ANSM, disponibilité des médicaments et gestion des tensions d'approvisionnement."},
+
+ {t:"qcm", q:"Quel gaz a le statut de médicament avec autorisation de mise sur le marché ?",
+  o:["L'air médical","Le dioxyde de carbone pour cœlioscopie","L'oxygène médicinal","Le vide"], r:2,
+  c:"Le CO2 pour cœlioscopie est un dispositif médical ; l'air médical et le vide n'ont ni AMM ni marquage CE.",
+  s:"OMéDIT Pays de la Loire, statuts des gaz à usage médical."},
+
+ {t:"paires", q:"Associez chaque gaz à son statut.",
+  p:[["Oxygène médicinal","Médicament sous AMM"],
+     ["Dioxyde de carbone pour cœlioscopie","Dispositif médical marqué CE"],
+     ["Air médical","Gaz sans statut de produit de santé"],
+     ["Gaz de laboratoire","Gaz à usage technique"]],
+  s:"OMéDIT Pays de la Loire, gaz médicaux ; documentation ANSM."},
+
+ {t:"vf", q:"Pour une bouteille d'oxygène à usage médical, l'AMM porte uniquement sur le gaz contenu.",
+  r:false, c:"Faux : l'autorisation est accordée pour le gaz contenu, la bouteille et son robinet, et le cas échéant le détendeur intégré au robinet.",
+  s:"ANSM, point d'information sur la bouteille d'oxygène à usage médical."},
+
+ {t:"qcm", q:"Qui commande l'oxygène médical destiné aux patients hospitalisés ?",
+  o:["Le cadre du service de soins","Le pharmacien de la PUI","Le service technique de l'établissement","Le fournisseur directement auprès du service"], r:1,
+  c:"La commande se fait auprès d'un établissement pharmaceutique exploitant ou distributeur en gros de gaz à usage médical.",
+  s:"Ordre national des pharmaciens, dispensation de l'oxygène à usage médical."},
+
+ {t:"vf", q:"Le remplissage de bouteilles et de réservoirs cryogéniques mobiles peut être réalisé par la PUI.",
+  r:false, c:"Faux : c'est une opération de fabrication, qui ne peut être réalisée que dans un établissement disposant d'une autorisation d'ouverture.",
+  s:"ANSM, dispositions relatives aux gaz médicinaux."},
+
+ {t:"qcmMulti", q:"Que vérifient les indicateurs de la compétence C9 sur la gestion des stocks ?",
+  o:["Des inventaires sont réalisés périodiquement selon les procédures",
+     "La disponibilité est vérifiée en tenant compte des dates de péremption",
+     "Les commandes sont passées auprès de fournisseurs agréés",
+     "Le coût moyen par unité est inférieur à celui de l'année précédente"], r:[0,1,2],
+  c:"Le référentiel ne fixe aucun objectif de coût : il vise la conformité, la traçabilité et l'absence de rupture.",
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C9."},
+
+ {t:"cloze", q:"Les stocks détenus hors de la pharmacie, dans les unités de soins et plateaux techniques, sont appelés stocks _____.",
+  r:"déportés", s:"Arrêté du 31 juillet 2024, annexe II, compétence C9."},
+
+ {t:"ordre", q:"Remettez dans l'ordre le cycle d'un produit de santé dans la PUI.",
+  e:["Évaluation du besoin, qualitative et quantitative","Commande auprès d'un fournisseur agréé",
+     "Réception et contrôle de conformité de la livraison","Rangement dans des conditions préservant la qualité",
+     "Suivi des péremptions et rotation des lots","Délivrance aux unités de soins avec traçabilité",
+     "Inventaire périodique et rapprochement informatique","Élimination des produits périmés selon les procédures"],
+  s:"Séquence construite sur les indicateurs de la compétence C9, annexe II de l'arrêté du 31 juillet 2024."},
+
+ {t:"erreur", q:"Un préparateur reçoit une livraison, la range sans contrôler la conformité au bon de commande, place les nouvelles boîtes devant les anciennes, et note qu'un inventaire n'a pas été fait depuis dix-huit mois faute de temps. Relevez les non-conformités.",
+  a:"Trois écarts au regard des indicateurs de la compétence C9. Les approvisionnements doivent être contrôlés et tracés : ranger sans vérifier la conformité de la livraison rompt la chaîne de traçabilité. Placer les nouvelles unités devant les anciennes empêche la rotation et conduit à des périmés, alors que la disponibilité doit être vérifiée en tenant compte des dates de péremption. Enfin, des inventaires doivent être réalisés périodiquement selon les procédures en vigueur : dix-huit mois sans inventaire n'est pas une périodicité.",
+  m:["contrôlés","traçabilité","péremption","inventaires","procédures"],
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C9 et ses indicateurs."},
+
+ {t:"situation", q:"L'ANSM annonce une tension d'approvisionnement sur un anticancéreux injectable référencé dans votre établissement. Quel est votre rôle ?",
+  a:"Le signalement à l'ANSM relève de l'industriel, pas de la PUI. Le rôle du préparateur est de repérer la tension sur ses données de stock, d'alerter sans délai le pharmacien, d'appliquer les mesures décidées — contingentement quantitatif, contingentement qualitatif par réservation du stock à certaines indications, ou utilisation d'un médicament importé — d'informer les services concernés, et de tracer les mouvements. L'objectif du référentiel reste le même : éviter la rupture pour les patients.",
+  m:["pharmacien","contingentement","informer","tracer","rupture"],
+  s:"ANSM, gestion des tensions d'approvisionnement ; arrêté du 31 juillet 2024, compétence C9."},
+
+ {t:"ouverte", q:"Pourquoi ne peut-on pas se contenter d'augmenter les stocks pour éviter toute rupture ?",
+  a:"Parce qu'un stock excessif immobilise de la trésorerie, occupe des surfaces, et fait périmer des produits, alors que les indicateurs du référentiel demandent d'identifier et d'éliminer les produits périmés et de préserver la qualité et l'intégrité des produits stockés. La gestion consiste à évaluer les besoins en fonction de l'activité, à vérifier la disponibilité en tenant compte des péremptions et à réaliser des inventaires périodiques, de façon à éviter à la fois la rupture et le surstock.",
+  m:["périmés","besoins","activité","inventaires","surstock"],
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C9."},
+
+ {t:"vf", q:"L'ANSM peut prononcer des sanctions financières contre un exploitant qui n'a pas constitué son stock de sécurité.",
+  r:true, c:"Exact : l'agence peut sanctionner financièrement les titulaires d'AMM ou exploitants qui ne respectent pas leurs obligations d'anticipation et de gestion des risques de rupture.",
+  s:"ANSM, dispositif de stock de sécurité et sanctions financières."}
+],
+
+UE11: [
+ {t:"qcm", q:"Quelle loi a consacré l'accès direct du patient à son dossier médical ?",
+  o:["La loi du 4 mars 2002","La loi HPST du 21 juillet 2009","La loi du 26 janvier 2016","La loi du 24 juillet 2019"], r:0,
+  c:"La loi n° 2002-303 relative aux droits des malades et à la qualité du système de santé. Le décret du 29 avril 2002 en précise les modalités.",
+  s:"Loi n° 2002-303 du 4 mars 2002."},
+
+ {t:"qcm", q:"Quel article du code de la santé publique fait du secret professionnel un droit du patient ?",
+  o:["L'article L. 1111-2","L'article L. 1110-4","L'article L. 1161-1","L'article R. 4235-48"], r:1,
+  c:"L'article L. 1111-2 porte sur le droit à l'information, L. 1161-1 sur l'éducation thérapeutique, R. 4235-48 sur la dispensation.",
+  s:"Code de la santé publique, article L. 1110-4, introduit par la loi du 4 mars 2002."},
+
+ {t:"cloze", q:"La violation du secret professionnel est sanctionnée par l'article _____ du code pénal.",
+  r:"226-13", s:"Conseil national de l'Ordre des médecins, secret professionnel."},
+
+ {t:"vf", q:"Le secret professionnel peut être levé à l'égard des proches du patient.",
+  r:false, c:"Faux : le secret doit également être maintenu à l'égard des proches. Seul le patient décide de ce qui leur est communiqué.",
+  s:"AP-HP, direction des affaires juridiques, le secret médical."},
+
+ {t:"vf", q:"Le secret professionnel disparaît au décès du patient.",
+  r:false, c:"Faux : certaines informations peuvent être délivrées aux ayants droit dans les conditions prévues par la loi, sauf si le malade avait exprimé de son vivant son refus.",
+  s:"Code de la santé publique, article L. 1110-4, dernier alinéa."},
+
+ {t:"qcm", q:"Que prévoit le code de la santé publique lorsqu'un patient est pris en charge par une équipe de soins en établissement ?",
+  o:["Le secret ne s'applique plus au sein de l'établissement",
+     "Les informations sont réputées confiées par le malade à l'ensemble de l'équipe",
+     "Chaque professionnel doit obtenir un consentement écrit distinct",
+     "Seul le médecin peut détenir l'information"], r:1,
+  c:"Cette règle rend possible le travail collectif, mais ne justifie que la transmission des informations nécessaires à la prise en charge.",
+  s:"Code de la santé publique, article L. 1110-4 ; Conseil national de l'Ordre des médecins."},
+
+ {t:"qcmMulti", q:"Sur quoi porte l'information due au patient au titre de l'article L. 1111-2 ?",
+  o:["Les investigations, traitements ou actions de prévention proposés et leur utilité",
+     "Leur urgence éventuelle et leurs conséquences",
+     "Les risques fréquents ou graves normalement prévisibles et les autres solutions possibles",
+     "Le coût de revient pour l'établissement"], r:[0,1,2],
+  c:"Le coût de revient ne fait pas partie du contenu légal de l'information sur l'état de santé.",
+  s:"Code de la santé publique, article L. 1111-2, alinéa 1."},
+
+ {t:"vf", q:"L'information du patient doit être délivrée par écrit, le document remplaçant l'entretien.",
+  r:false, c:"Faux : elle est délivrée oralement, de préférence au cours d'un entretien qui lui est spécifiquement dévolu ; les documents écrits peuvent l'appuyer, non la remplacer.",
+  s:"Guide méthodologique sur les droits du patient, en application de la loi du 4 mars 2002."},
+
+ {t:"qcm", q:"Un patient demande la copie de son dossier. Que peut-on lui facturer ?",
+  o:["Rien dans aucun cas","Au plus le coût de la reproduction et, le cas échéant, de l'envoi",
+     "Un forfait fixé par l'établissement","Le temps passé par le personnel"], r:1,
+  c:"La consultation sur place des informations est par ailleurs gratuite.",
+  s:"Loi n° 2002-303 du 4 mars 2002, dispositions relatives à l'accès au dossier."},
+
+ {t:"paires", q:"Associez chaque notion à sa définition.",
+  p:[["Déontologie","Ensemble des devoirs professionnels inscrits dans des codes opposables"],
+     ["Éthique","Réflexion sur ce qu'il est juste de faire quand les règles ne tranchent pas"],
+     ["Secret partagé","Transmission au sein de l'équipe des seules informations nécessaires"],
+     ["Démocratie sanitaire","Participation des usagers aux décisions qui concernent leur santé"]],
+  s:"Loi n° 2002-303 du 4 mars 2002 ; documentation de l'Ordre des médecins."},
+
+ {t:"vf", q:"Le préparateur en pharmacie hospitalière est soumis au secret professionnel.",
+  r:true, c:"Exact : le référentiel d'activités du diplôme l'énonce explicitement dans la définition du métier.",
+  s:"Arrêté du 31 juillet 2024, annexe I, définition du métier."},
+
+ {t:"qcmMulti", q:"Que demandent les indicateurs de la compétence C10 sur les données transmises ?",
+  o:["Qu'elles soient fiables et conformes","Qu'elles soient organisées et hiérarchisées, donc exploitables",
+     "Que les anomalies ou incohérences soient ciblées","Qu'elles soient transmises à tous les agents de l'établissement"], r:[0,1,2],
+  c:"La transmission se fait aux membres de l'équipe pluriprofessionnelle concernée, dans le respect du secret professionnel.",
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C10."},
+
+ {t:"cloze", q:"L'expression « démocratie _____ » désigne la possibilité offerte au patient de devenir acteur de sa prise en charge.",
+  r:"sanitaire", s:"Guide méthodologique sur les droits du patient, loi du 4 mars 2002."},
+
+ {t:"qcm", q:"Quel texte réglementaire précise les modalités d'accès aux informations personnelles détenues par les professionnels et établissements de santé ?",
+  o:["Le décret n° 2002-637 du 29 avril 2002","Le décret n° 2020-1832 du 31 décembre 2020",
+     "L'arrêté du 6 avril 2011","Le décret n° 2021-349 du 30 mars 2021"], r:0,
+  c:"Il complète les dispositions de la loi du 4 mars 2002, en application des articles L. 1111-7 et L. 1112-1 du CSP.",
+  s:"AP-HP, direction des affaires juridiques, accès au dossier médical."},
+
+ {t:"erreur", q:"Dans l'ascenseur, un préparateur commente avec un collègue d'un autre service le traitement d'un patient dont le nom est cité, puis transmet par messagerie personnelle une photo d'ordonnance à un ami infirmier pour avis. Relevez les non-conformités.",
+  a:"Deux violations distinctes. Le secret couvre l'ensemble des informations concernant la personne venues à la connaissance du professionnel, et sa violation est sanctionnée par l'article 226-13 du code pénal : une conversation dans un lieu de passage, avec un collègue qui ne participe pas à la prise en charge, n'entre pas dans le secret partagé, lequel ne couvre que les informations nécessaires transmises aux personnes participant à la prise en charge. L'envoi par une messagerie personnelle méconnaît en outre l'obligation de respecter les règles de sécurité numérique et la réglementation relative aux données de santé, et de sécuriser son environnement numérique de travail.",
+  m:["secret","226-13","prise en charge","sécurité numérique","données de santé"],
+  s:"Code de la santé publique, article L. 1110-4 ; arrêté du 31 juillet 2024, compétence C10."},
+
+ {t:"situation", q:"Une patiente hospitalisée souhaite consulter son dossier médical. Quelles règles s'appliquent ?",
+  a:"L'accès direct au dossier médical est un droit consacré par la loi du 4 mars 2002, dont les modalités sont précisées par le décret du 29 avril 2002. La consultation sur place des informations est gratuite. Si la patiente demande des copies, quel qu'en soit le support, les frais laissés à sa charge ne peuvent excéder le coût de la reproduction et, le cas échéant, de l'envoi. La demande est traitée par l'établissement selon sa procédure : ce n'est pas au préparateur de communiquer directement des pièces du dossier.",
+  m:["accès direct","gratuite","reproduction","envoi","procédure"],
+  s:"Loi n° 2002-303 du 4 mars 2002 ; décret n° 2002-637 du 29 avril 2002."},
+
+ {t:"ouverte", q:"Qu'est-ce qui distingue la déontologie de l'éthique ?",
+  a:"La déontologie est l'ensemble des devoirs professionnels, inscrits dans des textes opposables : elle dit ce qui est obligatoire et son manquement expose à une sanction. L'éthique est une réflexion, engagée lorsque les règles ne tranchent pas ou se contredisent, sur ce qu'il est juste de faire dans une situation donnée. La première s'applique, la seconde se délibère ; elles ne se substituent pas l'une à l'autre.",
+  m:["devoirs","opposables","sanction","réflexion","situation"],
+  s:"Documentation de l'Ordre des médecins ; objectifs pédagogiques de l'UE, annexe III de l'arrêté du 31 juillet 2024."},
+
+ {t:"vf", q:"Le secret partagé autorise à transmettre toute information sur un patient à n'importe quel professionnel de l'établissement.",
+  r:false, c:"Faux : il ne couvre que les informations nécessaires à la prise en charge, transmises aux personnes qui y participent.",
+  s:"Code de la santé publique, article L. 1110-4."},
+
+ {t:"vf", q:"L'information du patient porte notamment sur les autres solutions possibles que celle qui lui est proposée.",
+  r:true, c:"Exact : l'article L. 1111-2 vise les investigations, traitements ou actions de prévention proposés, leur utilité, leur urgence éventuelle, leurs conséquences, les risques fréquents ou graves normalement prévisibles, ainsi que les autres solutions possibles.",
+  s:"Code de la santé publique, article L. 1111-2, alinéa 1."},
+
+ {t:"qcm", q:"Quand l'expression « démocratie sanitaire » est-elle apparue ?",
+  o:["Lors des États généraux de la santé, en 1998-1999","Avec la loi HPST de 2009",
+     "Avec la création des ARS","Lors de la crise sanitaire de 2020"], r:0,
+  c:"La loi du 4 mars 2002 en est la traduction juridique, avec la reconnaissance de droits individuels et collectifs des usagers.",
+  s:"Guide méthodologique sur les droits du patient, loi du 4 mars 2002."}
+],
+
+UE12: [
+ {t:"qcm", q:"Qui est, en principe, le tuteur de stage d'un étudiant préparateur en pharmacie hospitalière ?",
+  o:["Un cadre de santé","Un préparateur en pharmacie hospitalière","Un pharmacien praticien hospitalier","Le directeur du centre de formation"], r:1,
+  c:"En l'absence de préparateur dans la structure d'accueil, un cadre de santé ou un pharmacien praticien hospitalier peut être désigné.",
+  s:"Arrêté du 31 juillet 2024, article 13."},
+
+ {t:"cloze", q:"La durée totale de la formation comporte _____ heures, travail personnel de l'étudiant inclus.",
+  r:"1400", s:"Arrêté du 31 juillet 2024, article 11."},
+
+ {t:"qcm", q:"Combien d'heures de formation en milieu professionnel la formation comporte-t-elle ?",
+  o:["350 heures","700 heures","1 050 heures","1 400 heures"], r:1,
+  c:"Ces 700 heures correspondent à 20 semaines, sur une durée totale de 1 400 heures.",
+  s:"Arrêté du 31 juillet 2024, article 11."},
+
+ {t:"cloze", q:"Une semaine de formation en milieu professionnel équivaut à _____ ECTS.",
+  r:"1", s:"Arrêté du 31 juillet 2024, annexe III, périodes de formation en milieu professionnel."},
+
+ {t:"qcmMulti", q:"Comment se répartissent les 17 semaines de stage en pharmacie à usage intérieur ?",
+  o:["5 semaines en stérilisation et dispositifs médicaux","5 semaines en secteur de production",
+     "7 semaines dans les autres secteurs","5 semaines en officine"], r:[0,1,2],
+  c:"L'officine n'entre pas dans le parcours. Les 3 semaines restantes sont choisies en concertation avec l'équipe pédagogique.",
+  s:"Arrêté du 31 juillet 2024, annexe III."},
+
+ {t:"qcm", q:"Comment se répartissent les 5 semaines du secteur de production ?",
+  o:["4 semaines de préparations et 1 en radiopharmacie","3 semaines de préparations et 2 en radiopharmacie",
+     "2 semaines de préparations et 3 en radiopharmacie","5 semaines de préparations, la radiopharmacie étant optionnelle"], r:1,
+  c:"Trois semaines en préparation de cytotoxiques injectables, préparations stériles et non stériles, et deux semaines en radiopharmacie.",
+  s:"Arrêté du 31 juillet 2024, annexe III."},
+
+ {t:"ordre", q:"Classez ces éléments du parcours de stage du plus long au plus court, en semaines.",
+  e:["Autres secteurs : logistique, essais cliniques, médicaments, services de soins",
+     "Stérilisation et dispositifs médicaux",
+     "Lieux choisis selon le projet professionnel, dont le service sanitaire"],
+  s:"Arrêté du 31 juillet 2024, annexe III : 7 semaines, 5 semaines, 3 semaines."},
+
+ {t:"qcm", q:"Quels sont les trois critères de la feuille d'évaluation en milieu professionnel ?",
+  o:["Insuffisant, satisfaisant, excellent","Non pratiqué, non acquis, acquis",
+     "À revoir, en cours, validé","Débutant, autonome, expert"], r:1,
+  c:"« Non pratiqué » signale une absence d'occasion et non un échec : c'est toute l'utilité de la distinction.",
+  s:"Arrêté du 31 juillet 2024, annexe III, évaluation de l'apprenant."},
+
+ {t:"vf", q:"Le portfolio est rempli par le tuteur de stage.",
+  r:false, c:"Faux : c'est l'étudiant qui renseigne le portfolio, afin d'évaluer l'acquisition progressive de ses connaissances et compétences.",
+  s:"Arrêté du 31 juillet 2024, article 13."},
+
+ {t:"qcm", q:"À quoi sert le portfolio ?",
+  o:["À justifier les présences en stage","À mesurer la progression de l'apprenant, centré sur l'acquisition des compétences, des activités et des actes",
+     "À noter les enseignements théoriques","À constituer le dossier d'inscription au jury"], r:1,
+  c:"Le référent pédagogique fait le bilan des acquisitions avec l'apprenant, le conseille et le guide pour la suite de son parcours.",
+  s:"Arrêté du 31 juillet 2024, annexe III."},
+
+ {t:"cloze", q:"Une note au moins égale à _____ sur 20 est requise pour la validation d'un domaine de compétences.",
+  r:"10", s:"Arrêté du 31 juillet 2024, article 19."},
+
+ {t:"qcm", q:"À partir de quelle note les unités d'enseignement d'un même domaine peuvent-elles se compenser ?",
+  o:["6 sur 20","8 sur 20","10 sur 20","Il n'y a pas de compensation"], r:1,
+  c:"En dessous de 8 sur 20, l'unité n'est pas compensable et fait tomber le domaine.",
+  s:"Arrêté du 31 juillet 2024, article 19."},
+
+ {t:"qcmMulti", q:"Qu'est-ce qui ne peut jamais être compensé entre soi ?",
+  o:["Les unités d'enseignement de deux domaines différents",
+     "Les unités d'enseignement théoriques et celles de formation en milieu professionnel",
+     "Deux unités du même domaine notées au-dessus de 8 sur 20",
+     "Deux unités du même domaine dont l'une est notée 7 sur 20"], r:[0,1,3],
+  c:"Seules deux unités d'un même domaine, toutes deux au moins à 8 sur 20, peuvent se compenser.",
+  s:"Arrêté du 31 juillet 2024, article 19."},
+
+ {t:"vf", q:"Lorsqu'une unité d'enseignement a été présentée aux deux sessions, c'est la meilleure des deux notes qui est retenue.",
+  r:false, c:"Faux : c'est la note de la deuxième session qui est retenue, meilleure ou non.",
+  s:"Arrêté du 31 juillet 2024, article 18."},
+
+ {t:"cloze", q:"Une franchise maximale de _____ heures d'absence est accordée, soit 5 % de la durée totale de la formation.",
+  r:"70", s:"Arrêté du 31 juillet 2024, article 15."},
+
+ {t:"qcm", q:"Sur quelle base hebdomadaire les stages s'effectuent-ils ?",
+  o:["28 heures","35 heures dont 5 à 7 heures dédiées aux travaux de l'étudiant","39 heures","Variable selon le service"], r:1,
+  c:"Ces 5 à 7 heures sont consacrées aux travaux que l'étudiant doit réaliser au cours du stage.",
+  s:"Arrêté du 31 juillet 2024, annexe III."},
+
+ {t:"paires", q:"Associez chaque acteur à son rôle dans la formation en milieu professionnel.",
+  p:[["Tuteur de stage","Encadre l'apprenant sur le lieu de stage et renseigne la feuille d'évaluation"],
+     ["Référent pédagogique","Fait le bilan des acquisitions et guide la suite du parcours"],
+     ["Directeur du centre de formation","Agrée les terrains de stage"],
+     ["Apprenant","Renseigne le portfolio"]],
+  s:"Arrêté du 31 juillet 2024, article 13 et annexe III."},
+
+ {t:"erreur", q:"Un tuteur remplit la feuille d'évaluation de son étudiant seul, après son départ, coche « non acquis » pour la radiopharmacie que l'étudiant n'a jamais eu l'occasion de pratiquer, et n'organise aucun entretien malgré les difficultés observées en cours de stage. Relevez les non-conformités.",
+  a:"Trois écarts. Les professionnels du lieu de formation renseignent la feuille d'évaluation en présence de l'apprenant, par une argumentation précise et factuelle : la remplir seul et après coup méconnaît cette exigence. Une activité jamais rencontrée relève de « non pratiqué » et non de « non acquis », qui signalerait un échec là où il n'y a eu qu'absence d'occasion. Enfin, en cas de difficulté d'apprentissage durant la période, un entretien entre le tuteur professionnel, l'enseignant référent et l'apprenant est préconisé.",
+  m:["en présence","factuelle","non pratiqué","entretien","référent"],
+  s:"Arrêté du 31 juillet 2024, annexe III, évaluation de l'apprenant."},
+
+ {t:"situation", q:"Vous accueillez un étudiant pour sa première semaine en stérilisation. Que mettez-vous en place, selon les indicateurs de la compétence C11 ?",
+  a:"Une démarche d'accueil est mise en œuvre et les informations nécessaires sont transmises ; les objectifs et les modalités d'apprentissage sont formalisés dès le départ. La transmission de savoir-faire utilise des méthodes pédagogiques adaptées à l'apprenant et à la situation, sous forme de conseils, démonstrations, explications et analyse commentée de sa propre pratique, en conformité avec le niveau de formation de l'apprenant. L'évaluation applique une procédure définie, utilise des outils adaptés et donne lieu à un échange avec la personne évaluée. Les besoins spécifiques d'une personne en situation de handicap sont pris en compte.",
+  m:["accueil","objectifs","méthodes","évaluation","échange","handicap"],
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C11 et ses indicateurs."},
+
+ {t:"ouverte", q:"Que recouvre la démarche réflexive attendue par la compétence C12 ?",
+  a:"Analyser sa pratique professionnelle au regard de l'environnement professionnel, de la réglementation, de l'éthique, des enjeux sociétaux et de l'évolution des technologies, en la confrontant à celle de ses pairs et d'autres professionnels. Les indicateurs précisent ce qu'on attend : les points forts et les difficultés sont identifiés, les difficultés analysées, des améliorations proposées, et les grilles d'habilitation aux postes de travail sont utilisées pour une auto-évaluation permettant de repérer ses besoins en formation.",
+  m:["analyser","pairs","difficultés","améliorations","habilitation"],
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C12."}
+],
+
+UE13: [
+ {t:"qcm", q:"Quelle loi encadre aujourd'hui les recherches impliquant la personne humaine ?",
+  o:["La loi Huriet-Sérusclat de 1988","La loi Jardé du 5 mars 2012","La loi HPST de 2009","La loi du 4 mars 2002"], r:1,
+  c:"Ses décrets d'application ont été promulgués le 16 novembre 2016 par le décret n° 2016-1537.",
+  s:"Loi n° 2012-300 du 5 mars 2012 ; décret n° 2016-1537 du 16 novembre 2016."},
+
+ {t:"paires", q:"Associez chaque catégorie de RIPH à sa définition.",
+  p:[["Catégorie 1","Recherche interventionnelle avec intervention non justifiée par la prise en charge habituelle"],
+     ["Catégorie 2","Recherche interventionnelle à risques et contraintes minimes"],
+     ["Catégorie 3","Recherche non interventionnelle, sans risque ni contrainte"]],
+  s:"Article L. 1121-1 du code de la santé publique."},
+
+ {t:"qcm", q:"Pour quelles catégories de RIPH l'avis d'un comité de protection des personnes est-il requis ?",
+  o:["Catégorie 1 uniquement","Catégories 1 et 2","Les trois catégories","Aucune, l'ANSM suffit"], r:2,
+  c:"Le CPP est devenu la seule instance éthique pour l'ensemble des RIPH, avec avis favorable obligatoire pour les trois catégories.",
+  s:"Loi Jardé, application pratique ; article L. 1121-1 du CSP."},
+
+ {t:"qcm", q:"Pour quelles catégories une autorisation de l'ANSM est-elle obligatoire ?",
+  o:["Les trois catégories","Catégories 1 et 2","Catégorie 1 uniquement","Aucune"], r:2,
+  c:"Pour les catégories 2 et 3, on transmet à l'ANSM une copie de l'avis favorable du CPP et le résumé de la recherche : c'est une information, pas une autorisation.",
+  s:"Université de Lorraine, la loi Jardé et son application."},
+
+ {t:"vf", q:"Une recherche de catégorie 3 nécessite le consentement écrit du participant.",
+  r:false, c:"Faux : les catégories 1 et 2 nécessitent le consentement ; la catégorie 3 se limite à l'information de la personne et au recueil de sa non-opposition.",
+  s:"Université de Lorraine, la loi Jardé et son application."},
+
+ {t:"vf", q:"Les termes « recherche biomédicale » et « recherche en soins courants » sont obsolètes.",
+  r:true, c:"Exact : la loi Jardé les a remplacés par « recherche impliquant la personne humaine ».",
+  s:"Loi n° 2012-300 du 5 mars 2012 ; documentation CPP."},
+
+ {t:"qcm", q:"Comment le CPP en charge d'un dossier est-il désigné ?",
+  o:["Par le promoteur","Par tirage au sort après dépôt auprès d'un guichet unique","Par l'ARS","Par l'ANSM"], r:1,
+  c:"Le tirage au sort a remplacé le rattachement à l'inter-région de l'investigateur coordonnateur ; le secrétariat de la CNRIPH l'assure.",
+  s:"CPP Sud-Méditerranée II ; SFRMS, loi Jardé en pratique."},
+
+ {t:"cloze", q:"La commission nationale créée par la loi Jardé pour harmoniser le fonctionnement des comités s'appelle la _____.",
+  r:"CNRIPH", s:"SFRMS, loi Jardé en pratique."},
+
+ {t:"cloze", q:"Le numéro d'identification attribué à toute recherche impliquant la personne humaine s'appelle l'_____.",
+  r:"ID-RCB", s:"Documentation sur la mise en œuvre de la loi Jardé."},
+
+ {t:"ordre", q:"Classez ces types d'études du niveau de preuve le plus fort au plus faible, selon la grille utilisée en France.",
+  e:["Méta-analyse d'essais comparatifs randomisés","Essai comparatif randomisé de faible puissance",
+     "Étude cas-témoins","Série de cas"],
+  s:"HAS, niveau de preuve et gradation des recommandations de bonne pratique."},
+
+ {t:"paires", q:"Associez chaque niveau de preuve à son grade de recommandation.",
+  p:[["Niveau 1","Grade A, preuve scientifique établie"],
+     ["Niveau 2","Grade B, présomption scientifique"],
+     ["Niveaux 3 et 4","Grade C, moindre niveau de preuve"],
+     ["Absence de précision","Accord professionnel"]],
+  s:"HAS, gradation des recommandations et niveaux de preuve."},
+
+ {t:"qcm", q:"À quel niveau de preuve correspond une étude de cohorte ?",
+  o:["Niveau 1","Niveau 2","Niveau 3","Niveau 4"], r:1,
+  c:"Le niveau 2 regroupe les essais randomisés de faible puissance, les études comparatives non randomisées bien menées et les études de cohorte.",
+  s:"HAS, niveau de preuve et gradation des recommandations."},
+
+ {t:"vf", q:"Une recommandation de grade C est nécessairement une recommandation faible.",
+  r:false, c:"Faux : la gradation d'une recommandation ne présume pas obligatoirement du degré de sa force.",
+  s:"HAS, niveau de preuve et gradation des recommandations de bonne pratique."},
+
+ {t:"qcm", q:"Que caractérise le niveau de preuve d'une étude ?",
+  o:["L'ampleur du bénéfice observé","La capacité de l'étude à répondre à la question posée",
+     "Le nombre de patients inclus","La notoriété de la revue"], r:1,
+  c:"Il se juge par l'adéquation entre le design de l'étude et la question posée : population, critères de jugement, biais, méthodes statistiques, puissance.",
+  s:"HAS, définition du niveau de preuve."},
+
+ {t:"qcmMulti", q:"Quels éléments entrent dans l'appréciation du niveau de preuve d'une étude ?",
+  o:["La présence de biais","La puissance statistique","Le choix des critères de jugement","Le pays de publication"], r:[0,1,2],
+  c:"Le pays de publication n'est pas un critère méthodologique.",
+  s:"HAS, niveau de preuve et gradation des recommandations."},
+
+ {t:"cloze", q:"Une erreur systématique qui fausse un résultat dans un sens donné et ne se corrige pas en augmentant l'effectif s'appelle un _____.",
+  r:"biais", s:"HAS, guide d'analyse de la littérature."},
+
+ {t:"erreur", q:"Un fournisseur vous présente une série de cas de douze patients, publiée dans un congrès, et affirme qu'elle démontre la supériorité de son dispositif et justifie de modifier votre procédure dès la semaine prochaine. Que relevez-vous ?",
+  a:"Trois problèmes. Une série de cas relève du niveau de preuve 4, le plus faible : elle ne permet pas de conclure à une supériorité, faute de groupe comparateur et de randomisation. Une communication de congrès n'a pas le même statut qu'un article publié dans un journal à comité de lecture. Enfin, le changement de procédure relève d'une décision fondée sur l'analyse des données disponibles et validée dans le cadre du système qualité, en concertation avec l'équipe, et non sur la présentation d'un fournisseur.",
+  m:["niveau","comparateur","comité de lecture","procédure","équipe"],
+  s:"HAS, niveaux de preuve ; arrêté du 31 juillet 2024, compétences C12 et C13."},
+
+ {t:"situation", q:"Votre PUI souhaite mener une étude par questionnaire auprès des patients, sans modifier leur prise en charge. Quelles démarches entreprendre ?",
+  a:"Il s'agit d'une recherche non interventionnelle, donc d'une RIPH de catégorie 3 : tous les actes sont pratiqués et les produits utilisés de manière habituelle, sans procédure supplémentaire de diagnostic, de traitement ou de surveillance. L'avis favorable d'un comité de protection des personnes est requis, ce comité étant désigné par tirage au sort après dépôt auprès du guichet unique. L'ANSM n'a pas à autoriser la recherche mais reçoit une copie de l'avis favorable et le résumé. Les participants doivent être informés et pouvoir s'opposer. La recherche reçoit un numéro ID-RCB et figure au répertoire public.",
+  m:["catégorie 3","comité de protection","tirage au sort","ANSM","s'opposer"],
+  s:"Loi Jardé et ses textes d'application ; article L. 1121-1 du CSP."},
+
+ {t:"ouverte", q:"Pourquoi l'avis d'un CPP est-il requis même pour une recherche sans risque ?",
+  a:"Parce que le CPP est devenu la seule instance éthique pour l'ensemble des RIPH, et que l'absence de risque physique n'écarte ni les enjeux de protection des données, ni l'exigence d'information des personnes et de recueil de leur non-opposition, ni la qualité méthodologique du protocole. La loi Jardé a maintenu un niveau élevé de protection tout en modulant les démarches auprès de l'ANSM selon la catégorie.",
+  m:["CPP","instance éthique","information","non-opposition","protection"],
+  s:"SFRMS, loi Jardé en pratique."},
+
+ {t:"vf", q:"Toutes les recherches impliquant la personne humaine sont diffusées dans un répertoire public.",
+  r:true, c:"Exact, et chacune porte un numéro ID-RCB demandé auprès de l'ANSM.",
+  s:"Documentation sur la mise en œuvre de la loi Jardé."}
+],
+
+UE14: [
+ {t:"qcm", q:"Comment dit-on « forme pharmaceutique » dans la terminologie officielle européenne ?",
+  o:["Drug shape","Pharmaceutical dose form","Medicine format","Galenic type"], r:1,
+  c:"C'est le terme des Standard Terms de l'EDQM, utilisé dans les autorisations de mise sur le marché et les étiquetages.",
+  s:"EDQM, Standard Terms database."},
+
+ {t:"paires", q:"Associez chaque terme anglais à sa traduction.",
+  p:[["Route of administration","Voie d'administration"],
+     ["Shelf life","Durée de conservation"],
+     ["Batch","Lot de fabrication"],
+     ["Storage conditions","Conditions de conservation"]],
+  s:"EDQM, Standard Terms ; terminologie réglementaire européenne."},
+
+ {t:"qcm", q:"Que signifie « SmPC » ?",
+  o:["Small Package Control","Summary of Product Characteristics","Standard Medicinal Product Code","Safety Monitoring Program Chart"], r:1,
+  c:"C'est le résumé des caractéristiques du produit.",
+  s:"Documentation EMA sur les terminologies et les informations produit."},
+
+ {t:"qcm", q:"Quelle est la différence entre « adverse event » et « adverse reaction » ?",
+  o:["Aucune","L'événement survient sans préjuger d'un lien de causalité, l'effet suppose un lien suspecté avec le produit",
+     "L'adverse event est toujours grave","L'adverse reaction concerne uniquement les dispositifs"], r:1,
+  c:"C'est la même distinction qu'entre événement indésirable et effet indésirable en français.",
+  s:"Terminologie de pharmacovigilance, documentation EMA."},
+
+ {t:"cloze", q:"La base Standard Terms de l'EDQM donne l'équivalent de plus de _____ termes.",
+  r:"900", s:"EDQM, Standard Terms database."},
+
+ {t:"cloze", q:"La base Standard Terms couvre _____ langues.",
+  r:"35", s:"EDQM, Standard Terms database."},
+
+ {t:"qcmMulti", q:"Que contient la base Standard Terms de l'EDQM ?",
+  o:["Les formes pharmaceutiques","Les voies et méthodes d'administration",
+     "Les récipients, systèmes de fermeture et dispositifs d'administration","Les prix des médicaments"], r:[0,1,2],
+  c:"Elle contient également les unités de présentation, des termes combinés et des patient-friendly terms.",
+  s:"EDQM, Standard Terms database."},
+
+ {t:"vf", q:"Les patient-friendly terms sont des termes plus courts, utilisables sur certaines étiquettes lorsque la place est limitée.",
+  r:true, c:"Exact, lorsque leur usage est justifié et autorisé par l'autorité compétente.",
+  s:"EDQM, Standard Terms database."},
+
+ {t:"qcm", q:"Depuis quand l'usage des terminologies EDQM est-il obligatoire pour les déclarations à EudraVigilance ?",
+  o:["Depuis 1996","Depuis 2014","Depuis le 30 juin 2022","Il reste facultatif"], r:2,
+  c:"1996 est l'année de la première liste publiée dans Pharmeuropa, 2014 celle de la refonte de la base et de sa gratuité.",
+  s:"EMA, usage obligatoire des terminologies EDQM pour les formes et voies d'administration."},
+
+ {t:"paires", q:"Associez chaque faux ami à sa traduction correcte.",
+  p:[["Actually","En réalité"],["Eventually","Finalement"],["Preservative","Conservateur"],["Injury","Lésion"]],
+  s:"Vocabulaire courant de l'anglais scientifique et médical."},
+
+ {t:"qcm", q:"Dans un article, « the study eventually included 240 patients » signifie :",
+  o:["L'étude a éventuellement inclus 240 patients","L'étude a finalement inclus 240 patients",
+     "L'étude inclut habituellement 240 patients","L'étude exclut 240 patients"], r:1,
+  c:"« Éventuellement » se traduit par possibly, et « actuellement » par currently.",
+  s:"Vocabulaire de l'anglais scientifique, faux amis fréquents."},
+
+ {t:"vf", q:"« Drug » se traduit toujours par « drogue ».",
+  r:false, c:"Faux : selon le contexte, « drug » désigne un médicament ou une substance active.",
+  s:"Vocabulaire pharmaceutique anglais courant."},
+
+ {t:"cloze", q:"« Compounding » se traduit en français par la réalisation de _____.",
+  r:"préparations", s:"Vocabulaire pharmaceutique anglais courant."},
+
+ {t:"qcmMulti", q:"Quels objectifs l'arrêté du 31 juillet 2024 fixe-t-il à l'UE Anglais ?",
+  o:["Acquérir les connaissances permettant d'appréhender la lecture d'articles scientifiques",
+     "Communiquer en anglais dans le domaine de la santé et des soins",
+     "Obtenir une certification de niveau C1","Rédiger des publications en anglais"], r:[0,1],
+  c:"Le texte ne fixe ni niveau certifié ni obligation de publication.",
+  s:"Arrêté du 31 juillet 2024, annexe III, UE Anglais."},
+
+ {t:"cloze", q:"L'UE Anglais est créditée de _____ ECTS.",
+  r:"2", s:"Arrêté du 31 juillet 2024, annexe III."},
+
+ {t:"qcm", q:"Que dit un indicateur de la compétence C12 à propos des langues ?",
+  o:["Les documents doivent être exclusivement en français",
+     "Les données pertinentes sont recherchées et sélectionnées dans les documents professionnels et scientifiques en français et en anglais",
+     "La traduction automatique est recommandée","L'anglais n'est pas évalué"], r:1,
+  c:"Les bases documentaires doivent en outre être utilisées correctement et avec discernement, y compris les sources internet.",
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C12."},
+
+ {t:"erreur", q:"Un collègue traduit « preservative-free solution for infusion, store below 25 °C, do not freeze » par « solution sans préservatif pour perfusion, à conserver au-dessus de 25 °C, ne pas congeler ». Relevez les erreurs.",
+  a:"Deux erreurs. « Preservative » est un faux ami : il désigne un conservateur, non un préservatif ; la mention correcte est « solution sans conservateur pour perfusion ». « Store below 25 °C » signifie conserver en dessous de 25 °C, et non au-dessus : l'inversion transforme une condition de conservation en instruction dangereuse. « Do not freeze », en revanche, est correctement traduit par « ne pas congeler ».",
+  m:["conservateur","faux ami","en dessous","conservation"],
+  s:"Vocabulaire pharmaceutique anglais ; terminologie des conditions de conservation."},
+
+ {t:"situation", q:"Vous devez vérifier la traduction française exacte d'une forme pharmaceutique figurant sur un conditionnement anglophone. Quelle démarche suivez-vous ?",
+  a:"On consulte la base Standard Terms de l'EDQM, créée à la demande de la Commission européenne, qui donne l'équivalent de plus de 900 termes dans 35 langues, dont le français et l'anglais, pour les formes pharmaceutiques, les voies et méthodes d'administration, les unités de présentation et les récipients. C'est une source officielle et gratuite, et non un traducteur automatique. En cas de doute persistant, on en réfère au pharmacien avant toute utilisation.",
+  m:["Standard Terms","EDQM","officielle","pharmacien"],
+  s:"EDQM, Standard Terms database."},
+
+ {t:"ouverte", q:"Quels éléments cherche-t-on en priorité dans le résumé d'un article scientifique ?",
+  a:"La question posée, la population ou le matériel étudié, la méthode employée, le résultat chiffré et la conclusion des auteurs. Repérer ces éléments suffit à décider si l'article mérite une lecture complète. Le résultat chiffré doit être lu avant la conclusion, celle-ci étant rédigée par les auteurs eux-mêmes.",
+  m:["question","méthode","résultat","conclusion"],
+  s:"Démarche de lecture critique ; compétence C12 de l'arrêté du 31 juillet 2024."},
+
+ {t:"vf", q:"La base Standard Terms est payante.",
+  r:false, c:"Faux : depuis la refonte de 2014, l'accès à la base est gratuit.",
+  s:"EDQM, Standard Terms, historique de la base."}
+],
+
+UE15: [
+ {t:"qcmMulti", q:"Quelles vigilances la compétence C13 nomme-t-elle expressément ?",
+  o:["Pharmacovigilance et matériovigilance","Réactovigilance et identitovigilance",
+     "Vigilance informatique","Cosmétovigilance"], r:[0,1,2],
+  c:"Le texte cite cinq vigilances : pharmacovigilance, matériovigilance, réactovigilance, identitovigilance et vigilance informatique.",
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C13."},
+
+ {t:"paires", q:"Associez chaque situation à la vigilance concernée.",
+  p:[["Effet indésirable d'un médicament","Pharmacovigilance"],
+     ["Défaillance d'un dispositif médical","Matériovigilance"],
+     ["Réactif de diagnostic in vitro défectueux","Réactovigilance"],
+     ["Confusion entre deux patients homonymes","Identitovigilance"]],
+  s:"Arrêté du 31 juillet 2024, compétence C13 ; réglementation des vigilances sanitaires."},
+
+ {t:"qcm", q:"Quel texte a instauré le dispositif national de déclaration des EIGS ?",
+  o:["L'arrêté du 6 avril 2011","Le décret n° 2016-1606 du 25 novembre 2016",
+     "Le décret n° 2021-349 du 30 mars 2021","La loi du 4 mars 2002"], r:1,
+  c:"Il est pris en application de l'article 161 de la loi du 26 janvier 2016 et institue également les structures régionales d'appui.",
+  s:"Décret n° 2016-1606 du 25 novembre 2016."},
+
+ {t:"qcm", q:"À qui un événement indésirable grave associé à des soins est-il déclaré ?",
+  o:["À la HAS directement","Au directeur général de l'ARS","À l'ANSM","Au ministre chargé de la santé"], r:1,
+  c:"C'est ensuite l'ARS qui transmet les deux parties du formulaire à la HAS, sans le nom du déclarant ni l'adresse du lieu de survenue.",
+  s:"Décret n° 2016-1606 ; articles R. 1413-67 et suivants du CSP."},
+
+ {t:"cloze", q:"La seconde partie de la déclaration d'un EIGS est transmise dans les _____ mois suivants.",
+  r:"trois", s:"Décret n° 2016-1606 du 25 novembre 2016."},
+
+ {t:"qcmMulti", q:"Que contient la première partie de la déclaration d'un EIGS ?",
+  o:["La nature de l'événement et les circonstances de sa survenue",
+     "Les premières mesures prises localement au bénéfice du patient et en prévention",
+     "La mention de l'information donnée","Le plan d'actions correctrices avec ses échéances"], r:[0,1,2],
+  c:"Le plan d'actions correctrices figure dans la seconde partie, avec les éléments de retour d'expérience.",
+  s:"AP-HP, analyse du décret n° 2016-1606."},
+
+ {t:"vf", q:"La transmission d'une déclaration d'EIGS à la HAS comporte le nom du déclarant.",
+  r:false, c:"Faux : la transmission ne comporte ni les nom et prénoms du déclarant, ni l'adresse du lieu de survenue de l'événement.",
+  s:"Article R. 1413-72 du code de la santé publique."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les étapes de la déclaration d'un EIGS.",
+  e:["Constat de l'événement par un professionnel de santé ou le représentant de l'établissement",
+     "Envoi sans délai de la première partie au directeur général de l'ARS",
+     "Analyse approfondie des causes avec l'aide de la structure régionale d'appui",
+     "Envoi de la seconde partie dans les trois mois, avec retour d'expérience et plan d'actions",
+     "Transmission anonymisée des deux parties par l'ARS à la HAS",
+     "Bilan annuel des déclarations publié par la HAS"],
+  s:"Décret n° 2016-1606 du 25 novembre 2016 ; articles R. 1413-67 à R. 1413-73 du CSP."},
+
+ {t:"qcm", q:"Quel est le rôle de la structure régionale d'appui ?",
+  o:["Elle sanctionne l'établissement","Elle aide les professionnels à réaliser l'analyse approfondie des causes",
+     "Elle remplace la déclaration à l'ARS","Elle délivre la certification"], r:1,
+  c:"Elle établit également un programme prévisionnel annuel de travail et remet un rapport d'activité avant le 31 mars de l'année suivante.",
+  s:"Décret n° 2016-1606, articles R. 1413-75 et R. 1413-78 du CSP."},
+
+ {t:"cloze", q:"La structure régionale d'appui remet son rapport d'activité annuel avant le 31 _____ de l'année civile suivante.",
+  r:"mars", s:"Article R. 1413-78 du code de la santé publique."},
+
+ {t:"qcm", q:"Combien d'objectifs comporte le référentiel de certification HAS version 2025 ?",
+  o:["9","12","15","18"], r:1,
+  c:"Douze objectifs, soit quatre par chapitre. Quinze correspondait à la version précédente.",
+  s:"HAS, ouverture du sixième cycle de certification en 2025."},
+
+ {t:"qcmMulti", q:"Quels sont les trois chapitres du référentiel de certification 2025 ?",
+  o:["Le patient","Les équipes de soins","L'établissement","Les fournisseurs"], r:[0,1,2],
+  c:"Cette structuration permet l'analyse croisée entre le résultat pour le patient, les pratiques des équipes et la dynamique de la gouvernance.",
+  s:"HAS, référentiel de certification version 2025."},
+
+ {t:"cloze", q:"Le référentiel de certification 2025 comporte _____ critères au total.",
+  r:"118", s:"ARS Hauts-de-France, présentation de la certification des établissements de santé."},
+
+ {t:"paires", q:"Associez chaque niveau d'exigence à son effectif dans le référentiel 2025.",
+  p:[["Critères standards","92"],["Critères impératifs","21"],["Critères avancés","5"],["Total des critères","118"]],
+  s:"ARS Hauts-de-France, répartition des critères du référentiel 2025."},
+
+ {t:"vf", q:"Le référentiel de certification 2025 est applicable aux visites d'établissements à compter de septembre 2025.",
+  r:true, c:"Exact : le sixième cycle a été lancé en 2025 et s'applique aux visites à compter de ce mois.",
+  s:"HAS, certification des établissements de santé, sixième cycle."},
+
+ {t:"qcm", q:"Quelle est la différence entre action corrective et action préventive ?",
+  o:["Aucune, ce sont des synonymes",
+     "La corrective supprime la cause d'un écart survenu, la préventive celle d'un écart potentiel",
+     "La préventive est toujours plus coûteuse",
+     "La corrective concerne le matériel, la préventive le personnel"], r:1,
+  c:"L'une agit après, l'autre avant. Les deux relèvent de l'analyse des causes exigée par la compétence C13.",
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C13."},
+
+ {t:"qcmMulti", q:"Que demandent les indicateurs de la compétence C13 sur la rédaction d'une procédure ?",
+  o:["Qu'elle soit élaborée en concertation avec l'équipe","Qu'elle prenne en compte les règles actualisées",
+     "Qu'elle soit claire, compréhensible et exploitable","Qu'elle soit rédigée par le seul encadrement"], r:[0,1,2],
+  c:"La rédaction par le seul encadrement contredit l'exigence de concertation avec l'équipe.",
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C13."},
+
+ {t:"erreur", q:"Après une erreur de délivrance, un service conclut son analyse par « manque d'attention de l'agent », inscrit comme action corrective « rappel de vigilance à l'équipe », ne fixe aucune échéance et ne prévoit pas d'évaluation. Relevez ce qui ne va pas.",
+  a:"Trois écarts. La méthode de recherche des causes doit être logique et pertinente : s'arrêter à une cause humaine sans examiner ce qui, dans l'organisation, les documents ou le matériel, a rendu l'erreur possible, ne constitue pas une analyse. Les mesures correctives doivent être adaptées à la situation et justifiées : un rappel de vigilance ne supprime pas la cause d'un écart. Enfin, le plan d'actions correctrices doit comprendre les échéances de mise en œuvre et d'évaluation, comme l'exige le contenu de la seconde partie de la déclaration d'un EIGS.",
+  m:["causes","organisation","adaptées","échéances","évaluation"],
+  s:"Arrêté du 31 juillet 2024, compétence C13 ; décret n° 2016-1606 du 25 novembre 2016."},
+
+ {t:"situation", q:"Un patient reçoit un médicament destiné à un autre patient, avec une conséquence grave. Quelles obligations s'imposent à l'établissement ?",
+  a:"Il s'agit d'un événement indésirable grave associé à des soins. Un professionnel de santé ou le représentant légal de l'établissement le déclare au directeur général de l'ARS au moyen du formulaire prévu. La première partie est adressée sans délai, avec la nature de l'événement, les circonstances de sa survenue, les premières mesures prises localement au bénéfice du patient et en prévention de la répétition, et la mention de l'information donnée. Une analyse approfondie des causes est ensuite conduite par les professionnels concernés, avec l'aide de la structure régionale d'appui, et la seconde partie est adressée dans les trois mois avec le retour d'expérience et un plan d'actions correctrices assorti d'échéances. L'événement relève par ailleurs de l'identitovigilance.",
+  m:["ARS","sans délai","structure régionale","trois mois","identitovigilance"],
+  s:"Décret n° 2016-1606 du 25 novembre 2016 ; arrêté du 31 juillet 2024, compétence C13."},
+
+ {t:"ouverte", q:"Pourquoi la HAS publie-t-elle un bilan annuel des déclarations d'EIGS ?",
+  a:"Parce que le dispositif ne vise pas la sanction mais l'apprentissage collectif. La HAS élabore un bilan annuel des déclarations qu'elle a reçues, accompagné de préconisations pour l'amélioration de la sécurité des patients ; ce rapport est transmis au ministre chargé de la santé et rendu public. Les déclarations lui parviennent anonymisées, sans le nom du déclarant ni l'adresse du lieu de survenue, précisément pour que le signalement ne soit pas dissuadé.",
+  m:["bilan annuel","préconisations","public","anonym"],
+  s:"Article R. 1413-73 du code de la santé publique ; décret n° 2016-1606."}
 ],
 
 UE4: [
@@ -2363,13 +4047,16 @@ function rendre(){
     <button data-act="nav" data-tab="rev" class="${ui.tab==="rev"?"act":""}"><span class="ic">◇</span>Révision</button>
   </div>`;
   const ecrans = {
-    "prep/accueil":ecranPrep, "prep/lecon":ecranLecon,
+    "prep/accueil":ecranPrep, "prep/lecon":ecranLecon, "prep/session":ecranSession,
     "rev/accueil":ecranRev, "rev/import":ecranImport, "rev/fiches":ecranFiches, "rev/fiche":ecranFiche,
     "rev/reviser":ecranReviser, "rev/session":ecranSession, "rev/examen":ecranExamen,
     "rev/planning":ecranPlanning, "rev/stats":ecranStats, "rev/recherche":ecranRecherche,
     "reglages":ecranReglages
   };
-  const f = ecrans[ui.ecran === "reglages" ? "reglages" : ui.tab + "/" + ui.ecran] || ecranPrep;
+  const cle = ui.ecran === "reglages" ? "reglages" : ui.tab + "/" + ui.ecran;
+  window.__derniereRoute = cle;
+  window.__routeInconnue = !ecrans[cle];
+  const f = ecrans[cle] || ecranPrep;
   let h = "";
   if(ui.ecran !== "lecon" && ui.ecran !== "session"){
     if(ui.message) h += `<div class="ecran" style="padding-bottom:0"><div class="avis ${ui.message.type||"info"}">
@@ -3110,9 +4797,15 @@ function alertesPlanning(){
   const a = [];
   UES.forEach(u => {
     const j = joursAvant(u.id); if(j === null || j < 0) return;
-    if(j <= 14 && !bilanUE(u.id).total)
-      a.push({type:"err", titre:u.id + " : épreuve dans " + j + " jour" + (j > 1 ? "s" : "") + ", aucun contenu",
+    const b = bilanUE(u.id);
+    if(!b.total){
+      if(j <= 14) a.push({type:"err", titre:u.id + " : épreuve dans " + j + " jour" + (j > 1 ? "s" : "") + ", aucun contenu",
         txt:"Ni cours importé ni banque d'exercices pour cette unité. C'est le trou le plus coûteux de votre planning."});
+      return;
+    }
+    if(j <= 14 && b.part < 25)
+      a.push({type:"err", titre:u.id + " : épreuve dans " + j + " jour" + (j > 1 ? "s" : "") + ", " + b.part + " % acquis",
+        txt:"Moins d'un quart des exercices de cette unité sont en boîte 3. C'est le retard le plus coûteux de votre planning."});
   });
   const parDate = {};
   UES.forEach(u => { const d = dateUE(u.id), j = joursAvant(u.id);
