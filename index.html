@@ -4796,16 +4796,18 @@ function passagesPrevus(){
 function alertesPlanning(){
   const a = [];
   UES.forEach(u => {
-    const j = joursAvant(u.id); if(j === null || j < 0) return;
+    const j = joursAvant(u.id); if(j === null || j < 0 || j > 14) return;
+    const jrs = j + " jour" + (j > 1 ? "s" : "");
+    const importes = tousItems().filter(i => i.ueId === u.id).length;
     const b = bilanUE(u.id);
-    if(!b.total){
-      if(j <= 14) a.push({type:"err", titre:u.id + " : épreuve dans " + j + " jour" + (j > 1 ? "s" : "") + ", aucun contenu",
-        txt:"Ni cours importé ni banque d'exercices pour cette unité. C'est le trou le plus coûteux de votre planning."});
-      return;
+    if(!importes){
+      a.push({type:"err", titre:u.id + " : épreuve dans " + jrs + ", aucun cours importé",
+        txt:"La leçon de préparation et ses exercices ne remplacent pas votre cours : ils en donnent le cadre, pas le contenu enseigné dans votre centre. Importez le cours de cette unité."});
     }
-    if(j <= 14 && b.part < 25)
-      a.push({type:"err", titre:u.id + " : épreuve dans " + j + " jour" + (j > 1 ? "s" : "") + ", " + b.part + " % acquis",
-        txt:"Moins d'un quart des exercices de cette unité sont en boîte 3. C'est le retard le plus coûteux de votre planning."});
+    if(b.total && b.part < 25){
+      a.push({type:"err", titre:u.id + " : épreuve dans " + jrs + ", " + b.part + " % acquis",
+        txt:"Moins d'un quart des exercices de cette unité sont en boîte 3, leçons de préparation et cours importés confondus."});
+    }
   });
   const parDate = {};
   UES.forEach(u => { const d = dateUE(u.id), j = joursAvant(u.id);
