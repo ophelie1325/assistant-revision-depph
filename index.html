@@ -175,6 +175,20 @@ textarea{min-height:150px;resize:vertical;line-height:1.5}
 .semaine::before{content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--menthe)}
 .semaine .quand{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);text-transform:uppercase;letter-spacing:.08em}
 
+/* ---- légende des unités d'enseignement ---- */
+.legende{margin-top:22px;border-top:1px solid var(--trait);padding-top:14px}
+.legende .lg-t{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--encre3);margin-bottom:10px}
+.legende .lg-d{display:flex;align-items:center;gap:7px;margin:11px 0 5px}
+.legende .lg-d b{font-size:12.5px;font-weight:600;color:var(--encre2)}
+.legende dl{margin:0}
+.legende .lg-l{display:flex;gap:9px;align-items:baseline;padding:3px 0 3px 17px;font-size:12.5px;line-height:1.4}
+.legende .lg-l dt{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--menthe-fonce);flex:none;min-width:34px}
+.legende .lg-l dd{margin:0;color:var(--encre2)}
+.legende .lg-l dd i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3)}
+body.vueLarge .legende dl{column-count:2;column-gap:26px}
+body.vueLarge .legende .lg-l{break-inside:avoid}
+
 /* ---- thème sombre ---- */
 body.sombre{
   --fond:#0F1A17; --carte:#182521; --encre:#E9F2ED; --encre2:#A6B7B0; --encre3:#75887F;
@@ -1112,6 +1126,29 @@ UE1: {titre:"Préparation et délivrance des produits de santé", duree:"12 min"
   {v:"7 ans", l:"durée d'autorisation d'une activité à risques particuliers en PUI"},
   {v:"2021", l:"remplacement des ATU et RTU par l'accès précoce et l'accès compassionnel"}]},
 
+ {t:"notion", kick:"Stupéfiants", titre:"Une ordonnance qui s'écrit en toutes lettres",
+  paras:["L'article R. 5132-29 du code de la santé publique impose des mentions particulières : l'auteur d'une ordonnance de stupéfiants indique en toutes lettres le nombre d'unités thérapeutiques par prise, le nombre de prises, et le dosage s'il s'agit de spécialités. Pour une préparation, ce sont les doses ou les concentrations de substances et le nombre d'unités ou le volume.",
+   "Écrire « 2 » au lieu de « deux » n'est pas une coquette : c'est une mention manquante, et l'ordonnance devient non conforme. La règle existe parce qu'un chiffre se surcharge, se rature, se transforme ; un mot écrit en toutes lettres beaucoup moins."],
+  encart:{type:"piege", titre:"Le réflexe de contrôle", texte:"À réception d'une ordonnance de stupéfiants, on vérifie d'abord les mentions en toutes lettres, avant même de regarder le stock."},
+  img:{f:"ue1-stupefiants.jpg", leg:"Armoire à stupéfiants fermée à clef"}},
+
+ {t:"chiffres", kick:"Stupéfiants", titre:"Les durées qu'il faut savoir par cœur", lignes:[
+  {v:"28 jours", l:"durée maximale de prescription d'un stupéfiant, article R. 5132-30"},
+  {v:"14 jours", l:"durée réduite pour certains médicaments, fixée par arrêté"},
+  {v:"7 jours", l:"durée réduite pour d'autres médicaments, fixée par le même arrêté"},
+  {v:"3 ans", l:"conservation des pièces justificatives des mouvements de stupéfiants"}],
+  note:"La durée de 28 jours peut être réduite pour certains médicaments désignés par décision du directeur général de l'ANSM. La liste des médicaments dont la durée maximale est ramenée à quatorze ou à sept jours est fixée par l'arrêté du 20 septembre 1999 modifié."},
+
+ {t:"notion", kick:"Stupéfiants", titre:"Fractionnement et chevauchement",
+  paras:["La délivrance fractionnée peut être décidée par décision du directeur général de l'ANSM : la décision fixe la durée de traitement maximale correspondant à chaque fraction, et le prescripteur la reporte sur l'ordonnance. Le prescripteur peut toutefois, pour des raisons particulières tenant à la situation du patient, exclure le fractionnement en portant sur l'ordonnance la mention « délivrance en une seule fois ».",
+   "L'article R. 5132-33 interdit par ailleurs le chevauchement des prescriptions : une nouvelle ordonnance ne peut pas être exécutée pendant la période déjà couverte par la précédente, sauf mention expresse du prescripteur."],
+  encart:{type:"astuce", titre:"Deux phrases à reconnaître", texte:"« Délivrance en une seule fois » lève le fractionnement. Une mention expresse du prescripteur lève l'interdiction de chevauchement. Ce sont deux dérogations distinctes, portées par le prescripteur, et jamais par la pharmacie."}},
+
+ {t:"notion", kick:"Le circuit", titre:"Délivrance globale ou nominative",
+  paras:["La délivrance globale sert à renouveler la dotation d'une unité de soins : un stock défini à l'avance par le pharmacien, adapté aux besoins du service, que l'on reconstitue sans rattacher les médicaments à un patient précis. L'arrêté du 6 avril 2011 prévoit expressément cette possibilité en renouvellement d'une dotation préalablement définie.",
+   "La délivrance nominative rattache chaque médicament à un patient nommé, après analyse pharmaceutique de sa prescription. C'est le mode le plus sécurisé, et celui vers lequel les établissements sont poussés."],
+  encart:{type:"info", titre:"Ce que cela change pour vous", texte:"En globale, vous préparez pour un service. En nominative, vous préparez pour une personne : l'erreur n'a pas la même portée, et le contrôle non plus."}},
+
  {t:"quiz", kick:"Vérification", question:"Un infirmier vous demande de compléter la dotation de son service en morphiniques. Que faites-vous ?",
   options:["Je prépare et je remets directement au brancardier de passage",
    "Je prépare sous le contrôle effectif du pharmacien et je remets au cadre de santé désigné",
@@ -1126,12 +1163,23 @@ UE1: {titre:"Préparation et délivrance des produits de santé", duree:"12 min"
   bonne:1,
   expl:"C'est la définition exacte de l'article R. 4235-48. La première proposition ne décrit que la délivrance, la troisième relève de l'approvisionnement."},
 
+ {t:"quiz", kick:"Vérification", question:"Une ordonnance de morphine porte la mention « 2 comprimés, 3 fois par jour ». Est-elle conforme ?",
+  options:["Oui, la posologie est claire et complète",
+   "Non : le nombre d'unités par prise et le nombre de prises doivent être écrits en toutes lettres",
+   "Oui, à condition que le prescripteur soit hospitalier"],
+  bonne:1,
+  expl:"L'article R. 5132-29 impose que le nombre d'unités thérapeutiques par prise, le nombre de prises et le dosage soient indiqués en toutes lettres. Une posologie écrite en chiffres rend l'ordonnance non conforme, quel que soit le prescripteur."},
+
  {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
   {titre:"Code de la santé publique, article R. 4235-48", ref:"Définition de l'acte de dispensation", url:"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006913703/2020-11-05"},
   {titre:"Arrêté du 6 avril 2011", ref:"Management de la qualité de la prise en charge médicamenteuse — articles 13 et 14, définition des médicaments à risque", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000023865866"},
   {titre:"Code de la santé publique, articles R. 5126-8 à R. 5126-11", ref:"Missions et activités des pharmacies à usage intérieur, en application de l'article L. 5126-1", url:"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038598108"},
   {titre:"Ordre national des pharmaciens", ref:"Référentiel pharmacie à usage intérieur, 2023 — autorisations et durées", url:"https://www.ordre.pharmacien.fr/content/download/119805/file/Referentiel_PUI_2023_.pdf?version=1"},
-  {titre:"HAS et ANSM", ref:"Réforme de l'accès dérogatoire, en vigueur au 1er juillet 2021", url:"https://www.has-sante.fr/jcms/p_3274103/fr/prescrire-un-medicament-en-acces-precoce"}],
+  {titre:"HAS et ANSM", ref:"Réforme de l'accès dérogatoire, en vigueur au 1er juillet 2021", url:"https://www.has-sante.fr/jcms/p_3274103/fr/prescrire-un-medicament-en-acces-precoce"},
+  {titre:"Code de la santé publique, article R. 5132-29", ref:"Mentions en toutes lettres sur l'ordonnance de stupéfiants", url:"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006198843"},
+  {titre:"Code de la santé publique, article R. 5132-30", ref:"Durée maximale de prescription de vingt-huit jours, réduction possible, délivrance fractionnée et mention « délivrance en une seule fois »", url:"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000025787582/"},
+  {titre:"Arrêté du 20 septembre 1999 modifié", ref:"Liste des stupéfiants dont la durée maximale de prescription est réduite à quatorze ou à sept jours", url:"https://www.legifrance.gouv.fr/loda/id/JORFTEXT000029597073"},
+  {titre:"Code de la santé publique, sous-section Régime particulier des stupéfiants", ref:"Articles R. 5132-27 à R. 5132-39, dont l'interdiction de chevauchement de l'article R. 5132-33", url:"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000006196611/"}],
   note:"Consulté le 8 août 2026. Les textes évoluent : en cas d'écart avec votre cours, c'est le cours de votre centre de formation qui fait foi pour l'examen — mais signalez l'écart à votre formateur."}
 ]},
 
@@ -1172,6 +1220,27 @@ UE2: {titre:"Bilans médicamenteux, conciliation et pharmacie clinique", duree:"
  {t:"encart", kick:"À ne pas confondre", titre:"Divergence n'est pas erreur", type:"piege",
   texte:"Une divergence intentionnelle documentée est parfaitement normale : le médecin a décidé d'arrêter un traitement et l'a écrit. Ce qui pose problème, c'est la divergence non intentionnelle — le prescripteur ignorait l'existence du médicament — et la divergence intentionnelle non documentée, où la décision existe mais n'a pas été tracée. En examen, la question porte presque toujours sur cette distinction."},
 
+ {t:"notion", kick:"Deux façons de faire", titre:"Proactive ou rétroactive",
+  paras:["La conciliation est dite proactive lorsque la liste des médicaments pris à domicile est établie avant la rédaction de la première ordonnance à l'admission : le bilan sert alors de support à la prescription. Elle est dite rétroactive lorsque cette liste est établie après la rédaction de cette première ordonnance, et qu'elle est comparée à elle pour corriger les écarts.",
+   "La SFPC est claire sur l'ordre de préférence : le processus proactif est à privilégier dans la mesure du possible ; à défaut, le processus rétroactif doit être engagé le plus tôt possible après l'admission."],
+  encart:{type:"astuce", titre:"Le moyen mnémotechnique", texte:"Proactive : le bilan précède l'ordonnance, on prévient l'erreur. Rétroactive : le bilan suit l'ordonnance, on rattrape l'erreur. Dans les deux cas le travail de recueil est le même — seul le moment change."}},
+
+ {t:"etapes", kick:"Le mode opératoire", titre:"Comparer ligne par ligne",
+  etapes:["Recueillir les médicaments auprès de plusieurs sources et les consigner par source",
+   "Établir le bilan médicamenteux optimisé : pour chaque médicament, le nom commercial ou la dénomination commune, le dosage, la forme galénique et la posologie",
+   "Comparer ligne par ligne le bilan et l'ordonnance en cours, en cas de conciliation rétroactive",
+   "Établir le statut de chaque ligne : poursuivi, arrêté, modifié, suspendu, substitué, ajouté",
+   "Préciser pour chacune si elle est documentée ou non documentée dans le dossier médical",
+   "Faire caractériser par le prescripteur le caractère intentionnel ou non de chaque divergence",
+   "Archiver la fiche de conciliation dans le dossier médical du patient"],
+  note:"Mode opératoire de la conciliation des traitements médicamenteux, annexe du guide HAS. Le bilan médicamenteux est archivé dans le dossier patient et réutilisé lors de la conciliation de transfert ou de sortie."},
+
+ {t:"notion", kick:"Les outils", titre:"Quatre documents à savoir nommer",
+  paras:["La fiche de recueil des informations par source liste les médicaments retrouvés dans chaque source d'information : elle prouve que le croisement a bien eu lieu. Le guide d'entretien du patient à l'admission structure l'échange qui permet d'obtenir le bilan médicamenteux optimisé.",
+   "La fiche de conciliation des traitements à l'admission réunit le bilan médicamenteux et la prescription en cours : c'est elle qui atteste que la conciliation a abouti pour un patient donné. Enfin, le volet médicamenteux de la lettre de liaison à la sortie fait figurer le bilan et la liste des médicaments à prendre après l'hospitalisation, poursuivis, modifiés ou ajoutés."],
+  encart:{type:"info", titre:"Depuis mars 2018", texte:"La HAS recommande que le volet médicamenteux de la lettre de liaison soit structuré sous la forme d'un tableau à six colonnes, pour que le devenir de chaque ligne de traitement soit lisible d'un coup d'œil."},
+  img:{f:"ue2-conciliation.jpg", leg:"Entretien avec un patient sur son traitement"}},
+
  {t:"quiz", kick:"Vérification", question:"Le bilan médicamenteux d'une patiente comporte un traitement antihypertenseur absent de la prescription d'entrée. Le médecin déclare l'avoir arrêté volontairement mais rien ne figure au dossier. De quoi s'agit-il ?",
   options:["D'une divergence non intentionnelle","D'une divergence intentionnelle non documentée","D'une erreur de bilan médicamenteux"],
   bonne:1,
@@ -1182,11 +1251,19 @@ UE2: {titre:"Bilans médicamenteux, conciliation et pharmacie clinique", duree:"
   bonne:1,
   expl:"Ce sont les trois points de transition nommés par la définition de la HAS, parce que ce sont les moments où l'information se perd."},
 
+ {t:"quiz", kick:"Vérification", question:"Vous établissez la liste des traitements d'un patient avant que le médecin ne rédige sa première ordonnance d'admission. De quel type de conciliation s'agit-il ?",
+  options:["Rétroactive","Proactive","D'une simple anamnèse, ce n'est pas encore de la conciliation"],
+  bonne:1,
+  expl:"Le bilan est établi avant la première ordonnance : c'est la conciliation proactive, celle que la SFPC recommande de privilégier dans la mesure du possible."},
+
  {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
   {titre:"Haute Autorité de santé", ref:"Mettre en œuvre la conciliation des traitements médicamenteux en établissement de santé — guide actualisé en février 2018", url:"https://www.has-sante.fr/jcms/c_2736453/fr/mettre-en-oeuvre-la-conciliation-des-traitements-medicamenteux-en-etablissement-de-sante"},
   {titre:"SFPC", ref:"Fiche mémo Conciliation des traitements médicamenteux — les trois étapes", url:"https://sfpc.eu/wp-content/uploads/2019/08/FicheMemoConciliationMedicamenteuseSFPC.pdf"},
   {titre:"OMéDIT Grand Est", ref:"Guide pratique de la conciliation à l'intention des préparateurs en pharmacie", url:"https://www.omedit-grand-est.ars.sante.fr/index.php/system/files/2017-10/Guide_pratique_preparateurs_pharma.pdf"},
-  {titre:"OMéDIT Centre-Val de Loire", ref:"Définitions et objectifs de la conciliation médicamenteuse", url:"https://www.omedit-centre.fr/conciliation/co/2_2_Definitions_et_objectifs_de_la_CM.html"}],
+  {titre:"OMéDIT Centre-Val de Loire", ref:"Définitions et objectifs de la conciliation médicamenteuse", url:"https://www.omedit-centre.fr/conciliation/co/2_2_Definitions_et_objectifs_de_la_CM.html"},
+  {titre:"SFPC, fiche mémo Conciliation, décembre 2015", ref:"Conciliation proactive et rétroactive, préférence pour le processus proactif, archivage et réutilisation du bilan", url:"https://www.omedit-grand-est.ars.sante.fr/system/files/2018-01/sfpc-memo-conciliation%20d%C3%A9c%202015.pdf"},
+  {titre:"HAS, mode opératoire de la conciliation des traitements médicamenteux", ref:"Bilan médicamenteux optimisé, comparaison ligne à ligne, statuts poursuivi, arrêté, modifié, suspendu, substitué, ajouté", url:"https://www.omedit-grand-est.ars.sante.fr/media/20472/download"},
+  {titre:"OMéDIT Normandie, outils de la conciliation", ref:"Fiche de recueil par source, guide d'entretien, fiche de conciliation, volet médicamenteux de la lettre de liaison en six colonnes depuis mars 2018", url:"https://www.omedit-normandie.fr/boite-a-outils/pharmacie-clinique/conciliation-medicamenteuse/conciliation-medicamenteuse,3353,3929.html"}],
   note:"Consulté le 8 août 2026. Les chiffres de l'étude Med'Rec sont ceux publiés lors de la parution du guide HAS."}
 ]},
 
@@ -1224,6 +1301,24 @@ UE3: {titre:"Prévention, information et éducation thérapeutique du patient", 
   {v:"40 h", l:"durée minimale de formation pour dispenser ou coordonner l'ETP"},
   {v:"2021", l:"passage de l'autorisation à la déclaration des programmes"}]},
 
+ {t:"etapes", kick:"La démarche", titre:"Les quatre étapes de la HAS",
+  etapes:["Élaborer un diagnostic éducatif : connaître le patient, identifier ses besoins et ses attentes, formuler avec lui les compétences à acquérir",
+   "Définir un programme personnalisé, en formulant avec lui les compétences à acquérir ou à mobiliser au regard de son projet",
+   "Planifier et mettre en œuvre les séances, individuelles ou collectives",
+   "Évaluer les progrès du patient, puis lui proposer une éducation thérapeutique de suivi"],
+  note:"Guide méthodologique HAS. Le programme s'organise toujours autour de ces quatre étapes, quelles que soient les modalités de réalisation. L'évaluation n'est pas une formalité de fin : elle actualise le diagnostic éducatif et ouvre le cycle suivant."},
+
+ {t:"notion", kick:"Ce qu'on cherche à construire", titre:"Deux familles de compétences",
+  paras:["L'ETP vise des compétences d'auto-soins : soulager ses symptômes, tenir compte des résultats d'une auto-surveillance ou d'une auto-mesure, réaliser des gestes techniques comme une injection d'insuline, adapter des doses de médicaments.",
+   "Elle vise aussi des compétences d'adaptation, plus personnelles : mieux se connaître, gagner en confiance, prendre des décisions, résoudre des problèmes, se fixer des buts et faire des choix. Un programme personnalisé prend en compte ces deux dimensions."],
+  encart:{type:"piege", titre:"L'erreur d'examen", texte:"Réduire l'ETP aux gestes techniques. Apprendre à piquer relève de l'auto-soin ; accepter de vivre avec la maladie et savoir demander de l'aide relève de l'adaptation. Un programme qui ne travaille que la première famille est incomplet."},
+  img:{f:"ue3-etp.jpg", leg:"Séance d'éducation thérapeutique"}},
+
+ {t:"notion", kick:"Qui met en œuvre", titre:"Jamais tout seul",
+  paras:["Un programme d'ETP est mis en œuvre par au moins deux professionnels de santé de professions différentes, conformément au décret du 2 août 2010. L'ensemble des professions de santé listées par le code de la santé publique sont concernées : médecins, infirmiers, diététiciens, masseurs-kinésithérapeutes, pharmaciens, et l'équipe de la pharmacie avec eux.",
+   "Le programme comporte aussi des activités de coordination et de partage d'informations entre intervenants : sans elles, chaque professionnel recommence l'entretien de zéro et le patient répète son histoire quatre fois."],
+  encart:{type:"astuce", titre:"Votre valeur ajoutée", texte:"Le préparateur connaît les formes, les dispositifs et les contraintes pratiques d'administration mieux que quiconque dans l'équipe. C'est exactement ce qui manque quand un patient abandonne un traitement pour une raison purement matérielle."}},
+
  {t:"quiz", kick:"Vérification", question:"Un laboratoire pharmaceutique propose de construire et d'animer un programme d'ETP dans votre établissement. Que dit la loi ?",
   options:["C'est possible si le programme est déclaré à l'ARS",
    "C'est interdit : le laboratoire ne peut ni élaborer ni mettre en œuvre le programme, seulement y prendre part, par exemple en le finançant",
@@ -1236,13 +1331,23 @@ UE3: {titre:"Prévention, information et éducation thérapeutique du patient", 
   bonne:1,
   expl:"Le régime de déclaration a remplacé le régime d'autorisation au 1er janvier 2021. Le cahier des charges national, lui, reste obligatoire."},
 
+ {t:"quiz", kick:"Vérification", question:"Un patient diabétique sait faire son injection mais n'ose plus sortir de chez lui de peur d'une hypoglycémie. Que travaille-t-on en priorité ?",
+  options:["Une compétence d'auto-soins, il faut revoir la technique d'injection",
+   "Une compétence d'adaptation : confiance, prise de décision, résolution de problèmes",
+   "Rien, cela relève d'un suivi psychiatrique et sort de l'ETP"],
+  bonne:1,
+  expl:"Le geste est acquis, ce n'est donc pas l'auto-soin qui bloque. La HAS range explicitement dans l'ETP le fait de gagner en confiance, de prendre des décisions et de résoudre des problèmes : ce sont les compétences d'adaptation."},
+
  {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
   {titre:"Code de la santé publique, articles L. 1161-1 à L. 1161-6", ref:"Définition, programmes, actions d'accompagnement, interdictions", url:"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000020891754/"},
   {titre:"Ministère chargé de la santé", ref:"Éducation thérapeutique du patient — textes de référence et régime de déclaration", url:"https://sante.gouv.fr/systeme-de-sante/parcours-des-patients-et-des-usagers/education-therapeutique-du-patient/article/education-therapeutique-du-patient"},
   {titre:"Arrêté du 30 décembre 2020", ref:"Cahier des charges des programmes et dossier de déclaration", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042845767"},
   {titre:"Arrêté du 2 août 2010 modifié, article 2", ref:"Compétences requises pour dispenser ou coordonner l'ETP — formation d'une durée minimale de quarante heures", url:"https://www.legifrance.gouv.fr/loda/id/JORFTEXT000022664581"},
   {titre:"Décret n° 2020-1832 du 31 décembre 2020", ref:"Remplacement du régime d'autorisation par un régime de déclaration au 1er janvier 2021", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042845656"},
-  {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Référentiel de compétences du DEPPH, compétence C3 et ses critères d'évaluation", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050066720"}],
+  {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Référentiel de compétences du DEPPH, compétence C3 et ses critères d'évaluation", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050066720"},
+  {titre:"HAS, Éducation thérapeutique du patient", ref:"Démarche éducative en quatre étapes, compétences d'auto-soins et d'adaptation", url:"https://www.has-sante.fr/jcms/r_1496895/fr/education-therapeutique-du-patient-etp"},
+  {titre:"HAS, Structuration d'un programme d'ETP dans le champ des maladies chroniques", ref:"Suivi régulier ou approfondi, actualisation du diagnostic éducatif", url:"https://www.has-sante.fr/jcms/c_601290/fr/structuration-d-un-programme-d-education-therapeutique-du-patient-dans-le-champ-des-maladies-chroniques"},
+  {titre:"HAS, Mise en œuvre de l'éducation thérapeutique", ref:"Programme mis en œuvre par au moins deux professionnels de santé de professions différentes, décret n° 2010-904 du 2 août 2010", url:"https://www.has-sante.fr/jcms/c_2812200/fr/mise-en-oeuvre-de-l-education-therapeutique"}],
   note:"Consulté le 8 août 2026."}
 ]},
 
@@ -1591,6 +1696,318 @@ const UES_PRETES = Object.keys(LECONS);
    ========================================================================= */
 const EXOS = {
 
+UE1: [
+ {t:"qcm", q:"Que recouvre exactement la dispensation ?",
+  o:["La remise du médicament au patient ou à l'unité de soins",
+     "L'analyse de l'ordonnance, la préparation éventuelle des doses et le conseil, associés à la délivrance",
+     "La commande auprès du fournisseur puis la remise",
+     "L'administration du médicament au patient"], r:1,
+  c:"La délivrance est l'un des éléments de la dispensation, jamais l'inverse.",
+  s:"Code de la santé publique, article R. 4235-48 : définition de l'acte de dispensation."},
+
+ {t:"cloze", q:"La durée maximale de prescription d'un médicament classé comme stupéfiant est de _____ jours.",
+  r:"28", s:"Code de la santé publique, article R. 5132-30."},
+
+ {t:"qcmMulti", q:"Quelles durées maximales de prescription existent pour les stupéfiants ?",
+  o:["28 jours, règle générale","14 jours pour certains médicaments désignés","7 jours pour d'autres médicaments désignés","3 jours en cas d'urgence"], r:[0,1,2],
+  c:"Il n'existe pas de durée de 3 jours. La réduction à quatorze ou sept jours résulte d'un arrêté pris sur proposition du directeur général de l'ANSM.",
+  s:"Article R. 5132-30 du CSP et arrêté du 20 septembre 1999 modifié."},
+
+ {t:"vf", q:"Sur une ordonnance de stupéfiants, la posologie peut être écrite en chiffres si elle est lisible.",
+  r:false, c:"Faux : le nombre d'unités thérapeutiques par prise, le nombre de prises et le dosage sont indiqués en toutes lettres.",
+  s:"Code de la santé publique, article R. 5132-29."},
+
+ {t:"qcm", q:"Quelle mention permet au prescripteur d'exclure le fractionnement de la délivrance d'un stupéfiant ?",
+  o:["« Urgent »","« Délivrance en une seule fois »","« Ne pas fractionner »","« Sur ordonnance sécurisée »"], r:1,
+  c:"La mention est textuelle dans le code : le prescripteur l'appose pour des raisons particulières tenant à la situation du patient.",
+  s:"Code de la santé publique, article R. 5132-30, dernier alinéa."},
+
+ {t:"vf", q:"Le chevauchement de deux ordonnances de stupéfiants est possible si le prescripteur l'a expressément mentionné.",
+  r:true, c:"Exact : l'interdiction du chevauchement souffre cette seule exception, portée par le prescripteur et non par la pharmacie.",
+  s:"Code de la santé publique, article R. 5132-33, second alinéa."},
+
+ {t:"paires", q:"Associez chaque terme à sa définition.",
+  p:[["Délivrance","Remise physique du produit"],
+     ["Dispensation","Analyse, préparation éventuelle des doses, conseil et délivrance"],
+     ["Dotation","Stock défini par le pharmacien et détenu dans l'unité de soins"],
+     ["Rétrocession","Vente au public par la PUI à un patient non hospitalisé"]],
+  s:"Code de la santé publique, article R. 4235-48 ; arrêté du 6 avril 2011 sur la dotation."},
+
+ {t:"qcm", q:"Un service demande le renouvellement de son stock de médicaments courants, sans nom de patient. De quoi s'agit-il ?",
+  o:["D'une délivrance nominative","D'une délivrance globale en renouvellement de dotation","D'une rétrocession","D'un dépannage inter-services"], r:1,
+  c:"La dotation est préalablement définie par le pharmacien et adaptée aux besoins du service.",
+  s:"Arrêté du 6 avril 2011 relatif au management de la qualité de la prise en charge médicamenteuse."},
+
+ {t:"qcmMulti", q:"Quels médicaments l'arrêté du 6 avril 2011 cite-t-il comme exemples de médicaments à risque ?",
+  o:["Anticoagulants","Insuline","Solutions d'électrolytes concentrées","Antalgiques de palier 1"], r:[0,1,2],
+  c:"Le texte cite également les antiarythmiques, les agonistes adrénergiques injectables, les digitaliques injectables et les anticancéreux. Les antalgiques de palier 1 n'y figurent pas.",
+  s:"Arrêté du 6 avril 2011, définition des médicaments à risque."},
+
+ {t:"vf", q:"Un préparateur peut remettre des stupéfiants à l'unité de soins.",
+  r:true, c:"Exact, sous le contrôle effectif du pharmacien, et au cadre de santé désigné ou au prescripteur lui-même.",
+  s:"Arrêté du 6 avril 2011, remise des stupéfiants aux unités de soins."},
+
+ {t:"cloze", q:"Les pièces justificatives des mouvements de stupéfiants sont conservées _____ ans.",
+  r:"3", s:"Arrêté du 6 avril 2011, conservation des pièces relatives aux stupéfiants."},
+
+ {t:"qcm", q:"Depuis le 1er juillet 2021, qu'est-ce qui a remplacé les ATU et les RTU ?",
+  o:["Rien, elles existent toujours",
+     "L'accès précoce et l'accès compassionnel",
+     "L'autorisation temporaire d'usage renforcée",
+     "Le seul dispositif de recommandation temporaire d'utilisation"], r:1,
+  c:"L'accès précoce est autorisé par la HAS après avis de l'ANSM ; l'accès compassionnel relève de l'ANSM, sous forme d'autorisation nominative ou de cadre de prescription compassionnelle.",
+  s:"Réforme de l'accès dérogatoire aux médicaments, en vigueur au 1er juillet 2021."},
+
+ {t:"vf", q:"La pharmacie clinique est une activité facultative que la PUI exerce si elle en a le temps.",
+  r:false, c:"Faux : mener des actions de pharmacie clinique figure parmi les missions légales de la PUI.",
+  s:"Code de la santé publique, article L. 5126-1, missions des pharmacies à usage intérieur."},
+
+ {t:"cloze", q:"Une activité de préparation comportant des risques particuliers fait l'objet d'une autorisation dont la durée est limitée à _____ ans.",
+  r:"7", s:"Référentiel Pharmacie à usage intérieur, Ordre national des pharmaciens, durée des autorisations."},
+
+ {t:"ordre", q:"Remettez le circuit du médicament dans l'ordre.",
+  e:["Prescription par un praticien habilité, sur un support conforme",
+     "Analyse pharmaceutique de la prescription",
+     "Délivrance, globale ou nominative",
+     "Transport et détention dans l'unité de soins",
+     "Administration au patient",
+     "Surveillance thérapeutique"],
+  s:"Arrêté du 6 avril 2011, étapes de la prise en charge médicamenteuse."},
+
+ {t:"erreur", q:"Une ordonnance de fentanyl arrive au guichet : posologie écrite en chiffres, date d'il y a trois jours, et le patient a déjà retiré une ordonnance de fentanyl couvrant encore neuf jours de traitement. Aucune mention particulière n'y figure. Relevez les non-conformités.",
+  a:"Deux non-conformités. D'abord, le nombre d'unités thérapeutiques par prise, le nombre de prises et le dosage doivent être écrits en toutes lettres : une posologie en chiffres rend l'ordonnance non conforme au titre de l'article R. 5132-29. Ensuite, la nouvelle prescription chevauche la période encore couverte par la précédente, ce que l'article R. 5132-33 interdit sauf mention expresse du prescripteur, absente ici. Il faut contacter le prescripteur pour régulariser les deux points, aucune régularisation ne pouvant venir de la pharmacie.",
+  m:["toutes lettres","chevauche","mention expresse","prescripteur"],
+  s:"Code de la santé publique, articles R. 5132-29 et R. 5132-33."},
+
+ {t:"situation", q:"Un interne vous demande de sortir en urgence un anticoagulant injectable pour un patient, sans prescription, en promettant de régulariser dans l'heure. Que faites-vous ?",
+  a:"On ne délivre pas sans prescription. L'anticoagulant fait de plus partie des médicaments à risque cités par l'arrêté du 6 avril 2011, qui exigent une sécurisation renforcée de la prescription jusqu'à l'administration. La conduite à tenir est d'obtenir la prescription, au besoin sous forme d'une prescription orale immédiatement confirmée par écrit selon la procédure de l'établissement, de faire réaliser l'analyse pharmaceutique, puis de délivrer. On en réfère au pharmacien, sous le contrôle effectif duquel on travaille.",
+  m:["prescription","médicaments à risque","analyse pharmaceutique","pharmacien"],
+  s:"Arrêté du 6 avril 2011 ; article R. 4235-48 du CSP."},
+
+ {t:"ouverte", q:"Expliquez la différence entre délivrance globale et délivrance nominative, et dites laquelle est la plus sécurisée.",
+  a:"La délivrance globale reconstitue la dotation d'une unité de soins, c'est-à-dire un stock préalablement défini par le pharmacien et adapté au service ; les médicaments ne sont rattachés à aucun patient. La délivrance nominative rattache chaque médicament à un patient nommé, après analyse pharmaceutique de sa prescription. La nominative est la plus sécurisée puisque l'analyse porte sur le traitement réel d'une personne identifiée.",
+  m:["dotation","pharmacien","nominative","analyse","patient"],
+  s:"Arrêté du 6 avril 2011 ; article R. 4235-48 du CSP."},
+
+ {t:"vf", q:"La délivrance et la dispensation sont deux mots interchangeables.",
+  r:false, c:"Faux. La délivrance est incluse dans la dispensation ; la réciproque est fausse. C'est l'un des pièges les plus fréquents en examen.",
+  s:"Code de la santé publique, article R. 4235-48."},
+
+ {t:"qcm", q:"Qui peut être destinataire des stupéfiants remis à une unité de soins ?",
+  o:["N'importe quel soignant présent","Le cadre de santé désigné ou le prescripteur","Le brancardier de liaison","Le patient lui-même"], r:1,
+  c:"La remise est faite par le pharmacien, un interne ou étudiant délégué, ou un préparateur sous contrôle effectif ; le destinataire est le cadre de santé désigné ou le prescripteur.",
+  s:"Arrêté du 6 avril 2011, remise des stupéfiants."}
+],
+
+UE2: [
+ {t:"qcm", q:"Comment la HAS définit-elle la conciliation des traitements médicamenteux ?",
+  o:["Un contrôle a posteriori des ordonnances par le pharmacien",
+     "Un processus formalisé qui prend en compte, lors d'une nouvelle prescription, tous les médicaments pris et à prendre par le patient",
+     "Une reconstitution du dossier pharmaceutique à partir de la carte Vitale",
+     "Un entretien de sortie mené par l'infirmier"], r:1,
+  c:"La définition insiste sur trois éléments : processus formalisé, nouvelle prescription, association du patient.",
+  s:"HAS, guide Mettre en œuvre la conciliation des traitements médicamenteux en établissement de santé, février 2018."},
+
+ {t:"qcmMulti", q:"Quels sont les points de transition visés par la conciliation ?",
+  o:["L'admission","La sortie","Les transferts","Le changement d'infirmier référent"], r:[0,1,2],
+  c:"Ce sont les trois moments où l'information sur le traitement risque de se perdre entre professionnels.",
+  s:"HAS, définition de la conciliation des traitements médicamenteux."},
+
+ {t:"qcm", q:"Le bilan médicamenteux est établi avant la rédaction de la première ordonnance d'admission. Quelle est la nature de cette conciliation ?",
+  o:["Rétroactive","Proactive","Différée","De sortie"], r:1,
+  c:"Le processus proactif est à privilégier dans la mesure du possible ; à défaut le rétroactif doit être engagé le plus tôt possible après l'admission.",
+  s:"SFPC, fiche mémo Conciliation des traitements médicamenteux."},
+
+ {t:"vf", q:"Une divergence intentionnelle documentée constitue une erreur médicamenteuse.",
+  r:false, c:"Faux : le prescripteur a délibérément modifié le traitement et l'a tracé. C'est la divergence non intentionnelle, et la divergence intentionnelle non documentée, qui posent problème.",
+  s:"Guide pratique de la conciliation à l'intention des préparateurs en pharmacie, OMéDIT Grand Est."},
+
+ {t:"paires", q:"Associez chaque situation au type de divergence.",
+  p:[["Le prescripteur ignorait l'existence du médicament","Divergence non intentionnelle"],
+     ["Le prescripteur a arrêté le traitement et l'a écrit au dossier","Divergence intentionnelle documentée"],
+     ["Le prescripteur a arrêté le traitement mais rien n'est tracé","Divergence intentionnelle non documentée"]],
+  s:"Guide HAS de conciliation ; guide OMéDIT Grand Est pour les préparateurs."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les trois étapes de la conciliation selon la SFPC.",
+  e:["La recherche active d'informations sur les traitements du patient",
+     "La réalisation du bilan médicamenteux",
+     "L'actualisation de la prescription et du dossier patient"],
+  s:"SFPC, fiche mémo Conciliation des traitements médicamenteux, décembre 2015."},
+
+ {t:"cloze", q:"Il est conseillé en pratique de concilier à partir d'au moins _____ sources d'informations concordantes.",
+  r:"trois", s:"Guide pratique de conciliation à l'intention des préparateurs, OMéDIT Grand Est."},
+
+ {t:"qcmMulti", q:"Quelles sources doivent être croisées pour établir le bilan médicamenteux ?",
+  o:["Le patient lui-même et son entourage","Le médecin traitant et la pharmacie d'officine","Le dossier médical","Le seul dossier de l'unité de soins"], r:[0,1,2],
+  c:"Le recueil ne se fait jamais à partir d'une seule source ; se limiter au dossier du service est précisément l'erreur que la conciliation cherche à éviter.",
+  s:"HAS, guide de conciliation, recueil des informations."},
+
+ {t:"qcmMulti", q:"Quels statuts une ligne de médicament peut-elle recevoir lors de la comparaison ligne à ligne ?",
+  o:["Poursuivi, arrêté, modifié","Suspendu, substitué, ajouté","Documenté ou non documenté","Remboursé ou non remboursé"], r:[0,1,2],
+  c:"Le remboursement n'entre pas dans la qualification des lignes de conciliation.",
+  s:"Mode opératoire de la conciliation des traitements médicamenteux, annexe du guide HAS."},
+
+ {t:"cloze", q:"Le bilan médicamenteux optimisé comporte, pour chaque médicament, le nom commercial ou la dénomination commune, le dosage, la forme galénique et la _____.",
+  r:"posologie", s:"Mode opératoire de la conciliation, annexe du guide HAS."},
+
+ {t:"qcm", q:"Quel document atteste que la conciliation a abouti pour un patient donné ?",
+  o:["La fiche de recueil des informations par source",
+     "La fiche de conciliation des traitements à l'admission",
+     "Le guide d'entretien du patient",
+     "La lettre de liaison à l'entrée"], r:1,
+  c:"Elle réunit le bilan médicamenteux et la prescription en cours, et elle est archivée dans le dossier médical.",
+  s:"HAS, outils de la conciliation des traitements médicamenteux."},
+
+ {t:"vf", q:"Depuis mars 2018, la HAS recommande de structurer le volet médicamenteux de la lettre de liaison de sortie sous forme d'un tableau à six colonnes.",
+  r:true, c:"Exact. Il fait figurer le bilan médicamenteux et la liste des médicaments à prendre à la sortie : poursuivis, modifiés, ajoutés.",
+  s:"HAS, volet médicamenteux de la lettre de liaison à la sortie."},
+
+ {t:"qcm", q:"Combien de patients l'étude Med'Rec a-t-elle inclus ?",
+  o:["2 744","27 447","46 000","9 000"], r:1,
+  c:"46 000 correspond au nombre de divergences mises en évidence, pas au nombre de patients.",
+  s:"Étude Med'Rec lancée par la HAS en 2011, résultats publiés avec le guide de conciliation."},
+
+ {t:"cloze", q:"L'étude Med'Rec a mis en évidence environ _____ divergences médicamenteuses.",
+  r:"46 000", s:"Étude Med'Rec, HAS."},
+
+ {t:"erreur", q:"Un préparateur établit le bilan médicamenteux d'une patiente uniquement à partir de l'ordonnance apportée par la famille, ne note pas les dosages, et classe d'emblée en erreur médicamenteuse un antihypertenseur absent de la prescription d'entrée sans en parler au médecin. Relevez les non-conformités.",
+  a:"Trois écarts. Le recueil doit croiser plusieurs sources concordantes, au moins trois en pratique : patient, entourage, médecin traitant, officine, dossier médical. Le bilan médicamenteux optimisé doit comporter pour chaque médicament le nom, le dosage, la forme galénique et la posologie : sans dosage, il est inexploitable. Enfin, le caractère intentionnel ou non d'une divergence est précisé par le prescripteur : on ne peut pas qualifier soi-même une divergence d'erreur médicamenteuse avant cet échange.",
+  m:["plusieurs sources","dosage","prescripteur","divergence"],
+  s:"HAS, guide et mode opératoire de la conciliation ; SFPC, fiche mémo."},
+
+ {t:"situation", q:"Vous conciliez à la sortie d'un patient âgé polymédiqué. Quels documents produisez-vous et à qui sont-ils utiles ?",
+  a:"On actualise le bilan médicamenteux et on renseigne le volet médicamenteux de la lettre de liaison à la sortie, structuré depuis mars 2018 sous forme d'un tableau à six colonnes, faisant figurer le bilan et la liste des médicaments à prendre : poursuivis, modifiés, ajoutés. Ces documents sont utiles au patient, au médecin traitant et au pharmacien d'officine, qui reprennent le traitement sans avoir à reconstituer l'historique. La fiche de conciliation est archivée dans le dossier médical.",
+  m:["lettre de liaison","six colonnes","médecin traitant","officine","dossier"],
+  s:"HAS, volet médicamenteux de la lettre de liaison à la sortie ; mode opératoire de la conciliation."},
+
+ {t:"ouverte", q:"Pourquoi le préparateur est-il particulièrement bien placé pour la recherche active d'informations ?",
+  a:"Parce que cette étape est un travail d'enquête méthodique : interroger le patient et son entourage, contacter le médecin traitant, la pharmacie d'officine ou l'établissement d'origine, consulter le dossier médical, puis croiser au moins trois sources concordantes. Des guides régionaux de conciliation sont spécifiquement destinés aux préparateurs, et le référentiel du diplôme place cette activité dans leur champ.",
+  m:["enquête","entourage","officine","croiser","sources"],
+  s:"Guide pratique de la conciliation à l'intention des préparateurs en pharmacie, OMéDIT Grand Est."},
+
+ {t:"vf", q:"Le bilan médicamenteux établi à l'admission est réutilisé lors de la conciliation de transfert ou de sortie.",
+  r:true, c:"Exact : il est archivé dans le dossier patient, de préférence informatisé, et sert de base aux conciliations suivantes.",
+  s:"SFPC, fiche mémo Conciliation des traitements médicamenteux."},
+
+ {t:"cloze", q:"Med'Rec a porté sur 27 447 patients âgés de plus de _____ ans.",
+  r:"65", s:"Étude Med'Rec lancée par la HAS en 2011."},
+
+ {t:"qcm", q:"Quelle est la conduite à tenir si la conciliation proactive n'est pas réalisable dans votre organisation ?",
+  o:["Y renoncer pour ce patient",
+     "Engager le processus rétroactif le plus tôt possible après l'admission",
+     "Attendre la sortie du patient",
+     "Se contenter de l'ordonnance apportée par la famille"], r:1,
+  c:"La SFPC pose l'ordre de préférence et la conduite de repli sans ambiguïté.",
+  s:"SFPC, fiche mémo Conciliation des traitements médicamenteux."}
+],
+
+UE3: [
+ {t:"qcm", q:"Que dit l'article L. 1161-1 du code de la santé publique sur l'objectif de l'ETP ?",
+  o:["Réduire les dépenses de santé",
+     "Rendre le patient plus autonome en facilitant son adhésion aux traitements prescrits et en améliorant sa qualité de vie",
+     "Remplacer les consultations de suivi",
+     "Former les aidants aux gestes de premiers secours"], r:1,
+  c:"Le texte précise également que l'ETP s'inscrit dans le parcours de soins du patient.",
+  s:"Code de la santé publique, article L. 1161-1."},
+
+ {t:"ordre", q:"Remettez dans l'ordre les quatre étapes de la démarche éducative selon la HAS.",
+  e:["Élaborer un diagnostic éducatif",
+     "Définir un programme personnalisé d'ETP",
+     "Planifier et mettre en œuvre les séances",
+     "Évaluer les progrès du patient et proposer une ETP de suivi"],
+  s:"HAS, guide méthodologique Structuration d'un programme d'éducation thérapeutique du patient."},
+
+ {t:"qcm", q:"À quoi sert le diagnostic éducatif ?",
+  o:["À poser le diagnostic médical de la maladie chronique",
+     "À connaître le patient, identifier ses besoins et ses attentes, et formuler avec lui les compétences à acquérir",
+     "À évaluer la gravité de la pathologie",
+     "À décider de l'inclusion du patient dans un essai clinique"], r:1,
+  c:"C'est un diagnostic éducatif, pas médical : il porte sur la personne, ses représentations et son projet.",
+  s:"HAS, éducation thérapeutique du patient, étape 1 de la démarche."},
+
+ {t:"paires", q:"Associez chaque objectif à sa famille de compétences.",
+  p:[["Réaliser une injection d'insuline","Auto-soins : geste technique"],
+     ["Adapter des doses de médicaments","Auto-soins : ajustement du traitement"],
+     ["Gagner en confiance et résoudre des problèmes","Adaptation : confiance en soi"],
+     ["Se fixer des buts à atteindre et faire des choix","Adaptation : décision et projet"]],
+  s:"HAS, éducation thérapeutique du patient, compétences visées."},
+
+ {t:"vf", q:"Un programme d'ETP peut être mis en œuvre par un seul professionnel de santé.",
+  r:false, c:"Faux : le programme est mis en œuvre par au moins deux professionnels de santé de professions différentes.",
+  s:"Décret n° 2010-904 du 2 août 2010, repris par la HAS, Mise en œuvre de l'éducation thérapeutique."},
+
+ {t:"cloze", q:"Dispenser ou coordonner l'ETP suppose une formation d'une durée minimale de _____ heures d'enseignements théoriques et pratiques.",
+  r:"40", s:"Arrêté du 2 août 2010 modifié, article 2."},
+
+ {t:"qcm", q:"Depuis le 1er janvier 2021, quelle formalité un programme d'ETP doit-il accomplir auprès de l'ARS ?",
+  o:["Une demande d'autorisation","Une déclaration conforme au cahier des charges national","Aucune formalité","Un simple courrier d'information"], r:1,
+  c:"Le régime de déclaration a remplacé le régime d'autorisation ; le cahier des charges national reste obligatoire.",
+  s:"Décret n° 2020-1832 du 31 décembre 2020 ; arrêté du 30 décembre 2020."},
+
+ {t:"vf", q:"Un laboratoire exploitant un médicament peut élaborer et animer un programme d'ETP s'il le déclare à l'ARS.",
+  r:false, c:"Faux : il ne peut ni élaborer ni mettre en œuvre le programme. Il peut seulement y prendre part, notamment pour le financement, dès lors que professionnels de santé et associations agréées en gardent l'élaboration.",
+  s:"Code de la santé publique, article L. 1161-4."},
+
+ {t:"qcm", q:"Quelle loi a donné pour la première fois un cadre légal à l'ETP en France ?",
+  o:["La loi du 4 mars 2002","La loi HPST du 21 juillet 2009, article 84","La loi de modernisation de 2016","La loi du 24 juillet 2019"], r:1,
+  c:"L'article 84 de la loi HPST a introduit les articles L. 1161-1 et suivants du code de la santé publique.",
+  s:"Loi n° 2009-879 du 21 juillet 2009, article 84."},
+
+ {t:"cloze", q:"L'OMS a défini l'éducation thérapeutique du patient en _____.",
+  r:"1996", s:"Définition de l'OMS reprise par la HAS."},
+
+ {t:"paires", q:"Associez chaque notion à sa définition.",
+  p:[["Programme d'ETP","Ensemble structuré conforme au cahier des charges national, déclaré à l'ARS"],
+     ["Programme personnalisé","Déclinaison du programme pour un patient donné, élaborée avec lui"],
+     ["Actions d'accompagnement","Assistance et soutien au malade ou à son entourage"],
+     ["Programme d'apprentissage","Appropriation des gestes techniques nécessaires à l'utilisation d'un médicament"]],
+  s:"Code de la santé publique, articles L. 1161-1 à L. 1161-5."},
+
+ {t:"qcmMulti", q:"Que comporte l'étape d'évaluation dans la démarche éducative ?",
+  o:["Faire le point avec le patient sur ce qu'il a compris et ce qu'il sait faire",
+     "Actualiser le diagnostic éducatif",
+     "Proposer une éducation thérapeutique de suivi",
+     "Décider de l'arrêt du traitement"], r:[0,1,2],
+  c:"L'évaluation ne porte pas sur la stratégie thérapeutique elle-même, qui relève du prescripteur.",
+  s:"HAS, éducation thérapeutique du patient, étape 4 et suivi éducatif."},
+
+ {t:"vf", q:"L'évaluation clôt définitivement le programme d'ETP.",
+  r:false, c:"Faux : elle ouvre la proposition d'une ETP de suivi régulier, voire d'un suivi approfondi, à partir d'une évaluation individuelle et d'une actualisation du diagnostic éducatif.",
+  s:"HAS, Structuration d'un programme d'ETP dans le champ des maladies chroniques."},
+
+ {t:"qcm", q:"Qui propose l'ETP au malade ?",
+  o:["Le pharmacien de la PUI","Le médecin prescripteur","L'ARS","L'association de patients"], r:1,
+  c:"L'ETP est proposée au malade par le médecin prescripteur et donne lieu à l'élaboration d'un programme personnalisé.",
+  s:"Code de la santé publique, article L. 1161-2 et suivants."},
+
+ {t:"erreur", q:"Un préparateur explique à une patiente âgée le montage d'un stylo injecteur, parle trois minutes sans interruption, conclut par « c'est bon pour vous ? », obtient un hochement de tête et passe au patient suivant. Relevez ce qui ne va pas.",
+  a:"La compréhension de l'interlocuteur doit être vérifiée, et une reformulation réalisée le cas échéant : c'est un critère d'évaluation du référentiel du diplôme, pas une politesse. Un hochement de tête ne vaut pas vérification. Il fallait faire reformuler la patiente, ou mieux lui faire exécuter le geste devant soi, puis tracer l'action dans le dossier et signaler à l'équipe pluriprofessionnelle si un besoin d'accompagnement plus large apparaît.",
+  m:["compréhension","reformulation","geste","tracer"],
+  s:"Arrêté du 31 juillet 2024, annexe II, compétence C3 et ses critères d'évaluation."},
+
+ {t:"situation", q:"Un patient diabétique de type 2 sait faire ses injections mais ne sort plus de chez lui de peur d'une hypoglycémie. Quelle est votre analyse et quelle suite donnez-vous ?",
+  a:"Le geste technique est acquis : la compétence d'auto-soins n'est pas en cause. Ce qui bloque relève des compétences d'adaptation, que la HAS inclut explicitement dans l'ETP : gagner en confiance, prendre des décisions, résoudre des problèmes, se fixer des buts. La suite consiste à transmettre l'information à l'équipe, puisque le programme est mis en œuvre par au moins deux professionnels de santé de professions différentes, et à proposer une actualisation du diagnostic éducatif afin d'inscrire cet objectif dans le programme personnalisé.",
+  m:["auto-soins","adaptation","équipe","diagnostic éducatif","programme personnalisé"],
+  s:"HAS, compétences visées par l'ETP ; décret n° 2010-904 du 2 août 2010."},
+
+ {t:"ouverte", q:"Quelle est la différence entre un programme d'ETP et des actions d'accompagnement ?",
+  a:"Le programme d'ETP est un ensemble structuré, conforme au cahier des charges national et déclaré à l'ARS, proposé au patient par le médecin prescripteur et décliné en programme personnalisé. Les actions d'accompagnement consistent en une assistance et un soutien apportés au malade ou à son entourage dans la prise en charge de la maladie ; elles font partie de l'ETP mais ne se confondent pas avec un programme structuré.",
+  m:["structuré","cahier des charges","déclaré","soutien","entourage"],
+  s:"Code de la santé publique, articles L. 1161-1 à L. 1161-3."},
+
+ {t:"qcmMulti", q:"Quelles professions peuvent intervenir dans un programme d'ETP ?",
+  o:["Médecins et infirmiers","Diététiciens et masseurs-kinésithérapeutes","Pharmaciens","Exclusivement les professions médicales"], r:[0,1,2],
+  c:"L'ensemble des professions de santé listées par le code de la santé publique sont concernées.",
+  s:"HAS, Mise en œuvre de l'éducation thérapeutique ; article L. 1161-1 du CSP."},
+
+ {t:"vf", q:"Le diagnostic éducatif est réalisé une fois pour toutes au début du programme.",
+  r:false, c:"Faux : il est actualisé à partir de l'évaluation individuelle, tout au long de la maladie chronique.",
+  s:"HAS, Structuration d'un programme d'ETP dans le champ des maladies chroniques."},
+
+ {t:"cloze", q:"Un programme d'ETP est mis en œuvre par au moins _____ professionnels de santé de professions différentes.",
+  r:"deux", s:"Décret n° 2010-904 du 2 août 2010, repris par la HAS."}
+],
+
 UE4: [
  {t:"qcm", q:"À partir de quelle date les bonnes pratiques de préparation de 2007 ont-elles cessé de s'appliquer ?",
   o:["Le 20 septembre 2022","Le 21 juillet 2023","Le 20 septembre 2023","Le 1er janvier 2024"], r:2,
@@ -1624,9 +2041,9 @@ UE4: [
   c:"3 520 correspond à la classe B au repos, identique à la classe A. En activité, la classe B admet 352 000.",
   s:"BPP 2023, LD1 tableau 1."},
 
- {t:"paires", q:"Associez chaque classe de ZAC à sa correspondance ISO au repos.",
-  p:[["Classe A","ISO 5"],["Classe B","ISO 5"],["Classe C","ISO 7"],["Classe D","ISO 8"]],
-  s:"BPP 2023, LD1 point 37, note de comparaison à la norme EN ISO 14644-1."},
+ {t:"paires", q:"Associez chaque classe de ZAC au nombre maximal de particules de 0,5 µm et plus par m³, en activité.",
+  p:[["Classe A","3 520"],["Classe B","352 000"],["Classe C","3 520 000"],["Classe D","non défini"]],
+  s:"BPP 2023, LD1 tableau 1, colonne « en activité »."},
 
  {t:"qcm", q:"Un isolateur est placé en dépression pour manipuler une poudre CMR. Quelle classe pour la ZAC qui le contient ?",
   o:["Classe D","Classe C","Classe B","Non classée"], r:1,
@@ -2027,6 +2444,7 @@ function ecranPrep(){
   }
   h += `<div class="avis" style="margin-top:14px"><b>Ce que sont ces leçons</b>
     Une mise en route, pas un cours. Chaque leçon finit par ses sources et la date de vérification : en cas d'écart avec le cours de votre centre, c'est le cours qui fait foi.</div>`;
+  h += legendeUE();
   return h + `</div>`;
 }
 
@@ -2095,6 +2513,19 @@ function illus(o){
   return `<figure class="illus"><img src="${IMG_DOSSIER}${esc(o.f)}" alt="${esc(o.leg||"")}" loading="lazy"
     onerror="var f=this.closest('figure'); if(f){f.remove();}"><figcaption>${esc(o.leg||"")}</figcaption></figure>`;
 }
+function legendeUE(){
+  let h = `<div class="legende"><p class="lg-t">Les quinze unités d'enseignement</p>`;
+  for(let d = 1; d <= 5; d++){
+    h += `<div class="lg-d"><span class="point" style="background:${DOMAINES[d].coul}"></span>
+      <b>Domaine ${d} — ${esc(DOMAINES[d].nom)}</b></div><dl>`;
+    UES.filter(u => u.dom === d).forEach(u => {
+      h += `<div class="lg-l"><dt>${u.id}</dt><dd>${esc(u.nom)} <i>· ${u.ects} ECTS</i></dd></div>`;
+    });
+    h += `</dl>`;
+  }
+  return h + `<p style="font-size:11.5px;color:var(--encre3);margin-top:12px">
+    Arrêté du 31 juillet 2024, annexe III. ${TOTAL_ECTS_UE} ECTS d'enseignement théorique sur les 60 du diplôme.</p></div>`;
+}
 function encartHtml(e){
   return `<div class="encart ${e.type}">${e.titre ? `<b class="et">${esc(e.titre)}</b>` : ""}${esc(e.texte)}</div>`;
 }
@@ -2141,6 +2572,7 @@ function ecranRev(){
     : "définir les dates des épreuves", "planning");
   h += carte("▥", "Statistiques", "réussite par type, acquis par UE, examens", "stats");
   h += carte("⌕", "Recherche", "retrouver une notion dans tout ce que contient l'application", "recherche");
+  h += legendeUE();
   return h + `</div>`;
 }
 function carte(ic, titre, sous, ecran){
