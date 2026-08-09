@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F1F6F2">
+<title>Prépa DEPPH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --fond:#F1F6F2; --carte:#FFFFFF; --encre:#16241F; --encre2:#5A6B65; --encre3:#8DA09A;
+  --trait:#E2EAE5; --trait2:#EDF3EF;
+  --menthe:#17B890; --menthe-fonce:#109272; --menthe-pale:#DFF3EC;
+  --d1:#2F6FB2; --d2:#7A3E9D; --d3:#0E8577; --d4:#B2711A; --d5:#B33B4A;
+  --or:#F0B429; --or-pale:#FFF6E3; --or-fonce:#B77F16;
+  --rouge:#D6452F; --rouge-pale:#FDEDEA;
+  --ok:#17B890; --ombre:0 1px 2px rgba(20,40,35,.05), 0 6px 16px rgba(20,40,35,.06);
+  --r:18px; --r2:13px;
+  --hautNav:66px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Outfit',system-ui,-apple-system,sans-serif;background:var(--fond);color:var(--encre);
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+h1,h2,h3,h4{line-height:1.2;letter-spacing:-.02em;font-weight:700}
+:focus-visible{outline:2px solid var(--menthe);outline-offset:2px;border-radius:6px}
+
+.app{max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:calc(var(--hautNav) + env(safe-area-inset-bottom));position:relative}
+.ecran{padding:18px 16px 20px}
+.enTete{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:4px}
+.enTete h1{font-size:25px}
+.sousTitre{color:var(--encre2);font-size:14px;margin-bottom:18px}
+.jour{background:var(--carte);border-radius:999px;padding:5px 12px;font-family:'IBM Plex Mono',monospace;
+  font-size:11.5px;font-weight:600;color:var(--menthe-fonce);box-shadow:var(--ombre);white-space:nowrap;flex:none}
+.iconeBtn{width:38px;height:38px;border-radius:12px;background:var(--carte);box-shadow:var(--ombre);
+  display:grid;place-items:center;font-size:17px;flex:none}
+
+/* ---- navigation basse ---- */
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+  border-top:1px solid var(--trait);display:flex;z-index:40;padding-bottom:env(safe-area-inset-bottom)}
+.nav .in{max-width:520px;margin:0 auto;display:flex;width:100%}
+.nav button{flex:1;padding:9px 0 12px;font-size:11.5px;font-weight:600;color:var(--encre3);
+  display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav button.act{color:var(--menthe)}
+.nav .ic{font-size:19px;line-height:1}
+
+/* ---- blocs domaine ---- */
+.bloc{background:var(--carte);border-radius:var(--r);padding:14px 15px;margin-bottom:11px;box-shadow:var(--ombre)}
+.bloc-t{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.point{width:10px;height:10px;border-radius:3px;flex:none}
+.bloc-nom{font-size:14px;font-weight:600;min-width:0}
+.bloc-meta{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);flex:none}
+.alv{display:flex;gap:8px}
+.alv .a{flex:1;min-width:0;border-radius:var(--r2);background:var(--trait2);border:1.5px solid var(--trait);
+  padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;transition:transform .12s}
+.alv .a:active{transform:scale(.96)}
+.alv .a b{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:var(--encre2)}
+.alv .a small{font-size:9.5px;color:var(--encre3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.alv .a.dispo{background:var(--menthe);border-color:var(--menthe);box-shadow:0 3px 0 var(--menthe-fonce)}
+.alv .a.dispo b,.alv .a.dispo small{color:#fff}
+.alv .a.fait{background:var(--menthe-pale);border-color:#B6E3D5}
+.alv .a.fait b{color:var(--menthe-fonce)}
+.alv .a.vide{opacity:.55}
+
+/* ---- boutons ---- */
+.cta{display:block;width:100%;background:var(--menthe);color:#fff;border-radius:var(--r2);padding:14px;
+  text-align:center;font-weight:600;font-size:15.5px;box-shadow:0 3px 0 var(--menthe-fonce);margin-top:6px}
+.cta:active{transform:translateY(2px);box-shadow:0 1px 0 var(--menthe-fonce)}
+.cta.sec{background:var(--carte);color:var(--encre);box-shadow:var(--ombre)}
+.cta.sec:active{transform:none}
+.cta[disabled]{opacity:.45;box-shadow:none}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--carte);border-radius:11px;padding:9px 14px;
+  font-size:14px;font-weight:600;box-shadow:var(--ombre)}
+.btn.plein{background:var(--menthe);color:#fff;box-shadow:0 2px 0 var(--menthe-fonce)}
+.btn.mini{padding:6px 11px;font-size:13px;font-weight:500}
+.btn[disabled]{opacity:.45}
+.rang{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+
+/* ---- barre de progression ---- */
+.jauge{height:7px;background:var(--trait2);border-radius:4px;overflow:hidden}
+.jauge i{display:block;height:100%;background:var(--menthe);border-radius:4px;transition:width .45s ease}
+.progLigne{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.progLigne .jauge{flex:1}
+.progLigne span{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--encre2);flex:none}
+
+/* ---- leçon ---- */
+.lecon{min-height:100vh;display:flex;flex-direction:column;padding:14px 16px calc(var(--hautNav) + 14px)}
+.lecon-haut{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.pts{display:flex;gap:3px;flex:1}
+.pts span{height:4px;flex:1;border-radius:2px;background:#DCE6E1;transition:background .3s}
+.pts span.f{background:var(--menthe)}
+.fermer{font-size:22px;color:var(--encre3);line-height:1;padding:0 2px}
+.diapo{flex:1;display:flex;flex-direction:column;justify-content:center;padding:6px 0 18px;animation:entre .28s ease}
+@keyframes entre{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.kick{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--menthe-fonce);margin-bottom:9px}
+.diapo h2{font-size:24px;margin-bottom:13px}
+.diapo h3{font-size:20px;margin-bottom:11px}
+.diapo p{font-size:15.5px;line-height:1.55;color:#31423C;margin-bottom:11px}
+.diapo p strong{font-weight:600;color:var(--encre)}
+.encart{border-radius:var(--r2);padding:13px 14px;margin-top:6px;font-size:14.5px;line-height:1.5}
+.encart b.et{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;margin-bottom:5px;font-weight:600}
+.encart.astuce{background:var(--or-pale)} .encart.astuce b.et{color:var(--or-fonce)}
+.encart.piege{background:var(--rouge-pale)} .encart.piege b.et{color:var(--rouge)}
+.encart.garde{background:#EAF1FA} .encart.garde b.et{color:var(--d1)}
+.encart.info{background:var(--menthe-pale)} .encart.info b.et{color:var(--menthe-fonce)}
+.vocab{list-style:none}
+.vocab li{background:var(--carte);border-radius:var(--r2);padding:11px 13px;margin-bottom:8px;font-size:14.5px;
+  box-shadow:var(--ombre);line-height:1.45}
+.vocab b{display:block;font-size:14px;margin-bottom:2px}
+.vocab span{color:var(--encre2)}
+.etapes{list-style:none;counter-reset:e}
+.etapes li{counter-increment:e;display:flex;gap:11px;align-items:flex-start;margin-bottom:9px;font-size:14.5px;line-height:1.4}
+.etapes li::before{content:counter(e);flex:none;width:24px;height:24px;border-radius:8px;background:var(--menthe);
+  color:#fff;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;display:grid;place-items:center;margin-top:1px}
+.chiffres{list-style:none}
+.chiffres li{display:flex;gap:11px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--trait);font-size:14.5px}
+.chiffres li:last-child{border:none}
+.chiffres b{font-family:'IBM Plex Mono',monospace;font-size:16px;color:var(--menthe-fonce);flex:none;min-width:64px}
+.sources{list-style:none;font-size:13px}
+.sources li{padding:9px 0;border-bottom:1px solid var(--trait);color:var(--encre2);line-height:1.4}
+.sources li:last-child{border:none}
+.sources b{display:block;color:var(--encre);font-size:13.5px;font-weight:600}
+.sources a{color:var(--menthe-fonce);word-break:break-all;font-size:12px;text-decoration:none;font-family:'IBM Plex Mono',monospace}
+
+/* ---- quiz et exercices ---- */
+.opt{display:block;width:100%;text-align:left;background:var(--carte);border:1.5px solid var(--trait);
+  border-radius:var(--r2);padding:13px 14px;margin-bottom:9px;font-size:15px;line-height:1.4;box-shadow:var(--ombre)}
+.opt:active{transform:scale(.985)}
+.opt.pris{border-color:var(--menthe);background:var(--menthe-pale)}
+.opt.juste{border-color:var(--menthe);background:var(--menthe-pale)}
+.opt.faux{border-color:var(--rouge);background:var(--rouge-pale)}
+.verdict{border-radius:var(--r2);padding:13px 14px;margin:12px 0;font-size:14.5px;line-height:1.5}
+.verdict.ok{background:var(--menthe-pale)} .verdict.ko{background:var(--rouge-pale)}
+.verdict b{display:block;margin-bottom:3px}
+.champ{display:block;font-size:13px;font-weight:600;color:var(--encre2);margin:0 0 6px}
+input[type=text],input[type=password],input[type=date],input[type=number],select,textarea{
+  width:100%;padding:12px 13px;border:1.5px solid var(--trait);border-radius:var(--r2);background:var(--carte)}
+textarea{min-height:150px;resize:vertical;line-height:1.5}
+.duo{display:grid;gap:11px;grid-template-columns:1fr 1fr}
+.puce{display:inline-flex;align-items:center;gap:5px;padding:6px 11px;border-radius:999px;background:var(--carte);
+  font-size:12.5px;font-weight:500;box-shadow:var(--ombre);color:var(--encre2)}
+.puce.on{background:var(--menthe);color:#fff;box-shadow:0 2px 0 var(--menthe-fonce)}
+.puce.mono{font-family:'IBM Plex Mono',monospace;font-size:11px}
+.liste-puces{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.avis{border-radius:var(--r2);padding:12px 14px;margin-bottom:14px;font-size:14px;line-height:1.5;background:var(--or-pale)}
+.avis.info{background:var(--menthe-pale)} .avis.err{background:var(--rouge-pale)}
+.avis b{display:block;margin-bottom:3px}
+.vide{text-align:center;padding:38px 16px;color:var(--encre2)}
+.vide .em{font-size:34px;margin-bottom:10px}
+.vide h3{font-size:17px;margin-bottom:6px;color:var(--encre)}
+.carteAct{display:flex;align-items:center;gap:12px;background:var(--carte);border-radius:var(--r);padding:14px 15px;
+  margin-bottom:10px;box-shadow:var(--ombre);width:100%;text-align:left}
+.carteAct .ic{width:40px;height:40px;border-radius:12px;background:var(--menthe-pale);display:grid;place-items:center;
+  font-size:18px;flex:none}
+.carteAct .tx{flex:1;min-width:0}
+.carteAct .tx b{display:block;font-size:15px;font-weight:600}
+.carteAct .tx small{font-size:12.5px;color:var(--encre2)}
+.carteAct .fl{color:var(--encre3);font-size:18px}
+.tableau{width:100%;border-collapse:collapse;font-size:14px}
+.tableau th,.tableau td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--trait)}
+.tableau th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--encre3);font-weight:500}
+.tableau td.n{font-family:'IBM Plex Mono',monospace;text-align:right}
+.chrono{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:var(--menthe-fonce)}
+.src{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--encre3);border-bottom:1px dotted var(--trait)}
+.srcTxt{display:none;font-size:13.5px;color:var(--encre2);background:var(--trait2);padding:10px 12px;
+  border-radius:10px;margin:8px 0;font-style:italic;line-height:1.45}
+.srcTxt.ouvert{display:block}
+.semaine{border-left:2px solid var(--trait);padding:0 0 15px 14px;position:relative}
+.semaine::before{content:"";position:absolute;left:-5px;top:6px;width:8px;height:8px;border-radius:50%;background:var(--menthe)}
+.semaine .quand{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);text-transform:uppercase;letter-spacing:.08em}
+
+#impression{display:none}
+@media print{
+  body{background:#fff}
+  .app,.nav{display:none !important}
+  #impression{display:block}
+  @page{size:A4;margin:14mm 13mm}
+  .f-print{font-family:'Outfit',sans-serif;color:#000;font-size:10.5pt;line-height:1.4}
+  .f-print .f-entete{border-bottom:2px solid #000;padding-bottom:6pt;margin-bottom:10pt;display:flex;
+    justify-content:space-between;gap:10pt;align-items:flex-end}
+  .f-print h1{font-size:16pt}
+  .f-print .f-meta{font-family:'IBM Plex Mono',monospace;font-size:8pt;text-transform:uppercase;text-align:right}
+  .f-print h2{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;text-transform:uppercase;letter-spacing:.1em;
+    border-bottom:.5pt solid #999;padding-bottom:2pt;margin:9pt 0 5pt}
+  .f-print li{margin:0 0 3pt 14pt}
+  .f-print .cols{column-count:2;column-gap:9mm}
+  .f-print .enc{border:.5pt solid #666;padding:5pt 7pt;margin-bottom:6pt;break-inside:avoid}
+  .f-print.dense{font-size:9pt;line-height:1.3}
+  .f-print.dense h1{font-size:13pt}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<nav class="nav" id="nav"></nav>
+<div id="impression"></div>
+<script>
+"use strict";
+/* =========================================================================
+   1. RÉFÉRENTIEL — arrêté du 31 juillet 2024, annexe III
+   ========================================================================= */
+const DOMAINES = {
+  1:{nom:"Délivrance et pharmacie clinique", coul:"var(--d1)",
+     complet:"Délivrer des produits de santé après analyse des ordonnances ou des demandes"},
+  2:{nom:"Préparations hospitalières", coul:"var(--d2)",
+     complet:"Réaliser des préparations dans un cadre hospitalier"},
+  3:{nom:"Dispositifs médicaux et stérilisation", coul:"var(--d3)",
+     complet:"Mettre à disposition des dispositifs médicaux stériles et implantables"},
+  4:{nom:"Équipe, organisation, continuité", coul:"var(--d4)",
+     complet:"Travailler au sein d'une équipe pluriprofessionnelle"},
+  5:{nom:"Recherche et amélioration continue", coul:"var(--d5)",
+     complet:"Mettre en œuvre des travaux de recherche et une démarche d'amélioration continue"}
+};
+
+const UES = [
+  {id:"UE1", dom:1, ects:3, nom:"Préparation et délivrance des produits de santé",
+   cles:["ordonnance","délivrance","dispensation","prescription","nominative","globale","reconstitution","stupéfiant","posologie","logiciel d'aide","rétrocession","interaction"]},
+  {id:"UE2", dom:1, ects:2, nom:"Bilans médicamenteux, conciliation et pharmacie clinique",
+   cles:["conciliation","bilan médicamenteux","transition","pharmacie clinique","divergence","anamnèse","iatrogén"]},
+  {id:"UE3", dom:1, ects:4, nom:"Prévention, information et éducation thérapeutique du patient",
+   cles:["éducation thérapeutique","etp","observance","entretien","prévention","promotion de la santé","diagnostic éducatif","compétence d'auto-soin"]},
+  {id:"UE4", dom:2, ects:4, nom:"Chimiothérapie, nutrition parentérale, préparations stériles et non stériles",
+   cles:["cytotoxique","chimiothérapie","nutrition parentérale","isolateur","hotte","zac","zone à atmosphère contrôlée","préparation stérile","asepsie","habillage","poche","flux laminaire","bpp"]},
+  {id:"UE5", dom:2, ects:3, nom:"Radiopharmacie et radioprotection",
+   cles:["radiopharmac","radioprotection","radioactiv","décroissance","becquerel","générateur","scintigraph","dosimètre","période","isotope","rayonnement","zone contrôlée"]},
+  {id:"UE6", dom:2, ects:2, nom:"Contrôles des préparations",
+   cles:["contrôle","matière première","produit fini","étalonnage","validation analytique","spectrophotom","conformité analytique","microbiologique","essai"]},
+  {id:"UE7", dom:3, ects:4, nom:"Bon usage et référencement des dispositifs médicaux",
+   cles:["dispositif médical","dmi","implantable","marquage ce","référencement","matériovigilance","classe i","classe iii","achat","commission"]},
+  {id:"UE8", dom:3, ects:3, nom:"Préparation et contrôles du processus de stérilisation",
+   cles:["stérilisation","autoclave","prédésinfection","lavage","conditionnement","thermosoudeuse","bowie","indicateur","cycle","vapeur d'eau","recomposition","libération"]},
+  {id:"UE9", dom:3, ects:2, nom:"Prévention du risque infectieux et contrôle de l'environnement",
+   cles:["risque infectieux","biocontamination","particulaire","classe iso","surveillance de l'environnement","prion","hygiène des mains","salle propre","empoussièrement"]},
+  {id:"UE10", dom:4, ects:2, nom:"Gestion des flux et stocks de médicaments, dispositifs et fluides médicaux",
+   cles:["stock","inventaire","approvisionnement","commande","marché","fluide médical","rupture","péremption","logistique","comptabilité","budget","plein-vide"]},
+  {id:"UE11", dom:4, ects:2, nom:"Santé publique, économie de la santé, droit, éthique et communication",
+   cles:["santé publique","économie de la santé","t2a","droit des usagers","éthique","déontologie","secret professionnel","assurance maladie","démographie","communication"]},
+  {id:"UE12", dom:4, ects:2, nom:"Pédagogie, tutorat, projet personnel et engagement",
+   cles:["tutorat","tuteur","pédagogie","apprentissage","encadrement","portfolio","démarche réflexive","projet professionnel"]},
+  {id:"UE13", dom:5, ects:3, nom:"Initiation à la démarche de recherche",
+   cles:["recherche","publication","littérature","méthodologie","problématique","bibliograph","niveau de preuve","protocole","essai clinique"]},
+  {id:"UE14", dom:5, ects:2, nom:"Anglais",
+   cles:["english","abstract","drug","the ","of the","dosage form","review","patient safety"]},
+  {id:"UE15", dom:5, ects:2, nom:"Démarche qualité et gestion des risques",
+   cles:["qualité","gestion des risques","capa","non-conformité","évènement indésirable","événement indésirable","certification","accréditation","vigilance","pharmacovigilance","audit","procédure","cartographie"]}
+];
+const UE = id => UES.find(u => u.id === id) || null;
+const TOTAL_ECTS_UE = UES.reduce((s,u) => s + u.ects, 0);
+
+const TYPES = {
+  qcm:"QCM", qcmMulti:"QCM à réponses multiples", vf:"Vrai ou faux", flash:"Flashcard",
+  cloze:"Texte à trous", paires:"Appariement", ouverte:"Question ouverte",
+  erreur:"Chasse à l'erreur", situation:"Mise en situation", ordre:"Remise en ordre"
+};
+const TYPES_IA_SEULE = ["erreur","situation","qcmMulti"];
+
+/* =========================================================================
+   2. ÉTAT ET STOCKAGE
+   ========================================================================= */
+const CLE = "depph_v2";
+let memoire = null;            // repli si le stockage du navigateur est indisponible
+let stockageOk = true;
+
+const etatVierge = () => ({
+  version:1,
+  reglages:{moteur:"local", cleGemini:"", modele:"", modeles:[], dateExamen:"", debitVoix:1, voix:""},
+  cours:[], progres:{}, examens:[], prep:{}
+});
+let S = etatVierge();
+
+function charger(){
+  try{
+    const brut = localStorage.getItem(CLE);
+    if(brut){ const o = JSON.parse(brut); S = Object.assign(etatVierge(), o);
+      S.reglages = Object.assign(etatVierge().reglages, o.reglages || {}); }
+  }catch(e){ stockageOk = false; }
+}
+function sauver(){
+  if(!stockageOk){ memoire = S; return; }
+  try{ localStorage.setItem(CLE, JSON.stringify(S)); }
+  catch(e){ stockageOk = false; memoire = S; }
+}
+
+/* =========================================================================
+   3. OUTILS
+   ========================================================================= */
+const $ = s => document.querySelector(s);
+const uid = () => Math.random().toString(36).slice(2,10) + Date.now().toString(36).slice(-4);
+function esc(t){ return String(t==null?"":t).replace(/[&<>"']/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+const JOUR = 86400000;
+function dateFr(iso){ if(!iso) return "—";
+  const d = new Date(iso); if(isNaN(d)) return "—";
+  return d.toLocaleDateString("fr-FR",{day:"2-digit",month:"2-digit",year:"numeric"}); }
+function joursEntre(a,b){ return Math.round((new Date(b) - new Date(a)) / JOUR); }
+function melanger(t){ const a = t.slice();
+  for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a; }
+function tronquer(t,n){ t = String(t||"").trim(); return t.length > n ? t.slice(0,n-1).trim() + "…" : t; }
+function normaliser(t){ return String(t||"").toLowerCase()
+  .normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9\s]/g," ").replace(/\s+/g," ").trim(); }
+const MOTS_VIDES = new Set(("le la les un une des du de d au aux et ou ou bien mais donc or ni car que qui quoi dont " +
+  "ce cet cette ces son sa ses leur leurs il elle ils elles on nous vous se sont est etre avec sans pour par dans " +
+  "sur sous entre chez vers apres avant lors selon afin ainsi plus moins tres peu tout tous toute toutes a en y " +
+  "il y a lui eux meme meme si comme").split(" "));
+function motsCles(t, n=6){
+  const vus = new Set(); const out = [];
+  normaliser(t).split(" ").forEach(m => {
+    if(m.length > 4 && !MOTS_VIDES.has(m) && !vus.has(m)){ vus.add(m); out.push(m); }
+  });
+  return out.slice(0, n);
+}
+function telecharger(nom, contenu, type){
+  const b = new Blob([contenu], {type: type || "application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(b); a.download = nom;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+
+/* =========================================================================
+   4. LECTURE DU TEXTE — découpage en phrases, titres, listes
+   ========================================================================= */
+const UNITES = "%|mg|µg|mcg|g|kg|mL|ml|L|l|°C|min|h|heures?|jours?|semaines?|mois|ans?|bar|kPa|ppm|UI|Bq|kBq|MBq|GBq|mSv|µSv|Gy|log|cm|mm|m²|€|ECTS|/20|/min|mmol|mOsm";
+const RE_CHIFFRE = new RegExp("(?:^|[\\s(])(\\d+(?:[.,]\\d+)?)\\s?(" + UNITES + ")(?![a-zA-Zéèà])", "");
+const RE_NORME = /(NF\s?EN\s?ISO\s?\d+|NF\s?EN\s?\d+|ISO\s?\d{3,5}(?:-\d+)?|EN\s?\d{3,5})/i;
+const RE_TEXTE_REG = /(arrêté du \d|décret n|circulaire|directive \d|règlement \(UE\)|article [LRD]\.\s?\d|bonnes pratiques de préparation|BPP|BPF|pharmacopée)/i;
+const RE_PIEGE = /\b(attention|jamais|ne (?:doit|peut|faut) (?:pas|jamais)|interdit|obligatoire|impérativ|systématiquement|sauf|risque de|à ne pas confondre|contrairement à|en aucun cas)\b/i;
+const RE_DEF = /^(.{3,70}?)\s*(?::|\s[—–]\s)\s*(.{25,})$/;
+const RE_DEF_VERBE = /^(.{3,60}?)\s+(?:est|sont|désigne|désignent|correspond à|correspondent à|se définit comme|consiste à|permet de)\s+(.{20,})$/i;
+const RE_PUCE = /^\s*(?:[-•–*·]|\d{1,2}\s*[.)°]|[a-h]\s*[.)]|[IVX]{1,4}\s*[.)])\s+(.{3,})$/;
+
+function decouper(texte){
+  const lignes = texte.replace(/\r/g,"").split("\n").map(l => l.replace(/\s+$/,""));
+  const blocs = [];
+  lignes.forEach(l => {
+    const t = l.trim();
+    if(!t){ blocs.push({type:"vide", txt:""}); return; }
+    const p = t.match(RE_PUCE);
+    if(p){ blocs.push({type:"puce", txt:p[1].trim(), brut:t}); return; }
+    const estTitre = t.length < 85 && !/[.;:!?]$/.test(t) &&
+      (/^[A-ZÉÈÀÇ0-9]/.test(t)) && t.split(" ").length <= 12 && !RE_DEF.test(t);
+    blocs.push({type: estTitre ? "titre" : "para", txt:t});
+  });
+  return blocs;
+}
+function phrases(texte){
+  return texte.replace(/\s+/g," ")
+    .split(/(?<=[.!?;])\s+(?=[A-ZÉÈÀÇ0-9«"])/)
+    .map(p => p.trim()).filter(p => p.length > 30 && p.length < 400);
+}
+function detecterUE(texte){
+  const n = " " + normaliser(texte) + " ";
+  let meilleur = null, best = 0;
+  UES.forEach(u => {
+    let score = 0;
+    u.cles.forEach(c => {
+      const cn = normaliser(c);
+      if(!cn) return;
+      const occ = n.split(" " + cn).length - 1;
+      if(occ > 0) score += occ * (cn.includes(" ") ? 3 : 1.6);
+    });
+    if(score > best){ best = score; meilleur = u.id; }
+  });
+  return best >= 4 ? meilleur : null;
+}
+
+/* =========================================================================
+   5. GARDE-FOU DONNÉES PERSONNELLES
+   ========================================================================= */
+const SONDES = [
+  {re:/\b\d{13}(?:\s?\d{2})?\b/g,                     quoi:"numéro à 13 chiffres (type NIR)"},
+  {re:/\b(?:NIP|IPP|IEP)\s?[:n°]*\s?\d{4,}/gi,        quoi:"identifiant de séjour ou de patient"},
+  {re:/\bné(?:e)?\s+le\s+\d{1,2}[\/\s.-]\d{1,2}[\/\s.-]\d{2,4}/gi, quoi:"date de naissance"},
+  {re:/\b(?:M\.|Mme|Mlle|Monsieur|Madame)\s+[A-ZÉÈÀ][a-zéèêàçï]+/g, quoi:"nom précédé d'une civilité"},
+  {re:/\bchambre\s?n?°?\s?\d{1,4}\b/gi,               quoi:"numéro de chambre"}
+];
+function sonderDonnees(t){
+  const trouves = [];
+  SONDES.forEach(s => { s.re.lastIndex = 0; if(s.re.test(t)) trouves.push(s.quoi); });
+  return trouves;
+}
+function anonymiser(t){
+  let r = t;
+  r = r.replace(/\b\d{13}(?:\s?\d{2})?\b/g, "[IDENTIFIANT]");
+  r = r.replace(/\b(NIP|IPP|IEP)\s?[:n°]*\s?\d{4,}/gi, "$1 [IDENTIFIANT]");
+  r = r.replace(/\bné(e)?\s+le\s+\d{1,2}[\/\s.-]\d{1,2}[\/\s.-]\d{2,4}/gi, "né$1 le [DATE]");
+  r = r.replace(/\b(M\.|Mme|Mlle|Monsieur|Madame)\s+[A-ZÉÈÀ][a-zéèêàçï]+(?:\s+[A-ZÉÈÀ][A-ZÉÈÀa-zéèêàçï]+)?/g, "$1 [PATIENT]");
+  r = r.replace(/\bchambre\s?n?°?\s?\d{1,4}\b/gi, "chambre [N°]");
+  return r;
+}
+/* =========================================================================
+   6. MOTEUR LOCAL — extraction sans intelligence artificielle
+   Tout ce qui est produit ici provient littéralement du cours importé.
+   ========================================================================= */
+function analyseLocale(texte, ueId){
+  const blocs = decouper(texte);
+  const phr = phrases(texte);
+  const definitions = [], points = [], chiffres = [], normes = [], pieges = [], procedures = [], sigles = [];
+
+  // définitions : « terme : explication » ou « terme est ... »
+  const vusDef = new Set();
+  blocs.forEach(b => {
+    if(b.type === "vide") return;
+    let m = b.txt.match(RE_DEF) || b.txt.match(RE_DEF_VERBE);
+    if(m){
+      const terme = m[1].replace(/^[-•–*·\d.)\s]+/,"")
+        .replace(/^(?:les|le|la|un|une|des|du)\s+/i,"").replace(/^l['’]\s*/i,"").trim();
+      const def = m[2].trim();
+      const k = normaliser(terme);
+      if(terme.length > 2 && terme.length < 70 && def.length > 20 && !vusDef.has(k)){
+        vusDef.add(k);
+        definitions.push({terme, def, src:b.txt});
+      }
+    }
+  });
+
+  // sigles explicités dans le cours : « PUI (pharmacie à usage intérieur) » et l'inverse
+  const vusSig = new Set();
+  let ms;
+  const reSig1 = /\b([A-ZÉÈ]{2,6})\s*\(([^)]{6,80})\)/g;
+  while((ms = reSig1.exec(texte)) !== null){
+    if(!vusSig.has(ms[1])){ vusSig.add(ms[1]); sigles.push({sigle:ms[1], sens:ms[2].trim(), src:ms[0]}); }
+  }
+  const reSig2 = /([a-zéèêàç][^.()\n]{6,80})\s*\(([A-ZÉÈ]{2,6})\)/g;
+  while((ms = reSig2.exec(texte)) !== null){
+    if(!vusSig.has(ms[2])){ vusSig.add(ms[2]); sigles.push({sigle:ms[2], sens:ms[1].trim(), src:ms[0]}); }
+  }
+
+  // chiffres, normes, pièges, points importants
+  phr.forEach(p => {
+    if(RE_CHIFFRE.test(p) && chiffres.length < 25) chiffres.push({txt:p, src:p});
+    if((RE_NORME.test(p) || RE_TEXTE_REG.test(p)) && normes.length < 20) normes.push({txt:p, src:p});
+    if(RE_PIEGE.test(p) && pieges.length < 15) pieges.push({txt:p, src:p});
+  });
+  blocs.forEach(b => {
+    if(b.type === "puce" && b.txt.length > 25 && b.txt.length < 260 && points.length < 30)
+      points.push({txt:b.txt, src:b.txt});
+  });
+  if(points.length < 6){
+    phr.slice(0, 40).forEach(p => {
+      if(points.length < 12 && !points.some(x => x.txt === p) && p.length < 260) points.push({txt:p, src:p});
+    });
+  }
+
+  // suites d'étapes : au moins trois puces consécutives numérotées
+  let courante = [];
+  const cloture = () => {
+    if(courante.length >= 3 && courante.length <= 10)
+      procedures.push({titre:"Suite d'étapes relevée dans le cours", etapes:courante.slice()});
+    courante = [];
+  };
+  blocs.forEach(b => {
+    if(b.type === "puce" && /^\s*\d{1,2}\s*[.)°]/.test(b.brut || "") && b.txt.length < 180) courante.push(b.txt);
+    else cloture();
+  });
+  cloture();
+
+  const titre = (blocs.find(b => b.type === "titre") || {txt:""}).txt;
+  const resume = phr.slice(0,2).join(" ");
+
+  const fiche = {resume, definitions:definitions.slice(0,20), points:points.slice(0,18),
+    chiffres:chiffres.slice(0,14), normes:normes.slice(0,10), pieges:pieges.slice(0,10),
+    sigles:sigles.slice(0,15), procedures:procedures.slice(0,3), titreDetecte:titre};
+
+  return {fiche, items: itemsLocaux(fiche, phr, ueId)};
+}
+
+function itemsLocaux(fiche, phr, ueId){
+  const items = [];
+  const base = t => ({id:uid(), ueId, type:t, cree:Date.now(), origine:"local"});
+
+  // flashcards et questions ouvertes à partir des définitions
+  fiche.definitions.forEach(d => {
+    items.push(Object.assign(base("flash"), {recto:d.terme, verso:d.def, source:d.src}));
+    if(d.def.length >= 45){
+      items.push(Object.assign(base("ouverte"), {
+        question:"Expliquez : " + d.terme, attendu:d.def, motsCles:motsCles(d.def, 6), source:d.src}));
+    }
+  });
+  // sigles en flashcards
+  fiche.sigles.forEach(s => {
+    items.push(Object.assign(base("flash"), {recto:s.sigle, verso:s.sens, source:s.src}));
+  });
+  // QCM : la bonne réponse et les distracteurs sont de vraies définitions du cours
+  if(fiche.definitions.length >= 4){
+    fiche.definitions.forEach((d,i) => {
+      const autres = melanger(fiche.definitions.filter((_,j) => j !== i)).slice(0,3);
+      if(autres.length < 3) return;
+      const opts = melanger([d.def].concat(autres.map(a => a.def))).map(o => tronquer(o, 150));
+      if(new Set(opts).size !== opts.length) return;
+      items.push(Object.assign(base("qcm"), {
+        question:"Que désigne « " + d.terme + " » ?", options:opts,
+        reponse:opts.findIndex(o => o === tronquer(d.def,150)), source:d.src}));
+    });
+  }
+  // appariement terme / définition
+  if(fiche.definitions.length >= 4){
+    const lot = melanger(fiche.definitions).slice(0,5);
+    items.push(Object.assign(base("paires"), {
+      question:"Associez chaque terme à sa définition.",
+      paires: lot.map(d => [d.terme, tronquer(d.def, 110)]),
+      source: lot.map(d => d.src).join(" — ")}));
+  }
+  // textes à trous sur les valeurs chiffrées
+  fiche.chiffres.forEach(c => {
+    const m = c.txt.match(RE_CHIFFRE);
+    if(!m) return;
+    const val = m[1] + (m[2] ? " " + m[2] : "");
+    items.push(Object.assign(base("cloze"), {
+      question: c.txt.replace(m[1] + (m[0].includes(" " + m[2]) ? " " : "") + m[2], "_____"),
+      reponse: val, source:c.txt}));
+  });
+  // vrai / faux : la version fausse est obtenue en modifiant une valeur du cours
+  fiche.chiffres.slice(0,10).forEach((c,i) => {
+    const m = c.txt.match(RE_CHIFFRE);
+    if(!m) return;
+    const vrai = i % 2 === 0;
+    let enonce = c.txt;
+    if(!vrai){
+      const n = parseFloat(m[1].replace(",","."));
+      let faux = n < 10 ? n + 1 : Math.round(n * (Math.random() < .5 ? 1.5 : 0.5));
+      if(faux === n) faux = n + 2;
+      enonce = c.txt.replace(m[1], String(faux).replace(".", ","));
+    }
+    items.push(Object.assign(base("vf"), {
+      question: enonce, reponse: vrai,
+      correction: vrai ? "Énoncé conforme au cours." : "Faux : la valeur exacte du cours est « " + m[1] + " " + m[2] + " ».",
+      source: c.txt}));
+  });
+  // remise en ordre des procédures
+  fiche.procedures.forEach(p => {
+    items.push(Object.assign(base("ordre"), {
+      question:"Remettez ces étapes dans l'ordre du cours.",
+      etapes:p.etapes, source:p.etapes.join(" → ")}));
+  });
+  // points clés en textes à trous sur un terme saillant
+  fiche.points.slice(0,10).forEach(p => {
+    const mots = p.txt.split(/\s+/);
+    const idx = mots.findIndex(m => m.length > 8 && !MOTS_VIDES.has(normaliser(m)));
+    if(idx < 0) return;
+    const cible = mots[idx].replace(/[.,;:)]$/,"");
+    const copie = mots.slice(); copie[idx] = "_____";
+    items.push(Object.assign(base("cloze"), {question:copie.join(" "), reponse:cible, source:p.txt}));
+  });
+  return items;
+}
+
+/* =========================================================================
+   7. MOTEUR GEMINI — analyse assistée, ancrée sur le texte fourni
+   ========================================================================= */
+const API = "https://generativelanguage.googleapis.com/v1beta";
+
+async function listerModeles(cle){
+  const r = await fetch(API + "/models?key=" + encodeURIComponent(cle));
+  if(!r.ok) throw new Error("La clé a été refusée (code " + r.status + ").");
+  const d = await r.json();
+  return (d.models || [])
+    .filter(m => (m.supportedGenerationMethods || []).includes("generateContent"))
+    .filter(m => !/embedding|aqa|imagen|veo|tts/i.test(m.name))
+    .map(m => ({id:m.name.replace(/^models\//,""), nom:m.displayName || m.name}));
+}
+
+function consigne(ueId){
+  const u = UE(ueId);
+  const ctx = u ? "Le cours relève de l'UE « " + u.nom + " » (domaine " + u.dom + " : " + DOMAINES[u.dom].nom + ")." : "";
+  return [
+"Tu assistes un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière (France).",
+ctx,
+"À partir du COURS fourni, produis une fiche de révision et une série d'exercices.",
+"",
+"RÈGLES ABSOLUES :",
+"1. N'utilise QUE le contenu du cours. N'ajoute aucune donnée extérieure, aucune valeur chiffrée, aucune norme, aucun texte réglementaire qui ne figure pas dans le cours.",
+"2. Chaque élément produit doit porter un champ \"source\" contenant une citation littérale du cours (30 à 200 caractères) dont il est tiré.",
+"3. Si le cours ne permet pas de produire un type d'exercice, n'en produis pas. Mieux vaut moins d'exercices que des exercices inventés.",
+"4. Réponds en français, sauf pour l'UE Anglais.",
+"",
+"Réponds UNIQUEMENT par un objet JSON valide, sans texte autour, de la forme :",
+'{"fiche":{"resume":"3 phrases maximum","definitions":[{"terme":"","def":"","src":""}],"points":[{"txt":"","src":""}],"chiffres":[{"txt":"","src":""}],"normes":[{"txt":"","src":""}],"pieges":[{"txt":"","src":""}],"sigles":[{"sigle":"","sens":"","src":""}]},',
+'"items":[',
+'{"type":"qcm","question":"","options":["","","",""],"reponse":0,"correction":"","source":""},',
+'{"type":"qcmMulti","question":"","options":["","","",""],"reponses":[0,2],"correction":"","source":""},',
+'{"type":"vf","question":"","reponse":true,"correction":"","source":""},',
+'{"type":"flash","recto":"","verso":"","source":""},',
+'{"type":"cloze","question":"phrase avec _____","reponse":"","source":""},',
+'{"type":"ouverte","question":"","attendu":"","motsCles":["",""],"source":""},',
+'{"type":"erreur","question":"situation contenant une non-conformité, tirée du cours","attendu":"la non-conformité et l\'action corrective attendue","motsCles":["",""],"source":""},',
+'{"type":"situation","question":"mise en situation professionnelle","attendu":"réponse structurée attendue","motsCles":["",""],"source":""},',
+'{"type":"ordre","question":"Remettez ces étapes dans l\'ordre.","etapes":["étape 1","étape 2","étape 3"],"source":""}',
+"]}",
+"",
+"Vise 6 à 10 définitions, 6 à 12 points, et 18 à 30 exercices variés couvrant tous les types possibles.",
+"Pour \"ordre\", les étapes doivent être données DANS L'ORDRE CORRECT (l'application les mélangera).",
+"Pour \"erreur\" et \"situation\", la situation doit rester strictement dans le champ décrit par le cours."
+  ].join("\n");
+}
+
+async function analyseGemini(texte, ueId, cle, modele){
+  const corps = {
+    systemInstruction:{parts:[{text:consigne(ueId)}]},
+    contents:[{role:"user", parts:[{text:"COURS :\n\n" + texte}]}],
+    generationConfig:{temperature:0.2, responseMimeType:"application/json", maxOutputTokens:8192}
+  };
+  const r = await fetch(API + "/models/" + encodeURIComponent(modele) + ":generateContent?key=" + encodeURIComponent(cle),
+    {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(corps)});
+  if(!r.ok){
+    let d = ""; try{ d = (await r.json()).error.message; }catch(e){}
+    throw new Error("Gemini a renvoyé une erreur " + r.status + (d ? " : " + d : "") + ".");
+  }
+  const d = await r.json();
+  const cand = (d.candidates || [])[0];
+  if(!cand) throw new Error("Gemini n'a rien renvoyé. Le cours est peut-être trop long : découpez-le en deux.");
+  const brut = (cand.content && cand.content.parts || []).map(p => p.text || "").join("");
+  let o;
+  try{ o = JSON.parse(brut.replace(/^```json\s*|```\s*$/g,"").trim()); }
+  catch(e){ throw new Error("La réponse de Gemini n'était pas exploitable. Relancez l'analyse."); }
+  return normaliserSortieIA(o, ueId);
+}
+
+function normaliserSortieIA(o, ueId){
+  const f = o.fiche || {};
+  const tab = x => Array.isArray(x) ? x : [];
+  const fiche = {
+    resume: f.resume || "",
+    definitions: tab(f.definitions).filter(d => d && d.terme && d.def).map(d => ({terme:d.terme, def:d.def, src:d.src || ""})),
+    points: tab(f.points).filter(p => p && p.txt).map(p => ({txt:p.txt, src:p.src || ""})),
+    chiffres: tab(f.chiffres).filter(c => c && c.txt).map(c => ({txt:c.txt, src:c.src || ""})),
+    normes: tab(f.normes).filter(n => n && n.txt).map(n => ({txt:n.txt, src:n.src || ""})),
+    pieges: tab(f.pieges).filter(p => p && p.txt).map(p => ({txt:p.txt, src:p.src || ""})),
+    sigles: tab(f.sigles).filter(s => s && s.sigle).map(s => ({sigle:s.sigle, sens:s.sens || "", src:s.src || ""})),
+    procedures: []
+  };
+  const items = [];
+  tab(o.items).forEach(it => {
+    if(!it || !TYPES[it.type]) return;
+    const b = {id:uid(), ueId, type:it.type, cree:Date.now(), origine:"gemini",
+      source: it.source || "", correction: it.correction || ""};
+    if(it.type === "qcm" && Array.isArray(it.options) && it.options.length >= 2){
+      items.push(Object.assign(b, {question:it.question, options:it.options,
+        reponse: Math.max(0, Math.min(it.options.length - 1, Number(it.reponse) || 0))}));
+    } else if(it.type === "qcmMulti" && Array.isArray(it.options) && Array.isArray(it.reponses) && it.reponses.length){
+      items.push(Object.assign(b, {question:it.question, options:it.options,
+        reponses: it.reponses.map(Number).filter(n => n >= 0 && n < it.options.length)}));
+    } else if(it.type === "vf"){
+      items.push(Object.assign(b, {question:it.question, reponse: it.reponse === true || it.reponse === "true"}));
+    } else if(it.type === "flash" && it.recto && it.verso){
+      items.push(Object.assign(b, {recto:it.recto, verso:it.verso}));
+    } else if(it.type === "cloze" && it.question && it.reponse){
+      items.push(Object.assign(b, {question:it.question, reponse:it.reponse}));
+    } else if((it.type === "ouverte" || it.type === "erreur" || it.type === "situation") && it.question){
+      items.push(Object.assign(b, {question:it.question, attendu:it.attendu || "",
+        motsCles: Array.isArray(it.motsCles) && it.motsCles.length ? it.motsCles : motsCles(it.attendu || "", 6)}));
+    } else if(it.type === "ordre" && Array.isArray(it.etapes) && it.etapes.length >= 3){
+      items.push(Object.assign(b, {question: it.question || "Remettez ces étapes dans l'ordre.", etapes:it.etapes}));
+    }
+  });
+  return {fiche, items};
+}
+/* =========================================================================
+   8. PROGRESSION — trois boîtes, carnet d'erreurs, niveau de confiance
+   ========================================================================= */
+const DELAIS = {1:0, 2:2, 3:7};   // jours avant la prochaine présentation
+function prog(id){
+  if(!S.progres[id]) S.progres[id] = {boite:1, vus:0, ok:0, ko:0, dernier:0, prochain:0, erreurConfiante:false};
+  return S.progres[id];
+}
+function majProg(id, juste, sur){
+  const p = prog(id);
+  p.vus++; p.dernier = Date.now();
+  if(juste){ p.ok++; p.boite = Math.min(3, p.boite + 1); if(p.ok >= p.ko) p.erreurConfiante = false; }
+  else{ p.ko++; p.boite = 1; if(sur === true) p.erreurConfiante = true; }
+  p.prochain = Date.now() + DELAIS[p.boite] * JOUR;
+  sauver();
+}
+function tousItems(){ return S.cours.flatMap(c => c.items.map(i => Object.assign({coursId:c.id, coursTitre:c.titre}, i))); }
+function itemsDus(){ const t = Date.now(); return tousItems().filter(i => { const p = S.progres[i.id]; return !p || p.prochain <= t; }); }
+function carnetErreurs(){ return tousItems().filter(i => { const p = S.progres[i.id]; return p && p.ko > 0 && p.boite === 1; }); }
+function erreursConfiantes(){ return tousItems().filter(i => { const p = S.progres[i.id]; return p && p.erreurConfiante; }); }
+function statsUE(ueId){
+  const its = tousItems().filter(i => i.ueId === ueId);
+  const vus = its.filter(i => S.progres[i.id] && S.progres[i.id].vus > 0);
+  const sus = its.filter(i => S.progres[i.id] && S.progres[i.id].boite === 3);
+  return {total:its.length, vus:vus.length, sus:sus.length,
+    part: its.length ? Math.round(sus.length / its.length * 100) : 0};
+}
+function statsDomaine(d){
+  const ues = UES.filter(u => u.dom === d);
+  let total = 0, sus = 0, ects = 0, ectsCouverts = 0;
+  ues.forEach(u => { const s = statsUE(u.id); total += s.total; sus += s.sus; ects += u.ects; if(s.total) ectsCouverts += u.ects; });
+  return {total, sus, ects, ectsCouverts, part: total ? Math.round(sus / total * 100) : 0};
+}
+
+/* =========================================================================
+   14. IMPRESSION
+   ========================================================================= */
+function blocImp(titre, contenu){ return contenu ? `<h2>${titre}</h2>${contenu}` : ""; }
+function imprimerFiche(id){
+  const c = S.cours.find(x => x.id === id); if(!c) return;
+  const u = UE(c.ueId), f = c.fiche, dense = ui.densite === "dense";
+  let h = `<div class="f-print ${dense ? "dense" : ""}">
+    <div class="f-entete"><h1>${esc(c.titre)}</h1>
+      <div class="f-meta">${u ? esc(u.id) + " · domaine " + u.dom + " · " + u.ects + " ECTS" : ""}<br>${dateFr(c.date)}</div></div>`;
+  if(f.resume && !dense) h += `<p style="margin-bottom:7pt">${esc(f.resume)}</p>`;
+  const li = (l, ch) => `<ul>${l.map(x => `<li>${esc(x[ch])}</li>`).join("")}</ul>`;
+  h += `<div class="${dense ? "cols" : ""}">`;
+  h += blocImp("Définitions", f.definitions.length ? `<ul>${f.definitions.map(x =>
+    `<li><strong>${esc(x.terme)}</strong> — ${esc(dense ? tronquer(x.def,120) : x.def)}</li>`).join("")}</ul>` : "");
+  if(f.sigles && f.sigles.length) h += blocImp("Sigles", `<ul>${f.sigles.map(x => `<li><strong>${esc(x.sigle)}</strong> — ${esc(x.sens)}</li>`).join("")}</ul>`);
+  h += blocImp("Points à retenir", f.points.length ? li(dense ? f.points.slice(0,10) : f.points, "txt") : "");
+  h += `</div>`;
+  h += blocImp("Chiffres clés", f.chiffres.length ? `<div class="enc">${li(f.chiffres,"txt")}</div>` : "");
+  h += blocImp("Textes et normes de référence", f.normes.length ? `<div class="enc">${li(f.normes,"txt")}</div>` : "");
+  h += blocImp("Pièges", f.pieges.length ? `<div class="enc">${li(f.pieges,"txt")}</div>` : "");
+  if(f.procedures && f.procedures.length && !dense){
+    h += blocImp("Suites d'étapes", f.procedures.map(p => `<ol>${p.etapes.map(e => `<li>${esc(e)}</li>`).join("")}</ol>`).join(""));
+  }
+  $("#impression").innerHTML = h + `</div>`;
+  window.print();
+}
+function imprimerErreurs(){
+  const l = carnetErreurs();
+  if(!l.length) return;
+  const parUE = {};
+  l.forEach(i => (parUE[i.ueId] = parUE[i.ueId] || []).push(i));
+  let h = `<div class="f-print"><div class="f-entete"><h1>Mes points faibles</h1>
+    <div class="f-meta">${l.length} exercice${l.length>1?"s":""}<br>${dateFr(new Date().toISOString())}</div></div>`;
+  Object.keys(parUE).forEach(id => {
+    const u = UE(id);
+    h += `<h2>${u ? esc(u.id + " · " + u.nom) : esc(id)}</h2><ul>`;
+    parUE[id].forEach(i => {
+      let rep = "";
+      if(i.type === "flash") rep = i.verso;
+      else if(i.type === "qcm") rep = i.options[i.reponse];
+      else if(i.type === "qcmMulti") rep = (i.reponses||[]).map(n => i.options[n]).join(" ; ");
+      else if(i.type === "vf") rep = i.reponse ? "Vrai" : "Faux";
+      else if(i.type === "cloze") rep = i.reponse;
+      else if(i.type === "ordre") rep = i.etapes.join(" → ");
+      else if(i.type === "paires") rep = i.paires.map(p => p[0] + " → " + p[1]).join(" ; ");
+      else rep = i.attendu || (i.motsCles || []).join(", ");
+      h += `<li><strong>${esc(i.question || i.recto || "")}</strong><br>${esc(tronquer(rep, 260))}</li>`;
+    });
+    h += `</ul>`;
+  });
+  $("#impression").innerHTML = h + `</div>`;
+  window.print();
+}
+
+/* =========================================================================
+   15. LECTURE AUDIO
+   ========================================================================= */
+function lire(texte){
+  if(!window.speechSynthesis){ ui.message = {titre:"Lecture indisponible", txt:"Ce navigateur ne propose pas de synthèse vocale."}; rendre(); return; }
+  speechSynthesis.cancel();
+  const m = new SpeechSynthesisUtterance(texte);
+  m.lang = "fr-FR"; m.rate = Number(S.reglages.debitVoix) || 1;
+  const v = speechSynthesis.getVoices().find(x => x.name === S.reglages.voix);
+  if(v) m.voice = v;
+  speechSynthesis.speak(m);
+}
+function texteFiche(c){
+  const f = c.fiche;
+  return [c.titre, f.resume,
+    f.definitions.map(d => d.terme + " : " + d.def).join(". "),
+    f.points.map(p => p.txt).join(". "),
+    f.chiffres.map(p => p.txt).join(". ")].filter(Boolean).join(". ");
+}
+
+/* =========================================================================
+   16. LECTURE DES FICHIERS
+   ========================================================================= */
+function scriptExterne(src){
+  return new Promise((ok, ko) => {
+    if(document.querySelector(`script[src="${src}"]`)) return ok();
+    const s = document.createElement("script");
+    s.src = src; s.onload = () => ok(); s.onerror = () => ko(new Error("Chargement impossible : une connexion est nécessaire pour lire ce format."));
+    document.head.appendChild(s);
+  });
+}
+async function lireFichier(f){
+  const nom = f.name.toLowerCase();
+  if(/\.(txt|md|csv)$/.test(nom)) return await f.text();
+  if(/\.docx$/.test(nom)){
+    await scriptExterne("https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js");
+    const buf = await f.arrayBuffer();
+    const r = await window.mammoth.extractRawText({arrayBuffer: buf});
+    return r.value;
+  }
+  if(/\.pdf$/.test(nom)){
+    await scriptExterne("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    const buf = await f.arrayBuffer();
+    const doc = await window.pdfjsLib.getDocument({data: buf}).promise;
+    let t = "";
+    for(let p = 1; p <= doc.numPages; p++){
+      const page = await doc.getPage(p);
+      const c = await page.getTextContent();
+      t += c.items.map(i => i.str).join(" ") + "\n\n";
+    }
+    return t;
+  }
+  throw new Error("Format non pris en charge.");
+}
+
+/* =========================================================================
+   18. LEÇONS DE PRÉPARATION — contenus sourcés, vérifiés le 8 août 2026
+   Chaque leçon se termine par ses sources. Rien n'est écrit sans référence.
+   ========================================================================= */
+const LECONS = {
+
+UE1: {titre:"Préparation et délivrance des produits de santé", duree:"12 min", diapos:[
+ {t:"intro", kick:"UE1 · pour commencer", titre:"Délivrer, c'est bien plus que sortir une boîte",
+  texte:"Le préparateur en pharmacie hospitalière seconde le pharmacien pour la gestion, l'approvisionnement, la délivrance et la préparation des médicaments et des dispositifs médicaux stériles. Il exerce sous la responsabilité et le contrôle effectif d'un pharmacien : cette phrase du code de la santé publique commande tout le reste."},
+
+ {t:"notion", kick:"Le cadre", titre:"La PUI, votre lieu d'exercice",
+  paras:["La pharmacie à usage intérieur dessert les patients de l'établissement dont elle relève. Ses missions figurent à l'article L. 5126-1 : approvisionner en produits de santé, réaliser les préparations, mener des actions de pharmacie clinique et concourir à la qualité des soins.",
+   "Une PUI n'existe qu'avec l'autorisation de l'agence régionale de santé. Les activités dites à risques particuliers font l'objet d'une autorisation distincte, délivrée pour sept ans."],
+  encart:{type:"info", titre:"À retenir", texte:"La pharmacie clinique n'est pas un supplément d'âme : elle est inscrite dans les missions légales de la PUI depuis la réforme de 2019."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Cinq mots à ne plus confondre", mots:[
+  {m:"Délivrance", d:"Le fait de remettre physiquement le produit. Ce n'est qu'une partie de l'acte."},
+  {m:"Dispensation", d:"L'acte pharmaceutique complet : analyse de l'ordonnance, préparation éventuelle des doses, information et conseil."},
+  {m:"Dotation", d:"Stock de médicaments défini par le pharmacien, détenu dans l'unité de soins et renouvelé globalement."},
+  {m:"Livret thérapeutique", d:"Liste des médicaments référencés dans l'établissement, sur laquelle s'appuient les prescriptions."},
+  {m:"Rétrocession", d:"Vente au public par la PUI de médicaments qu'un patient non hospitalisé vient chercher."}]},
+
+ {t:"notion", kick:"Le cœur du métier", titre:"L'acte de dispensation en trois temps",
+  paras:["L'article R. 4235-48 du code de la santé publique définit la dispensation comme l'association de trois choses à la délivrance : l'analyse pharmaceutique de l'ordonnance si elle existe, la préparation éventuelle des doses à administrer, et la mise à disposition des informations et conseils nécessaires au bon usage.",
+   "Ces trois temps sont repris tels quels par l'arrêté du 6 avril 2011 qui encadre la prise en charge médicamenteuse à l'hôpital."],
+  encart:{type:"piege", titre:"Piège classique", texte:"En examen, « dispensation » et « délivrance » ne sont jamais interchangeables. La délivrance est incluse dans la dispensation, l'inverse est faux."}},
+
+ {t:"etapes", kick:"Le circuit", titre:"Où vous intervenez",
+  etapes:["Prescription par un praticien habilité, sur un support conforme",
+   "Analyse pharmaceutique de la prescription",
+   "Délivrance : globale en renouvellement de dotation, ou nominative",
+   "Transport et détention dans l'unité de soins",
+   "Administration au patient, puis surveillance thérapeutique"],
+  note:"L'arrêté du 6 avril 2011 prévoit que les médicaments peuvent être délivrés globalement à l'unité de soins en renouvellement d'une dotation adaptée, préalablement définie par le pharmacien."},
+
+ {t:"notion", kick:"Sécurité", titre:"Les médicaments à risque",
+  paras:["L'arrêté du 6 avril 2011 définit une catégorie particulière : les médicaments qui exigent une sécurisation renforcée de la prescription jusqu'à l'administration, parce qu'une erreur y a des conséquences graves.",
+   "Les exemples donnés par le texte lui-même : anticoagulants, antiarythmiques, agonistes adrénergiques injectables, digitaliques injectables, insuline, anticancéreux, solutions d'électrolytes concentrées."],
+  encart:{type:"astuce", titre:"Astuce", texte:"Apprenez cette liste : elle revient constamment, et c'est celle que citent les textes plutôt qu'une liste maison."}},
+
+ {t:"notion", kick:"Stupéfiants", titre:"Un régime à part entière",
+  paras:["Les stupéfiants sont détenus séparément, dans une armoire ou un compartiment spécifique fermé à clef ou disposant d'un mode de fermeture assurant la même sécurité.",
+   "Leur remise à l'unité de soins est faite par le pharmacien, par un interne ou un étudiant délégué, ou par un préparateur sous le contrôle effectif du pharmacien. Le destinataire est le cadre de santé désigné, ou le prescripteur lui-même.",
+   "Chaque administration est transcrite sur un document spécial ou sur le document de prescription : établissement, unité de soins, date et heure, identité du patient, dénomination du médicament."],
+  encart:{type:"info", titre:"Conservation", texte:"Les pièces justificatives des mouvements de stupéfiants sont conservées trois ans et présentées à toute réquisition des autorités de contrôle."}},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"Les ATU n'existent plus", type:"garde",
+  texte:"Beaucoup de supports encore en circulation parlent d'ATU nominatives, d'ATU de cohorte et de RTU. Depuis le 1er juillet 2021, ces six dispositifs ont été remplacés par deux régimes : l'accès précoce, autorisé par la HAS après avis de l'ANSM, et l'accès compassionnel, qui prend la forme d'une autorisation d'accès compassionnel nominative ou d'un cadre de prescription compassionnelle, tous deux du ressort de l'ANSM. Si un cours emploie encore le mot ATU, c'est qu'il n'a pas été mis à jour."},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE1", lignes:[
+  {v:"3", l:"composantes de l'acte de dispensation (R. 4235-48)"},
+  {v:"3 ans", l:"conservation des pièces relatives aux stupéfiants"},
+  {v:"7 ans", l:"durée d'autorisation d'une activité à risques particuliers en PUI"},
+  {v:"2021", l:"remplacement des ATU et RTU par l'accès précoce et l'accès compassionnel"}]},
+
+ {t:"quiz", kick:"Vérification", question:"Un infirmier vous demande de compléter la dotation de son service en morphiniques. Que faites-vous ?",
+  options:["Je prépare et je remets directement au brancardier de passage",
+   "Je prépare sous le contrôle effectif du pharmacien et je remets au cadre de santé désigné",
+   "Je refuse : seul un pharmacien peut toucher aux stupéfiants"],
+  bonne:1,
+  expl:"L'arrêté du 6 avril 2011 autorise expressément les préparateurs à remettre les stupéfiants, sous le contrôle effectif du pharmacien, au cadre de santé désigné ou au prescripteur. Ni remise à n'importe qui, ni interdiction absolue."},
+
+ {t:"quiz", kick:"Vérification", question:"Quelle proposition décrit la dispensation ?",
+  options:["La remise du médicament au patient ou à l'unité de soins",
+   "L'analyse de l'ordonnance, la préparation éventuelle des doses et le conseil, associés à la délivrance",
+   "La commande du médicament auprès du fournisseur"],
+  bonne:1,
+  expl:"C'est la définition exacte de l'article R. 4235-48. La première proposition ne décrit que la délivrance, la troisième relève de l'approvisionnement."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Code de la santé publique, article R. 4235-48", ref:"Définition de l'acte de dispensation", url:"https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006913703/2020-11-05"},
+  {titre:"Arrêté du 6 avril 2011", ref:"Management de la qualité de la prise en charge médicamenteuse — articles 13 et 14, définition des médicaments à risque", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000023865866"},
+  {titre:"Code de la santé publique, articles R. 5126-8 à R. 5126-11", ref:"Missions et activités des pharmacies à usage intérieur, en application de l'article L. 5126-1", url:"https://www.legifrance.gouv.fr/codes/id/LEGISCTA000038598108"},
+  {titre:"Ordre national des pharmaciens", ref:"Référentiel pharmacie à usage intérieur, 2023 — autorisations et durées", url:"https://www.ordre.pharmacien.fr/content/download/119805/file/Referentiel_PUI_2023_.pdf?version=1"},
+  {titre:"HAS et ANSM", ref:"Réforme de l'accès dérogatoire, en vigueur au 1er juillet 2021", url:"https://www.has-sante.fr/jcms/p_3274103/fr/prescrire-un-medicament-en-acces-precoce"}],
+  note:"Consulté le 8 août 2026. Les textes évoluent : en cas d'écart avec votre cours, c'est le cours de votre centre de formation qui fait foi pour l'examen — mais signalez l'écart à votre formateur."}
+]},
+
+UE2: {titre:"Bilans médicamenteux, conciliation et pharmacie clinique", duree:"10 min", diapos:[
+ {t:"intro", kick:"UE2 · pour commencer", titre:"Empêcher qu'un traitement disparaisse en chemin",
+  texte:"Un patient arrive aux urgences avec sept médicaments à domicile. Il en ressort avec cinq, sans que personne n'ait décidé d'arrêter les deux autres. La conciliation médicamenteuse existe pour que cela n'arrive pas — et le préparateur y tient un rôle concret."},
+
+ {t:"notion", kick:"La définition", titre:"Ce qu'est la conciliation",
+  paras:["La HAS la définit comme un processus formalisé qui prend en compte, lors d'une nouvelle prescription, tous les médicaments pris et à prendre par le patient. Elle associe le patient et repose sur le partage d'informations et une coordination pluriprofessionnelle.",
+   "Son objet : prévenir ou corriger les erreurs médicamenteuses aux points de transition que sont l'admission, la sortie et les transferts."],
+  encart:{type:"info", titre:"Le mot juste", texte:"Le texte officiel dit « conciliation des traitements médicamenteux ». L'usage a consacré « conciliation médicamenteuse » : les deux sont acceptés."}},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Les termes qui reviennent", mots:[
+  {m:"Point de transition", d:"Admission, sortie, transfert : les moments où l'information sur le traitement risque de se perdre."},
+  {m:"Bilan médicamenteux", d:"État des lieux, à un instant donné, des médicaments d'un patient. Le résultat de la synthèse des informations recueillies."},
+  {m:"Divergence", d:"Toute différence constatée entre le bilan médicamenteux et la prescription en cours."},
+  {m:"Divergence intentionnelle", d:"Le prescripteur a délibérément ajouté, modifié ou arrêté un médicament. Elle doit être documentée."},
+  {m:"Divergence non intentionnelle", d:"Le prescripteur n'avait pas connaissance du médicament. C'est une erreur médicamenteuse à corriger."}]},
+
+ {t:"etapes", kick:"Le déroulé", titre:"Les trois étapes de la SFPC",
+  etapes:["La recherche active d'informations sur les traitements du patient",
+   "La réalisation du bilan médicamenteux",
+   "L'actualisation de la prescription et du dossier patient"],
+  note:"La HAS décrit de son côté quatre séquences : recueillir, synthétiser sous forme de bilan, valider ce bilan, puis le partager et l'exploiter. Les deux découpages décrivent le même travail — sachez reconnaître les deux."},
+
+ {t:"notion", kick:"En pratique", titre:"Croiser les sources, toujours",
+  paras:["Le recueil ne se fait jamais à partir d'une seule source. On interroge le patient lui-même et son entourage, les autres professionnels de santé — médecin traitant, spécialistes, pharmacie d'officine, établissement d'origine — et le dossier médical.",
+   "Il est conseillé en pratique de concilier à partir d'au moins trois sources d'informations concordantes."],
+  encart:{type:"astuce", titre:"Votre place là-dedans", texte:"Le recueil d'informations est précisément la partie où le préparateur intervient : des guides régionaux de conciliation lui sont spécifiquement destinés. C'est un travail d'enquête, méthodique et patient."}},
+
+ {t:"chiffres", kick:"L'étude fondatrice", titre:"Med'Rec, ce qui a tout déclenché", lignes:[
+  {v:"9", l:"établissements participants"},
+  {v:"5 ans", l:"durée de l'étude"},
+  {v:"27 447", l:"patients de plus de 65 ans inclus"},
+  {v:"46 000", l:"divergences médicamenteuses mises en évidence"}],
+  note:"Étude lancée par la HAS en 2011. C'est elle qui a démontré l'utilité de la conciliation et conduit à la publication du guide et des outils pratiques."},
+
+ {t:"encart", kick:"À ne pas confondre", titre:"Divergence n'est pas erreur", type:"piege",
+  texte:"Une divergence intentionnelle documentée est parfaitement normale : le médecin a décidé d'arrêter un traitement et l'a écrit. Ce qui pose problème, c'est la divergence non intentionnelle — le prescripteur ignorait l'existence du médicament — et la divergence intentionnelle non documentée, où la décision existe mais n'a pas été tracée. En examen, la question porte presque toujours sur cette distinction."},
+
+ {t:"quiz", kick:"Vérification", question:"Le bilan médicamenteux d'une patiente comporte un traitement antihypertenseur absent de la prescription d'entrée. Le médecin déclare l'avoir arrêté volontairement mais rien ne figure au dossier. De quoi s'agit-il ?",
+  options:["D'une divergence non intentionnelle","D'une divergence intentionnelle non documentée","D'une erreur de bilan médicamenteux"],
+  bonne:1,
+  expl:"La décision existe, elle est intentionnelle, mais elle n'est pas tracée dans le dossier. Elle devra être documentée pour que la conciliation soit complète."},
+
+ {t:"quiz", kick:"Vérification", question:"À quels moments la conciliation est-elle menée ?",
+  options:["Uniquement à l'admission","À l'admission, à la sortie et lors des transferts","Une fois par séjour, au moment le plus pratique"],
+  bonne:1,
+  expl:"Ce sont les trois points de transition nommés par la définition de la HAS, parce que ce sont les moments où l'information se perd."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Haute Autorité de santé", ref:"Mettre en œuvre la conciliation des traitements médicamenteux en établissement de santé — guide actualisé en février 2018", url:"https://www.has-sante.fr/jcms/c_2736453/fr/mettre-en-oeuvre-la-conciliation-des-traitements-medicamenteux-en-etablissement-de-sante"},
+  {titre:"SFPC", ref:"Fiche mémo Conciliation des traitements médicamenteux — les trois étapes", url:"https://sfpc.eu/wp-content/uploads/2019/08/FicheMemoConciliationMedicamenteuseSFPC.pdf"},
+  {titre:"OMéDIT Grand Est", ref:"Guide pratique de la conciliation à l'intention des préparateurs en pharmacie", url:"https://www.omedit-grand-est.ars.sante.fr/index.php/system/files/2017-10/Guide_pratique_preparateurs_pharma.pdf"},
+  {titre:"OMéDIT Centre-Val de Loire", ref:"Définitions et objectifs de la conciliation médicamenteuse", url:"https://www.omedit-centre.fr/conciliation/co/2_2_Definitions_et_objectifs_de_la_CM.html"}],
+  note:"Consulté le 8 août 2026. Les chiffres de l'étude Med'Rec sont ceux publiés lors de la parution du guide HAS."}
+]},
+
+UE3: {titre:"Prévention, information et éducation thérapeutique du patient", duree:"11 min", diapos:[
+ {t:"intro", kick:"UE3 · pour commencer", titre:"Apprendre à vivre avec sa maladie",
+  texte:"L'éducation thérapeutique ne consiste pas à expliquer une ordonnance plus lentement. C'est un processus continu, intégré aux soins, qui vise à ce que le patient acquière les compétences dont il a besoin pour gérer sa vie avec une maladie chronique."},
+
+ {t:"notion", kick:"La définition", titre:"Deux références qui se complètent",
+  paras:["L'OMS, en 1996, décrit l'ETP comme visant à aider les patients à acquérir ou maintenir les compétences nécessaires pour gérer au mieux leur vie avec une maladie chronique. Elle fait partie intégrante et permanente de la prise en charge.",
+   "Le code de la santé publique, à l'article L. 1161-1, est plus bref : l'éducation thérapeutique s'inscrit dans le parcours de soins du patient, et a pour objectif de le rendre plus autonome en facilitant son adhésion aux traitements prescrits et en améliorant sa qualité de vie."],
+  encart:{type:"info", titre:"D'où ça vient", texte:"C'est la loi HPST du 21 juillet 2009, en son article 84, qui a donné pour la première fois un cadre légal à l'ETP en France."}},
+
+ {t:"encart", kick:"Attention, ça a changé", titre:"Déclaration, et non plus autorisation", type:"garde",
+  texte:"Jusqu'en 2020, un programme d'ETP devait être autorisé par l'agence régionale de santé. Depuis le 1er janvier 2021, ce régime d'autorisation a été remplacé par un régime de déclaration : le porteur déclare son programme à l'ARS, sur la base d'un cahier des charges national fixé par l'arrêté du 30 décembre 2020. Un cours ou un manuel qui parle encore d'« autorisation ARS » décrit l'état du droit d'avant 2021."},
+
+ {t:"vocab", kick:"Le vocabulaire", titre:"Ce que recouvrent les mots", mots:[
+  {m:"Programme d'ETP", d:"Ensemble structuré et conforme au cahier des charges national, déclaré à l'ARS, proposé au patient par le médecin prescripteur."},
+  {m:"Programme personnalisé", d:"Déclinaison du programme pour un patient donné, élaborée avec lui."},
+  {m:"Actions d'accompagnement", d:"Assistance et soutien apportés au malade ou à son entourage dans la prise en charge de la maladie. Elles font partie de l'ETP."},
+  {m:"Programme d'apprentissage", d:"Appropriation par le patient des gestes techniques nécessaires à l'utilisation d'un médicament qui l'exige."}]},
+
+ {t:"notion", kick:"Qui peut faire quoi", titre:"Une compétence qui se prouve",
+  paras:["Dispenser ou coordonner l'ETP suppose des compétences définies par arrêté du 2 août 2010, acquises par une formation d'une durée minimale de quarante heures d'enseignements théoriques et pratiques.",
+   "L'ETP est proposée au malade par le médecin prescripteur, et donne lieu à l'élaboration d'un programme personnalisé."],
+  encart:{type:"piege", titre:"Interdiction ferme", texte:"Les entreprises exploitant un médicament ou responsables de la mise sur le marché d'un dispositif médical ne peuvent ni élaborer ni mettre en œuvre un programme d'ETP. Elles peuvent seulement y prendre part, notamment pour le financement, dès lors que professionnels de santé et associations agréées en gardent l'élaboration."}},
+
+ {t:"notion", kick:"Sur le terrain", titre:"Ce que le préparateur y fait",
+  paras:["Le référentiel du diplôme confie au préparateur la conduite d'entretiens ciblés de prévention, d'information et d'actions d'éducation thérapeutique, dans un cadre pluriprofessionnel.",
+   "Concrètement : expliquer les modalités de reconstitution d'un médicament, montrer l'usage d'un dispositif, vérifier que la personne a compris — et le vérifier vraiment, en lui demandant de reformuler ou de faire devant vous."],
+  encart:{type:"astuce", titre:"Astuce d'entretien", texte:"Les critères d'évaluation du diplôme insistent sur un point précis : la compréhension de l'interlocuteur est vérifiée, et une reformulation est réalisée le cas échéant. Faire répéter n'est pas une politesse, c'est un critère."}},
+
+ {t:"chiffres", kick:"À mémoriser", titre:"Les repères de l'UE3", lignes:[
+  {v:"1996", l:"définition de l'ETP par l'OMS, reprise par la HAS"},
+  {v:"2009", l:"loi HPST, article 84 : cadre légal de l'ETP"},
+  {v:"40 h", l:"durée minimale de formation pour dispenser ou coordonner l'ETP"},
+  {v:"2021", l:"passage de l'autorisation à la déclaration des programmes"}]},
+
+ {t:"quiz", kick:"Vérification", question:"Un laboratoire pharmaceutique propose de construire et d'animer un programme d'ETP dans votre établissement. Que dit la loi ?",
+  options:["C'est possible si le programme est déclaré à l'ARS",
+   "C'est interdit : le laboratoire ne peut ni élaborer ni mettre en œuvre le programme, seulement y prendre part, par exemple en le finançant",
+   "C'est possible à condition qu'un médecin signe le programme"],
+  bonne:1,
+  expl:"L'article L. 1161-4 du code de la santé publique pose cette interdiction. La participation au financement reste possible dès lors que professionnels de santé et associations agréées élaborent le programme."},
+
+ {t:"quiz", kick:"Vérification", question:"Depuis 2021, pour mettre en œuvre un programme d'ETP, il faut :",
+  options:["Une autorisation de l'ARS","Une déclaration à l'ARS conforme au cahier des charges national","Rien de particulier"],
+  bonne:1,
+  expl:"Le régime de déclaration a remplacé le régime d'autorisation au 1er janvier 2021. Le cahier des charges national, lui, reste obligatoire."},
+
+ {t:"sources", kick:"Pour aller vérifier", titre:"Sources de cette leçon", liste:[
+  {titre:"Code de la santé publique, articles L. 1161-1 à L. 1161-6", ref:"Définition, programmes, actions d'accompagnement, interdictions", url:"https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000020891754/"},
+  {titre:"Ministère chargé de la santé", ref:"Éducation thérapeutique du patient — textes de référence et régime de déclaration", url:"https://sante.gouv.fr/systeme-de-sante/parcours-des-patients-et-des-usagers/education-therapeutique-du-patient/article/education-therapeutique-du-patient"},
+  {titre:"Arrêté du 30 décembre 2020", ref:"Cahier des charges des programmes et dossier de déclaration", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042845767"},
+  {titre:"Arrêté du 2 août 2010 modifié, article 2", ref:"Compétences requises pour dispenser ou coordonner l'ETP — formation d'une durée minimale de quarante heures", url:"https://www.legifrance.gouv.fr/loda/id/JORFTEXT000022664581"},
+  {titre:"Décret n° 2020-1832 du 31 décembre 2020", ref:"Remplacement du régime d'autorisation par un régime de déclaration au 1er janvier 2021", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000042845656"},
+  {titre:"Arrêté du 31 juillet 2024, annexe II", ref:"Référentiel de compétences du DEPPH, compétence C3 et ses critères d'évaluation", url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050066720"}],
+  note:"Consulté le 8 août 2026."}
+]}
+};
+const UES_PRETES = Object.keys(LECONS);
+/* =========================================================================
+   19. NAVIGATION ET ÉTAT D'INTERFACE
+   ========================================================================= */
+let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtreUE:"",
+  importTexte:"", importUE:"", importTitre:"", avisRGPD:null, rgpdIgnore:false,
+  occupe:false, message:null, densite:"detail", resultat:null, quizRep:null};
+
+function progLecon(ue){
+  if(!S.prep[ue]) S.prep[ue] = {index:0, termine:false, quiz:{}};
+  return S.prep[ue];
+}
+function nbDiapos(ue){ return LECONS[ue] ? LECONS[ue].diapos.length : 0; }
+function leconsFaites(){ return UES_PRETES.filter(u => S.prep[u] && S.prep[u].termine).length; }
+
+function aller(tab, ecran){
+  ui.tab = tab; ui.ecran = ecran || "accueil"; ui.message = null;
+  rendre(); window.scrollTo(0,0);
+}
+function rendre(){
+  $("#nav").innerHTML = `<div class="in">
+    <button data-act="nav" data-tab="prep" class="${ui.tab==="prep"?"act":""}"><span class="ic">◈</span>Préparation</button>
+    <button data-act="nav" data-tab="rev" class="${ui.tab==="rev"?"act":""}"><span class="ic">◇</span>Révision</button>
+  </div>`;
+  const ecrans = {
+    "prep/accueil":ecranPrep, "prep/lecon":ecranLecon,
+    "rev/accueil":ecranRev, "rev/import":ecranImport, "rev/fiches":ecranFiches, "rev/fiche":ecranFiche,
+    "rev/reviser":ecranReviser, "rev/session":ecranSession, "rev/examen":ecranExamen,
+    "rev/planning":ecranPlanning, "reglages":ecranReglages
+  };
+  const f = ecrans[ui.ecran === "reglages" ? "reglages" : ui.tab + "/" + ui.ecran] || ecranPrep;
+  let h = "";
+  if(ui.ecran !== "lecon" && ui.ecran !== "session"){
+    if(ui.message) h += `<div class="ecran" style="padding-bottom:0"><div class="avis ${ui.message.type||"info"}">
+      <b>${esc(ui.message.titre)}</b>${esc(ui.message.txt)}</div></div>`;
+    if(!stockageOk) h += `<div class="ecran" style="padding-bottom:0"><div class="avis"><b>Rien ne sera conservé</b>
+      Le navigateur bloque l'enregistrement local. Ouvrez le fichier depuis votre appareil pour garder votre progression.</div></div>`;
+  }
+  $("#app").innerHTML = h + f();
+}
+function entete(titre, sous, badge){
+  return `<div class="enTete"><div><h1>${titre}</h1></div>
+    ${badge ? `<span class="jour">${badge}</span>` : ""}
+    <button class="iconeBtn" data-act="ecran" data-e="reglages" aria-label="Réglages">⚙</button></div>
+    ${sous ? `<p class="sousTitre">${sous}</p>` : ""}`;
+}
+function joursRentree(){
+  const d = S.reglages.dateRentree;
+  if(!d) return null;
+  const j = joursEntre(new Date(), d);
+  return j >= 0 ? j : null;
+}
+
+/* =========================================================================
+   20. ONGLET PRÉPARATION
+   ========================================================================= */
+function ecranPrep(){
+  const j = joursRentree();
+  const faites = leconsFaites();
+  let h = `<div class="ecran">` + entete("Préparation",
+    "Voir l'essentiel de chaque UE avant le premier cours", j !== null ? "J–" + j : null);
+  h += `<div class="progLigne"><div class="jauge"><i style="width:${UES_PRETES.length ? Math.round(faites/UES_PRETES.length*100) : 0}%"></i></div>
+    <span>${faites}/${UES_PRETES.length} leçons</span></div>`;
+
+  for(let d = 1; d <= 5; d++){
+    const ues = UES.filter(u => u.dom === d);
+    const ects = ues.reduce((s,u) => s + u.ects, 0);
+    h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
+      <span class="bloc-nom">${esc(DOMAINES[d].nom)}</span><span class="bloc-meta">${ects} ECTS</span></div>
+      <div class="alv">`;
+    ues.forEach(u => {
+      const pret = !!LECONS[u.id];
+      const p = pret ? progLecon(u.id) : null;
+      let cl = "a vide", etat = "bientôt";
+      if(pret){
+        if(p.termine){ cl = "a fait"; etat = "revoir"; }
+        else if(p.index > 0){ cl = "a dispo"; etat = "reprendre"; }
+        else { cl = "a dispo"; etat = nbDiapos(u.id) + " écrans"; }
+      }
+      h += `<button class="${cl}" ${pret ? `data-act="ouvrir-lecon" data-ue="${u.id}"` : "disabled"}>
+        <b>${u.id}</b><small>${etat}</small></button>`;
+    });
+    h += `</div></div>`;
+  }
+  const suivante = UES_PRETES.find(u => !S.prep[u] || !S.prep[u].termine);
+  h += suivante
+    ? `<button class="cta" data-act="ouvrir-lecon" data-ue="${suivante}">${S.prep[suivante] && S.prep[suivante].index > 0 ? "Reprendre" : "Commencer"} ${suivante} · ${esc(tronquer(LECONS[suivante].titre, 34))}</button>`
+    : `<div class="avis info"><b>Les trois premières leçons sont faites</b>Les UE suivantes s'ajouteront au fil des mises à jour. En attendant, l'onglet Révision travaille sur vos propres cours.</div>`;
+  h += `<div class="avis" style="margin-top:14px"><b>Ce que sont ces leçons</b>
+    Une mise en route, pas un cours. Chaque leçon finit par ses sources et la date de vérification : en cas d'écart avec le cours de votre centre, c'est le cours qui fait foi.</div>`;
+  return h + `</div>`;
+}
+
+function ecranLecon(){
+  const L = LECONS[ui.ue];
+  if(!L){ ui.ecran = "accueil"; return ecranPrep(); }
+  const p = progLecon(ui.ue);
+  const i = Math.min(p.index, L.diapos.length - 1);
+  const d = L.diapos[i];
+  let h = `<div class="lecon"><div class="lecon-haut">
+    <button class="fermer" data-act="fermer-lecon" aria-label="Fermer">×</button>
+    <div class="pts">${L.diapos.map((_,k) => `<span class="${k <= i ? "f" : ""}"></span>`).join("")}</div>
+    <span class="src">${i+1}/${L.diapos.length}</span></div><div class="diapo">`;
+
+  h += `<p class="kick">${esc(d.kick || ui.ue)}</p>`;
+  if(d.t === "intro"){
+    h += `<h2>${esc(d.titre)}</h2><p>${esc(d.texte)}</p>`;
+  } else if(d.t === "notion"){
+    h += `<h3>${esc(d.titre)}</h3>` + d.paras.map(x => `<p>${esc(x)}</p>`).join("");
+    if(d.encart) h += encartHtml(d.encart);
+  } else if(d.t === "vocab"){
+    h += `<h3>${esc(d.titre)}</h3><ul class="vocab">` +
+      d.mots.map(m => `<li><b>${esc(m.m)}</b><span>${esc(m.d)}</span></li>`).join("") + `</ul>`;
+  } else if(d.t === "etapes"){
+    h += `<h3>${esc(d.titre)}</h3><ol class="etapes">` +
+      d.etapes.map(e => `<li>${esc(e)}</li>`).join("") + `</ol>`;
+    if(d.note) h += encartHtml({type:"info", titre:"Précision", texte:d.note});
+  } else if(d.t === "chiffres"){
+    h += `<h3>${esc(d.titre)}</h3><ul class="chiffres">` +
+      d.lignes.map(l => `<li><b>${esc(l.v)}</b><span>${esc(l.l)}</span></li>`).join("") + `</ul>`;
+    if(d.note) h += `<p style="font-size:13.5px;color:var(--encre2);margin-top:10px">${esc(d.note)}</p>`;
+  } else if(d.t === "encart"){
+    h += `<h3>${esc(d.titre)}</h3>` + encartHtml({type:d.type, titre:"", texte:d.texte});
+  } else if(d.t === "quiz"){
+    h += `<h3>${esc(d.question)}</h3>`;
+    d.options.forEach((o,k) => {
+      let cl = "opt";
+      if(ui.quizRep !== null){
+        if(k === d.bonne) cl = "opt juste";
+        else if(k === ui.quizRep) cl = "opt faux";
+      }
+      h += `<button class="${cl}" data-act="quiz" data-k="${k}"${ui.quizRep !== null ? " disabled" : ""}>${esc(o)}</button>`;
+    });
+    if(ui.quizRep !== null){
+      const bon = ui.quizRep === d.bonne;
+      h += `<div class="verdict ${bon ? "ok" : "ko"}"><b>${bon ? "C'est ça." : "Pas tout à fait."}</b>${esc(d.expl)}</div>`;
+    }
+  } else if(d.t === "sources"){
+    h += `<h3>${esc(d.titre)}</h3><ul class="sources">` + d.liste.map(s =>
+      `<li><b>${esc(s.titre)}</b>${esc(s.ref)}<br><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(tronquer(s.url,58))}</a></li>`).join("") + `</ul>`;
+    if(d.note) h += `<p style="font-size:13.5px;color:var(--encre2);margin-top:12px">${esc(d.note)}</p>`;
+  }
+  h += `</div>`;
+  const dernier = i === L.diapos.length - 1;
+  const bloque = d.t === "quiz" && ui.quizRep === null;
+  h += `<div style="display:flex;gap:9px;align-items:center">
+    ${i > 0 ? `<button class="btn" data-act="diapo-prec">Retour</button>` : ""}
+    <button class="cta" style="flex:1;margin-top:0" data-act="diapo-suiv"${bloque ? " disabled" : ""}>
+      ${bloque ? "Choisissez une réponse" : (dernier ? "Terminer la leçon" : "Continuer")}</button></div>`;
+  return h + `</div>`;
+}
+function encartHtml(e){
+  return `<div class="encart ${e.type}">${e.titre ? `<b class="et">${esc(e.titre)}</b>` : ""}${esc(e.texte)}</div>`;
+}
+
+/* =========================================================================
+   21. ONGLET RÉVISION — accueil
+   ========================================================================= */
+function ecranRev(){
+  const items = tousItems().length, dus = itemsDus().length, err = carnetErreurs().length;
+  let h = `<div class="ecran">` + entete("Révision",
+    "Fiches et exercices tirés de vos propres cours", items ? items + " exercices" : null);
+  if(!S.cours.length){
+    h += `<div class="vide"><div class="em">◇</div><h3>Rien à réviser pour l'instant</h3>
+      <p>Cet onglet ne contient que ce que vous y déposez : importez un cours et il en tire une fiche imprimable et des exercices.</p></div>
+      <button class="cta" data-act="ecran" data-e="import">Importer un premier cours</button>`;
+    return h + `</div>`;
+  }
+  h += `<div class="progLigne"><div class="jauge"><i style="width:${items ? Math.round((items - dus)/items*100) : 0}%"></i></div>
+    <span>${dus} à revoir</span></div>`;
+  h += carte("↻", "Réviser maintenant", dus + " exercice" + (dus>1?"s":"") + " à échéance", "reviser");
+  h += carte("✎", "Carnet d'erreurs", err ? err + " à reprendre" : "aucune erreur en attente", "reviser");
+  h += carte("▤", "Mes fiches", S.cours.length + " cours importé" + (S.cours.length>1?"s":""), "fiches");
+  h += carte("＋", "Importer un cours", "coller un texte ou déposer un fichier", "import");
+  h += carte("◷", "Examen blanc", "épreuve chronométrée sur vos exercices", "examen");
+  h += carte("▦", "Planning", S.reglages.dateExamen ? "rétroplanning actif" : "définir une date d'examen", "planning");
+  return h + `</div>`;
+}
+function carte(ic, titre, sous, ecran){
+  return `<button class="carteAct" data-act="ecran" data-e="${ecran}">
+    <span class="ic">${ic}</span><span class="tx"><b>${esc(titre)}</b><small>${esc(sous)}</small></span>
+    <span class="fl">›</span></button>`;
+}
+function retour(vers, titre){
+  return `<div class="enTete"><div style="display:flex;align-items:center;gap:10px">
+    <button class="iconeBtn" data-act="ecran" data-e="${vers}" aria-label="Retour">‹</button><h1>${titre}</h1></div>
+    <button class="iconeBtn" data-act="ecran" data-e="reglages" aria-label="Réglages">⚙</button></div>`;
+}
+/* =========================================================================
+   22. RÉVISION — import, fiches
+   ========================================================================= */
+function ecranImport(){
+  const ia = S.reglages.moteur === "gemini";
+  let h = `<div class="ecran">` + retour("accueil", "Importer");
+  if(ui.avisRGPD && !ui.rgpdIgnore){
+    h += `<div class="avis"><b>Données peut-être identifiantes</b>
+      Repéré : ${esc(ui.avisRGPD.join(", "))}. S'il s'agit d'un cas fictif ou déjà anonymisé, continuez.
+      ${ia ? " En mode Gemini, le texte part chez Google." : ""}
+      <div class="rang"><button class="btn plein mini" data-act="anonymiser">Anonymiser</button>
+      <button class="btn mini" data-act="rgpd-ignorer">Cas fictif, continuer</button></div></div>`;
+  }
+  h += `<label class="champ" for="i-titre">Titre du cours</label>
+    <input type="text" id="i-titre" data-bind="importTitre" value="${esc(ui.importTitre)}" placeholder="Cycle de stérilisation">
+    <label class="champ" for="i-ue" style="margin-top:12px">Unité d'enseignement</label>
+    <select id="i-ue" data-bind="importUE"><option value="">— choisir —</option>
+      ${UES.map(u => `<option value="${u.id}"${ui.importUE===u.id?" selected":""}>${u.id} · ${esc(tronquer(u.nom,42))}</option>`).join("")}</select>
+    <label class="champ" for="i-txt" style="margin-top:12px">Texte du cours</label>
+    <textarea id="i-txt" data-bind="importTexte" placeholder="Collez le cours ici…">${esc(ui.importTexte)}</textarea>
+    <div class="rang"><label class="btn mini" for="i-fic">Déposer un fichier</label>
+      <input type="file" id="i-fic" accept=".txt,.md,.docx,.pdf" style="display:none">
+      <span class="puce mono">${ia ? "Gemini" : "local"}</span></div>
+    <button class="cta" data-act="analyser"${ui.occupe?" disabled":""}>${ui.occupe?"Analyse en cours…":"Analyser le cours"}</button>`;
+  if(!ia) h += `<div class="avis info" style="margin-top:14px"><b>En mode local</b>
+    Fiche, flashcards, textes à trous, appariements, QCM et vrai-faux, tirés de phrases du cours. La chasse à l'erreur et les mises en situation demandent Gemini.</div>`;
+  return h + `</div>`;
+}
+
+function ecranFiches(){
+  let h = `<div class="ecran">` + retour("accueil", "Mes fiches");
+  if(!S.cours.length) return h + `<div class="vide"><div class="em">▤</div><h3>Aucune fiche</h3><p>Chaque cours importé en produit une.</p></div></div>`;
+  const q = ui.filtreUE;
+  h += `<div class="liste-puces"><button class="puce${q?"":" on"}" data-act="filtre" data-ue="">Toutes</button>`;
+  [...new Set(S.cours.map(c => c.ueId))].forEach(id =>
+    h += `<button class="puce mono${q===id?" on":""}" data-act="filtre" data-ue="${id}">${id}</button>`);
+  h += `</div>`;
+  (q ? S.cours.filter(c => c.ueId === q) : S.cours).forEach(c => {
+    const u = UE(c.ueId), d = u ? u.dom : 1;
+    h += `<button class="bloc" style="display:block;width:100%;text-align:left" data-act="ouvrir-fiche" data-id="${c.id}">
+      <div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
+        <span class="bloc-nom">${esc(tronquer(c.titre,34))}</span>
+        <span class="bloc-meta">${u?u.id:""} · ${c.items.length} ex.</span></div>
+      <div style="font-size:13.5px;color:var(--encre2);line-height:1.45">${esc(tronquer(c.fiche.resume || "Fiche disponible", 110))}</div></button>`;
+  });
+  return h + `</div>`;
+}
+
+function ligneSrc(x, ref){
+  const s = x.src || x.source || "";
+  return s ? ` <button class="src" data-act="src" data-cible="${ref}">source</button><div class="srcTxt" id="${ref}">« ${esc(tronquer(s,300))} »</div>` : "";
+}
+function ecranFiche(){
+  const c = S.cours.find(x => x.id === ui.fiche);
+  if(!c){ ui.ecran = "fiches"; return ecranFiches(); }
+  const u = UE(c.ueId), f = c.fiche;
+  let h = `<div class="ecran">` + retour("fiches", esc(tronquer(c.titre, 22)));
+  h += `<div class="liste-puces"><span class="puce mono">${u?u.id:"—"}</span>
+    <span class="puce mono">${u?u.ects:0} ECTS</span><span class="puce mono">${c.items.length} exercices</span>
+    <span class="puce mono">${c.origine === "gemini" ? "Gemini" : "local"}</span></div>
+    <div class="rang">
+      <button class="btn plein mini" data-act="session" data-source="cours" data-id="${c.id}">Réviser ce cours</button>
+      <button class="btn mini" data-act="imprimer" data-id="${c.id}">Imprimer</button>
+      <select data-bind="densite" style="width:auto;padding:7px 10px;font-size:13px">
+        <option value="detail"${ui.densite==="detail"?" selected":""}>Détaillée</option>
+        <option value="dense"${ui.densite==="dense"?" selected":""}>Compacte</option></select>
+      <button class="btn mini" data-act="lire" data-id="${c.id}">Écouter</button>
+      <button class="btn mini" data-act="stop-lecture">Stop</button>
+      <button class="btn mini" data-act="supprimer" data-id="${c.id}">Supprimer</button></div>`;
+  if(f.resume) h += `<p style="margin-bottom:14px">${esc(f.resume)}</p>`;
+  const sect = (t, corps) => corps ? `<p class="kick" style="margin-top:16px">${t}</p>${corps}` : "";
+  h += sect("Définitions", f.definitions.length ? `<ul class="vocab">${f.definitions.map((x,i) =>
+    `<li><b>${esc(x.terme)}</b><span>${esc(x.def)}</span>${ligneSrc(x,"df"+i)}</li>`).join("")}</ul>` : "");
+  h += sect("Sigles", (f.sigles||[]).length ? `<ul class="vocab">${f.sigles.map(x =>
+    `<li><b>${esc(x.sigle)}</b><span>${esc(x.sens)}</span></li>`).join("")}</ul>` : "");
+  h += sect("Points à retenir", f.points.length ? `<ul class="vocab">${f.points.map((x,i) =>
+    `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"pt"+i)}</li>`).join("")}</ul>` : "");
+  h += sect("Chiffres clés", f.chiffres.length ? `<ul class="vocab">${f.chiffres.map((x,i) =>
+    `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"ch"+i)}</li>`).join("")}</ul>` : "");
+  h += sect("Textes et normes", f.normes.length ? `<ul class="vocab">${f.normes.map((x,i) =>
+    `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"no"+i)}</li>`).join("")}</ul>` : "");
+  h += sect("Pièges", f.pieges.length ? `<ul class="vocab">${f.pieges.map((x,i) =>
+    `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"pi"+i)}</li>`).join("")}</ul>` : "");
+  if((f.procedures||[]).length) h += sect("Suites d'étapes", f.procedures.map(p =>
+    `<ol class="etapes">${p.etapes.map(e => `<li>${esc(e)}</li>`).join("")}</ol>`).join(""));
+  return h + `</div>`;
+}
+
+/* =========================================================================
+   23. RÉVISION — sessions
+   ========================================================================= */
+const DELAIS_TXT = "Réussi, l'exercice monte d'une boîte : revu le jour même, puis à deux jours, puis à une semaine.";
+let minuteur = null;
+function mmss(s){ return String(Math.floor(s/60)).padStart(2,"0") + ":" + String(s%60).padStart(2,"0"); }
+
+function corrigerItem(it, choix, assoc, ordre){
+  switch(it.type){
+    case "qcm": return choix === it.reponse;
+    case "qcmMulti": { const a=(choix||[]).slice().sort().join(","), b=(it.reponses||[]).slice().sort().join(",");
+      return a === b && a !== ""; }
+    case "vf": return choix === it.reponse;
+    case "cloze": return normaliser(choix) === normaliser(it.reponse) && normaliser(choix) !== "";
+    case "ordre": return (ordre||[]).join(",") === it.etapes.map((_,i)=>i).join(",");
+    case "paires": return it.paires.every((p,i) => String((assoc||{})[i]) === String(i));
+    default: return null;
+  }
+}
+function motsTrouves(rep, cles){ const n = " " + normaliser(rep) + " ";
+  return (cles||[]).map(c => ({mot:c, ok:n.includes(normaliser(c))})); }
+function autoNoteExamen(it, rep){ const m = motsTrouves(rep||"", it.motsCles);
+  return m.length ? m.filter(x=>x.ok).length / m.length >= .5 : false; }
+
+function ouvrirSession(liste, mode, limite){
+  if(!liste.length){ ui.message = {titre:"Rien ici", txt:"Aucun exercice ne correspond à ce filtre."}; rendre(); return; }
+  ui.session = {liste:melanger(liste), i:0, mode, limite:limite||null, debut:Date.now(),
+    etat:"q", choix:null, sur:null, ordre:[], assoc:{}, resultats:[], melangeD:null};
+  if(mode === "sprint") ui.session.liste = ui.session.liste.slice(0,10);
+  preparerQuestion();
+  ui.ecran = "session"; ui.tab = "rev"; rendre(); lancerMinuteur();
+}
+function preparerQuestion(){
+  const s = ui.session, it = s.liste[s.i];
+  s.etat = "q"; s.choix = it.type === "qcmMulti" ? [] : null; s.sur = null; s.assoc = {}; s.melangeD = null;
+  s.ordre = it.type === "ordre" ? melanger(it.etapes.map((_,i)=>i)) : [];
+}
+function lancerMinuteur(){
+  clearInterval(minuteur);
+  if(!ui.session || (ui.session.mode !== "sprint" && ui.session.mode !== "examen")) return;
+  minuteur = setInterval(() => {
+    const el = document.getElementById("chrono");
+    if(!el || !ui.session){ clearInterval(minuteur); return; }
+    const e = Math.floor((Date.now() - ui.session.debut)/1000);
+    if(ui.session.limite){ const r = ui.session.limite - e;
+      if(r <= 0){ clearInterval(minuteur); terminerSession(); return; }
+      el.textContent = mmss(r); } else el.textContent = mmss(e);
+  }, 1000);
+}
+function ecranReviser(){
+  let h = `<div class="ecran">` + retour("accueil", "Réviser");
+  if(!tousItems().length) return h + `<div class="vide"><div class="em">◇</div><h3>Aucun exercice</h3>
+    <p>Ils naissent des cours que vous importez.</p></div>
+    <button class="cta" data-act="ecran" data-e="import">Importer un cours</button></div>`;
+  const dus = itemsDus().length, err = carnetErreurs().length, conf = erreursConfiantes().length;
+  h += `<p class="sousTitre">${DELAIS_TXT}</p>`;
+  h += carteSession("↻", "Révision du jour", dus + " à échéance", "dus", dus);
+  h += carteSession("⏱", "Sprint chronométré", "dix questions contre la montre", "sprint", 1);
+  h += carteSession("✎", "Carnet d'erreurs", err + " en attente", "erreurs", err);
+  h += carteSession("！", "Erreurs confiantes", conf + " ratée" + (conf>1?"s":"") + " en se croyant sûr", "confiantes", conf);
+  h += `<div class="rang"><button class="btn mini" data-act="fiche-erreurs"${err?"":" disabled"}>Imprimer mes points faibles</button></div>`;
+  h += `<p class="kick" style="margin-top:18px">Par unité d'enseignement</p><div class="liste-puces">`;
+  UES.forEach(u => { const st = statsUE(u.id);
+    if(st.total) h += `<button class="puce mono" data-act="session" data-source="ue" data-ue="${u.id}">${u.id} · ${st.total}</button>`; });
+  return h + `</div></div>`;
+}
+function carteSession(ic, titre, sous, source, actif){
+  return `<button class="carteAct" data-act="session" data-source="${source}"${actif?"":" disabled"}>
+    <span class="ic">${ic}</span><span class="tx"><b>${esc(titre)}</b><small>${esc(sous)}</small></span>
+    <span class="fl">›</span></button>`;
+}
+
+function ecranSession(){
+  const s = ui.session;
+  if(!s){ ui.ecran = "reviser"; return ecranReviser(); }
+  const it = s.liste[s.i], u = UE(it.ueId), examen = s.mode === "examen";
+  let h = `<div class="lecon"><div class="lecon-haut">
+    <button class="fermer" data-act="quitter-session" aria-label="Quitter">×</button>
+    <div class="pts">${s.liste.map((_,k) => `<span class="${k < s.i ? "f" : ""}"></span>`).join("")}</div>
+    ${(s.mode==="sprint"||examen) ? `<span class="chrono" id="chrono">00:00</span>` : `<span class="src">${s.i+1}/${s.liste.length}</span>`}
+    </div><div class="diapo">
+    <p class="kick">${u?u.id:""} · ${esc(TYPES[it.type]||it.type)}</p>`;
+
+  if(it.type === "flash"){
+    h += `<h3>${esc(it.recto)}</h3>`;
+    if(s.etat === "c") h += `<div class="verdict ok">${esc(it.verso)}</div>`;
+  } else h += `<h3>${esc(it.question || "")}</h3>`;
+
+  if(it.type === "qcm" || it.type === "qcmMulti"){
+    const multi = it.type === "qcmMulti";
+    if(multi) h += `<p style="font-size:13.5px;color:var(--encre2)">Plusieurs réponses possibles.</p>`;
+    it.options.forEach((o,k) => {
+      let cl = "opt";
+      const pris = multi ? (s.choix||[]).includes(k) : s.choix === k;
+      if(pris) cl += " pris";
+      if(s.etat === "c" && !examen){
+        const bon = multi ? (it.reponses||[]).includes(k) : k === it.reponse;
+        cl = bon ? "opt juste" : (pris ? "opt faux" : "opt");
+      }
+      h += `<button class="${cl}" data-act="choix" data-k="${k}"${s.etat==="c"?" disabled":""}>${esc(o)}</button>`;
+    });
+  } else if(it.type === "vf"){
+    [["Vrai",true],["Faux",false]].forEach(([lab,val]) => {
+      let cl = "opt";
+      if(s.choix === val) cl += " pris";
+      if(s.etat === "c" && !examen) cl = val === it.reponse ? "opt juste" : (s.choix === val ? "opt faux" : "opt");
+      h += `<button class="${cl}" data-act="choix" data-v="${val}"${s.etat==="c"?" disabled":""}>${lab}</button>`;
+    });
+  } else if(it.type === "cloze"){
+    h += `<input type="text" id="rep" placeholder="Votre réponse" value="${esc(s.choix||"")}"${s.etat==="c"?" disabled":""}>`;
+  } else if(it.type === "ouverte" || it.type === "erreur" || it.type === "situation"){
+    h += `<textarea id="rep" style="min-height:110px" placeholder="Votre réponse"${s.etat==="c"?" disabled":""}>${esc(s.choix||"")}</textarea>`;
+  } else if(it.type === "ordre"){
+    h += s.ordre.map((idx,pos) => `<div class="opt" style="display:flex;align-items:center;gap:10px">
+      <span class="src">${pos+1}</span><span style="flex:1">${esc(it.etapes[idx])}</span>
+      <button class="btn mini" data-act="monter" data-p="${pos}"${pos===0||s.etat==="c"?" disabled":""}>↑</button>
+      <button class="btn mini" data-act="descendre" data-p="${pos}"${pos===s.ordre.length-1||s.etat==="c"?" disabled":""}>↓</button></div>`).join("");
+  } else if(it.type === "paires"){
+    if(!s.melangeD) s.melangeD = melanger(it.paires.map((p,i) => ({i, txt:p[1]})));
+    it.paires.forEach((p,i) => {
+      h += `<div style="margin-bottom:9px"><div style="font-size:14.5px;font-weight:600;margin-bottom:4px">${esc(p[0])}</div>
+        <select data-act="assoc" data-i="${i}"${s.etat==="c"?" disabled":""}><option value="">— choisir —</option>
+        ${s.melangeD.map(d => `<option value="${d.i}"${String(s.assoc[i])===String(d.i)?" selected":""}>${esc(tronquer(d.txt,70))}</option>`).join("")}
+        </select></div>`;
+    });
+  }
+
+  if(s.etat === "q"){
+    if(!examen) h += `<div class="rang"><span style="font-size:13.5px;color:var(--encre2)">Vous êtes sûr ?</span>
+      <button class="puce${s.sur===true?" on":""}" data-act="sur" data-v="1">Sûr</button>
+      <button class="puce${s.sur===false?" on":""}" data-act="sur" data-v="0">Pas sûr</button></div>`;
+    h += `</div><div style="display:flex;gap:9px">
+      <button class="btn" data-act="passer">Passer</button>
+      <button class="cta" style="flex:1;margin-top:0" data-act="valider">${it.type==="flash"?"Retourner":(examen?"Valider":"Vérifier")}</button></div></div>`;
+    return h;
+  }
+  const j = s.dernierJuste;
+  if(j !== null && j !== undefined){
+    h += `<div class="verdict ${j?"ok":"ko"}"><b>${j?"Juste.":"Raté."}</b>
+      ${it.correction ? esc(it.correction)+" " : ""}
+      ${!j && it.type==="cloze" ? "Réponse attendue : « " + esc(it.reponse) + " »." : ""}
+      ${!j && it.type==="ordre" ? "Ordre du cours : " + it.etapes.map((e,k)=>(k+1)+". "+esc(e)).join(" ") : ""}
+      ${!j && it.type==="paires" ? it.paires.map(p => esc(p[0])+" → "+esc(tronquer(p[1],70))).join("<br>") : ""}</div>`;
+  }
+  if(it.type==="ouverte"||it.type==="erreur"||it.type==="situation"){
+    const m = motsTrouves(s.choix||"", it.motsCles);
+    h += `<div class="verdict ok"><b>Éléments attendus</b>
+      <div class="liste-puces" style="margin:6px 0">${m.map(x => `<span class="puce">${x.ok?"✓":"○"} ${esc(x.mot)}</span>`).join("")}</div>
+      ${it.attendu ? esc(it.attendu) : ""}</div>`;
+  }
+  if(it.source) h += `<button class="src" data-act="src" data-cible="srcq">Voir le passage du cours</button>
+    <div class="srcTxt" id="srcq">« ${esc(tronquer(it.source,380))} »</div>`;
+  h += `</div>`;
+  if(j === null || j === undefined || it.type === "flash"){
+    h += `<div style="display:flex;gap:9px;align-items:center">
+      <span style="font-size:14px;color:var(--encre2)">Vous l'aviez ?</span>
+      <button class="btn mini" data-act="auto" data-v="0">Non</button>
+      <button class="cta" style="flex:1;margin-top:0" data-act="auto" data-v="1">Oui</button></div>`;
+  } else h += `<button class="cta" data-act="suivant">Suivant</button>`;
+  return h + `</div>`;
+}
+
+function valider(){
+  const s = ui.session, it = s.liste[s.i];
+  if(["cloze","ouverte","erreur","situation"].includes(it.type)){
+    const el = document.getElementById("rep"); if(el) s.choix = el.value;
+  }
+  const j = corrigerItem(it, s.choix, s.assoc, s.ordre);
+  s.dernierJuste = j;
+  if(s.mode === "examen"){
+    s.resultats.push({id:it.id, ueId:it.ueId, juste: j === null ? autoNoteExamen(it, s.choix) : j});
+    suivant(); return;
+  }
+  if(j !== null && j !== undefined){ majProg(it.id, j, s.sur); s.resultats.push({id:it.id, ueId:it.ueId, juste:j}); }
+  s.etat = "c"; rendre();
+}
+function suivant(){
+  const s = ui.session; s.i++;
+  if(s.i >= s.liste.length){ terminerSession(); return; }
+  preparerQuestion(); rendre(); window.scrollTo(0,0);
+}
+function terminerSession(){
+  clearInterval(minuteur);
+  const s = ui.session; if(!s) return;
+  if(s.mode === "examen"){
+    const r = calculerExamen(s); S.examens.push(r); sauver();
+    ui.resultat = r; ui.session = null; ui.ecran = "examen"; rendre(); return;
+  }
+  const t = s.resultats.length, b = s.resultats.filter(x => x.juste).length;
+  ui.session = null; ui.ecran = "reviser";
+  ui.message = {type:"info", titre:"Session terminée",
+    txt: t ? b + " réussite" + (b>1?"s":"") + " sur " + t + "." : "Session close."};
+  rendre();
+}
+function lancerSession(source, ue, id){
+  let l = [];
+  if(source === "dus") l = itemsDus();
+  else if(source === "erreurs") l = carnetErreurs();
+  else if(source === "confiantes") l = erreursConfiantes();
+  else if(source === "ue") l = tousItems().filter(i => i.ueId === ue);
+  else if(source === "cours"){ const c = S.cours.find(x => x.id === id); l = c ? c.items.slice() : []; }
+  else if(source === "sprint"){ l = itemsDus(); if(l.length < 10) l = tousItems(); }
+  ouvrirSession(l, source === "sprint" ? "sprint" : "libre");
+}
+
+/* =========================================================================
+   24. EXAMEN BLANC, PLANNING, RÉGLAGES
+   ========================================================================= */
+function composerExamen(nb){
+  const dispo = tousItems().filter(i => i.type !== "flash");
+  if(dispo.length < 5) return [];
+  const parUE = {}; dispo.forEach(i => (parUE[i.ueId] = parUE[i.ueId] || []).push(i));
+  const ids = Object.keys(parUE);
+  const pt = ids.reduce((s,id) => s + (UE(id)?UE(id).ects:1), 0);
+  let out = [];
+  ids.forEach(id => { const part = Math.max(1, Math.round(nb * (UE(id)?UE(id).ects:1) / pt));
+    out = out.concat(melanger(parUE[id]).slice(0, part)); });
+  return melanger(out).slice(0, nb);
+}
+function calculerExamen(s){
+  const parUE = {};
+  s.resultats.forEach(r => { const e = parUE[r.ueId] = parUE[r.ueId] || {total:0,bons:0};
+    e.total++; if(r.juste) e.bons++; });
+  const ues = Object.keys(parUE).map(id => { const u = UE(id), e = parUE[id];
+    return {id, nom:u?u.nom:id, dom:u?u.dom:0, ects:u?u.ects:0, total:e.total, bons:e.bons,
+      note: Math.round(e.bons/e.total*200)/10}; });
+  const domaines = [1,2,3,4,5].map(d => {
+    const l = ues.filter(x => x.dom === d);
+    if(!l.length) return {dom:d, presente:false};
+    const p = l.reduce((s2,x) => s2 + x.ects, 0);
+    const note = Math.round(l.reduce((s2,x) => s2 + x.note*x.ects, 0)/p*10)/10;
+    return {dom:d, presente:true, note, valide:note >= 10, bloquantes:l.filter(x => x.note < 8).map(x => x.id)};
+  });
+  return {date:new Date().toISOString(), duree:Math.round((Date.now()-s.debut)/1000),
+    questions:s.resultats.length, bons:s.resultats.filter(r=>r.juste).length, ues, domaines};
+}
+function tableauResultats(r){
+  let h = `<table class="tableau"><thead><tr><th>UE</th><th>Score</th><th>Note</th></tr></thead><tbody>`;
+  r.ues.forEach(u => h += `<tr><td>${u.id}</td><td class="n">${u.bons}/${u.total}</td>
+    <td class="n" style="color:${u.note<8?"var(--rouge)":(u.note<10?"var(--or-fonce)":"var(--menthe-fonce)")}">${u.note.toFixed(1)}</td></tr>`);
+  h += `</tbody></table>`;
+  r.domaines.filter(d => d.presente).forEach(d => {
+    h += `<div class="bloc" style="margin-top:10px"><div class="bloc-t">
+      <span class="point" style="background:${DOMAINES[d.dom].coul}"></span>
+      <span class="bloc-nom">${esc(DOMAINES[d.dom].nom)}</span>
+      <span class="bloc-meta" style="color:${d.valide?"var(--menthe-fonce)":"var(--rouge)"}">${d.note.toFixed(1)}/20</span></div>
+      <div style="font-size:13px;color:var(--encre2)">${d.valide?"Domaine validé dans cette simulation":"Sous la barre des 10/20"}${d.bloquantes.length?" · non compensable : "+d.bloquantes.join(", "):""}</div></div>`;
+  });
+  return h + `<p style="font-size:12.5px;color:var(--encre3);margin-top:10px">Simulation de la règle du référentiel : 10/20 par domaine, compensation entre UE d'un même domaine au-dessus de 8/20. Elle ne porte que sur vos propres exercices.</p>`;
+}
+function ecranExamen(){
+  const dispo = tousItems().filter(i => i.type !== "flash").length;
+  let h = `<div class="ecran">` + retour("accueil", "Examen blanc");
+  if(dispo < 10){
+    h += `<div class="avis"><b>Pas encore assez de matière</b>${dispo} exercice${dispo>1?"s":""} disponible${dispo>1?"s":""}, il en faut dix au minimum.</div>`;
+  } else {
+    h += `<div class="duo"><div><label class="champ" for="e-nb">Questions</label>
+      <input type="number" id="e-nb" min="10" max="60" value="${Math.min(20,dispo)}"></div>
+      <div><label class="champ" for="e-min">Minutes</label><input type="number" id="e-min" min="5" max="180" value="30"></div></div>
+      <button class="cta" data-act="lancer-examen">Commencer l'épreuve</button>`;
+  }
+  if(ui.resultat){
+    h += `<p class="kick" style="margin-top:18px">Résultat · ${ui.resultat.bons}/${ui.resultat.questions} en ${mmss(ui.resultat.duree)}</p>` + tableauResultats(ui.resultat);
+  } else if(S.examens.length){
+    h += `<p class="kick" style="margin-top:18px">Épreuves passées</p><table class="tableau"><tbody>` +
+      S.examens.slice().reverse().map(e => `<tr><td>${dateFr(e.date)}</td><td class="n">${e.bons}/${e.questions}</td><td class="n">${mmss(e.duree)}</td></tr>`).join("") + `</tbody></table>`;
+  }
+  return h + `</div>`;
+}
+function ecranPlanning(){
+  const d = S.reglages.dateExamen;
+  let h = `<div class="ecran">` + retour("accueil", "Planning");
+  h += `<label class="champ" for="p-date">Date de l'examen</label>
+    <input type="date" id="p-date" data-bind="dateExamen" value="${esc(d)}">`;
+  if(!d) return h + `<div class="avis info" style="margin-top:14px"><b>Aucune date</b>Renseignez-la pour construire le rétroplanning.</div></div>`;
+  const j = joursEntre(new Date(), d);
+  if(j <= 0) return h + `<div class="avis" style="margin-top:14px"><b>Date passée</b>Choisissez une date à venir.</div></div>`;
+  const actives = UES.filter(u => statsUE(u.id).total > 0);
+  if(!actives.length) return h + `<div class="avis" style="margin-top:14px"><b>Aucun cours importé</b>Le plan se construit sur les UE que vous alimentez.</div></div>`;
+  const sem = Math.max(1, Math.min(12, Math.ceil(j/7)));
+  const scores = actives.map(u => { const s = statsUE(u.id);
+    return {u, poids:u.ects * (1 + (100-s.part)/100), part:s.part, total:s.total}; })
+    .sort((a,b) => b.poids - a.poids);
+  h += `<p class="sousTitre" style="margin-top:14px">${j} jours, soit ${sem} semaine${sem>1?"s":""} de travail.</p>`;
+  for(let k = 0; k < sem; k++){
+    const lot = scores.filter((_,i) => i % sem === k);
+    h += `<div class="semaine"><div class="quand">Semaine ${k+1} — dès le ${dateFr(new Date(Date.now()+k*7*JOUR).toISOString())}</div>
+      <h4 style="font-size:15px">${lot.length ? lot.map(x => x.u.id).join(" · ") : "Reprise libre"}</h4>
+      ${lot.map(x => `<div style="font-size:13.5px;color:var(--encre2)">${esc(tronquer(x.u.nom,52))} — ${x.total} exercices, ${x.part}% acquis</div>`).join("")}</div>`;
+  }
+  return h + `<p style="font-size:12.5px;color:var(--encre3)">La révision du jour reste prioritaire : elle suit les échéances des trois boîtes.</p></div>`;
+}
+function ecranReglages(){
+  const r = S.reglages;
+  const voix = (window.speechSynthesis ? speechSynthesis.getVoices() : []).filter(v => /fr/i.test(v.lang));
+  let h = `<div class="ecran">` + retour("accueil", "Réglages");
+  h += `<p class="kick">Dates</p>
+    <label class="champ" for="r-rentree">Rentrée</label>
+    <input type="date" id="r-rentree" data-bind="dateRentree" value="${esc(r.dateRentree||"")}">
+    <label class="champ" for="r-exam" style="margin-top:12px">Examen</label>
+    <input type="date" id="r-exam" data-bind="dateExamen" value="${esc(r.dateExamen||"")}">`;
+  h += `<p class="kick" style="margin-top:20px">Moteur d'analyse</p>
+    <div class="liste-puces">
+      <button class="puce${r.moteur==="local"?" on":""}" data-act="moteur" data-v="local">Local</button>
+      <button class="puce${r.moteur==="gemini"?" on":""}" data-act="moteur" data-v="gemini">Gemini</button></div>`;
+  if(r.moteur === "local"){
+    h += `<p style="font-size:14px;color:var(--encre2)">Rien ne quitte l'appareil. L'analyse repère définitions, valeurs chiffrées, normes, pièges et suites d'étapes.</p>`;
+  } else {
+    h += `<label class="champ" for="g-cle">Clé Google AI Studio</label>
+      <input type="password" id="g-cle" data-bind="cleGemini" value="${esc(r.cleGemini)}" placeholder="AIza…">
+      <label class="champ" for="g-mod" style="margin-top:12px">Modèle</label>
+      <select id="g-mod" data-bind="modele">${r.modeles.length ? r.modeles.map(m =>
+        `<option value="${esc(m.id)}"${r.modele===m.id?" selected":""}>${esc(m.nom)}</option>`).join("")
+        : `<option value="">— charger la liste —</option>`}</select>
+      <div class="rang"><button class="btn mini" data-act="charger-modeles">Charger les modèles</button></div>
+      <p style="font-size:13px;color:var(--encre2)">La clé reste sur cet appareil. Sur l'offre gratuite, Google peut utiliser les contenus transmis pour entraîner ses modèles : aucune donnée de patient.</p>`;
+  }
+  h += `<p class="kick" style="margin-top:20px">Lecture audio</p>
+    <label class="champ" for="v-voix">Voix</label>
+    <select id="v-voix" data-bind="voix"><option value="">Voix par défaut</option>
+      ${voix.map(v => `<option value="${esc(v.name)}"${r.voix===v.name?" selected":""}>${esc(v.name)}</option>`).join("")}</select>
+    <label class="champ" for="v-deb" style="margin-top:12px">Débit</label>
+    <input type="number" id="v-deb" data-bind="debitVoix" min="0.5" max="2" step="0.1" value="${r.debitVoix}">`;
+  h += `<p class="kick" style="margin-top:20px">Sauvegarde</p>
+    <div class="rang"><button class="btn mini" data-act="exporter">Exporter</button>
+      <label class="btn mini" for="i-json">Importer</label>
+      <input type="file" id="i-json" accept=".json" style="display:none">
+      <button class="btn mini" data-act="tout-effacer" style="color:var(--rouge)">Tout effacer</button></div>
+    <p style="font-size:12.5px;color:var(--encre3)">Les leçons de préparation ne sont pas effacées par ce bouton : seuls vos cours, exercices et résultats le sont.</p>`;
+  return h + `</div>`;
+}
+/* =========================================================================
+   25. ACTIONS ET ÉVÉNEMENTS
+   ========================================================================= */
+async function analyser(){
+  const texte = (ui.importTexte||"").trim();
+  if(texte.length < 200){
+    ui.message = {titre:"Texte trop court", txt:"Quelques paragraphes au minimum pour produire une fiche utile."};
+    rendre(); return;
+  }
+  const al = sonderDonnees(texte);
+  if(al.length && !ui.rgpdIgnore){ ui.avisRGPD = al; rendre(); return; }
+  const ueId = ui.importUE || detecterUE(texte);
+  if(!ueId){ ui.message = {titre:"Unité à préciser", txt:"Elle n'a pas pu être déduite du texte : choisissez-la dans la liste."}; rendre(); return; }
+  ui.occupe = true; ui.message = null; rendre();
+  let res, origine = S.reglages.moteur;
+  try{
+    if(origine === "gemini"){
+      if(!S.reglages.cleGemini || !S.reglages.modele) throw new Error("Renseignez la clé et le modèle dans les réglages, ou repassez en mode local.");
+      res = await analyseGemini(texte, ueId, S.reglages.cleGemini, S.reglages.modele);
+    } else res = analyseLocale(texte, ueId);
+  }catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Analyse interrompue", txt:e.message}; rendre(); return; }
+  if(!res.items.length){
+    ui.occupe = false;
+    ui.message = {titre:"Aucun exercice tiré de ce texte",
+      txt:"Un cours structuré — définitions, listes, valeurs chiffrées — donne de bien meilleurs résultats."};
+    rendre(); return;
+  }
+  const titre = (ui.importTitre||"").trim() || res.fiche.titreDetecte || UE(ueId).nom;
+  const c = {id:uid(), titre, ueId, date:new Date().toISOString(), origine, fiche:res.fiche,
+    items:res.items.map(i => Object.assign(i, {ueId})), texte};
+  S.cours.push(c); sauver();
+  ui.occupe = false; ui.importTexte = ""; ui.importTitre = ""; ui.importUE = "";
+  ui.avisRGPD = null; ui.rgpdIgnore = false; ui.fiche = c.id; ui.ecran = "fiche";
+  ui.message = {type:"info", titre:"Fiche créée", txt:res.items.length + " exercices générés."};
+  rendre(); window.scrollTo(0,0);
+}
+
+document.addEventListener("click", async e => {
+  const el = e.target.closest("[data-act]");
+  if(!el || el.disabled) return;
+  const a = el.dataset.act, s = ui.session;
+  switch(a){
+    case "nav": ui.session = null; clearInterval(minuteur); aller(el.dataset.tab, "accueil"); break;
+    case "ecran": ui.ecran = el.dataset.e; ui.message = null; rendre(); window.scrollTo(0,0); break;
+    case "filtre": ui.filtreUE = el.dataset.ue; rendre(); break;
+    case "src": { const c = document.getElementById(el.dataset.cible); if(c) c.classList.toggle("ouvert"); break; }
+
+    /* --- leçons --- */
+    case "ouvrir-lecon": {
+      ui.ue = el.dataset.ue;
+      const p = progLecon(ui.ue);
+      if(p.termine) p.index = 0;
+      ui.quizRep = null; ui.ecran = "lecon"; sauver(); rendre(); window.scrollTo(0,0); break;
+    }
+    case "fermer-lecon": ui.ecran = "accueil"; ui.quizRep = null; rendre(); break;
+    case "quiz": {
+      const d = LECONS[ui.ue].diapos[progLecon(ui.ue).index];
+      ui.quizRep = Number(el.dataset.k);
+      progLecon(ui.ue).quiz[progLecon(ui.ue).index] = ui.quizRep === d.bonne;
+      sauver(); rendre(); break;
+    }
+    case "diapo-suiv": {
+      const p = progLecon(ui.ue), L = LECONS[ui.ue];
+      if(p.index >= L.diapos.length - 1){
+        p.termine = true; p.index = L.diapos.length - 1; sauver();
+        ui.ecran = "accueil"; ui.quizRep = null;
+        ui.message = {type:"info", titre:"Leçon terminée", txt:L.titre + " — vous pouvez la reprendre quand vous voulez."};
+      } else { p.index++; ui.quizRep = null; sauver(); }
+      rendre(); window.scrollTo(0,0); break;
+    }
+    case "diapo-prec": { const p = progLecon(ui.ue); if(p.index > 0) p.index--; ui.quizRep = null; sauver(); rendre(); window.scrollTo(0,0); break; }
+
+    /* --- fiches --- */
+    case "ouvrir-fiche": ui.fiche = el.dataset.id; ui.ecran = "fiche"; rendre(); window.scrollTo(0,0); break;
+    case "imprimer": imprimerFiche(el.dataset.id); break;
+    case "fiche-erreurs": imprimerErreurs(); break;
+    case "lire": { const c = S.cours.find(x => x.id === el.dataset.id); if(c) lire(texteFiche(c)); break; }
+    case "stop-lecture": if(window.speechSynthesis) speechSynthesis.cancel(); break;
+    case "supprimer":
+      if(confirm("Supprimer ce cours, sa fiche et ses exercices ?")){
+        const c = S.cours.find(x => x.id === el.dataset.id);
+        if(c) c.items.forEach(i => delete S.progres[i.id]);
+        S.cours = S.cours.filter(x => x.id !== el.dataset.id);
+        sauver(); ui.ecran = "fiches"; rendre();
+      } break;
+    case "analyser": await analyser(); break;
+    case "anonymiser": ui.importTexte = anonymiser(ui.importTexte); ui.avisRGPD = null; ui.rgpdIgnore = true;
+      ui.message = {type:"info", titre:"Texte anonymisé", txt:"Relisez-le avant de lancer l'analyse."}; rendre(); break;
+    case "rgpd-ignorer": ui.rgpdIgnore = true; ui.avisRGPD = null; rendre(); break;
+
+    /* --- sessions --- */
+    case "session": lancerSession(el.dataset.source, el.dataset.ue, el.dataset.id); break;
+    case "choix": {
+      const it = s.liste[s.i];
+      if(it.type === "qcmMulti"){ const k = Number(el.dataset.k); s.choix = s.choix || [];
+        s.choix = s.choix.includes(k) ? s.choix.filter(x => x !== k) : s.choix.concat([k]); }
+      else if(it.type === "vf") s.choix = el.dataset.v === "true";
+      else s.choix = Number(el.dataset.k);
+      rendre(); break;
+    }
+    case "sur": s.sur = el.dataset.v === "1"; rendre(); break;
+    case "monter": { const p = Number(el.dataset.p); [s.ordre[p-1], s.ordre[p]] = [s.ordre[p], s.ordre[p-1]]; rendre(); break; }
+    case "descendre": { const p = Number(el.dataset.p); [s.ordre[p+1], s.ordre[p]] = [s.ordre[p], s.ordre[p+1]]; rendre(); break; }
+    case "valider": valider(); break;
+    case "passer": if(s.mode === "examen") s.resultats.push({id:s.liste[s.i].id, ueId:s.liste[s.i].ueId, juste:false}); suivant(); break;
+    case "auto": { const it = s.liste[s.i], j = el.dataset.v === "1";
+      majProg(it.id, j, s.sur); s.resultats.push({id:it.id, ueId:it.ueId, juste:j}); suivant(); break; }
+    case "suivant": suivant(); break;
+    case "quitter-session": terminerSession(); break;
+    case "lancer-examen": {
+      const nb = Math.max(10, Math.min(60, Number(document.getElementById("e-nb").value) || 20));
+      const mn = Math.max(5, Math.min(180, Number(document.getElementById("e-min").value) || 30));
+      ui.resultat = null; ouvrirSession(composerExamen(nb), "examen", mn*60); break;
+    }
+
+    /* --- réglages --- */
+    case "moteur": S.reglages.moteur = el.dataset.v; sauver(); rendre(); break;
+    case "charger-modeles": {
+      if(!S.reglages.cleGemini){ ui.message = {titre:"Clé manquante", txt:"Collez d'abord votre clé Google AI Studio."}; rendre(); break; }
+      el.textContent = "Chargement…";
+      try{
+        const m = await listerModeles(S.reglages.cleGemini);
+        S.reglages.modeles = m;
+        if(!S.reglages.modele && m.length){
+          const pref = m.find(x => /flash/i.test(x.id) && !/lite|preview|exp/i.test(x.id)) || m.find(x => /flash/i.test(x.id)) || m[0];
+          S.reglages.modele = pref.id;
+        }
+        sauver(); ui.message = {type:"info", titre:"Modèles chargés", txt:m.length + " modèles disponibles."};
+      }catch(err){ ui.message = {type:"err", titre:"Clé refusée", txt:err.message}; }
+      rendre(); break;
+    }
+    case "exporter": telecharger("prepa-depph-" + new Date().toISOString().slice(0,10) + ".json", JSON.stringify(S, null, 1)); break;
+    case "tout-effacer":
+      if(confirm("Effacer vos cours, fiches, exercices et résultats ? La progression des leçons est conservée.")){
+        const prep = S.prep, regl = S.reglages;
+        S = etatVierge(); S.prep = prep; S.reglages = regl;
+        sauver(); ui.fiche = null; aller("rev", "accueil");
+      } break;
+  }
+});
+
+document.addEventListener("change", async e => {
+  const t = e.target;
+  if(t.id === "i-fic" && t.files[0]){
+    const f = t.files[0];
+    ui.message = {type:"info", titre:"Lecture du fichier", txt:f.name}; rendre();
+    try{
+      const txt = await lireFichier(f);
+      ui.importTexte = txt;
+      if(!ui.importTitre) ui.importTitre = f.name.replace(/\.[^.]+$/,"");
+      if(!ui.importUE) ui.importUE = detecterUE(txt) || "";
+      const al = sonderDonnees(txt);
+      ui.avisRGPD = al.length ? al : null; ui.rgpdIgnore = false;
+      ui.message = {type:"info", titre:"Fichier lu",
+        txt: txt.length + " caractères" + (ui.importUE ? " · unité proposée : " + ui.importUE : "") + "."};
+    }catch(err){ ui.message = {type:"err", titre:"Lecture impossible", txt:err.message}; }
+    rendre(); return;
+  }
+  if(t.id === "i-json" && t.files[0]){
+    try{
+      const o = JSON.parse(await t.files[0].text());
+      if(!o || !Array.isArray(o.cours)) throw new Error("Ce fichier ne contient pas de sauvegarde.");
+      if(confirm("Remplacer les données actuelles ?")){
+        S = Object.assign(etatVierge(), o); sauver(); ui.fiche = null; aller("rev","accueil");
+      }
+    }catch(err){ ui.message = {type:"err", titre:"Import impossible", txt:err.message}; rendre(); }
+    return;
+  }
+  const act = t.closest("[data-act]");
+  if(act && act.dataset.act === "assoc"){ ui.session.assoc[Number(act.dataset.i)] = t.value; return; }
+  const b = t.dataset.bind;
+  if(!b) return;
+  if(b in ui){
+    ui[b] = t.value;
+    if(b === "importTexte"){
+      const al = sonderDonnees(t.value);
+      ui.avisRGPD = al.length ? al : null;
+      if(!ui.importUE){ const d = detecterUE(t.value); if(d) ui.importUE = d; }
+      rendre();
+    }
+  } else {
+    S.reglages[b] = t.value; sauver();
+    if(["dateExamen","dateRentree","voix","debitVoix"].includes(b)) rendre();
+  }
+});
+document.addEventListener("input", e => {
+  const b = e.target.dataset.bind;
+  if(b === "importTexte" || b === "importTitre") ui[b] = e.target.value;
+});
+document.addEventListener("keydown", e => {
+  if(e.key === "Enter" && e.target.id === "rep" && e.target.tagName === "INPUT"){ e.preventDefault(); valider(); }
+});
+if(window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { if(ui.ecran === "reglages") rendre(); };
+
+charger();
+if(!S.prep) S.prep = {};
+rendre();
+</script>
+</body>
+</html>
