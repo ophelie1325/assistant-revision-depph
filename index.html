@@ -14,6 +14,7 @@
   --menthe:#17B890; --menthe-fonce:#109272; --menthe-pale:#DFF3EC;
   --d1:#2F6FB2; --d2:#7A3E9D; --d3:#0E8577; --d4:#B2711A; --d5:#B33B4A;
   --or:#F0B429; --or-pale:#FFF6E3; --or-fonce:#B77F16;
+  --bleu-pale:#EAF1FA;
   --rouge:#D6452F; --rouge-pale:#FDEDEA;
   --ok:#17B890; --ombre:0 1px 2px rgba(20,40,35,.05), 0 6px 16px rgba(20,40,35,.06);
   --r:18px; --r2:13px;
@@ -106,7 +107,7 @@ h1,h2,h3,h4{line-height:1.2;letter-spacing:-.02em;font-weight:700}
   text-transform:uppercase;margin-bottom:5px;font-weight:600}
 .encart.astuce{background:var(--or-pale)} .encart.astuce b.et{color:var(--or-fonce)}
 .encart.piege{background:var(--rouge-pale)} .encart.piege b.et{color:var(--rouge)}
-.encart.garde{background:#EAF1FA} .encart.garde b.et{color:var(--d1)}
+.encart.garde{background:var(--bleu-pale)} .encart.garde b.et{color:var(--d1)}
 .encart.info{background:var(--menthe-pale)} .encart.info b.et{color:var(--menthe-fonce)}
 .vocab{list-style:none}
 .vocab li{background:var(--carte);border-radius:var(--r2);padding:11px 13px;margin-bottom:8px;font-size:14.5px;
@@ -196,6 +197,7 @@ body.sombre{
   --menthe:#22C79C; --menthe-fonce:#0D7A5F; --menthe-pale:#123329;
   --d1:#6FA6E0; --d2:#B583D6; --d3:#35B8A8; --d4:#E0A44E; --d5:#E4707E;
   --or:#F0B429; --or-pale:#2F2717; --or-fonce:#E8B44A;
+  --bleu-pale:#16283A;
   --rouge:#E4705C; --rouge-pale:#33201D;
   --ombre:0 1px 2px rgba(0,0,0,.28), 0 6px 16px rgba(0,0,0,.30);
 }
@@ -244,24 +246,112 @@ body.vueLarge .opt{font-size:16px}
 .illus img{display:block;width:100%;height:auto}
 .illus figcaption{font-size:12.5px;color:var(--encre2);padding:8px 11px;line-height:1.4}
 .illus figcaption b{display:block;font-weight:600;color:var(--encre);margin-bottom:1px}
+.ligneCoche{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;background:var(--carte);
+  border:1.5px solid var(--trait);border-radius:var(--r2);padding:11px 13px;margin-bottom:8px;
+  font-size:14.5px;line-height:1.45;box-shadow:var(--ombre)}
+.ligneCoche .case{flex:none;width:22px;height:22px;border-radius:7px;border:1.5px solid var(--trait);
+  background:var(--trait2);display:grid;place-items:center;font-size:13px;color:#fff;margin-top:1px}
+.ligneCoche.on{border-color:var(--menthe);background:var(--menthe-pale)}
+.ligneCoche.on .case{background:var(--menthe);border-color:var(--menthe)}
+.ligneCoche .tx{flex:1;min-width:0}
+.ligneCoche.incert{border-left:4px solid var(--or)}
+.ligneCoche:not(.on) .tx{opacity:.55}
+.drapeau{display:block;font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10.5px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--or-fonce);margin-top:4px}
+.horsCours{border-radius:var(--r2);background:var(--bleu-pale);padding:13px 14px;margin-bottom:10px;font-size:14.5px;line-height:1.5}
+.horsCours .et{display:block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--d1);font-weight:600;margin-bottom:6px}
+.horsCours a{display:block;color:var(--d1);font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+  text-decoration:none;word-break:break-all;margin-top:5px}
+
+.vis{margin:10px 0}
+.vis img{width:100%;height:auto;border-radius:var(--r2);border:1px solid var(--trait);background:#fff;display:block}
+.vis figcaption{font-size:13px;color:var(--encre2);margin-top:6px;line-height:1.4}
+.visManquant{border:1px dashed var(--trait);border-radius:var(--r2);padding:16px;text-align:center;
+  font-size:13px;color:var(--encre3);margin:10px 0}
+.vignettes{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.vign{position:relative;border-radius:11px;overflow:hidden;border:1px solid var(--trait);background:#fff;aspect-ratio:3/4}
+.vign img{width:100%;height:100%;object-fit:cover;display:block}
+.vign .retirer{position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;
+  background:rgba(22,36,31,.72);color:#fff;font-size:15px;line-height:1;display:grid;place-items:center}
+.vign .rang-v{position:absolute;bottom:3px;left:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;
+  background:rgba(255,255,255,.9);border-radius:5px;padding:1px 4px;color:var(--encre2)}
+.toile{position:relative;touch-action:none;user-select:none;margin-top:10px;
+  border:1px solid var(--trait);border-radius:var(--r2);overflow:hidden;background:#fff;line-height:0}
+.toile canvas{max-width:100%;display:block}
+.cadre{display:none;position:absolute;border:2px solid var(--menthe);background:rgba(23,184,144,.16);pointer-events:none}
+
 #impression{display:none}
 @media print{
   body{background:#fff}
   .app,.nav{display:none !important}
   #impression{display:block}
-  @page{size:A4;margin:14mm 13mm}
-  .f-print{font-family:'Outfit',sans-serif;color:#000;font-size:10.5pt;line-height:1.4}
-  .f-print .f-entete{border-bottom:2px solid #000;padding-bottom:6pt;margin-bottom:10pt;display:flex;
-    justify-content:space-between;gap:10pt;align-items:flex-end}
-  .f-print h1{font-size:16pt}
-  .f-print .f-meta{font-family:'IBM Plex Mono',monospace;font-size:8pt;text-transform:uppercase;text-align:right}
-  .f-print h2{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;text-transform:uppercase;letter-spacing:.1em;
-    border-bottom:.5pt solid #999;padding-bottom:2pt;margin:9pt 0 5pt}
-  .f-print li{margin:0 0 3pt 14pt}
-  .f-print .cols{column-count:2;column-gap:9mm}
-  .f-print .enc{border:.5pt solid #666;padding:5pt 7pt;margin-bottom:6pt;break-inside:avoid}
-  .f-print.dense{font-size:9pt;line-height:1.3}
-  .f-print.dense h1{font-size:13pt}
+  @page{size:A4;margin:12mm 12mm 14mm 12mm}
+  /* Sans cela, les navigateurs suppriment les aplats et tous les surlignages disparaissent. */
+  .f-print,.f-print *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .f-print{font-family:'Outfit',sans-serif;color:#000;font-size:11pt;line-height:1.5}
+  .f-print .bandeau{height:5mm;margin-bottom:5pt;background:#17B890}
+  .f-print .f-entete{display:grid;grid-template-columns:26mm 1fr;gap:0 5mm;
+    border-bottom:1.2pt solid #000;padding-bottom:6pt;margin-bottom:10pt}
+  .f-print .f-code{font-family:'IBM Plex Mono',monospace;font-size:9pt;line-height:1.35}
+  .f-print h1{font-size:17pt;margin-bottom:2pt}
+  .f-print .f-sous{font-size:9.5pt;color:#333}
+  .f-print .rub{display:grid;grid-template-columns:26mm 1fr;gap:0 5mm;margin-bottom:9pt}
+  .f-print .rub-t{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;text-transform:uppercase;
+    letter-spacing:.09em;line-height:1.3;padding-top:2pt;border-top:.6pt solid #000}
+  .f-print .rub-c{border-top:.6pt solid #ccc;padding-top:3pt}
+  .f-print .el{margin-bottom:5pt;break-inside:avoid;display:grid;grid-template-columns:7mm 1fr}
+  .f-print .num{font-family:'IBM Plex Mono',monospace;font-size:8.5pt;color:#666;padding-top:1.5pt}
+  .f-print .el .co{min-width:0}
+  .f-print .terme{font-weight:700}
+  .f-print .ex{font-style:italic}
+  .f-print .surligne .co{background:#FFF1B8;padding:1.5pt 3pt;margin:-1.5pt -3pt}
+  .f-print .encadre .co{border:.8pt solid #000;padding:3pt 5pt}
+  .f-print .lignes{border-bottom:.4pt dotted #666;height:5.5mm}
+  .f-print .creux{letter-spacing:.12em;color:#555}
+  .f-print .pied{margin-top:10pt;padding-top:4pt;border-top:.6pt solid #000;font-size:8.5pt;color:#333}
+  .f-print .t-imp{width:100%;border-collapse:collapse;font-size:9.5pt;margin-bottom:5pt;break-inside:avoid}
+  .f-print .t-imp th,.f-print .t-imp td{border:.5pt solid #666;padding:2.5pt 4pt;text-align:left;vertical-align:top}
+  .f-print .t-imp th{font-weight:600}
+  .f-print .vis-imp{margin:4pt 0;break-inside:avoid}
+  .f-print .vis-imp img{max-width:100%;max-height:85mm;height:auto;display:block}
+  .f-print .vis-imp figcaption{font-size:9pt;font-style:italic;margin-top:2pt}
+  .f-print .visManquant{display:none}
+  .f-print ol.et{margin:0 0 0 5mm}
+  .f-print ol.et li{margin-bottom:2.5pt}
+
+  /* couleur : elle encode la nature du contenu, elle ne décore pas */
+  .f-print.couleur .rub.r-definitions .rub-t{color:#2F6FB2;border-top-color:#2F6FB2}
+  .f-print.couleur .rub.r-chiffres .rub-t{color:#B77F16;border-top-color:#B77F16}
+  .f-print.couleur .rub.r-chiffres .num{color:#B77F16}
+  .f-print.couleur .rub.r-pieges .rub-t{color:#D6452F;border-top-color:#D6452F}
+  .f-print.couleur .rub.r-pieges .co{border-left:1.5pt solid #D6452F;padding-left:4pt}
+  .f-print.couleur .rub.r-normes .rub-t{color:#0E8577;border-top-color:#0E8577}
+  .f-print.couleur .rub.r-complements .rub-t{color:#7A3E9D;border-top-color:#7A3E9D}
+  .f-print.couleur .rub.r-complements .co{background:#F4EDF9;padding:3pt 5pt}
+
+  /* noir et blanc : même hiérarchie, sans aplat */
+  .f-print.nb .bandeau{display:none}
+  .f-print.nb .surligne .co{background:none;border-bottom:1pt solid #000}
+  .f-print.nb .encadre .co{border:.8pt solid #000;background:none}
+  .f-print.nb .rub.r-pieges .co{border-left:1.5pt solid #000;padding-left:4pt}
+  .f-print.nb .rub.r-complements .co{background:none;border:.5pt dashed #000;padding:3pt 5pt}
+
+  /* compacte : secondaire, jamais par défaut */
+  .f-print.compacte{font-size:9.5pt;line-height:1.32}
+  .f-print.compacte h1{font-size:14pt}
+  .f-print.compacte .rub{grid-template-columns:22mm 1fr;margin-bottom:6pt}
+  .f-print.compacte .el{margin-bottom:2.5pt}
+
+  /* flashcards à découper : 2 colonnes, 4 lignes, 8 par page */
+  .f-cartes{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:66mm;gap:0;page-break-after:always}
+  .f-cartes:last-child{page-break-after:auto}
+  .f-carte{border:.4pt dashed #999;padding:6mm 5mm;display:flex;flex-direction:column;
+    justify-content:center;text-align:center;break-inside:avoid;overflow:hidden}
+  .f-carte .r{font-size:13pt;font-weight:700;line-height:1.3}
+  .f-carte .v{font-size:10pt;line-height:1.4}
+  .f-carte .ref{font-family:'IBM Plex Mono',monospace;font-size:7pt;color:#666;margin-top:3mm}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
@@ -326,9 +416,47 @@ const TOTAL_ECTS_UE = UES.reduce((s,u) => s + u.ects, 0);
 const TYPES = {
   qcm:"QCM", qcmMulti:"QCM à réponses multiples", vf:"Vrai ou faux", flash:"Flashcard",
   cloze:"Texte à trous", paires:"Appariement", ouverte:"Question ouverte",
-  erreur:"Chasse à l'erreur", situation:"Mise en situation", ordre:"Remise en ordre"
+  erreur:"Chasse à l'erreur", situation:"Mise en situation", ordre:"Remise en ordre",
+  choix:"Reconnaître la bonne formulation", classer:"Classement en deux colonnes",
+  redaction:"Rédaction", comparer:"Comparaison", pourquoi:"Explication d'une raison"
 };
-const TYPES_IA_SEULE = ["erreur","situation","qcmMulti"];
+/* Types que seul Gemini sait produire à partir d'un cours : ils demandent de reformuler
+   ou de mettre en situation, ce que le moteur local ne fait pas sans risquer d'inventer. */
+const TYPES_IA_SEULE = ["erreur","situation","qcmMulti","choix","redaction","comparer","pourquoi"];
+/* Types corrigés par une rédaction libre. */
+const TYPES_REDIGES = ["ouverte","erreur","situation","redaction","comparer","pourquoi"];
+
+/* Deux familles. La mémorisation restitue, la compréhension explique et transpose. */
+const FAMILLES = {
+  memo:{nom:"Mémoriser", court:"mémo", desc:"Restituer une définition, un chiffre, une liste, un sigle."},
+  comp:{nom:"Comprendre", court:"comp", desc:"Expliquer, distinguer, justifier, transposer."}
+};
+/* Quatre niveaux de compréhension, du plus accessible au plus exigeant. */
+const NIVEAUX = [
+  {n:1, nom:"Reconnaître", desc:"Retrouver la bonne formulation parmi quatre propositions plausibles.", types:["choix"]},
+  {n:2, nom:"Relier et organiser", desc:"Ranger, apparier, remettre dans l'ordre.", types:["classer","paires","ordre"]},
+  {n:3, nom:"Compléter", desc:"Retrouver le mot qui manque dans une phrase d'explication.", types:["cloze"]},
+  {n:4, nom:"Rédiger", desc:"Écrire la réponse, corrigée mot à mot par rapport au cours.", types:["redaction","situation","erreur","comparer","pourquoi"]}
+];
+/* Famille et niveau par défaut, pour les exercices produits avant la vague C. */
+const DEFAUT_FAMILLE = {
+  flash:"memo", vf:"memo", qcm:"memo", qcmMulti:"memo", cloze:"memo", ouverte:"memo",
+  paires:"comp", ordre:"comp", classer:"comp", choix:"comp",
+  redaction:"comp", situation:"comp", erreur:"comp", comparer:"comp", pourquoi:"comp"
+};
+const DEFAUT_NIVEAU = {choix:1, classer:2, paires:2, ordre:2, cloze:3,
+  redaction:4, situation:4, erreur:4, comparer:4, pourquoi:4};
+function familleDe(it){ return it.famille === "comp" || it.famille === "memo" ? it.famille : (DEFAUT_FAMILLE[it.type] || "memo"); }
+function niveauDe(it){
+  if(familleDe(it) !== "comp") return 0;
+  const n = Number(it.niveau);
+  return n >= 1 && n <= 4 ? n : (DEFAUT_NIVEAU[it.type] || 2);
+}
+/* Durées moyennes en secondes. Ce sont des estimations d'interface, pas des données
+   sourcées : elles ne servent qu'à remplir une session tenant dans un temps donné. */
+const DUREES = {flash:20, vf:20, qcm:35, choix:45, qcmMulti:45, cloze:40, paires:70, ordre:70,
+  classer:90, ouverte:120, comparer:150, pourquoi:150, erreur:150, situation:150, redaction:180};
+const dureeDe = it => DUREES[it.type] || 60;
 
 /* =========================================================================
    2. ÉTAT ET STOCKAGE
@@ -337,23 +465,66 @@ const CLE = "depph_v2";
 let memoire = null;            // repli si le stockage du navigateur est indisponible
 let stockageOk = true;
 
+const VERSION = 2;
+
+/* Étanchéité des deux onglets. Les exercices de préparation portent un identifiant
+   déterministe préfixé « px- », ceux de la révision un identifiant aléatoire.
+   Les deux vivent dans la même table de progression, avec des clés disjointes. */
+const PREF_PREP = "px-";
+const estPrep = id => String(id||"").startsWith(PREF_PREP);
+const estRev = id => !!id && !estPrep(id);
+let alerteEtancheite = null;
+
 const etatVierge = () => ({
-  version:1,
+  version:VERSION,
   reglages:{moteur:"local", cleGemini:"", modele:"", modeles:[], dateExamen:"", dateRentree:"",
     debitVoix:1, voix:"", affichage:"auto", theme:"auto", texte:"normal", rappelExport:5,
-    datesUE:{}, minutesJour:45, joursOff:[]},
+    datesUE:{}, minutesJour:45, joursOff:[],
+    martelage:true, complements:true, cible:10},
   cours:[], progres:{}, examens:[], prep:{},
+  notes:{}, travaux:[], questionsPosees:{},
   meta:{sessions:0, dernierExport:0, sessionsExport:0}
 });
 let S = etatVierge();
 
+function fusionnerEtat(o){
+  const v = etatVierge();
+  const n = Object.assign(v, o || {});
+  n.reglages = Object.assign(etatVierge().reglages, (o && o.reglages) || {});
+  n.meta = Object.assign(etatVierge().meta, (o && o.meta) || {});
+  if(!Array.isArray(n.reglages.modeles)) n.reglages.modeles = [];
+  if(!Array.isArray(n.reglages.joursOff)) n.reglages.joursOff = [];
+  if(!n.reglages.datesUE || typeof n.reglages.datesUE !== "object") n.reglages.datesUE = {};
+  if(!Array.isArray(n.cours)) n.cours = [];
+  if(!Array.isArray(n.examens)) n.examens = [];
+  if(!Array.isArray(n.travaux)) n.travaux = [];
+  ["progres","prep","notes","questionsPosees"].forEach(k => {
+    if(!n[k] || typeof n[k] !== "object") n[k] = {};
+  });
+  return n;
+}
 function charger(){
   try{
     const brut = localStorage.getItem(CLE);
-    if(brut){ const o = JSON.parse(brut); S = Object.assign(etatVierge(), o);
-      S.reglages = Object.assign(etatVierge().reglages, o.reglages || {});
-      S.meta = Object.assign(etatVierge().meta, o.meta || {}); }
+    if(brut) S = fusionnerEtat(JSON.parse(brut));
   }catch(e){ stockageOk = false; }
+}
+function migrer(){
+  if(Number(S.version) >= VERSION) return false;
+  S.version = VERSION;
+  sauver();
+  return true;
+}
+/* Contrôle d'étanchéité : une progression orpheline, qui ne correspond ni à un
+   exercice de préparation ni à un exercice importé, est retirée et signalée. */
+function verifierEtancheite(){
+  const connus = new Set();
+  S.cours.forEach(c => (c.items || []).forEach(it => connus.add(it.id)));
+  const orphelins = Object.keys(S.progres)
+    .filter(k => !estPrep(k) && !connus.has(k));
+  orphelins.forEach(k => delete S.progres[k]);
+  if(orphelins.length) sauver();
+  return {orphelins:orphelins.length};
 }
 function poidsDonnees(){
   try{ return JSON.stringify(S).length; }catch(e){ return 0; }
@@ -429,22 +600,34 @@ const RE_DEF = /^(.{3,70}?)\s*(?::|\s[—–]\s)\s*(.{25,})$/;
 const RE_DEF_VERBE = /^(.{3,60}?)\s+(?:est|sont|désigne|désignent|correspond à|correspondent à|se définit comme|consiste à|permet de)\s+(.{20,})$/i;
 const RE_PUCE = /^\s*(?:[-•–*·]|\d{1,2}\s*[.)°]|[a-h]\s*[.)]|[IVX]{1,4}\s*[.)])\s+(.{3,})$/;
 
+const RE_TITRE_MD = /^(#{1,6})\s+(.{2,120})$/;
+const RE_GRAS = /\*\*([^*]{2,90})\*\*/g;
+function sansGras(t){ return String(t||"").replace(/\*\*/g, ""); }
+function grasDe(t){
+  const out = []; let m; RE_GRAS.lastIndex = 0;
+  while((m = RE_GRAS.exec(String(t||""))) !== null){ const v = m[1].trim(); if(v) out.push(v); }
+  return out;
+}
 function decouper(texte){
   const lignes = texte.replace(/\r/g,"").split("\n").map(l => l.replace(/\s+$/,""));
   const blocs = [];
   lignes.forEach(l => {
     const t = l.trim();
     if(!t){ blocs.push({type:"vide", txt:""}); return; }
+    const md = t.match(RE_TITRE_MD);
+    if(md){ blocs.push({type:"titre", txt:sansGras(md[2]).trim(), niveau:md[1].length, brut:t}); return; }
+    const gras = grasDe(t);
     const p = t.match(RE_PUCE);
-    if(p){ blocs.push({type:"puce", txt:p[1].trim(), brut:t}); return; }
-    const estTitre = t.length < 85 && !/[.;:!?]$/.test(t) &&
-      (/^[A-ZÉÈÀÇ0-9]/.test(t)) && t.split(" ").length <= 12 && !RE_DEF.test(t);
-    blocs.push({type: estTitre ? "titre" : "para", txt:t});
+    if(p){ blocs.push({type:"puce", txt:sansGras(p[1]).trim(), brut:sansGras(t), gras}); return; }
+    const nu = sansGras(t);
+    const estTitre = nu.length < 85 && !/[.;:!?]$/.test(nu) &&
+      (/^[A-ZÉÈÀÇ0-9]/.test(nu)) && nu.split(" ").length <= 12 && !RE_DEF.test(nu);
+    blocs.push({type: estTitre ? "titre" : "para", txt:nu, gras});
   });
   return blocs;
 }
 function phrases(texte){
-  return texte.replace(/\s+/g," ")
+  return sansGras(texte).replace(/\s+/g," ")
     .split(/(?<=[.!?;])\s+(?=[A-ZÉÈÀÇ0-9«"])/)
     .map(p => p.trim()).filter(p => p.length > 30 && p.length < 400);
 }
@@ -472,7 +655,9 @@ const SONDES = [
   {re:/\b(?:NIP|IPP|IEP)\s?[:n°]*\s?\d{4,}/gi,        quoi:"identifiant de séjour ou de patient"},
   {re:/\bné(?:e)?\s+le\s+\d{1,2}[\/\s.-]\d{1,2}[\/\s.-]\d{2,4}/gi, quoi:"date de naissance"},
   {re:/\b(?:M\.|Mme|Mlle|Monsieur|Madame)\s+[A-ZÉÈÀ][a-zéèêàçï]+/g, quoi:"nom précédé d'une civilité"},
-  {re:/\bchambre\s?n?°?\s?\d{1,4}\b/gi,               quoi:"numéro de chambre"}
+  {re:/\bchambre\s?n?°?\s?\d{1,4}\b/gi,               quoi:"numéro de chambre"},
+  {re:/\b[\w.%+-]+@[\w.-]+\.[a-z]{2,}\b/gi,           quoi:"adresse électronique"},
+  {re:/(?:\+33|\b0)\s?[1-9](?:[\s.-]?\d{2}){4}\b/g,   quoi:"numéro de téléphone"}
 ];
 function sonderDonnees(t){
   const trouves = [];
@@ -486,6 +671,8 @@ function anonymiser(t){
   r = r.replace(/\bné(e)?\s+le\s+\d{1,2}[\/\s.-]\d{1,2}[\/\s.-]\d{2,4}/gi, "né$1 le [DATE]");
   r = r.replace(/\b(M\.|Mme|Mlle|Monsieur|Madame)\s+[A-ZÉÈÀ][a-zéèêàçï]+(?:\s+[A-ZÉÈÀ][A-ZÉÈÀa-zéèêàçï]+)?/g, "$1 [PATIENT]");
   r = r.replace(/\bchambre\s?n?°?\s?\d{1,4}\b/gi, "chambre [N°]");
+  r = r.replace(/\b[\w.%+-]+@[\w.-]+\.[a-z]{2,}\b/gi, "[COURRIEL]");
+  r = r.replace(/(?:\+33|\b0)\s?[1-9](?:[\s.-]?\d{2}){4}\b/g, "[TÉLÉPHONE]");
   return r;
 }
 /* =========================================================================
@@ -532,10 +719,17 @@ function analyseLocale(texte, ueId){
     if((RE_NORME.test(p) || RE_TEXTE_REG.test(p)) && normes.length < 20) normes.push({txt:p, src:p});
     if(RE_PIEGE.test(p) && pieges.length < 15) pieges.push({txt:p, src:p});
   });
+  // ce que le document met en valeur : titres et passages en gras ou soulignés
+  const saillants = [], vusSail = new Set();
+  blocs.forEach(b => (b.gras || []).forEach(g => {
+    const k = normaliser(g);
+    if(k && !vusSail.has(k)){ vusSail.add(k); saillants.push({txt:g, src:b.txt}); }
+  }));
   blocs.forEach(b => {
     if(b.type === "puce" && b.txt.length > 25 && b.txt.length < 260 && points.length < 30)
-      points.push({txt:b.txt, src:b.txt});
+      points.push({txt:b.txt, src:b.txt, saillant: (b.gras || []).length > 0});
   });
+  points.sort((a,b2) => (b2.saillant ? 1 : 0) - (a.saillant ? 1 : 0));
   if(points.length < 6){
     phr.slice(0, 40).forEach(p => {
       if(points.length < 12 && !points.some(x => x.txt === p) && p.length < 260) points.push({txt:p, src:p});
@@ -555,19 +749,45 @@ function analyseLocale(texte, ueId){
   });
   cloture();
 
+  // plan du cours : un intitulé suivi de ses puces. Sert au classement en deux colonnes.
+  const sections = []; let sec = null;
+  blocs.forEach(b => {
+    if(b.type === "titre"){ if(sec && sec.puces.length) sections.push(sec); sec = {titre:b.txt, puces:[]}; }
+    else if(b.type === "puce" && sec && b.txt.length > 8 && b.txt.length < 140) sec.puces.push(b.txt);
+  });
+  if(sec && sec.puces.length) sections.push(sec);
+
   const titre = (blocs.find(b => b.type === "titre") || {txt:""}).txt;
   const resume = phr.slice(0,2).join(" ");
 
+  // sigles employés sans être explicités nulle part : mentionnés mais non expliqués
+  const expliques = new Set(sigles.map(s => s.sigle));
+  const mentionnes = [], vusM = new Set();
+  let mm; const reSigNu = /\b([A-ZÉÈ]{2,6})\b/g;
+  while((mm = reSigNu.exec(texte)) !== null){
+    const g = mm[1];
+    if(expliques.has(g) || vusM.has(g) || /^(LE|LA|LES|DES|UNE|UN|ET|OU|AU|EN|DU|SI|NF|EN|ISO)$/.test(g)) continue;
+    vusM.add(g);
+    mentionnes.push({txt:"Sigle « " + g + " » employé sans être développé dans le cours.", src:g});
+  }
+
   const fiche = {resume, definitions:definitions.slice(0,20), points:points.slice(0,18),
     chiffres:chiffres.slice(0,14), normes:normes.slice(0,10), pieges:pieges.slice(0,10),
-    sigles:sigles.slice(0,15), procedures:procedures.slice(0,3), titreDetecte:titre};
+    sigles:sigles.slice(0,15), procedures:procedures.slice(0,3),
+    saillants:saillants.slice(0,20), mentionnes:mentionnes.slice(0,12),
+    sections:sections.slice(0,10), complements:null, titreDetecte:titre};
 
-  return {fiche, items: itemsLocaux(fiche, phr, ueId)};
+  return {fiche, phr};
 }
 
 function itemsLocaux(fiche, phr, ueId){
   const items = [];
-  const base = t => ({id:uid(), ueId, type:t, cree:Date.now(), origine:"local"});
+  const base = t => {
+    const o = {id:uid(), ueId, type:t, cree:Date.now(), origine:"local",
+      famille: DEFAUT_FAMILLE[t] || "memo"};
+    if(o.famille === "comp") o.niveau = DEFAUT_NIVEAU[t] || 2;
+    return o;
+  };
 
   // flashcards et questions ouvertes à partir des définitions
   fiche.definitions.forEach(d => {
@@ -627,6 +847,22 @@ function itemsLocaux(fiche, phr, ueId){
       correction: vrai ? "Énoncé conforme au cours." : "Faux : la valeur exacte du cours est « " + m[1] + " " + m[2] + " ».",
       source: c.txt}));
   });
+  // classement en deux colonnes : les intitulés et leurs puces viennent du plan du cours
+  const retenus = new Set((fiche.points || []).map(p => normaliser(p.txt)));
+  const utiles = (fiche.sections || [])
+    .filter(sc => sc.titre && sc.titre.length > 3 && sc.titre.length < 60)
+    .map(sc => ({titre:sc.titre, puces:sc.puces.filter(p => retenus.has(normaliser(p)))}))
+    .filter(sc => sc.puces.length >= 3);
+  if(utiles.length >= 2){
+    const g = utiles[0], d2 = utiles[1];
+    const el = g.puces.slice(0,4).map(t => ({txt:t, col:0}))
+      .concat(d2.puces.slice(0,4).map(t => ({txt:t, col:1})));
+    items.push(Object.assign(base("classer"), {
+      question:"Rangez chaque élément sous l'intitulé du cours auquel il appartient.",
+      colonnes:[g.titre, d2.titre], elements:melanger(el),
+      source: g.titre + " / " + d2.titre}));
+  }
+
   // remise en ordre des procédures
   fiche.procedures.forEach(p => {
     items.push(Object.assign(base("ordre"), {
@@ -660,37 +896,108 @@ async function listerModeles(cle){
     .map(m => ({id:m.name.replace(/^models\//,""), nom:m.displayName || m.name}));
 }
 
-function consigne(ueId){
+function contexteUE(ueId){
   const u = UE(ueId);
-  const ctx = u ? "Le cours relève de l'UE « " + u.nom + " » (domaine " + u.dom + " : " + DOMAINES[u.dom].nom + ")." : "";
+  return u ? "Le cours relève de l'UE « " + u.nom + " » (domaine " + u.dom + " : " + DOMAINES[u.dom].nom + ")." : "";
+}
+
+/* Premier appel : relever la matière, rien d'autre. Aucun exercice à ce stade. */
+function consignePoints(ueId){
   return [
 "Tu assistes un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière (France).",
-ctx,
-"À partir du COURS fourni, produis une fiche de révision et une série d'exercices.",
+contexteUE(ueId),
+"À partir du COURS fourni, relève la matière à retenir. NE PRODUIS AUCUN EXERCICE.",
 "",
 "RÈGLES ABSOLUES :",
-"1. N'utilise QUE le contenu du cours. N'ajoute aucune donnée extérieure, aucune valeur chiffrée, aucune norme, aucun texte réglementaire qui ne figure pas dans le cours.",
-"2. Chaque élément produit doit porter un champ \"source\" contenant une citation littérale du cours (30 à 200 caractères) dont il est tiré.",
-"3. Si le cours ne permet pas de produire un type d'exercice, n'en produis pas. Mieux vaut moins d'exercices que des exercices inventés.",
+"1. N'utilise QUE le contenu du cours. N'ajoute aucune donnée extérieure, aucune valeur chiffrée, aucune norme, aucun texte réglementaire, aucune date qui ne figure pas dans le cours.",
+"2. Chaque élément produit porte un champ \"src\" contenant une citation littérale du cours (30 à 200 caractères) dont il est tiré.",
+"3. Reformuler un fragment en phrase complète est autorisé. En changer le sens est interdit.",
+"4. Si tu as dû deviner le sens d'un fragment trop elliptique, pose \"incertain\": true sur cet élément.",
+"5. Les passages notés [?] ou [passage illisible] sont ignorés. Ne les comble jamais.",
+"6. Ce qui est mentionné dans le cours sans y être expliqué va dans \"mentionnes\", et nulle part ailleurs.",
+"7. Réponds en français, sauf pour l'UE Anglais.",
+"",
+"Réponds UNIQUEMENT par un objet JSON valide, sans texte autour :",
+'{"resume":"3 phrases maximum",',
+'"definitions":[{"terme":"","def":"","src":"","incertain":false}],',
+'"points":[{"txt":"","src":"","incertain":false}],',
+'"chiffres":[{"txt":"","src":"","incertain":false}],',
+'"normes":[{"txt":"","src":"","incertain":false}],',
+'"pieges":[{"txt":"","src":"","incertain":false}],',
+'"sigles":[{"sigle":"","sens":"","src":"","incertain":false}],',
+'"mentionnes":[{"txt":"notion citée sans être expliquée","src":""}]}',
+"",
+"Vise 6 à 12 définitions et 8 à 16 points. Mieux vaut moins d'éléments que des éléments inventés."
+  ].join("\n");
+}
+
+/* Second appel : fabriquer les exercices à partir des seuls points retenus par l'étudiant.
+   Le texte du cours n'est plus transmis. */
+function consigneExercices(ueId){
+  return [
+"Tu assistes un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière (France).",
+contexteUE(ueId),
+"On te donne une FICHE de points déjà validés par l'étudiant. Fabrique des exercices à partir de ces seuls points.",
+"",
+"RÈGLES ABSOLUES :",
+"1. N'utilise QUE le contenu de la fiche. Aucune donnée extérieure, aucune valeur chiffrée ou norme absente de la fiche.",
+"2. Chaque exercice porte un champ \"source\" reprenant le fragment de la fiche dont il est tiré.",
+"3. Si un point ne permet pas de produire un type d'exercice, n'en produis pas.",
 "4. Réponds en français, sauf pour l'UE Anglais.",
 "",
 "Réponds UNIQUEMENT par un objet JSON valide, sans texte autour, de la forme :",
-'{"fiche":{"resume":"3 phrases maximum","definitions":[{"terme":"","def":"","src":""}],"points":[{"txt":"","src":""}],"chiffres":[{"txt":"","src":""}],"normes":[{"txt":"","src":""}],"pieges":[{"txt":"","src":""}],"sigles":[{"sigle":"","sens":"","src":""}]},',
-'"items":[',
-'{"type":"qcm","question":"","options":["","","",""],"reponse":0,"correction":"","source":""},',
-'{"type":"qcmMulti","question":"","options":["","","",""],"reponses":[0,2],"correction":"","source":""},',
-'{"type":"vf","question":"","reponse":true,"correction":"","source":""},',
-'{"type":"flash","recto":"","verso":"","source":""},',
-'{"type":"cloze","question":"phrase avec _____","reponse":"","source":""},',
-'{"type":"ouverte","question":"","attendu":"","motsCles":["",""],"source":""},',
-'{"type":"erreur","question":"situation contenant une non-conformité, tirée du cours","attendu":"la non-conformité et l\'action corrective attendue","motsCles":["",""],"source":""},',
-'{"type":"situation","question":"mise en situation professionnelle","attendu":"réponse structurée attendue","motsCles":["",""],"source":""},',
-'{"type":"ordre","question":"Remettez ces étapes dans l\'ordre.","etapes":["étape 1","étape 2","étape 3"],"source":""}',
+'{"items":[',
+'{"type":"flash","famille":"memo","recto":"","verso":"","source":""},',
+'{"type":"qcm","famille":"memo","question":"","options":["","","",""],"reponse":0,"correction":"","source":""},',
+'{"type":"qcmMulti","famille":"memo","question":"","options":["","","",""],"reponses":[0,2],"correction":"","source":""},',
+'{"type":"vf","famille":"memo","question":"","reponse":true,"correction":"","source":""},',
+'{"type":"ouverte","famille":"memo","question":"","attendu":"","motsCles":["",""],"source":""},',
+'{"type":"choix","famille":"comp","niveau":1,"angle":"reformulation","question":"","options":["","","",""],"reponse":0,"correction":"","source":""},',
+'{"type":"classer","famille":"comp","niveau":2,"question":"","colonnes":["",""],"elements":[{"txt":"","col":0}],"correction":"","source":""},',
+'{"type":"paires","famille":"comp","niveau":2,"question":"","paires":[["",""],["",""]],"source":""},',
+'{"type":"ordre","famille":"comp","niveau":2,"question":"Remettez ces étapes dans l\'ordre.","etapes":["étape 1","étape 2","étape 3"],"source":""},',
+'{"type":"cloze","famille":"comp","niveau":3,"question":"phrase d\'explication avec _____","reponse":"","source":""},',
+'{"type":"redaction","famille":"comp","niveau":4,"question":"","attendu":"","motsCles":["",""],"source":""},',
+'{"type":"erreur","famille":"comp","niveau":4,"question":"situation contenant une non-conformité, tirée de la fiche","attendu":"la non-conformité et l\'action corrective attendue","motsCles":["",""],"source":""},',
+'{"type":"situation","famille":"comp","niveau":4,"question":"mise en situation professionnelle","attendu":"réponse structurée attendue","motsCles":["",""],"source":""}',
 "]}",
 "",
-"Vise 6 à 10 définitions, 6 à 12 points, et 18 à 30 exercices variés couvrant tous les types possibles.",
-"Pour \"ordre\", les étapes doivent être données DANS L'ORDRE CORRECT (l'application les mélangera).",
-"Pour \"erreur\" et \"situation\", la situation doit rester strictement dans le champ décrit par le cours."
+"DEUX FAMILLES :",
+'- "memo" : restituer une définition, un chiffre, une liste, un sigle.',
+'- "comp" : expliquer, distinguer, justifier, transposer. Toujours accompagnée d\'un "niveau" de 1 à 4.',
+"",
+"QUATRE NIVEAUX DE COMPRÉHENSION :",
+"1. Reconnaître, type \"choix\" uniquement, avec un champ \"angle\" valant reformulation, explication, justification, situation ou erreur.",
+"2. Relier et organiser : \"classer\", \"paires\", \"ordre\".",
+"3. Compléter : \"cloze\" portant sur une phrase d'explication, jamais sur une définition recopiée.",
+"4. Rédiger : \"redaction\", \"situation\", \"erreur\".",
+"",
+"RÈGLES DE FABRICATION :",
+"- Pour \"choix\", les trois mauvaises options doivent être plausibles : une trop générale, une trop restrictive, une qui confond avec une notion voisine. Jamais d'option absurde ni de longueur qui trahisse la bonne réponse.",
+"- Pour \"classer\", les deux colonnes portent le nom de deux notions de la fiche, et il y a six à huit éléments à ranger.",
+"- Pour \"ordre\", les étapes sont données DANS L'ORDRE CORRECT : l'application les mélangera.",
+"- Pour \"erreur\" et \"situation\", la situation reste strictement dans le champ décrit par la fiche.",
+"",
+"Vise 18 à 30 exercices, à peu près la moitié dans chaque famille, et couvre les quatre niveaux quand la fiche le permet."
+  ].join("\n");
+}
+
+/* Troisième appel, facultatif et déclenché à la main : rechercher des précisions
+   sur ce que le cours laisse en suspens. En mode texte, jamais en JSON structuré :
+   l'API ne cherche pas sur le web en mode JSON et écrirait des URL de mémoire. */
+function consigneComplements(ueId, mentionnes){
+  return [
+"Tu assistes un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière (France).",
+contexteUE(ueId),
+"Son cours mentionne les notions suivantes sans les expliquer :",
+mentionnes.map((m,i) => (i+1) + ". " + m).join("\n"),
+"",
+"Recherche sur le web des précisions courtes et fiables sur ces notions, en privilégiant les sources primaires françaises :",
+"Légifrance, Haute Autorité de santé, ANSM, ministère chargé de la santé, Ordre national des pharmaciens, SFPC, SF2H, OMéDIT, ASN et IRSN pour la radioprotection, Euro-Pharmat pour les dispositifs médicaux.",
+"",
+"Réponds en texte simple, en français, sans balisage. Une notion par paragraphe, commençant par la notion suivie de deux points.",
+"Trois à cinq lignes par notion au maximum. Si une notion ne donne aucun résultat fiable, écris que l'information n'a pas été trouvée plutôt que de la deviner.",
+"N'écris aucune adresse web : les liens sont récupérés automatiquement."
   ].join("\n");
 }
 
@@ -710,23 +1017,27 @@ function decouperTexte(t, max){
     return morceaux;
   });
 }
-function fusionnerAnalyses(liste){
-  const f = {resume:"", definitions:[], points:[], chiffres:[], normes:[], pieges:[], sigles:[], procedures:[]};
-  let items = [];
-  const vus = {definitions:new Set(), points:new Set(), chiffres:new Set(), normes:new Set(), pieges:new Set(), sigles:new Set()};
+/* Un cours long est découpé, chaque morceau relevé séparément, puis les fiches
+   sont réunies en dédoublonnant. Aucun exercice n'est produit à ce stade. */
+function fusionnerFiches(liste){
+  const f = {resume:"", definitions:[], points:[], chiffres:[], normes:[], pieges:[], sigles:[],
+    procedures:[], mentionnes:[], saillants:[], sections:[], complements:null, titreDetecte:""};
+  const cles = ["definitions","points","chiffres","normes","pieges","sigles","mentionnes"];
+  const vus = {}; cles.forEach(k => vus[k] = new Set());
   liste.forEach(r => {
-    if(!f.resume && r.fiche.resume) f.resume = r.fiche.resume;
-    ["definitions","points","chiffres","normes","pieges","sigles"].forEach(k => {
-      (r.fiche[k] || []).forEach(x => {
-        const c = normaliser(x.terme || x.sigle || x.txt || "");
-        if(c && !vus[k].has(c)){ vus[k].add(c); f[k].push(x); }
-      });
-    });
-    (r.fiche.procedures || []).forEach(x => f.procedures.push(x));
-    items = items.concat(r.items);
+    if(!f.resume && r.resume) f.resume = r.resume;
+    if(!f.titreDetecte && r.titreDetecte) f.titreDetecte = r.titreDetecte;
+    cles.forEach(k => (r[k] || []).forEach(x => {
+      const c = normaliser(x.terme || x.sigle || x.txt || "");
+      if(c && !vus[k].has(c)){ vus[k].add(c); f[k].push(x); }
+    }));
+    (r.procedures || []).forEach(x => f.procedures.push(x));
+    (r.saillants || []).forEach(x => f.saillants.push(x));
+    (r.sections || []).forEach(x => f.sections.push(x));
   });
-  return {fiche:f, items};
+  return f;
 }
+
 async function testerCle(){
   const r = S.reglages;
   const et = [];
@@ -808,12 +1119,7 @@ async function testerCle(){
   ui.testCle.fini = true; rendre();
 }
 
-async function analyseGemini(texte, ueId, cle, modele){
-  const corps = {
-    systemInstruction:{parts:[{text:consigne(ueId)}]},
-    contents:[{role:"user", parts:[{text:"COURS :\n\n" + texte}]}],
-    generationConfig:{temperature:0.2, responseMimeType:"application/json", maxOutputTokens:8192}
-  };
+async function appelGemini(corps, modele, cle){
   const r = await fetch(API + "/models/" + encodeURIComponent(modele) + ":generateContent?key=" + encodeURIComponent(cle),
     {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(corps)});
   if(!r.ok){
@@ -822,35 +1128,162 @@ async function analyseGemini(texte, ueId, cle, modele){
   }
   const d = await r.json();
   const cand = (d.candidates || [])[0];
-  if(!cand) throw new Error("Gemini n'a rien renvoyé. Le cours est peut-être trop long : découpez-le en deux.");
+  if(!cand) throw new Error("Gemini n'a rien renvoyé. Le texte est peut-être trop long : découpez-le en deux.");
+  return cand;
+}
+function lireJson(cand){
   const brut = (cand.content && cand.content.parts || []).map(p => p.text || "").join("");
-  let o;
-  try{ o = JSON.parse(brut.replace(/^```json\s*|```\s*$/g,"").trim()); }
+  try{ return JSON.parse(brut.replace(/^```json\s*|```\s*$/g,"").trim()); }
   catch(e){ throw new Error("La réponse de Gemini n'était pas exploitable. Relancez l'analyse."); }
-  return normaliserSortieIA(o, ueId);
 }
 
-function normaliserSortieIA(o, ueId){
-  const f = o.fiche || {};
+/* Le relevé accepte les cours longs : ils sont découpés et les fiches réunies. */
+async function analyseGeminiPoints(texte, ueId, cle, modele){
+  const morceaux = decouperTexte(texte, 24000);
+  const fiches = [];
+  for(const m of morceaux){
+    const cand = await appelGemini({
+      systemInstruction:{parts:[{text:consignePoints(ueId)}]},
+      contents:[{role:"user", parts:[{text:"COURS :\n\n" + m}]}],
+      generationConfig:{temperature:0.2, responseMimeType:"application/json", maxOutputTokens:8192}
+    }, modele, cle);
+    fiches.push(normaliserFiche(lireJson(cand)));
+  }
+  return fiches.length === 1 ? fiches[0] : fusionnerFiches(fiches);
+}
+
+async function analyseGeminiExercices(fiche, ueId, cle, modele){
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consigneExercices(ueId)}]},
+    contents:[{role:"user", parts:[{text:"FICHE VALIDÉE :\n\n" + ficheEnTexte(fiche)}]}],
+    generationConfig:{temperature:0.2, responseMimeType:"application/json", maxOutputTokens:8192}
+  }, modele, cle);
+  return normaliserItems(lireJson(cand).items, ueId);
+}
+
+/* Compléments : mode texte obligatoire, et seules les adresses renvoyées par
+   groundingMetadata sont conservées. Aucune URL écrite par le modèle n'est retenue. */
+async function chercherComplements(ueId, mentionnes, cle, modele){
+  const cand = await appelGemini({
+    contents:[{role:"user", parts:[{text:consigneComplements(ueId, mentionnes)}]}],
+    tools:[{google_search:{}}],
+    generationConfig:{temperature:0.2, maxOutputTokens:2048}
+  }, modele, cle);
+  const txt = (cand.content && cand.content.parts || []).map(p => p.text || "").join("").trim();
+  const chunks = (cand.groundingMetadata && cand.groundingMetadata.groundingChunks) || [];
+  const vues = new Set(), liens = [];
+  chunks.forEach(c => {
+    const w = c && c.web;
+    if(!w || !w.uri || vues.has(w.uri)) return;
+    vues.add(w.uri);
+    liens.push({titre: w.title || w.uri, url: w.uri});
+  });
+  if(!txt) throw new Error("La recherche n'a rien renvoyé d'exploitable.");
+  return {texte: txt.replace(/https?:\/\/\S+/g, "").replace(/[ \t]{2,}/g," "),
+    liens, date: new Date().toISOString()};
+}
+
+/* La fiche validée est transmise au second appel sous forme de texte, jamais le cours. */
+function ficheEnTexte(f){
+  const l = [];
+  if(f.resume) l.push("Résumé : " + f.resume);
+  const bloc = (t, arr, fn) => { if(arr && arr.length){ l.push("", t.toUpperCase()); arr.forEach(x => l.push("- " + fn(x))); } };
+  bloc("Définitions", f.definitions, x => x.terme + " : " + x.def);
+  bloc("Sigles", f.sigles, x => x.sigle + " : " + x.sens);
+  bloc("Points à retenir", f.points, x => x.txt);
+  bloc("Valeurs chiffrées", f.chiffres, x => x.txt);
+  bloc("Textes et normes", f.normes, x => x.txt);
+  bloc("Pièges", f.pieges, x => x.txt);
+  (f.procedures || []).forEach(p => { l.push("", "SUITE D'ÉTAPES"); p.etapes.forEach((e,i) => l.push((i+1) + ". " + e)); });
+  return l.join("\n");
+}
+
+const ANGLES = {
+  reformulation:"Reformulation", explication:"Explication", justification:"Justification",
+  situation:"Situation", erreur:"Erreur à repérer"
+};
+
+/* Le correcteur ne dispose que de la question, de l'attendu et du passage source.
+   Il n'a pas le droit d'exiger ce qui n'y figure pas. */
+function consigneCorrection(){
+  return [
+"Tu corriges la réponse écrite d'un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière.",
+"Tu ne disposes que de la question, de la réponse attendue et du passage du cours dont elle est tirée.",
+"",
+"RÈGLES ABSOLUES :",
+"1. Ne juge que par rapport à l'attendu et au passage source fournis.",
+"2. N'exige jamais un élément qui ne figure pas dans l'attendu ou dans le passage source, même si tu le sais vrai par ailleurs.",
+"3. Ne corrige pas ce qui relève du style. Seul le fond compte.",
+"4. Réponds en français.",
+"",
+"Réponds UNIQUEMENT par un objet JSON valide :",
+'{"note":0,"commentaire":"deux phrases au maximum","manque":["élément attendu et absent"],"present":["élément attendu et présent"]}',
+"",
+"La note va de 0 à 3 : 0 hors sujet, 1 très incomplet, 2 correct mais incomplet, 3 complet."
+  ].join("\n");
+}
+async function corrigerRedaction(it, reponse, cle, modele){
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consigneCorrection()}]},
+    contents:[{role:"user", parts:[{text:
+      "QUESTION :\n" + (it.question || "") +
+      "\n\nRÉPONSE ATTENDUE :\n" + (it.attendu || "") +
+      "\n\nPASSAGE SOURCE DU COURS :\n" + (it.source || "(non disponible)") +
+      "\n\nRÉPONSE DE L'ÉTUDIANT :\n" + (reponse || "(vide)")}]}],
+    generationConfig:{temperature:0.1, responseMimeType:"application/json", maxOutputTokens:1024}
+  }, modele, cle);
+  const o = lireJson(cand);
+  const n = Math.max(0, Math.min(3, Math.round(Number(o.note))));
+  if(!isFinite(n)) throw new Error("Note illisible.");
+  return {note:n, commentaire:String(o.commentaire || ""),
+    manque: Array.isArray(o.manque) ? o.manque.map(String) : [],
+    present: Array.isArray(o.present) ? o.present.map(String) : []};
+}
+function blocCorrection(c){
+  return `<div class="verdict ${c.note >= 2 ? "ok" : "ko"}">
+    <b>Correction : ${c.note}/3</b>${esc(c.commentaire)}
+    ${c.present.length ? `<div class="liste-puces" style="margin-top:7px">${c.present.map(x => `<span class="puce">✓ ${esc(tronquer(x,60))}</span>`).join("")}</div>` : ""}
+    ${c.manque.length ? `<div class="liste-puces" style="margin-top:5px">${c.manque.map(x => `<span class="puce">○ ${esc(tronquer(x,60))}</span>`).join("")}</div>` : ""}</div>`;
+}
+
+function normaliserFiche(o){
+  const f = o || {};
   const tab = x => Array.isArray(x) ? x : [];
-  const fiche = {
+  const inc = x => x && x.incertain === true;
+  return {
     resume: f.resume || "",
-    definitions: tab(f.definitions).filter(d => d && d.terme && d.def).map(d => ({terme:d.terme, def:d.def, src:d.src || ""})),
-    points: tab(f.points).filter(p => p && p.txt).map(p => ({txt:p.txt, src:p.src || ""})),
-    chiffres: tab(f.chiffres).filter(c => c && c.txt).map(c => ({txt:c.txt, src:c.src || ""})),
-    normes: tab(f.normes).filter(n => n && n.txt).map(n => ({txt:n.txt, src:n.src || ""})),
-    pieges: tab(f.pieges).filter(p => p && p.txt).map(p => ({txt:p.txt, src:p.src || ""})),
-    sigles: tab(f.sigles).filter(s => s && s.sigle).map(s => ({sigle:s.sigle, sens:s.sens || "", src:s.src || ""})),
-    procedures: []
+    definitions: tab(f.definitions).filter(d => d && d.terme && d.def)
+      .map(d => ({terme:d.terme, def:d.def, src:d.src || "", incertain:inc(d)})),
+    points: tab(f.points).filter(p => p && p.txt).map(p => ({txt:p.txt, src:p.src || "", incertain:inc(p)})),
+    chiffres: tab(f.chiffres).filter(c => c && c.txt).map(c => ({txt:c.txt, src:c.src || "", incertain:inc(c)})),
+    normes: tab(f.normes).filter(n => n && n.txt).map(n => ({txt:n.txt, src:n.src || "", incertain:inc(n)})),
+    pieges: tab(f.pieges).filter(p => p && p.txt).map(p => ({txt:p.txt, src:p.src || "", incertain:inc(p)})),
+    sigles: tab(f.sigles).filter(s => s && s.sigle)
+      .map(s => ({sigle:s.sigle, sens:s.sens || "", src:s.src || "", incertain:inc(s)})),
+    mentionnes: tab(f.mentionnes).filter(m => m && m.txt).map(m => ({txt:m.txt, src:m.src || ""})),
+    procedures: [], saillants: [], sections: [], complements: null, titreDetecte: ""
   };
+}
+
+function normaliserItems(liste, ueId){
   const items = [];
-  tab(o.items).forEach(it => {
+  const poser = (b, it) => {
+    b.famille = it.famille === "comp" ? "comp" : (it.famille === "memo" ? "memo" : (DEFAUT_FAMILLE[it.type] || "memo"));
+    if(b.famille === "comp"){
+      const n = Number(it.niveau);
+      b.niveau = n >= 1 && n <= 4 ? n : (DEFAUT_NIVEAU[it.type] || 2);
+    }
+    return b;
+  };
+  (Array.isArray(liste) ? liste : []).forEach(it => {
     if(!it || !TYPES[it.type]) return;
-    const b = {id:uid(), ueId, type:it.type, cree:Date.now(), origine:"gemini",
-      source: it.source || "", correction: it.correction || ""};
-    if(it.type === "qcm" && Array.isArray(it.options) && it.options.length >= 2){
-      items.push(Object.assign(b, {question:it.question, options:it.options,
-        reponse: Math.max(0, Math.min(it.options.length - 1, Number(it.reponse) || 0))}));
+    const b = poser({id:uid(), ueId, type:it.type, cree:Date.now(), origine:"gemini",
+      source: it.source || "", correction: it.correction || ""}, it);
+    if((it.type === "qcm" || it.type === "choix") && Array.isArray(it.options) && it.options.length >= 2){
+      const o = Object.assign(b, {question:it.question, options:it.options,
+        reponse: Math.max(0, Math.min(it.options.length - 1, Number(it.reponse) || 0))});
+      if(it.type === "choix") o.angle = ANGLES[it.angle] ? it.angle : "explication";
+      items.push(o);
     } else if(it.type === "qcmMulti" && Array.isArray(it.options) && Array.isArray(it.reponses) && it.reponses.length){
       items.push(Object.assign(b, {question:it.question, options:it.options,
         reponses: it.reponses.map(Number).filter(n => n >= 0 && n < it.options.length)}));
@@ -860,14 +1293,25 @@ function normaliserSortieIA(o, ueId){
       items.push(Object.assign(b, {recto:it.recto, verso:it.verso}));
     } else if(it.type === "cloze" && it.question && it.reponse){
       items.push(Object.assign(b, {question:it.question, reponse:it.reponse}));
-    } else if((it.type === "ouverte" || it.type === "erreur" || it.type === "situation") && it.question){
+    } else if(it.type === "paires" && Array.isArray(it.paires) && it.paires.length >= 2){
+      const p = it.paires.filter(x => Array.isArray(x) && x[0] && x[1]).map(x => [String(x[0]), String(x[1])]);
+      if(p.length >= 2) items.push(Object.assign(b, {question: it.question || "Associez chaque terme à sa définition.", paires:p}));
+    } else if(it.type === "classer" && Array.isArray(it.colonnes) && it.colonnes.length === 2 && Array.isArray(it.elements)){
+      const el = it.elements.filter(e => e && e.txt && (Number(e.col) === 0 || Number(e.col) === 1))
+        .map(e => ({txt:String(e.txt), col:Number(e.col)}));
+      const c0 = el.filter(e => e.col === 0).length;
+      if(el.length >= 4 && c0 > 0 && c0 < el.length){
+        items.push(Object.assign(b, {question: it.question || "Rangez chaque élément dans la bonne colonne.",
+          colonnes: it.colonnes.map(String), elements: el}));
+      }
+    } else if(TYPES_REDIGES.includes(it.type) && it.question){
       items.push(Object.assign(b, {question:it.question, attendu:it.attendu || "",
         motsCles: Array.isArray(it.motsCles) && it.motsCles.length ? it.motsCles : motsCles(it.attendu || "", 6)}));
     } else if(it.type === "ordre" && Array.isArray(it.etapes) && it.etapes.length >= 3){
       items.push(Object.assign(b, {question: it.question || "Remettez ces étapes dans l'ordre.", etapes:it.etapes}));
     }
   });
-  return {fiche, items};
+  return items;
 }
 /* =========================================================================
    8. PROGRESSION — trois boîtes, carnet d'erreurs, niveau de confiance
@@ -909,6 +1353,16 @@ function statsUE(ueId){
   return {total:its.length, vus:vus.length, sus:sus.length,
     part: its.length ? Math.round(sus.length / its.length * 100) : 0};
 }
+function statsFamille(f){
+  const l = tousItems().filter(i => familleDe(i) === f);
+  const sus = l.filter(i => S.progres[i.id] && S.progres[i.id].boite === 3);
+  return {total:l.length, sus:sus.length, part: l.length ? Math.round(sus.length/l.length*100) : 0};
+}
+function statsNiveau(n){
+  const l = tousItems().filter(i => familleDe(i) === "comp" && niveauDe(i) === n);
+  const sus = l.filter(i => S.progres[i.id] && S.progres[i.id].boite === 3);
+  return {total:l.length, sus:sus.length, part: l.length ? Math.round(sus.length/l.length*100) : 0};
+}
 function statsDomaine(d){
   const ues = UES.filter(u => u.dom === d);
   let total = 0, sus = 0, ects = 0, ectsCouverts = 0;
@@ -919,28 +1373,134 @@ function statsDomaine(d){
 /* =========================================================================
    14. IMPRESSION
    ========================================================================= */
-function blocImp(titre, contenu){ return contenu ? `<h2>${titre}</h2>${contenu}` : ""; }
-function imprimerFiche(id){
-  const c = S.cours.find(x => x.id === id); if(!c) return;
-  const u = UE(c.ueId), f = c.fiche, dense = ui.densite === "dense";
-  let h = `<div class="f-print ${dense ? "dense" : ""}">
-    <div class="f-entete"><h1>${esc(c.titre)}</h1>
-      <div class="f-meta">${u ? esc(u.id) + " · domaine " + u.dom + " · " + u.ects + " ECTS" : ""}<br>${dateFr(c.date)}</div></div>`;
-  if(f.resume && !dense) h += `<p style="margin-bottom:7pt">${esc(f.resume)}</p>`;
-  const li = (l, ch) => `<ul>${l.map(x => `<li>${esc(x[ch])}</li>`).join("")}</ul>`;
-  h += `<div class="${dense ? "cols" : ""}">`;
-  h += blocImp("Définitions", f.definitions.length ? `<ul>${f.definitions.map(x =>
-    `<li><strong>${esc(x.terme)}</strong> — ${esc(dense ? tronquer(x.def,120) : x.def)}</li>`).join("")}</ul>` : "");
-  if(f.sigles && f.sigles.length) h += blocImp("Sigles", `<ul>${f.sigles.map(x => `<li><strong>${esc(x.sigle)}</strong> — ${esc(x.sens)}</li>`).join("")}</ul>`);
-  h += blocImp("Points à retenir", f.points.length ? li(dense ? f.points.slice(0,10) : f.points, "txt") : "");
-  h += `</div>`;
-  h += blocImp("Chiffres clés", f.chiffres.length ? `<div class="enc">${li(f.chiffres,"txt")}</div>` : "");
-  h += blocImp("Textes et normes de référence", f.normes.length ? `<div class="enc">${li(f.normes,"txt")}</div>` : "");
-  h += blocImp("Pièges", f.pieges.length ? `<div class="enc">${li(f.pieges,"txt")}</div>` : "");
-  if(f.procedures && f.procedures.length && !dense){
-    h += blocImp("Suites d'étapes", f.procedures.map(p => `<ol>${p.etapes.map(e => `<li>${esc(e)}</li>`).join("")}</ol>`).join(""));
+/* Rubriques imprimées, dans l'ordre. Une rubrique vide ne s'imprime pas. */
+const RUB_IMP = [
+  {cle:"definitions", nom:"Définitions",   corps:x => `<span class="terme">${esc(x.terme)}</span> — ${esc(x.def)}`,
+                                           muet:x => `<span class="terme">${esc(x.terme)}</span><div class="lignes"></div><div class="lignes"></div>`},
+  {cle:"sigles",      nom:"Sigles",        corps:x => `<span class="terme">${esc(x.sigle)}</span> — ${esc(x.sens)}`,
+                                           muet:x => `<span class="terme">${esc(x.sigle)}</span> — <span class="creux">${"…".repeat(14)}</span>`},
+  {cle:"points",      nom:"À savoir par cœur", corps:x => esc(x.txt), muet:x => esc(masquerChiffres(x.txt))},
+  {cle:"chiffres",    nom:"Chiffres clés", corps:x => esc(x.txt), muet:x => esc(masquerChiffres(x.txt))},
+  {cle:"normes",      nom:"Textes et normes de référence", corps:x => esc(x.txt), muet:x => esc(masquerChiffres(x.txt))},
+  {cle:"pieges",      nom:"Pièges",        corps:x => esc(x.txt), muet:x => esc(masquerChiffres(x.txt))},
+  {cle:"procedures",  nom:"Suites d'étapes",
+    corps:x => `<ol class="et">${(x.etapes||[]).map(e => `<li>${esc(e)}</li>`).join("")}</ol>`,
+    muet:x => `<ol class="et">${(x.etapes||[]).map(() => `<li><span class="lignes" style="display:block"></span></li>`).join("")}</ol>`}
+];
+const RE_CHIFFRE_G = new RegExp("(\\d+(?:[.,]\\d+)?)(\\s?(?:" + UNITES + "))", "g");
+/* Version muette : les valeurs chiffrées deviennent des pointillés à compléter. */
+function masquerChiffres(t){ return String(t||"").replace(RE_CHIFFRE_G, "……$2"); }
+
+/* Tri d'impression, propre à chaque cours et conservé d'une fois sur l'autre. */
+function triDe(c){
+  if(!c.tri) c.tri = {exclus:{}, valeur:{}};
+  if(!c.tri.exclus) c.tri.exclus = {};
+  if(!c.tri.valeur) c.tri.valeur = {};
+  return c.tri;
+}
+const cleTri = (cle, i) => cle + ":" + i;
+function retenusImp(c, cle){
+  const t = triDe(c), l = (c.fiche[cle] || []);
+  return l.map((x,i) => ({x, i})).filter(o => !t.exclus[cleTri(cle, o.i)]);
+}
+function nbImprimes(c){ return RUB_IMP.reduce((n,r) => n + retenusImp(c, r.cle).length, 0); }
+
+function enteteImp(c, sousTitre){
+  const u = UE(c.ueId), d = u ? u.dom : 1;
+  return `<div class="bandeau" style="background:${u ? DOMAINES[d].coul : "#17B890"}"></div>
+    <div class="f-entete"><div class="f-code">${u ? esc(u.id) : ""}<br>${u ? u.ects + " ECTS" : ""}<br>D${u ? u.dom : "—"}</div>
+      <div><h1>${esc(c.titre)}</h1>
+      <div class="f-sous">${u ? esc(u.nom) : ""} · ${dateFr(c.date)}${sousTitre ? " · " + esc(sousTitre) : ""}</div></div></div>`;
+}
+function piedImp(){
+  return `<div class="pied">En cas d'écart avec le cours de votre centre de formation, c'est le cours qui fait foi pour l'examen.
+    Les compléments hors cours, s'il y en a, ne viennent pas de vos notes.</div>`;
+}
+function blocQuestions(n){
+  return `<div class="rub"><div class="rub-t">Mes questions</div><div class="rub-c">
+    ${Array.from({length:n}, () => `<div class="lignes"></div>`).join("")}</div></div>`;
+}
+
+/* Construit la fiche dans l'un des cinq modes. */
+function construireFiche(c, mode){
+  const muet = mode === "muette";
+  const cls = ["f-print", mode === "nb" ? "nb" : (mode === "compacte" ? "compacte nb" : "couleur")];
+  const t = triDe(c);
+  let h = `<div class="${cls.join(" ")}">` + enteteImp(c, muet ? "version muette" : (mode === "compacte" ? "version compacte" : ""));
+
+  RUB_IMP.forEach(r => {
+    const l = retenusImp(c, r.cle);
+    if(!l.length) return;
+    h += `<div class="rub r-${r.cle}"><div class="rub-t">${esc(r.nom)}</div><div class="rub-c">`;
+    l.forEach((o,rang) => {
+      const v = t.valeur[cleTri(r.cle, o.i)] || "";
+      h += `<div class="el ${v}"><span class="num">${rang + 1}</span><span class="co">${
+        muet ? r.muet(o.x) : r.corps(o.x)}</span></div>`;
+    });
+    h += visHtml(c, "rub:" + r.cle, true);
+    h += `</div></div>`;
+  });
+
+  if((c.tableaux || []).length && mode !== "compacte"){
+    h += `<div class="rub"><div class="rub-t">Tableaux du document</div><div class="rub-c">`;
+    c.tableaux.forEach(tb => {
+      const l = tb.lignes || [];
+      if(!l.length) return;
+      h += `<table class="t-imp"><thead><tr>${l[0].map(x => `<th>${esc(x)}</th>`).join("")}</tr></thead>
+        <tbody>${l.slice(1).map(rr => `<tr>${rr.map(x => `<td>${esc(muet ? masquerChiffres(x) : x)}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+    });
+    h += `</div></div>`;
   }
-  $("#impression").innerHTML = h + `</div>`;
+  const men = (c.fiche.mentionnes || []);
+  if(men.length && mode !== "compacte"){
+    h += `<div class="rub"><div class="rub-t">Resté en suspens</div><div class="rub-c">` +
+      men.map((m,i) => `<div class="el"><span class="num">${i+1}</span><span class="co">${esc(m.txt)}</span></div>`).join("") +
+      `</div></div>`;
+  }
+  const cp = c.fiche.complements;
+  if(cp && mode !== "compacte"){
+    h += `<div class="rub r-complements"><div class="rub-t">Compléments hors cours</div><div class="rub-c">
+      <div class="el"><span class="num">!</span><span class="co">
+      ${cp.texte.split(/\n+/).filter(x => x.trim()).map(x => `<div>${esc(x.trim())}</div>`).join("")}
+      ${(cp.liens||[]).map(l => `<div class="ex">${esc(l.titre || l.url)}</div>`).join("")}</span></div></div></div>`;
+  }
+  const vfin = visHtml(c, "fin", true);
+  if(vfin) h += `<div class="rub"><div class="rub-t">Schémas</div><div class="rub-c">${vfin}</div></div>`;
+  h += blocQuestions(mode === "compacte" ? 3 : 6);
+  return h + piedImp() + `</div>`;
+}
+
+/* Flashcards : 8 par page. Le verso inverse les colonnes deux à deux pour qu'après
+   une impression recto-verso sur le bord long, chaque dos tombe en face de son recto. */
+function cartesDe(c){
+  const out = [];
+  retenusImp(c, "definitions").forEach(o => out.push({r:o.x.terme, v:o.x.def}));
+  retenusImp(c, "sigles").forEach(o => out.push({r:o.x.sigle, v:o.x.sens}));
+  return out;
+}
+const ORDRE_VERSO = [1,0,3,2,5,4,7,6];
+function construireCartes(c){
+  const l = cartesDe(c), u = UE(c.ueId), ref = (u ? u.id : "") + " · " + tronquer(c.titre, 22);
+  if(!l.length) return `<div class="f-print"><p>Aucune définition ni sigle retenu : rien à découper.</p></div>`;
+  let h = `<div class="f-print nb">`;
+  for(let p = 0; p < l.length; p += 8){
+    // la dernière page est complétée par des emplacements vides : sans cela la grille
+    // du verso ne compte pas le même nombre de cases et les dos se décalent
+    const page = l.slice(p, p + 8);
+    while(page.length < 8) page.push(null);
+    h += `<div class="f-cartes">` + page.map(x =>
+      `<div class="f-carte">${x ? `<div class="r">${esc(x.r)}</div><div class="ref">${esc(ref)}</div>` : ""}</div>`).join("") + `</div>`;
+    h += `<div class="f-cartes">` + ORDRE_VERSO.map(k => {
+      const x = page[k];
+      return `<div class="f-carte">${x ? `<div class="v">${esc(x.v)}</div>` : ""}</div>`;
+    }).join("") + `</div>`;
+  }
+  return h + `</div>`;
+}
+
+function imprimerFiche(id, mode){
+  const c = S.cours.find(x => x.id === id); if(!c) return;
+  $("#impression").innerHTML = mode === "cartes" ? construireCartes(c) : construireFiche(c, mode || "couleur");
   window.print();
 }
 function reponseLisible(i){
@@ -957,42 +1517,47 @@ function imprimerUE(ueId){
   const u = UE(ueId); if(!u) return;
   const L = LECONS[ueId], cours = S.cours.filter(c => c.ueId === ueId);
   const exos = itemsExos(ueId).concat(tousItems().filter(i => i.ueId === ueId));
-  let h = `<div class="f-print"><div class="f-entete"><h1>${esc(u.id + " · " + u.nom)}</h1>
-    <div class="f-meta">domaine ${u.dom} · ${u.ects} ECTS<br>${dateFr(new Date().toISOString())}</div></div>`;
+  let h = `<div class="f-print couleur">
+    <div class="bandeau" style="background:${DOMAINES[u.dom].coul}"></div>
+    <div class="f-entete"><div class="f-code">${esc(u.id)}<br>${u.ects} ECTS<br>D${u.dom}</div>
+      <div><h1>${esc(u.nom)}</h1>
+      <div class="f-sous">${esc(DOMAINES[u.dom].nom)} · ${dateFr(new Date().toISOString())}</div></div></div>`;
+  const rub = (t, c) => c ? `<div class="rub"><div class="rub-t">${t}</div><div class="rub-c">${c}</div></div>` : "";
   if(L){
-    h += `<h2>Leçon de préparation</h2>`;
+    let hl = "";
     L.diapos.forEach(d => {
       if(d.t === "sources"){
-        h += `<div class="enc"><strong>Sources</strong><ul>` + d.liste.map(s =>
+        hl += `<div class="enc"><strong>Sources</strong><ul>` + d.liste.map(s =>
           `<li>${esc(s.titre)} — ${esc(s.ref)}<br>${esc(s.url)}</li>`).join("") + `</ul>`+
           (d.note ? `<p>${esc(d.note)}</p>` : "") + `</div>`;
         return;
       }
-      if(d.titre) h += `<p><strong>${esc(d.titre)}</strong></p>`;
-      if(d.texte) h += `<p>${esc(d.texte)}</p>`;
-      if(d.paras) h += d.paras.map(x => `<p>${esc(x)}</p>`).join("");
-      if(d.mots) h += `<ul>` + d.mots.map(m => `<li><strong>${esc(m.m)}</strong> — ${esc(m.d)}</li>`).join("") + `</ul>`;
-      if(d.etapes) h += `<ol>` + d.etapes.map(e => `<li>${esc(e)}</li>`).join("") + `</ol>`;
-      if(d.lignes) h += `<ul>` + d.lignes.map(l => `<li><strong>${esc(l.v)}</strong> — ${esc(l.l)}</li>`).join("") + `</ul>`;
-      if(d.encart) h += `<div class="enc">${esc(d.encart.titre || "")} ${esc(d.encart.texte)}</div>`;
-      if(d.t === "quiz") h += `<div class="enc">${esc(d.question)}<br>Réponse : ${esc(d.options[d.bonne])}<br>${esc(d.expl)}</div>`;
-      if(d.note) h += `<p>${esc(d.note)}</p>`;
+      if(d.titre) hl += `<p><strong>${esc(d.titre)}</strong></p>`;
+      if(d.texte) hl += `<p>${esc(d.texte)}</p>`;
+      if(d.paras) hl += d.paras.map(x => `<p>${esc(x)}</p>`).join("");
+      if(d.mots) hl += `<ul>` + d.mots.map(m => `<li><strong>${esc(m.m)}</strong> — ${esc(m.d)}</li>`).join("") + `</ul>`;
+      if(d.etapes) hl += `<ol>` + d.etapes.map(e => `<li>${esc(e)}</li>`).join("") + `</ol>`;
+      if(d.lignes) hl += `<ul>` + d.lignes.map(l => `<li><strong>${esc(l.v)}</strong> — ${esc(l.l)}</li>`).join("") + `</ul>`;
+      if(d.encart) hl += `<div class="enc">${esc(d.encart.titre || "")} ${esc(d.encart.texte)}</div>`;
+      if(d.t === "quiz") hl += `<div class="enc">${esc(d.question)}<br>Réponse : ${esc(d.options[d.bonne])}<br>${esc(d.expl)}</div>`;
+      if(d.note) hl += `<p>${esc(d.note)}</p>`;
     });
+    h += rub("Leçon de préparation", hl);
   }
   cours.forEach(c => {
     const f = c.fiche;
-    h += `<h2>Fiche · ${esc(c.titre)}</h2>`;
-    if(f.resume) h += `<p>${esc(f.resume)}</p>`;
-    if(f.definitions.length) h += `<ul>` + f.definitions.map(x => `<li><strong>${esc(x.terme)}</strong> — ${esc(x.def)}</li>`).join("") + `</ul>`;
-    if(f.points.length) h += `<ul>` + f.points.map(x => `<li>${esc(x.txt)}</li>`).join("") + `</ul>`;
-    if(f.chiffres.length) h += `<div class="enc"><ul>` + f.chiffres.map(x => `<li>${esc(x.txt)}</li>`).join("") + `</ul></div>`;
+    let hf = "";
+    if(f.resume) hf += `<p>${esc(f.resume)}</p>`;
+    if(f.definitions.length) hf += `<ul>` + f.definitions.map(x => `<li><strong>${esc(x.terme)}</strong> — ${esc(x.def)}</li>`).join("") + `</ul>`;
+    if(f.points.length) hf += `<ul>` + f.points.map(x => `<li>${esc(x.txt)}</li>`).join("") + `</ul>`;
+    if(f.chiffres.length) hf += `<ul>` + f.chiffres.map(x => `<li>${esc(x.txt)}</li>`).join("") + `</ul>`;
+    h += rub("Fiche · " + esc(tronquer(c.titre, 26)), hf);
   });
   if(exos.length){
-    h += `<h2>Exercices et réponses (${exos.length})</h2><ul>`;
-    exos.forEach(i => h += `<li><strong>${esc(tronquer(i.question || i.recto || "", 240))}</strong><br>${esc(tronquer(reponseLisible(i), 300))}</li>`);
-    h += `</ul>`;
+    h += rub("Exercices et réponses (" + exos.length + ")", `<ul>` +
+      exos.map(i => `<li><strong>${esc(tronquer(i.question || i.recto || "", 240))}</strong><br>${esc(tronquer(reponseLisible(i), 300))}</li>`).join("") + `</ul>`);
   }
-  $("#impression").innerHTML = h + `</div>`;
+  $("#impression").innerHTML = h + piedImp() + `</div>`;
   window.print();
 }
 function imprimerErreurs(){
@@ -1000,18 +1565,30 @@ function imprimerErreurs(){
   if(!l.length) return;
   const parUE = {};
   l.forEach(i => (parUE[i.ueId] = parUE[i.ueId] || []).push(i));
-  let h = `<div class="f-print"><div class="f-entete"><h1>Mes points faibles</h1>
-    <div class="f-meta">${l.length} exercice${l.length>1?"s":""}<br>${dateFr(new Date().toISOString())}</div></div>`;
+  let h = `<div class="f-print couleur"><div class="bandeau"></div>
+    <div class="f-entete"><div class="f-code">POINTS<br>FAIBLES<br>${l.length} ex.</div>
+      <div><h1>Mes points faibles</h1>
+      <div class="f-sous">Exercices ratés et encore en première boîte · ${dateFr(new Date().toISOString())}</div></div></div>`;
   Object.keys(parUE).forEach(id => {
     const u = UE(id);
-    h += `<h2>${u ? esc(u.id + " · " + u.nom) : esc(id)}</h2><ul>`;
-    parUE[id].forEach(i => {
-      const rep = reponseLisible(i);
-      h += `<li><strong>${esc(i.question || i.recto || "")}</strong><br>${esc(tronquer(rep, 260))}</li>`;
+    h += `<div class="rub"><div class="rub-t">${u ? esc(u.id) : esc(id)}<br>${u ? esc(tronquer(u.nom, 40)) : ""}</div><div class="rub-c">`;
+    parUE[id].forEach((i,rang) => {
+      let rep = "";
+      if(i.type === "flash") rep = i.verso;
+      else if(i.type === "qcm" || i.type === "choix") rep = i.options[i.reponse];
+      else if(i.type === "qcmMulti") rep = (i.reponses||[]).map(n => i.options[n]).join(" ; ");
+      else if(i.type === "vf") rep = i.reponse ? "Vrai" : "Faux";
+      else if(i.type === "cloze") rep = i.reponse;
+      else if(i.type === "ordre") rep = i.etapes.join(" → ");
+      else if(i.type === "paires") rep = i.paires.map(p => p[0] + " → " + p[1]).join(" ; ");
+      else if(i.type === "classer") rep = (i.elements||[]).map(e => e.txt + " → " + ((i.colonnes||[])[e.col]||"")).join(" ; ");
+      else rep = i.attendu || (i.motsCles || []).join(", ");
+      h += `<div class="el"><span class="num">${rang+1}</span><span class="co">
+        <span class="terme">${esc(i.question || i.recto || "")}</span><br>${esc(tronquer(rep, 260))}</span></div>`;
     });
-    h += `</ul>`;
+    h += `</div></div>`;
   });
-  $("#impression").innerHTML = h + `</div>`;
+  $("#impression").innerHTML = h + piedImp() + `</div>`;
   window.print();
 }
 
@@ -1036,6 +1613,113 @@ function texteFiche(c){
 }
 
 /* =========================================================================
+   16bis. IMAGES — base séparée des fiches
+   Le stockage local plafonne vers 5 Mo, que trois schémas suffisent à saturer :
+   les images vont dans IndexedDB, avec repli en mémoire si la base est refusée.
+   ========================================================================= */
+const BASE_IMG = "depph_images", MAGASIN = "visuels";
+let baseImg = null, baseImgKo = false;
+const imgMemoire = new Map();
+const URL_IMG = {};
+
+function ouvrirBaseImg(){
+  if(baseImg) return Promise.resolve(baseImg);
+  if(baseImgKo || !window.indexedDB) return Promise.reject(new Error("base indisponible"));
+  return new Promise((ok, ko) => {
+    let r;
+    try{ r = indexedDB.open(BASE_IMG, 1); }
+    catch(e){ baseImgKo = true; return ko(e); }
+    r.onupgradeneeded = () => { const d = r.result;
+      if(!d.objectStoreNames.contains(MAGASIN)) d.createObjectStore(MAGASIN); };
+    r.onsuccess = () => { baseImg = r.result; ok(baseImg); };
+    r.onerror = () => { baseImgKo = true; ko(r.error || new Error("ouverture refusée")); };
+    r.onblocked = () => { baseImgKo = true; ko(new Error("base verrouillée")); };
+  });
+}
+function transaction(mode, fn){
+  return ouvrirBaseImg().then(d => new Promise((ok, ko) => {
+    const t = d.transaction(MAGASIN, mode), m = t.objectStore(MAGASIN);
+    let res;
+    const r = fn(m);
+    if(r) r.onsuccess = () => { res = r.result; };
+    t.oncomplete = () => ok(res);
+    t.onerror = () => ko(t.error || new Error("transaction refusée"));
+  }));
+}
+async function ecrireImage(id, blob){
+  try{ await transaction("readwrite", m => m.put(blob, id)); return "base"; }
+  catch(e){ baseImgKo = true; imgMemoire.set(id, blob); return "memoire"; }
+}
+async function lireImage(id){
+  try{ const b = await transaction("readonly", m => m.get(id)); if(b) return b; }
+  catch(e){ baseImgKo = true; }
+  return imgMemoire.get(id) || null;
+}
+async function effacerImages(ids){
+  ids.forEach(id => {
+    imgMemoire.delete(id);
+    if(URL_IMG[id]){ libererUrl(URL_IMG[id]); delete URL_IMG[id]; }
+  });
+  try{ await transaction("readwrite", m => { ids.forEach(id => m.delete(id)); return null; }); }
+  catch(e){ baseImgKo = true; }
+}
+/* Adresse d'affichage d'une image. Si le navigateur ne fournit pas d'adresse
+   temporaire, on retombe sur une adresse encodée, plus lourde mais toujours lisible. */
+function urlPour(blob){
+  if(typeof URL !== "undefined" && typeof URL.createObjectURL === "function"){
+    try{ return Promise.resolve(URL.createObjectURL(blob)); }catch(e){}
+  }
+  return new Promise(ok => {
+    try{
+      const fr = new FileReader();
+      fr.onload = () => ok(String(fr.result || ""));
+      fr.onerror = () => ok("");
+      fr.readAsDataURL(blob);
+    }catch(e){ ok(""); }
+  });
+}
+function libererUrl(u){
+  if(u && /^blob:/.test(u) && typeof URL !== "undefined" && URL.revokeObjectURL){
+    try{ URL.revokeObjectURL(u); }catch(e){}
+  }
+}
+
+/* Les adresses temporaires sont préparées avant le rendu, qui reste synchrone. */
+async function prechargerVisuels(c){
+  const l = (c.visuels || []).filter(v => !URL_IMG[v.id]);
+  for(const v of l){
+    const b = await lireImage(v.id);
+    if(b){ const u = await urlPour(b); if(u) URL_IMG[v.id] = u; }
+  }
+  if(l.length) rendre();
+}
+function tousVisuels(){ return S.cours.flatMap(c => (c.visuels || []).map(v => v.id)); }
+
+/* Redimensionnement à 1400 px sur le grand côté, JPEG qualité 0,78 :
+   un schéma pèse alors une centaine de kilo-octets. */
+const LARGEUR_MAX = 1400, QUALITE = 0.78;
+function redimensionner(source, maxi, qualite){
+  maxi = maxi || LARGEUR_MAX; qualite = qualite || QUALITE;
+  return new Promise((ok, ko) => {
+    const img = new Image();
+    img.onload = () => {
+      const f = Math.min(1, maxi / Math.max(img.width, img.height));
+      const w = Math.max(1, Math.round(img.width * f)), h = Math.max(1, Math.round(img.height * f));
+      const cv = document.createElement("canvas");
+      cv.width = w; cv.height = h;
+      const ctx = cv.getContext("2d");
+      if(!ctx) return ko(new Error("Le navigateur ne permet pas de retailler l'image."));
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(img, 0, 0, w, h);
+      cv.toBlob(b => b ? ok({blob:b, w, h}) : ko(new Error("Conversion impossible.")), "image/jpeg", qualite);
+    };
+    img.onerror = () => ko(new Error("Image illisible."));
+    if(typeof source === "string") img.src = source;
+    else urlPour(source).then(u => { if(u) img.src = u; else ko(new Error("Image illisible.")); });
+  });
+}
+
+/* =========================================================================
    16. LECTURE DES FICHIERS
    ========================================================================= */
 function scriptExterne(src){
@@ -1046,14 +1730,76 @@ function scriptExterne(src){
     document.head.appendChild(s);
   });
 }
+/* Texte d'un élément sans le contenu de ses listes filles, pour ne pas dupliquer. */
+function texteDirect(el){
+  const c = el.cloneNode(true);
+  c.querySelectorAll("ul,ol,table").forEach(x => x.remove());
+  return (c.textContent || "").replace(/\s+/g," ").trim();
+}
+/* Un tableau du document devient une structure de texte, jamais du balisage réinjecté. */
+function extraireTableau(t){
+  const lignes = [];
+  t.querySelectorAll("tr").forEach(tr => {
+    const cel = Array.from(tr.querySelectorAll("th,td")).map(c => (c.textContent||"").replace(/\s+/g," ").trim());
+    if(cel.some(x => x)) lignes.push(cel);
+  });
+  if(lignes.length < 2) return null;
+  const larg = Math.max.apply(null, lignes.map(l => l.length));
+  return {lignes: lignes.map(l => { const c = l.slice(); while(c.length < larg) c.push(""); return c; })};
+}
+/* La mise en forme du document dit déjà ce qui est important : on la garde en balisage léger.
+   Titres en dièses, listes en tirets, gras et souligné entre doubles astérisques. */
+function docxVersTexte(html){
+  const doc = new DOMParser().parseFromString(html, "text/html");
+  const tableaux = [];
+  doc.querySelectorAll("table").forEach(t => {
+    const x = extraireTableau(t);
+    if(x){ x.titre = "Tableau " + (tableaux.length + 1); tableaux.push(x); }
+    t.remove();
+  });
+  const images = [];
+  doc.querySelectorAll("img").forEach(im => {
+    const src = im.getAttribute("src") || "";
+    if(/^data:image\//.test(src) && src.length > 500) images.push(src);
+  });
+  doc.querySelectorAll("img,script,style").forEach(x => x.remove());
+  doc.querySelectorAll("strong,b,u").forEach(el => {
+    const t = (el.textContent || "").replace(/\s+/g," ").trim();
+    if(!t || t.length > 90 || /\*\*/.test(t)) return;
+    el.replaceWith(doc.createTextNode("**" + t + "**"));
+  });
+  const out = [];
+  Array.from(doc.body.children).forEach(el => {
+    const tag = el.tagName.toLowerCase();
+    if(tag === "ul" || tag === "ol"){
+      el.querySelectorAll("li").forEach(li => { const t = texteDirect(li); if(t) out.push("- " + t); });
+      out.push("");
+      return;
+    }
+    const t = texteDirect(el);
+    if(!t) return;
+    if(/^h[1-6]$/.test(tag)) out.push("", "#".repeat(Number(tag[1])) + " " + t, "");
+    else out.push(t, "");
+  });
+  return {texte: out.join("\n").replace(/\n{3,}/g,"\n\n").trim(), tableaux, images};
+}
+
 async function lireFichier(f){
   const nom = f.name.toLowerCase();
-  if(/\.(txt|md|csv)$/.test(nom)) return await f.text();
+  if(/\.(txt|md|csv)$/.test(nom)){
+    const t = await f.text();
+    return {texte:t, tableaux:[], avertissement: /\.csv$/.test(nom)
+      ? "Fichier CSV : les colonnes sont lues telles quelles, sans reconstruction de tableau." : ""};
+  }
   if(/\.docx$/.test(nom)){
     await scriptExterne("https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js");
     const buf = await f.arrayBuffer();
-    const r = await window.mammoth.extractRawText({arrayBuffer: buf});
-    return r.value;
+    const r = await window.mammoth.convertToHtml({arrayBuffer: buf});
+    const d = docxVersTexte(r.value || "");
+    return {texte:d.texte, tableaux:d.tableaux, images:d.images,
+      avertissement: d.tableaux.length
+        ? d.tableaux.length + " tableau" + (d.tableaux.length>1?"x":"") + " mis de côté : il" + (d.tableaux.length>1?"s ne polluent":" ne pollue") + " pas l'analyse et rest" + (d.tableaux.length>1?"ent":"e") + " joint" + (d.tableaux.length>1?"s":"") + " à la fiche."
+        : ""};
   }
   if(/\.pdf$/.test(nom)){
     await scriptExterne("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");
@@ -1066,9 +1812,10 @@ async function lireFichier(f){
       const c = await page.getTextContent();
       t += c.items.map(i => i.str).join(" ") + "\n\n";
     }
-    return t;
+    return {texte:t, tableaux:[],
+      avertissement:"Le PDF ne conserve ni les titres, ni le gras, ni les tableaux : l'analyse travaillera sur du texte plat. Un .docx donne un bien meilleur résultat."};
   }
-  throw new Error("Format non pris en charge.");
+  throw new Error("Format non pris en charge. Formats acceptés : .txt, .md, .csv, .docx, .pdf.");
 }
 
 /* =========================================================================
@@ -4004,8 +4751,11 @@ const UES_EXOS = Object.keys(EXOS);
    19. NAVIGATION ET ÉTAT D'INTERFACE
    ========================================================================= */
 let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtreUE:"", testCle:null,
-  importTexte:"", importUE:"", importTitre:"", avisRGPD:null, rgpdIgnore:false,
-  occupe:false, message:null, densite:"detail", resultat:null, quizRep:null};
+  importTexte:"", importUE:"", importTitre:"", importTableaux:[], importImages:[], avertFichier:"",
+  brouillon:null, pdfFichier:null, decoupe:null, photos:[], transcritIllisibles:null,
+  ueNotes:null, lecture:0,
+  avisRGPD:null, rgpdIgnore:false,
+  occupe:false, message:null, resultat:null, quizRep:null};
 
 function progLecon(ue){
   if(!S.prep[ue]) S.prep[ue] = {index:0, termine:false, quiz:{}};
@@ -4051,6 +4801,10 @@ function rendre(){
     "rev/accueil":ecranRev, "rev/import":ecranImport, "rev/fiches":ecranFiches, "rev/fiche":ecranFiche,
     "rev/reviser":ecranReviser, "rev/session":ecranSession, "rev/examen":ecranExamen,
     "rev/planning":ecranPlanning, "rev/stats":ecranStats, "rev/recherche":ecranRecherche,
+    "rev/verifier":ecranVerifier, "rev/niveaux":ecranNiveaux, "rev/tri":ecranTri,
+    "rev/lecture":ecranLecture, "rev/visuels":ecranVisuels, "rev/decoupe":ecranDecoupe,
+    "rev/photos":ecranPhotos, "rev/moyennes":ecranMoyennes, "rev/travaux":ecranTravaux,
+    "rev/questions":ecranQuestions, "rev/lexique":ecranLexique,
     "reglages":ecranReglages
   };
   const cle = ui.ecran === "reglages" ? "reglages" : ui.tab + "/" + ui.ecran;
@@ -4058,13 +4812,16 @@ function rendre(){
   window.__routeInconnue = !ecrans[cle];
   const f = ecrans[cle] || ecranPrep;
   let h = "";
-  if(ui.ecran !== "lecon" && ui.ecran !== "session"){
+  if(ui.ecran !== "lecon" && ui.ecran !== "session" && ui.ecran !== "lecture"){
     if(ui.message) h += `<div class="ecran" style="padding-bottom:0"><div class="avis ${ui.message.type||"info"}">
       <b>${esc(ui.message.titre)}</b>${esc(ui.message.txt)}</div></div>`;
+    if(alerteEtancheite) h += `<div class="ecran" style="padding-bottom:0"><div class="avis err">
+      <b>Contrôle d'étanchéité</b>${alerteEtancheite} entrée${alerteEtancheite>1?"s":""} de progression sans exercice correspondant ${alerteEtancheite>1?"ont":"a"} été écartée${alerteEtancheite>1?"s":""}. Vos cours sont intacts.</div></div>`;
     if(!stockageOk) h += `<div class="ecran" style="padding-bottom:0"><div class="avis"><b>Rien ne sera conservé</b>
       Le navigateur bloque l'enregistrement local. Ouvrez le fichier depuis votre appareil pour garder votre progression.</div></div>`;
   }
   $("#app").innerHTML = h + f();
+  alerteEtancheite = null;
 }
 function entete(titre, sous, badge){
   return `<div class="enTete"><div><h1>${titre}</h1></div>
@@ -4257,6 +5014,13 @@ function ecranRev(){
   const _ech = prochainesEcheances(1)[0];
   h += carte("▦", "Planning", _ech ? _ech.u.id + " dans " + _ech.j + " jour" + (_ech.j > 1 ? "s" : "") + " · séance du jour prête"
     : "définir les dates des épreuves", "planning");
+  h += `<p class="kick" style="margin-top:18px">Suivi</p>`;
+  const nq = questionsRestantes().length;
+  const nt = S.travaux.filter(t => t.etat !== "rendu").length;
+  h += carte("∑", "Moyennes", "calcul par UE et par domaine", "moyennes");
+  h += carte("▣", "Travaux à rendre", nt ? nt + " en cours" : "stages, écrits, mémoire, épreuves", "travaux");
+  h += carte("?", "Questions à poser", nq ? nq + " en attente" : "rien en suspens", "questions");
+  h += carte("EN", "Lexique anglais", coursLexique().lexique.length + " entrées · UE14", "lexique");
   h += carte("▥", "Statistiques", "réussite par type, acquis par UE, examens", "stats");
   h += carte("⌕", "Recherche", "retrouver une notion dans tout ce que contient l'application", "recherche");
   h += legendeUE();
@@ -4272,6 +5036,409 @@ function retour(vers, titre){
     <button class="iconeBtn" data-act="ecran" data-e="${vers}" aria-label="Retour">‹</button><h1>${titre}</h1></div>
     <button class="iconeBtn" data-act="ecran" data-e="reglages" aria-label="Réglages">⚙</button></div>`;
 }
+function ecranVerifier(){
+  const b = ui.brouillon;
+  if(!b){ ui.ecran = "import"; return ecranImport(); }
+  const tot = nbPoints(b.fiche), ret = nbRetenus(b);
+  let h = `<div class="ecran">` + retour("import", "Vérifier");
+  h += `<div class="avis info"><b>Rien n'est encore enregistré</b>
+    Décochez ce qui n'a pas à être appris. Les exercices ne porteront que sur ce qui reste coché.</div>`;
+  h += `<label class="champ" for="v-titre">Titre du cours</label>
+    <input type="text" id="v-titre" data-bind="brouillonTitre" value="${esc(b.titre)}">
+    <label class="champ" for="v-ue" style="margin-top:12px">Unité d'enseignement</label>
+    <select id="v-ue" data-bind="brouillonUE">${UES.map(u =>
+      `<option value="${u.id}"${b.ueId===u.id?" selected":""}>${u.id} · ${esc(tronquer(u.nom,42))}</option>`).join("")}</select>`;
+  h += `<div class="progLigne" style="margin-top:16px"><div class="jauge"><i style="width:${tot?Math.round(ret/tot*100):0}%"></i></div>
+    <span>${ret}/${tot} retenus</span></div>
+    <div class="rang"><button class="btn mini" data-act="tout-cocher" data-v="1">Tout cocher</button>
+      <button class="btn mini" data-act="tout-cocher" data-v="0">Tout décocher</button>
+      <span class="puce mono">${b.origine === "gemini" ? "Gemini" : "local"}</span></div>`;
+  if(b.fiche.resume) h += `<p style="font-size:14px;color:var(--encre2);margin-bottom:12px">${esc(b.fiche.resume)}</p>`;
+
+  RUBRIQUES.forEach(r => {
+    const l = b.fiche[r.cle] || [];
+    if(!l.length) return;
+    h += `<p class="kick" style="margin-top:16px">${esc(r.nom)}</p>`;
+    l.forEach((x,i) => {
+      const k = r.cle + ":" + i, on = !!b.garde[k];
+      h += `<button class="ligneCoche${on?" on":""}${x.incertain?" incert":""}" data-act="cocher" data-k="${k}">
+        <span class="case">${on ? "✓" : ""}</span>
+        <span class="tx">${r.aff(x)}${x.incertain ? `<em class="drapeau">sens deviné, à vérifier</em>` : ""}</span></button>`;
+    });
+  });
+  if((b.fiche.mentionnes||[]).length){
+    h += `<p class="kick" style="margin-top:16px">Mentionné sans être expliqué</p>
+      <div class="avis"><b>${b.fiche.mentionnes.length} notion${b.fiche.mentionnes.length>1?"s":""} en suspens</b>
+      Ces éléments ne donneront pas d'exercice : le cours ne les explique pas. Ils resteront joints à la fiche.</div>
+      <ul class="vocab">${b.fiche.mentionnes.map(m => `<li><span>${esc(m.txt)}</span></li>`).join("")}</ul>`;
+  }
+  h += `<button class="cta" data-act="fabriquer"${ui.occupe||!ret?" disabled":""}>
+    ${ui.occupe ? "Fabrication en cours…" : "Fabriquer les exercices sur " + ret + " point" + (ret>1?"s":"")}</button>
+    <div class="rang"><button class="btn mini" data-act="abandon" style="color:var(--rouge)">Abandonner</button></div>`;
+  return h + `</div>`;
+}
+
+/* Tri avant impression. Il s'applique à tous les formats de sortie. */
+const MODES_IMP = [
+  {cle:"couleur",  nom:"Couleur",     desc:"La couleur encode la nature du contenu."},
+  {cle:"nb",       nom:"Noir et blanc", desc:"Même hiérarchie, sans aplat. Pour les imprimantes d'établissement."},
+  {cle:"muette",   nom:"Version muette", desc:"Définitions à recompléter, sigles masqués, chiffres en pointillés."},
+  {cle:"compacte", nom:"Compacte",    desc:"Version resserrée, à réserver aux relectures tardives."},
+  {cle:"cartes",   nom:"Flashcards",  desc:"Huit par page, verso aligné pour une impression recto-verso sur le bord long."}
+];
+/* Emplacements possibles d'un visuel : après une rubrique, ou en fin de fiche. */
+function placesVisuel(){
+  return RUB_IMP.map(r => ({v:"rub:" + r.cle, nom:"Après « " + r.nom + " »"})).concat([{v:"fin", nom:"En fin de fiche"}]);
+}
+function visuelsA(c, place){ return (c.visuels || []).filter(v => (v.place || "fin") === place && !triDe(c).exclus["visuel:" + v.id]); }
+function imgHtml(v, pourImpression){
+  const u = URL_IMG[v.id];
+  if(!u) return `<div class="visManquant">Image indisponible${baseImgKo ? " : la base d'images est refusée par le navigateur." : "."}</div>`;
+  return `<figure class="vis${pourImpression ? " vis-imp" : ""}"><img src="${esc(u)}" alt="${esc(v.legende || "Schéma du cours")}">
+    ${v.legende ? `<figcaption>${esc(v.legende)}</figcaption>` : ""}</figure>`;
+}
+
+function ecranVisuels(){
+  const c = S.cours.find(x => x.id === ui.fiche);
+  if(!c){ ui.ecran = "fiches"; return ecranFiches(); }
+  const l = c.visuels || [];
+  let h = `<div class="ecran">` + retour("fiche", "Schémas");
+  if(baseImgKo) h += `<div class="avis err"><b>Base d'images refusée</b>
+    Le navigateur n'autorise pas le stockage des images. Elles restent visibles jusqu'à la fermeture de l'onglet, puis sont perdues.</div>`;
+  h += `<p class="sousTitre">Chaque schéma reçoit une légende et un emplacement. Il apparaît là où vous l'avez placé, à l'écran comme à l'impression.</p>`;
+  h += `<div class="rang"><label class="btn plein mini" for="v-gal">Depuis la galerie</label>
+    <input type="file" id="v-gal" accept="image/*" multiple style="display:none">
+    <label class="btn mini" for="v-pdf">Découper dans un PDF</label>
+    <input type="file" id="v-pdf" accept=".pdf" style="display:none"></div>`;
+  if(!l.length) return h + `<div class="vide"><div class="em">▨</div><h3>Aucun schéma</h3>
+    <p>Les images d'un .docx sont reprises automatiquement. Pour un PDF, découpez la zone vous-même.</p></div></div>`;
+  l.forEach((v,i) => {
+    h += `<div class="bloc">${imgHtml(v)}
+      <label class="champ" for="lg-${esc(v.id)}" style="margin-top:10px">Légende</label>
+      <input type="text" id="lg-${esc(v.id)}" data-act="legende" data-id="${esc(v.id)}" value="${esc(v.legende||"")}" placeholder="Ce que montre le schéma">
+      <label class="champ" for="pl-${esc(v.id)}" style="margin-top:10px">Emplacement</label>
+      <select id="pl-${esc(v.id)}" data-act="place" data-id="${esc(v.id)}">${placesVisuel().map(p =>
+        `<option value="${p.v}"${(v.place||"fin")===p.v?" selected":""}>${esc(p.nom)}</option>`).join("")}</select>
+      <div class="rang"><span class="puce mono">${v.w||"?"}×${v.h||"?"}</span>
+        <span class="puce mono">${v.origine === "pdf" ? "découpé" : (v.origine === "galerie" ? "galerie" : "document")}</span>
+        <button class="btn mini" data-act="suppr-visuel" data-id="${esc(v.id)}" style="color:var(--rouge)">Supprimer</button></div></div>`;
+  });
+  return h + `</div>`;
+}
+
+/* Découpage manuel d'une page de PDF : l'extraction automatique des schémas
+   n'est pas fiable, l'utilisateur trace lui-même le rectangle. */
+function ecranDecoupe(){
+  const d = ui.decoupe;
+  let h = `<div class="ecran">` + retour("visuels", "Découper");
+  if(!d) return h + `<div class="avis"><b>Aucun PDF chargé</b>Revenez en arrière et déposez un fichier.</div></div>`;
+  h += `<div class="rang">
+    <button class="btn mini" data-act="page-prec"${d.page<=1?" disabled":""}>‹</button>
+    <span class="puce mono">page ${d.page}/${d.total}</span>
+    <button class="btn mini" data-act="page-suiv"${d.page>=d.total?" disabled":""}>›</button>
+    <button class="btn plein mini" data-act="extraire"${d.rect?"":" disabled"}>Extraire la zone</button></div>
+  <p style="font-size:13px;color:var(--encre2)">Faites glisser le doigt sur la page pour encadrer le schéma.</p>
+  <div class="toile"><canvas id="cv-pdf"></canvas><div class="cadre" id="cadre"></div></div>`;
+  return h + `</div>`;
+}
+async function ouvrirDecoupe(fichier){
+  ui.message = {type:"info", titre:"Ouverture du PDF", txt:fichier.name}; rendre();
+  try{
+    await scriptExterne("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js");
+    window.pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+    const doc = await window.pdfjsLib.getDocument({data: await fichier.arrayBuffer()}).promise;
+    ui.decoupe = {doc, page:1, total:doc.numPages, rect:null};
+    ui.ecran = "decoupe"; ui.message = null; rendre();
+    await dessinerPage();
+  }catch(e){ ui.message = {type:"err", titre:"PDF illisible", txt:e.message}; rendre(); }
+}
+async function dessinerPage(){
+  const d = ui.decoupe; if(!d) return;
+  const cv = document.getElementById("cv-pdf"); if(!cv) return;
+  const page = await d.doc.getPage(d.page);
+  const large = Math.min(520, (cv.parentElement || {clientWidth:360}).clientWidth || 360);
+  const v0 = page.getViewport({scale:1});
+  const ech = large / v0.width;
+  const vp = page.getViewport({scale: ech * 2});   // deux fois la taille d'affichage, pour la netteté
+  cv.width = vp.width; cv.height = vp.height;
+  cv.style.width = large + "px"; cv.style.height = (vp.height / 2) + "px";
+  const ctx = cv.getContext("2d");
+  if(!ctx) return;
+  await page.render({canvasContext: ctx, viewport: vp}).promise;
+  d.rect = null; majCadre();
+}
+function majCadre(){
+  const c = document.getElementById("cadre"), d = ui.decoupe;
+  if(!c) return;
+  if(!d || !d.rect){ c.style.display = "none"; return; }
+  const r = d.rect;
+  c.style.display = "block";
+  c.style.left = Math.min(r.x0, r.x1) + "px"; c.style.top = Math.min(r.y0, r.y1) + "px";
+  c.style.width = Math.abs(r.x1 - r.x0) + "px"; c.style.height = Math.abs(r.y1 - r.y0) + "px";
+}
+async function extraireZone(){
+  const d = ui.decoupe, c = S.cours.find(x => x.id === ui.fiche);
+  if(!d || !d.rect || !c) return;
+  const cv = document.getElementById("cv-pdf");
+  const f = cv.width / parseFloat(cv.style.width);   // affichage vers pixels réels
+  const x = Math.min(d.rect.x0, d.rect.x1) * f, y = Math.min(d.rect.y0, d.rect.y1) * f;
+  const w = Math.abs(d.rect.x1 - d.rect.x0) * f, hh = Math.abs(d.rect.y1 - d.rect.y0) * f;
+  if(w < 20 || hh < 20){ ui.message = {titre:"Zone trop petite", txt:"Encadrez une zone plus large."}; rendre(); return; }
+  const dst = document.createElement("canvas");
+  dst.width = Math.round(w); dst.height = Math.round(hh);
+  const ctx = dst.getContext("2d");
+  if(!ctx){ ui.message = {type:"err", titre:"Extraction impossible", txt:"Le navigateur refuse l'accès au canevas."}; rendre(); return; }
+  ctx.drawImage(cv, x, y, w, hh, 0, 0, dst.width, dst.height);
+  const url = dst.toDataURL("image/jpeg", 0.9);
+  try{
+    const im = await redimensionner(url);
+    await ajouterVisuel(c, im, "pdf");
+    ui.message = {type:"info", titre:"Zone extraite", txt:"Ajoutez-lui une légende et un emplacement."};
+    ui.ecran = "visuels"; rendre();
+  }catch(e){ ui.message = {type:"err", titre:"Extraction impossible", txt:e.message}; rendre(); }
+}
+async function ajouterVisuel(c, im, origine){
+  const id = uid();
+  const ou = await ecrireImage(id, im.blob);
+  if(!c.visuels) c.visuels = [];
+  c.visuels.push({id, legende:"", place:"fin", w:im.w, h:im.h, origine});
+  sauver();
+  const b = await lireImage(id);
+  if(b){ const u = await urlPour(b); if(u) URL_IMG[id] = u; }
+  return ou;
+}
+
+function visHtml(c, place, pourImpression){
+  const l = visuelsA(c, place);
+  return l.length ? l.map(v => imgHtml(v, pourImpression)).join("") : "";
+}
+
+function ecranTri(){
+  const c = S.cours.find(x => x.id === ui.fiche);
+  if(!c){ ui.ecran = "fiches"; return ecranFiches(); }
+  const t = triDe(c), tot = RUB_IMP.reduce((n,r) => n + (c.fiche[r.cle]||[]).length, 0);
+  let h = `<div class="ecran">` + retour("fiche", "Trier et imprimer");
+  h += `<p class="sousTitre">Décochez ce qui n'a pas à figurer, choisissez la mise en valeur. Ce tri vaut pour tous les formats de sortie.</p>`;
+  h += `<div class="progLigne"><div class="jauge"><i style="width:${tot?Math.round(nbImprimes(c)/tot*100):0}%"></i></div>
+    <span>${nbImprimes(c)}/${tot} retenus</span></div>
+    <div class="rang"><button class="btn mini" data-act="tri-tout" data-v="1">Tout cocher</button>
+      <button class="btn mini" data-act="tri-tout" data-v="0">Tout décocher</button></div>`;
+  RUB_IMP.forEach(r => {
+    const l = c.fiche[r.cle] || [];
+    if(!l.length) return;
+    h += `<p class="kick" style="margin-top:16px">${esc(r.nom)}</p>`;
+    l.forEach((x,i) => {
+      const k = cleTri(r.cle, i), on = !t.exclus[k], v = t.valeur[k] || "";
+      const txt = r.cle === "definitions" ? x.terme + " — " + x.def
+        : r.cle === "sigles" ? x.sigle + " — " + x.sens
+        : r.cle === "procedures" ? (x.etapes||[]).join(" → ") : x.txt;
+      h += `<div class="ligneCoche${on?" on":""}" style="flex-direction:column;align-items:stretch;gap:8px">
+        <button style="display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%" data-act="tri-coche" data-k="${k}">
+          <span class="case">${on ? "✓" : ""}</span><span class="tx">${esc(tronquer(txt, 170))}</span></button>
+        ${on ? `<div style="display:flex;gap:6px;padding-left:33px">${
+          [["","Normal"],["surligne","Surligné"],["encadre","Encadré"]].map(([val,lab]) =>
+          `<button class="puce${v===val?" on":""}" data-act="tri-valeur" data-k="${k}" data-v="${val}">${lab}</button>`).join("")}</div>` : ""}
+      </div>`;
+    });
+  });
+  if((c.visuels||[]).length){
+    h += `<p class="kick" style="margin-top:16px">Schémas</p>`;
+    c.visuels.forEach(v => {
+      const k = "visuel:" + v.id, on = !t.exclus[k];
+      h += `<button class="ligneCoche${on?" on":""}" data-act="tri-coche" data-k="${k}">
+        <span class="case">${on ? "✓" : ""}</span>
+        <span class="tx">${esc(v.legende || "Schéma sans légende")} — ${esc((placesVisuel().find(p => p.v === (v.place||"fin"))||{nom:""}).nom.toLowerCase())}</span></button>`;
+    });
+  }
+  h += `<p class="kick" style="margin-top:18px">Format de sortie</p>`;
+  MODES_IMP.forEach(m => {
+    h += `<button class="carteAct" data-act="imprimer" data-id="${c.id}" data-mode="${m.cle}">
+      <span class="ic">▤</span><span class="tx"><b>${esc(m.nom)}</b><small>${esc(m.desc)}</small></span>
+      <span class="fl">›</span></button>`;
+  });
+  h += `<div class="avis" style="margin-top:6px"><b>À l'impression</b>
+    Cochez « Graphiques d'arrière-plan » dans les options d'impression du navigateur, sinon les surlignages et les bandeaux disparaissent.</div>`;
+  return h + `</div>`;
+}
+
+/* Mode lecture : une notion par écran, sur le téléphone, pas une impression. */
+function elementsLecture(c){
+  const out = [];
+  const ajouterVis = place => visuelsA(c, place).forEach(v =>
+    out.push({rub:"Schéma", titre:v.legende || "Schéma du cours", corps:"", src:"", visuel:v}));
+  RUB_IMP.forEach(r => { retenusImp(c, r.cle).forEach(o => {
+    const titre = r.cle === "definitions" ? o.x.terme : (r.cle === "sigles" ? o.x.sigle : r.nom);
+    const corps = r.cle === "definitions" ? o.x.def
+      : r.cle === "sigles" ? o.x.sens
+      : r.cle === "procedures" ? (o.x.etapes||[]).map((e,i) => (i+1) + ". " + e).join("\n") : o.x.txt;
+    out.push({rub:r.nom, titre, corps, src:o.x.src || "", incertain:!!o.x.incertain});
+  }); ajouterVis("rub:" + r.cle); });
+  ajouterVis("fin");
+  return out;
+}
+function ecranLecture(){
+  const c = S.cours.find(x => x.id === ui.fiche);
+  if(!c){ ui.ecran = "fiches"; return ecranFiches(); }
+  const l = elementsLecture(c), n = l.length;
+  const i = Math.min(Math.max(0, ui.lecture), n);
+  let h = `<div class="lecon"><div class="lecon-haut">
+    <button class="fermer" data-act="ecran" data-e="fiche" aria-label="Fermer">×</button>
+    <div class="pts">${Array.from({length:n+1}, (_,k) => `<span class="${k <= i ? "f" : ""}"></span>`).join("")}</div>
+    <span class="src">${Math.min(i+1, n+1)}/${n+1}</span></div><div class="diapo">`;
+  if(!n){
+    h += `<h3>Rien à lire</h3><p>Tous les éléments ont été décochés dans le tri.</p>`;
+  } else if(i < n){
+    const e = l[i];
+    h += `<p class="kick">${esc(e.rub)}</p><h3>${esc(e.titre)}</h3>
+      ${e.visuel ? imgHtml(e.visuel) : `<p style="white-space:pre-line">${esc(e.corps)}</p>`}
+      ${e.incertain ? `<em class="drapeau">sens deviné, à vérifier dans le cours</em>` : ""}
+      ${e.src ? `<button class="src" data-act="src" data-cible="lecSrc">Voir le passage du cours</button>
+        <div class="srcTxt" id="lecSrc">« ${esc(tronquer(e.src, 380))} »</div>` : ""}`;
+  } else {
+    const men = (c.fiche.mentionnes || []);
+    h += `<p class="kick">Fin de la fiche</p><h3>Les questions à poser</h3>`;
+    h += men.length
+      ? `<p>Le cours cite ces notions sans les expliquer :</p><ul class="vocab">${
+          men.map(m => `<li><span>${esc(m.txt)}</span></li>`).join("")}</ul>`
+      : `<p>Aucune notion n'est restée en suspens dans cette fiche.</p>`;
+    h += `<div class="encart info"><b class="et">Rappel</b>En cas d'écart, c'est le cours de votre centre de formation qui fait foi pour l'examen.</div>`;
+  }
+  h += `</div><div style="display:flex;gap:9px;align-items:center">
+    ${i > 0 ? `<button class="btn" data-act="lecture-prec">Retour</button>` : ""}
+    ${i < n ? `<button class="cta" style="flex:1;margin-top:0" data-act="lecture-suiv">Continuer</button>`
+            : `<button class="cta" style="flex:1;margin-top:0" data-act="ecran" data-e="fiche">Revenir à la fiche</button>`}</div>`;
+  return h + `</div>`;
+}
+
+/* Transcription de notes manuscrites. Étape strictement séparée de l'analyse :
+   c'est au déchiffrage que les erreurs s'introduisent, elles doivent être
+   corrigeables avant que quoi que ce soit n'en découle. */
+const PHOTO_MAX = 8, PHOTO_PX = 2000, PHOTO_QUALITE = 0.86;
+function consigneTranscription(){
+  return [
+"Tu transcris les notes manuscrites d'un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière.",
+"Ta seule tâche est de LIRE et de RECOPIER. Tu ne corriges pas, tu ne complètes pas, tu n'expliques pas.",
+"",
+"RÈGLES ABSOLUES :",
+"1. Ne corrige pas le fond, même si une affirmation te semble fausse. Recopie ce qui est écrit.",
+"2. N'ajoute aucun mot, aucune phrase, aucun titre qui ne figure pas sur la page.",
+"3. Un mot que tu n'arrives pas à lire devient exactement [?]. Un passage entier illisible devient exactement [passage illisible].",
+"4. Ne devine JAMAIS un chiffre, une date, une posologie, une unité, un nom propre ou un sigle. Dans le doute, écris [?].",
+"5. Conserve la structure : # pour les titres, - pour les listes, **entre doubles astérisques** pour ce qui est souligné, surligné ou encadré.",
+"6. Sépare les pages par une ligne contenant uniquement ---",
+"7. Ne mets aucun commentaire avant ou après la transcription.",
+"",
+"Réponds en texte simple, sans balisage autre que celui décrit ci-dessus."
+  ].join("\n");
+}
+function enBase64(blob){
+  return new Promise((ok, ko) => {
+    const fr = new FileReader();
+    fr.onload = () => { const s = String(fr.result || ""); const i = s.indexOf(","); ok(i >= 0 ? s.slice(i+1) : s); };
+    fr.onerror = () => ko(new Error("Lecture de l'image impossible."));
+    fr.readAsDataURL(blob);
+  });
+}
+async function transcrire(photos, cle, modele){
+  const parts = [];
+  for(const p of photos) parts.push({inline_data:{mime_type:"image/jpeg", data: await enBase64(p.blob)}});
+  parts.push({text:"Transcris ces " + photos.length + " page" + (photos.length>1?"s":"") + " de notes manuscrites."});
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consigneTranscription()}]},
+    contents:[{role:"user", parts}],
+    generationConfig:{temperature:0, maxOutputTokens:8192}
+  }, modele, cle);
+  const t = (cand.content && cand.content.parts || []).map(p => p.text || "").join("").trim();
+  if(!t) throw new Error("Aucun texte n'a pu être lu sur ces pages.");
+  return t;
+}
+function compterIllisibles(t){
+  const mots = (String(t||"").match(/\[\?\]/g) || []).length;
+  const blocs = (String(t||"").match(/\[passage illisible\]/g) || []).length;
+  return {mots, blocs, total: mots + blocs};
+}
+
+function ecranPhotos(){
+  const ia = S.reglages.moteur === "gemini";
+  let h = `<div class="ecran">` + retour("import", "Notes manuscrites");
+  if(!ia){
+    return h + `<div class="vide"><div class="em">✎</div><h3>Indisponible en mode local</h3>
+      <p>Déchiffrer une écriture manuscrite demande un modèle de vision. Le moteur local, qui travaille uniquement sur cet appareil, ne sait pas lire une image.</p></div>
+      <button class="cta sec" data-act="ecran" data-e="reglages">Ouvrir les réglages</button></div>`;
+  }
+  const l = ui.photos || [];
+  h += `<p class="sousTitre">D'abord transcrire, ensuite analyser. Vous relirez le texte avant qu'il n'en sorte quoi que ce soit.</p>`;
+  h += `<div class="rang"><label class="btn plein mini" for="p-photo">Ajouter des pages</label>
+    <input type="file" id="p-photo" accept="image/*" capture="environment" multiple style="display:none">
+    <span class="puce mono">${l.length}/${PHOTO_MAX}</span></div>`;
+  if(!l.length){
+    h += `<div class="vide"><div class="em">▨</div><h3>Aucune page</h3>
+      <p>Jusqu'à ${PHOTO_MAX} pages par lot. Cadrez au plus près, à plat, avec une lumière régulière.</p></div>`;
+  } else {
+    h += `<div class="vignettes">${l.map((p,i) =>
+      `<div class="vign"><img src="${esc(p.url)}" alt="Page ${i+1}">
+        <button class="retirer" data-act="retirer-photo" data-i="${i}" aria-label="Retirer">×</button>
+        <span class="rang-v">${i+1}</span></div>`).join("")}</div>`;
+    h += `<button class="cta" data-act="transcrire"${ui.occupe?" disabled":""}>
+      ${ui.occupe ? "Déchiffrage en cours…" : "Transcrire " + l.length + " page" + (l.length>1?"s":"")}</button>`;
+  }
+  h += `<div class="avis" style="margin-top:14px"><b>Ce qui est envoyé, ce qui reste</b>
+    Les pages partent chez Google le temps du déchiffrage. Elles ne sont pas conservées par l'application : seul le texte que vous aurez relu l'est. N'y faites figurer aucune donnée de patient.</div>`;
+  return h + `</div>`;
+}
+function viderPhotos(){
+  (ui.photos || []).forEach(p => libererUrl(p.url));
+  ui.photos = [];
+}
+async function lancerTranscription(){
+  const l = ui.photos || [];
+  if(!l.length) return;
+  if(!S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Configuration incomplète", txt:"Renseignez la clé et le modèle dans les réglages."};
+    rendre(); return;
+  }
+  ui.occupe = true; ui.message = null; rendre();
+  let t;
+  try{ t = await transcrire(l, S.reglages.cleGemini, S.reglages.modele); }
+  catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Déchiffrage interrompu", txt:e.message}; rendre(); return; }
+  ui.occupe = false;
+  const n = compterIllisibles(t);
+  // les photos ne sont pas conservées : seul le texte relu le sera
+  viderPhotos();
+  ui.importTexte = ui.importTexte ? ui.importTexte + "\n\n" + t : t;
+  if(!ui.importUE) ui.importUE = detecterUE(ui.importTexte) || "";
+  const al = sonderDonnees(ui.importTexte);
+  ui.avisRGPD = al.length ? al : null; ui.rgpdIgnore = false;
+  ui.transcritIllisibles = n;
+  ui.ecran = "import";
+  ui.message = {type:"info", titre:"Transcription terminée",
+    txt:"Relisez le texte avant de lancer l'analyse. Les pages photographiées ont été effacées."};
+  rendre(); window.scrollTo(0,0);
+}
+
+function ecranNiveaux(){
+  let h = `<div class="ecran">` + retour("reviser", "Comprendre");
+  const tot = statsFamille("comp");
+  if(!tot.total) return h + `<div class="vide"><div class="em">◈</div><h3>Aucun exercice de compréhension</h3>
+    <p>Le moteur local produit surtout de la mémorisation. Les niveaux 1 et 4 demandent le mode Gemini.</p></div></div>`;
+  h += `<p class="sousTitre">Ordre conseillé, du plus accessible au plus exigeant. Rien n'est verrouillé : vous pouvez commencer où vous voulez.</p>`;
+  NIVEAUX.forEach(nv => {
+    const s = statsNiveau(nv.n);
+    h += `<button class="bloc" style="display:block;width:100%;text-align:left${s.total?"":";opacity:.5"}"
+      ${s.total ? `data-act="session" data-source="niveau" data-niveau="${nv.n}"` : "disabled"}>
+      <div class="bloc-t"><span class="point" style="background:var(--menthe)"></span>
+        <span class="bloc-nom">${nv.n}. ${esc(nv.nom)}</span>
+        <span class="bloc-meta">${s.total ? s.total + " ex." : "—"}</span></div>
+      <div style="font-size:13.5px;color:var(--encre2);line-height:1.45;margin-bottom:8px">${esc(nv.desc)}</div>
+      <div class="jauge"><i style="width:${s.part}%"></i></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);margin-top:5px">
+        ${s.total ? s.sus + "/" + s.total + " acquis" : "aucun exercice de ce niveau"}</div></button>`;
+  });
+  h += `<button class="cta" data-act="session" data-source="comp">Tout mélanger (${tot.total} exercices)</button>`;
+  h += `<div class="avis" style="margin-top:14px"><b>Le niveau 4 se corrige par l'API</b>
+    En mode Gemini, vos rédactions sont notées sur 3 par rapport à l'attendu et au passage source, jamais à autre chose. Hors ligne ou en mode local, on retombe sur la liste des éléments attendus.</div>`;
+  return h + `</div>`;
+}
 /* =========================================================================
    22. RÉVISION — import, fiches
    ========================================================================= */
@@ -4285,6 +5452,19 @@ function ecranImport(){
       <div class="rang"><button class="btn plein mini" data-act="anonymiser">Anonymiser</button>
       <button class="btn mini" data-act="rgpd-ignorer">Cas fictif, continuer</button></div></div>`;
   }
+  if(ui.brouillon) h += `<div class="avis info"><b>Un relevé attend votre validation</b>
+    ${nbRetenus(ui.brouillon)} point${nbRetenus(ui.brouillon)>1?"s":""} retenu${nbRetenus(ui.brouillon)>1?"s":""} sur ${nbPoints(ui.brouillon.fiche)}. Rien n'est enregistré tant que vous n'avez pas fabriqué les exercices.
+    <div class="rang"><button class="btn plein mini" data-act="ecran" data-e="verifier">Reprendre</button>
+    <button class="btn mini" data-act="abandon">Abandonner</button></div></div>`;
+  if(ui.avertFichier) h += `<div class="avis info"><b>À savoir sur ce fichier</b>${esc(ui.avertFichier)}</div>`;
+  if(ui.transcritIllisibles){
+    const n = ui.transcritIllisibles;
+    h += n.total
+      ? `<div class="avis"><b>${n.total} passage${n.total>1?"s":""} non déchiffré${n.total>1?"s":""}</b>
+         ${n.mots} mot${n.mots>1?"s":""} noté${n.mots>1?"s":""} [?]${n.blocs ? " et " + n.blocs + " bloc" + (n.blocs>1?"s":"") + " noté" + (n.blocs>1?"s":"") + " [passage illisible]" : ""}.
+         Complétez-les à la main : rien ne sera deviné à votre place.</div>`
+      : `<div class="avis info"><b>Aucun passage illisible signalé</b>Relisez tout de même les chiffres et les noms propres avant d'analyser.</div>`;
+  }
   h += `<label class="champ" for="i-titre">Titre du cours</label>
     <input type="text" id="i-titre" data-bind="importTitre" value="${esc(ui.importTitre)}" placeholder="Cycle de stérilisation">
     <label class="champ" for="i-ue" style="margin-top:12px">Unité d'enseignement</label>
@@ -4293,9 +5473,11 @@ function ecranImport(){
     <label class="champ" for="i-txt" style="margin-top:12px">Texte du cours</label>
     <textarea id="i-txt" data-bind="importTexte" placeholder="Collez le cours ici…">${esc(ui.importTexte)}</textarea>
     <div class="rang"><label class="btn mini" for="i-fic">Déposer un fichier</label>
-      <input type="file" id="i-fic" accept=".txt,.md,.docx,.pdf" style="display:none">
+      <input type="file" id="i-fic" accept=".txt,.md,.csv,.docx,.pdf" style="display:none">
+      ${ia ? `<button class="btn mini" data-act="ecran" data-e="photos">Photographier des notes</button>` : ""}
+      ${ui.importTableaux.length ? `<span class="puce mono">${ui.importTableaux.length} tableau${ui.importTableaux.length>1?"x":""}</span>` : ""}
       <span class="puce mono">${ia ? "Gemini" : "local"}</span></div>
-    <button class="cta" data-act="analyser"${ui.occupe?" disabled":""}>${ui.occupe?"Analyse en cours…":"Analyser le cours"}</button>`;
+    <button class="cta" data-act="analyser"${ui.occupe?" disabled":""}>${ui.occupe?"Lecture en cours…":"Relever les points"}</button>`;
   if(!ia) h += `<div class="avis info" style="margin-top:14px"><b>En mode local</b>
     Fiche, flashcards, textes à trous, appariements, QCM et vrai-faux, tirés de phrases du cours. La chasse à l'erreur et les mises en situation demandent Gemini.</div>`;
   return h + `</div>`;
@@ -4320,9 +5502,19 @@ function ecranFiches(){
   return h + `</div>`;
 }
 
+/* Un tableau extrait est réaffiché à partir de son texte, jamais du balisage d'origine. */
+function tableauHtml(t, i){
+  const l = t.lignes || [];
+  if(!l.length) return "";
+  return `<div style="overflow-x:auto;margin-bottom:12px">
+    <p class="src" style="border:none;padding:0 0 4px">${esc(t.titre || "Tableau " + (i+1))}</p>
+    <table class="tableau"><thead><tr>${l[0].map(c => `<th>${esc(c)}</th>`).join("")}</tr></thead>
+    <tbody>${l.slice(1).map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
 function ligneSrc(x, ref){
+  const d = x.incertain ? `<em class="drapeau">sens deviné, à vérifier dans le cours</em>` : "";
   const s = x.src || x.source || "";
-  return s ? ` <button class="src" data-act="src" data-cible="${ref}">source</button><div class="srcTxt" id="${ref}">« ${esc(tronquer(s,300))} »</div>` : "";
+  return d + (s ? ` <button class="src" data-act="src" data-cible="${ref}">source</button><div class="srcTxt" id="${ref}">« ${esc(tronquer(s,300))} »</div>` : "");
 }
 function ecranFiche(){
   const c = S.cours.find(x => x.id === ui.fiche);
@@ -4334,7 +5526,9 @@ function ecranFiche(){
     <span class="puce mono">${c.origine === "gemini" ? "Gemini" : "local"}</span></div>
     <div class="rang">
       <button class="btn plein mini" data-act="session" data-source="cours" data-id="${c.id}">Réviser ce cours</button>
-      <button class="btn mini" data-act="imprimer" data-id="${c.id}">Imprimer</button>
+      <button class="btn mini" data-act="ecran-tri" data-id="${c.id}">Trier et imprimer</button>
+      <button class="btn mini" data-act="ecran-lecture" data-id="${c.id}">Mode lecture</button>
+      <button class="btn mini" data-act="ecran-visuels" data-id="${c.id}">Schémas${(c.visuels||[]).length ? " · " + c.visuels.length : ""}</button>
       <select data-bind="densite" style="width:auto;padding:7px 10px;font-size:13px">
         <option value="detail"${ui.densite==="detail"?" selected":""}>Détaillée</option>
         <option value="dense"${ui.densite==="dense"?" selected":""}>Compacte</option></select>
@@ -4345,18 +5539,52 @@ function ecranFiche(){
   const sect = (t, corps) => corps ? `<p class="kick" style="margin-top:16px">${t}</p>${corps}` : "";
   h += sect("Définitions", f.definitions.length ? `<ul class="vocab">${f.definitions.map((x,i) =>
     `<li><b>${esc(x.terme)}</b><span>${esc(x.def)}</span>${ligneSrc(x,"df"+i)}</li>`).join("")}</ul>` : "");
+  h += visHtml(c, "rub:definitions");
   h += sect("Sigles", (f.sigles||[]).length ? `<ul class="vocab">${f.sigles.map(x =>
     `<li><b>${esc(x.sigle)}</b><span>${esc(x.sens)}</span></li>`).join("")}</ul>` : "");
+  h += visHtml(c, "rub:sigles");
   h += sect("Points à retenir", f.points.length ? `<ul class="vocab">${f.points.map((x,i) =>
     `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"pt"+i)}</li>`).join("")}</ul>` : "");
+  h += visHtml(c, "rub:points");
   h += sect("Chiffres clés", f.chiffres.length ? `<ul class="vocab">${f.chiffres.map((x,i) =>
     `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"ch"+i)}</li>`).join("")}</ul>` : "");
+  h += visHtml(c, "rub:chiffres");
   h += sect("Textes et normes", f.normes.length ? `<ul class="vocab">${f.normes.map((x,i) =>
     `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"no"+i)}</li>`).join("")}</ul>` : "");
+  h += visHtml(c, "rub:normes");
   h += sect("Pièges", f.pieges.length ? `<ul class="vocab">${f.pieges.map((x,i) =>
     `<li><span>${esc(x.txt)}</span>${ligneSrc(x,"pi"+i)}</li>`).join("")}</ul>` : "");
+  h += visHtml(c, "rub:pieges");
   if((f.procedures||[]).length) h += sect("Suites d'étapes", f.procedures.map(p =>
     `<ol class="etapes">${p.etapes.map(e => `<li>${esc(e)}</li>`).join("")}</ol>`).join(""));
+  h += visHtml(c, "rub:procedures");
+  const vf = visHtml(c, "fin");
+  if(vf) h += `<p class="kick" style="margin-top:16px">Schémas</p>` + vf;
+  h += sect("Mis en valeur dans le document", (f.saillants||[]).length
+    ? `<div class="liste-puces">${f.saillants.map(x => `<span class="puce">${esc(tronquer(x.txt,60))}</span>`).join("")}</div>` : "");
+  h += sect("Tableaux du document", (c.tableaux||[]).length
+    ? c.tableaux.map((t,i) => tableauHtml(t, i)).join("") : "");
+
+  const men = (f.mentionnes||[]).map(m => m.txt);
+  if(men.length){
+    h += `<p class="kick" style="margin-top:16px">Mentionné sans être expliqué</p>
+      <ul class="vocab">${men.map(m => `<li><span>${esc(m)}</span></li>`).join("")}</ul>`;
+    if(S.reglages.moteur === "gemini" && S.reglages.complements !== false){
+      h += `<div class="rang"><button class="btn mini" data-act="complements" data-id="${c.id}"${ui.occupe?" disabled":""}>
+        ${ui.occupe ? "Recherche en cours…" : "Chercher des précisions sur le web"}</button></div>
+        <p style="font-size:12.5px;color:var(--encre3)">Recherche facultative, lancée par vous. Le résultat est rangé à part et ne se mélange pas à votre cours.</p>`;
+    } else if(S.reglages.moteur !== "gemini"){
+      h += `<p style="font-size:12.5px;color:var(--encre3)">La recherche de précisions sur le web demande le mode Gemini.</p>`;
+    }
+  }
+  if(f.complements){
+    h += `<p class="kick" style="margin-top:16px">Compléments hors cours</p>
+      <div class="horsCours"><span class="et">Ne vient pas de vos notes · ${dateFr(f.complements.date)}</span>
+      ${f.complements.texte.split(/\n{1,}/).filter(x => x.trim()).map(x => `<p style="margin-bottom:7px">${esc(x.trim())}</p>`).join("")}
+      ${(f.complements.liens||[]).map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(tronquer(l.titre||l.url, 70))}</a>`).join("")}</div>
+      <p style="font-size:12.5px;color:var(--encre3)">Seuls les liens renvoyés par la recherche sont affichés. En cas d'écart, le cours de votre centre fait foi.</p>
+      <div class="rang"><button class="btn mini" data-act="oublier-complements" data-id="${c.id}">Retirer ces compléments</button></div>`;
+  }
   return h + `</div>`;
 }
 
@@ -4369,13 +5597,14 @@ function mmss(s){ return String(Math.floor(s/60)).padStart(2,"0") + ":" + String
 
 function corrigerItem(it, choix, assoc, ordre){
   switch(it.type){
-    case "qcm": return choix === it.reponse;
+    case "qcm": case "choix": return choix === it.reponse;
     case "qcmMulti": { const a=(choix||[]).slice().sort().join(","), b=(it.reponses||[]).slice().sort().join(",");
       return a === b && a !== ""; }
     case "vf": return choix === it.reponse;
     case "cloze": return normaliser(choix) === normaliser(it.reponse) && normaliser(choix) !== "";
     case "ordre": return (ordre||[]).join(",") === it.etapes.map((_,i)=>i).join(",");
     case "paires": return it.paires.every((p,i) => String((assoc||{})[i]) === String(i));
+    case "classer": return (it.elements||[]).every((e,i) => String((assoc||{})[i]) === String(e.col));
     default: return null;
   }
 }
@@ -4384,10 +5613,37 @@ function motsTrouves(rep, cles){ const n = " " + normaliser(rep) + " ";
 function autoNoteExamen(it, rep){ const m = motsTrouves(rep||"", it.motsCles);
   return m.length ? m.filter(x=>x.ok).length / m.length >= .5 : false; }
 
+/* Martelage : un exercice raté revient dans la même session jusqu'à deux réussites
+   d'affilée, avec un plafond de quatre passages. Seul le premier passage compte pour
+   les boîtes de Leitner : les tours suivants sont de l'entraînement, pas de l'évaluation. */
+const MARTEL_MAX = 4;
+function marteler(it, juste){
+  const s = ui.session;
+  if(!s || S.reglages.martelage === false) return;
+  if(s.mode === "examen" || s.mode === "sprint") return;
+  if(juste === null || juste === undefined) return;
+  const m = s.martel[it.id] || (s.martel[it.id] = {tours:0, suite:0, actif:false});
+  m.tours++;
+  if(juste) m.suite++; else { m.suite = 0; m.actif = true; }
+  if(!m.actif || m.suite >= 2 || m.tours >= MARTEL_MAX) return;
+  const pos = Math.min(s.liste.length, s.i + 3);
+  s.liste.splice(pos, 0, Object.assign({}, it, {reprise:true, tour:m.tours + 1}));
+  s.reprises++;
+}
+function enregistrer(it, juste){
+  const s = ui.session;
+  if(!it.reprise){
+    majProg(it.id, juste, s.sur);
+    s.resultats.push({id:it.id, ueId:it.ueId, juste:!!juste});
+  }
+  marteler(it, juste);
+}
+
 function ouvrirSession(liste, mode, limite, retour){
   if(!liste.length){ ui.message = {titre:"Rien ici", txt:"Aucun exercice ne correspond à ce filtre."}; rendre(); return; }
   ui.session = {liste:melanger(liste), i:0, mode, limite:limite||null, debut:Date.now(),
-    etat:"q", choix:null, sur:null, ordre:[], assoc:{}, resultats:[], melangeD:null, retour:retour||null};
+    etat:"q", choix:null, sur:null, ordre:[], assoc:{}, resultats:[], melangeD:null, retour:retour||null,
+    martel:{}, reprises:0};
   if(mode === "sprint") ui.session.liste = ui.session.liste.slice(0,10);
   preparerQuestion();
   ui.ecran = "session"; ui.tab = retour ? retour.tab : "rev"; rendre(); lancerMinuteur();
@@ -4395,6 +5651,7 @@ function ouvrirSession(liste, mode, limite, retour){
 function preparerQuestion(){
   const s = ui.session, it = s.liste[s.i];
   s.etat = "q"; s.choix = it.type === "qcmMulti" ? [] : null; s.sur = null; s.assoc = {}; s.melangeD = null;
+  s.correction = null; s.correctionEnCours = false;
   s.ordre = it.type === "ordre" ? melanger(it.etapes.map((_,i)=>i)) : [];
 }
 function lancerMinuteur(){
@@ -4417,6 +5674,11 @@ function ecranReviser(){
   const dus = itemsDus().length, err = carnetErreurs().length, conf = erreursConfiantes().length;
   h += `<p class="sousTitre">${DELAIS_TXT}</p>`;
   h += carteSession("↻", "Révision du jour", dus + " à échéance", "dus", dus);
+  const sm = statsFamille("memo"), sfc = statsFamille("comp");
+  h += `<p class="kick" style="margin-top:18px">Par famille</p>`;
+  h += carteSession("▣", "Mémoriser", sm.total ? sm.total + " exercices · " + sm.part + " % acquis" : "aucun exercice", "memo", sm.total);
+  h += carteSession("◈", "Comprendre", sfc.total ? sfc.total + " exercices · " + sfc.part + " % acquis" : "aucun exercice", "niveaux", sfc.total);
+  h += `<p class="kick" style="margin-top:18px">Reprises</p>`;
   h += carteSession("⏱", "Sprint chronométré", "dix questions contre la montre", "sprint", 1);
   h += carteSession("✎", "Carnet d'erreurs", err + " en attente", "erreurs", err);
   h += carteSession("！", "Erreurs confiantes", conf + " ratée" + (conf>1?"s":"") + " en se croyant sûr", "confiantes", conf);
@@ -4441,14 +5703,15 @@ function ecranSession(){
     <div class="pts">${s.liste.map((_,k) => `<span class="${k < s.i ? "f" : ""}"></span>`).join("")}</div>
     ${(s.mode==="sprint"||examen) ? `<span class="chrono" id="chrono">00:00</span>` : `<span class="src">${s.i+1}/${s.liste.length}</span>`}
     </div><div class="diapo">
-    <p class="kick">${u?u.id:""} · ${esc(TYPES[it.type]||it.type)}</p>`;
+    <p class="kick">${u?u.id:""} · ${FAMILLES[familleDe(it)].court}${familleDe(it)==="comp" ? " n" + niveauDe(it) : ""} · ${esc(TYPES[it.type]||it.type)}${it.reprise ? " · reprise, tour " + (it.tour||2) : ""}</p>`;
 
   if(it.type === "flash"){
     h += `<h3>${esc(it.recto)}</h3>`;
     if(s.etat === "c") h += `<div class="verdict ok">${esc(it.verso)}</div>`;
   } else h += `<h3>${esc(it.question || "")}</h3>`;
 
-  if(it.type === "qcm" || it.type === "qcmMulti"){
+  if(it.type === "choix" && it.angle) h += `<p class="puce mono" style="margin-bottom:10px">${esc(ANGLES[it.angle] || it.angle)}</p>`;
+  if(it.type === "qcm" || it.type === "qcmMulti" || it.type === "choix"){
     const multi = it.type === "qcmMulti";
     if(multi) h += `<p style="font-size:13.5px;color:var(--encre2)">Plusieurs réponses possibles.</p>`;
     it.options.forEach((o,k) => {
@@ -4469,14 +5732,25 @@ function ecranSession(){
       h += `<button class="${cl}" data-act="choix" data-v="${val}"${s.etat==="c"?" disabled":""}>${lab}</button>`;
     });
   } else if(it.type === "cloze"){
-    h += `<input type="text" id="rep" placeholder="Votre réponse" value="${esc(s.choix||"")}"${s.etat==="c"?" disabled":""}>`;
-  } else if(it.type === "ouverte" || it.type === "erreur" || it.type === "situation"){
-    h += `<textarea id="rep" style="min-height:110px" placeholder="Votre réponse"${s.etat==="c"?" disabled":""}>${esc(s.choix||"")}</textarea>`;
+    h += `<input type="text" id="rep-cloze" placeholder="Votre réponse" value="${esc(s.choix||"")}"${s.etat==="c"?" disabled":""}>`;
+  } else if(TYPES_REDIGES.includes(it.type)){
+    h += `<textarea id="rep-libre" style="min-height:110px" placeholder="Votre réponse"${s.etat==="c"?" disabled":""}>${esc(s.choix||"")}</textarea>`;
   } else if(it.type === "ordre"){
     h += s.ordre.map((idx,pos) => `<div class="opt" style="display:flex;align-items:center;gap:10px">
       <span class="src">${pos+1}</span><span style="flex:1">${esc(it.etapes[idx])}</span>
       <button class="btn mini" data-act="monter" data-p="${pos}"${pos===0||s.etat==="c"?" disabled":""}>↑</button>
       <button class="btn mini" data-act="descendre" data-p="${pos}"${pos===s.ordre.length-1||s.etat==="c"?" disabled":""}>↓</button></div>`).join("");
+  } else if(it.type === "classer"){
+    const col = it.colonnes || ["A","B"];
+    h += `<p style="font-size:13.5px;color:var(--encre2)">Rangez chaque élément dans l'une des deux colonnes.</p>`;
+    (it.elements||[]).forEach((e,i) => {
+      const v = String(s.assoc[i] === undefined ? "" : s.assoc[i]);
+      const bon = s.etat === "c" ? String(e.col) : null;
+      h += `<div class="opt" style="display:block${s.etat==="c" && v !== bon ? ";border-color:var(--rouge)" : ""}">
+        <div style="margin-bottom:7px">${esc(e.txt)}</div>
+        <div style="display:flex;gap:7px">${col.map((c,k) =>
+          `<button class="puce${v===String(k)?" on":""}" data-act="ranger" data-i="${i}" data-c="${k}"${s.etat==="c"?" disabled":""}>${esc(tronquer(c,26))}</button>`).join("")}</div></div>`;
+    });
   } else if(it.type === "paires"){
     if(!s.melangeD) s.melangeD = melanger(it.paires.map((p,i) => ({i, txt:p[1]})));
     it.paires.forEach((p,i) => {
@@ -4502,9 +5776,12 @@ function ecranSession(){
       ${it.correction ? esc(it.correction)+" " : ""}
       ${!j && it.type==="cloze" ? "Réponse attendue : « " + esc(it.reponse) + " »." : ""}
       ${!j && it.type==="ordre" ? "Ordre du cours : " + it.etapes.map((e,k)=>(k+1)+". "+esc(e)).join(" ") : ""}
-      ${!j && it.type==="paires" ? it.paires.map(p => esc(p[0])+" → "+esc(tronquer(p[1],70))).join("<br>") : ""}</div>`;
+      ${!j && it.type==="paires" ? it.paires.map(p => esc(p[0])+" → "+esc(tronquer(p[1],70))).join("<br>") : ""}
+      ${!j && it.type==="classer" ? (it.elements||[]).map(e => esc(e.txt)+" → "+esc((it.colonnes||[])[e.col]||"")).join("<br>") : ""}</div>`;
   }
-  if(it.type==="ouverte"||it.type==="erreur"||it.type==="situation"){
+  if(TYPES_REDIGES.includes(it.type)){
+    if(s.correction) h += blocCorrection(s.correction);
+    else if(s.correctionEnCours) h += `<div class="verdict ok"><b>Correction en cours…</b>Les éléments attendus s'affichent en attendant.</div>`;
     const m = motsTrouves(s.choix||"", it.motsCles);
     h += `<div class="verdict ok"><b>Éléments attendus</b>
       <div class="liste-puces" style="margin:6px 0">${m.map(x => `<span class="puce">${x.ok?"✓":"○"} ${esc(x.mot)}</span>`).join("")}</div>
@@ -4534,13 +5811,13 @@ function panneauEdition(it){
     <textarea id="ed-q">${esc(it.question || it.recto || "")}</textarea>`;
   if(it.type === "cloze" || it.type === "flash"){
     h += `<label class="champ" for="ed-r" style="margin-top:10px">${it.type === "flash" ? "Verso" : "Réponse attendue"}</label>
-      <input type="text" id="ed-r" value="${esc(it.type === "flash" ? it.verso : it.reponse)}">`;
+      <input type="text" id="ed-r-txt" value="${esc(it.type === "flash" ? it.verso : it.reponse)}">`;
   } else if(it.type === "qcm"){
-    h += `<label class="champ" for="ed-r" style="margin-top:10px">Bonne réponse</label>
-      <select id="ed-r">${it.options.map((o,k) => `<option value="${k}"${k===it.reponse?" selected":""}>${esc(tronquer(o,60))}</option>`).join("")}</select>`;
+    h += `<label class="champ" for="ed-r-qcm" style="margin-top:10px">Bonne réponse</label>
+      <select id="ed-r-qcm">${it.options.map((o,k) => `<option value="${k}"${k===it.reponse?" selected":""}>${esc(tronquer(o,60))}</option>`).join("")}</select>`;
   } else if(it.type === "vf"){
-    h += `<label class="champ" for="ed-r" style="margin-top:10px">Bonne réponse</label>
-      <select id="ed-r"><option value="1"${it.reponse?" selected":""}>Vrai</option><option value="0"${!it.reponse?" selected":""}>Faux</option></select>`;
+    h += `<label class="champ" for="ed-r-vf" style="margin-top:10px">Bonne réponse</label>
+      <select id="ed-r-vf"><option value="1"${it.reponse?" selected":""}>Vrai</option><option value="0"${!it.reponse?" selected":""}>Faux</option></select>`;
   }
   h += `<div class="rang" style="margin-bottom:0"><button class="btn plein mini" data-act="exo-enregistrer">Enregistrer</button>
     <button class="btn mini" data-act="exo-annuler">Annuler</button></div>
@@ -4550,7 +5827,8 @@ function panneauEdition(it){
 function enregistrerEdition(){
   const s = ui.session, it = s.liste[s.i];
   const t = trouverItem(it.coursId, it.id); if(!t) return;
-  const q = document.getElementById("ed-q"), r = document.getElementById("ed-r");
+  const q = document.getElementById("ed-q");
+  const r = document.getElementById("ed-r-txt") || document.getElementById("ed-r-qcm") || document.getElementById("ed-r-vf");
   if(q){ const v = q.value.trim(); if(v){ if(it.type === "flash"){ t.item.recto = v; it.recto = v; } else { t.item.question = v; it.question = v; } } }
   if(r){
     if(it.type === "cloze"){ t.item.reponse = r.value.trim(); it.reponse = t.item.reponse; }
@@ -4577,8 +5855,9 @@ function retirerExercice(mode){
 }
 function valider(){
   const s = ui.session, it = s.liste[s.i];
-  if(["cloze","ouverte","erreur","situation"].includes(it.type)){
-    const el = document.getElementById("rep"); if(el) s.choix = el.value;
+  if(it.type === "cloze" || TYPES_REDIGES.includes(it.type)){
+    const el = document.getElementById(it.type === "cloze" ? "rep-cloze" : "rep-libre");
+    if(el) s.choix = el.value;
   }
   const j = corrigerItem(it, s.choix, s.assoc, s.ordre);
   s.dernierJuste = j;
@@ -4586,9 +5865,22 @@ function valider(){
     s.resultats.push({id:it.id, ueId:it.ueId, juste: j === null ? autoNoteExamen(it, s.choix) : j});
     suivant(); return;
   }
-  if(j !== null && j !== undefined){ majProg(it.id, j, s.sur); s.resultats.push({id:it.id, ueId:it.ueId, juste:j}); }
+  if(j !== null && j !== undefined) enregistrer(it, j);
   s.etat = "c"; rendre();
+  if(TYPES_REDIGES.includes(it.type)) lancerCorrection(s, it);
 }
+/* Correction assistée des rédactions. En cas d'échec ou hors ligne, on garde
+   silencieusement l'auto-évaluation par mots-clés : aucune note n'est inventée. */
+function lancerCorrection(s, it){
+  if(S.reglages.moteur !== "gemini" || !S.reglages.cleGemini || !S.reglages.modele) return;
+  if(!(s.choix || "").trim()) return;
+  const idx = s.i;
+  s.correctionEnCours = true; rendre();
+  corrigerRedaction(it, s.choix, S.reglages.cleGemini, S.reglages.modele)
+    .then(c => { if(ui.session === s && s.i === idx){ s.correction = c; s.correctionEnCours = false; rendre(); } })
+    .catch(() => { if(ui.session === s && s.i === idx){ s.correctionEnCours = false; rendre(); } });
+}
+
 function suivant(){
   const s = ui.session; s.i++;
   if(s.i >= s.liste.length){ terminerSession(); return; }
@@ -4623,7 +5915,9 @@ function lancerExosPrep(ue, mode){
   }
   ouvrirSession(l, "libre", null, {tab:"prep", ecran:"accueil"});
 }
-function lancerSession(source, ue, id){
+function lancerSession(source, ue, id, el0){
+  el0 = el0 || {};
+  if(source === "niveaux"){ ui.ecran = "niveaux"; rendre(); window.scrollTo(0,0); return; }
   let l = [];
   if(source === "dus") l = itemsDus();
   else if(source === "erreurs") l = carnetErreurs();
@@ -4631,11 +5925,367 @@ function lancerSession(source, ue, id){
   else if(source === "ue") l = tousItems().filter(i => i.ueId === ue);
   else if(source === "cours"){ const c = S.cours.find(x => x.id === id); l = c ? c.items.slice() : []; }
   else if(source === "sprint"){ l = itemsDus(); if(l.length < 10) l = tousItems(); }
+  else if(source === "memo") l = tousItems().filter(i => familleDe(i) === "memo");
+  else if(source === "comp") l = tousItems().filter(i => familleDe(i) === "comp");
+  else if(source === "niveau") l = tousItems().filter(i => familleDe(i) === "comp" && niveauDe(i) === Number(el0.niveau));
   else if(source === "jour"){
     l = planJour().liste;
     ouvrirSession(l, "libre", null, {tab:"rev", ecran:"planning"}); return;
   }
   ouvrirSession(l, source === "sprint" ? "sprint" : "libre");
+}
+
+/* =========================================================================
+   24bis. MOYENNES, TRAVAUX, QUESTIONS À POSER, LEXIQUE
+   Règle de validation citée de l'arrêté du 31 juillet 2024, modifié le 7 août 2025 :
+   10/20 par domaine, compensation entre UE d'un même domaine au-dessus de 8/20,
+   en tenant compte des coefficients, qui correspondent au nombre de crédits.
+   ========================================================================= */
+const SOURCES_REGLE = [
+  {titre:"Arrêté du 31 juillet 2024", ref:"Modalités de validation : 10/20 par domaine, compensation au-dessus de 8/20, pas de compensation entre domaines ni entre théorie et milieu professionnel",
+   url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000050066720"},
+  {titre:"Arrêté du 7 août 2025", ref:"Les coefficients correspondent au nombre de crédits affectés à chaque unité d'enseignement",
+   url:"https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000052115022"}
+];
+function encartRegle(){
+  return `<div class="avis info"><b>La règle appliquée</b>
+    Une note d'au moins 10/20 est requise pour valider un domaine. Au sein d'un même domaine, les UE au moins égales à 8/20 se compensent entre elles, en tenant compte des coefficients, qui sont les crédits ECTS. Aucune compensation entre deux domaines, ni entre théorie et milieu professionnel.
+    Seul le jury atteste la validation : ce qui suit n'est qu'un calcul.</div>`;
+}
+function listeSources(l){
+  return `<ul class="sources">${l.map(s =>
+    `<li><b>${esc(s.titre)}</b>${esc(s.ref)}<br><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(tronquer(s.url,58))}</a></li>`).join("")}</ul>`;
+}
+
+/* --- moyennes --- */
+function evals(ueId){ if(!S.notes[ueId]) S.notes[ueId] = []; return S.notes[ueId]; }
+function moyenneUE(ueId){
+  const l = evals(ueId).filter(e => e.note !== null && e.note !== "" && isFinite(Number(e.note)));
+  const p = l.reduce((s2,e) => s2 + (Number(e.poids) || 1), 0);
+  if(!p) return null;
+  return l.reduce((s2,e) => s2 + Number(e.note) * (Number(e.poids) || 1), 0) / p;
+}
+function poidsRestant(ueId){
+  return evals(ueId).filter(e => e.note === null || e.note === "" || !isFinite(Number(e.note)))
+    .reduce((s2,e) => s2 + (Number(e.poids) || 1), 0);
+}
+/* Ce qu'il faut obtenir en moyenne sur les évaluations restantes pour atteindre la cible. */
+function besoinPourCible(ueId, cible){
+  const l = evals(ueId);
+  const total = l.reduce((s2,e) => s2 + (Number(e.poids) || 1), 0);
+  const rest = poidsRestant(ueId);
+  if(!total) return {etat:"vide"};
+  if(!rest) return {etat:"fini", moyenne:moyenneUE(ueId)};
+  const acquis = l.filter(e => e.note !== null && e.note !== "" && isFinite(Number(e.note)))
+    .reduce((s2,e) => s2 + Number(e.note) * (Number(e.poids) || 1), 0);
+  const besoin = (cible * total - acquis) / rest;
+  if(besoin > 20) return {etat:"impossible", besoin, rest};
+  return {etat:"possible", besoin: Math.max(0, besoin), rest};
+}
+function moyenneDomaine(d){
+  const ues = UES.filter(u => u.dom === d).map(u => ({u, m:moyenneUE(u.id)})).filter(x => x.m !== null);
+  if(!ues.length) return null;
+  const p = ues.reduce((s2,x) => s2 + x.u.ects, 0);
+  const moy = ues.reduce((s2,x) => s2 + x.m * x.u.ects, 0) / p;
+  return {moyenne:moy, ues, bloquantes:ues.filter(x => x.m < 8).map(x => x.u.id),
+    valide: moy >= 10 && !ues.some(x => x.m < 8), partiel: ues.length < UES.filter(u => u.dom === d).length};
+}
+
+/* --- travaux à rendre --- */
+const TYPES_TRAVAIL = {
+  stage:"Période en milieu professionnel", ecrit:"Travail écrit",
+  memoire:"Mémoire", pratique:"Épreuve pratique", autre:"Autre"
+};
+const ETATS_TRAVAIL = {afaire:"À faire", encours:"En cours", rendu:"Rendu"};
+/* Échéance d'un travail à rendre, à ne pas confondre avec joursAvant(ueId) du planning. */
+function joursAvantEcheance(iso){ return iso ? joursEntre(new Date(), iso) : null; }
+function travauxTries(){
+  return S.travaux.slice().sort((a,b) => {
+    if(a.etat === "rendu" && b.etat !== "rendu") return 1;
+    if(b.etat === "rendu" && a.etat !== "rendu") return -1;
+    return String(a.echeance || "9999").localeCompare(String(b.echeance || "9999"));
+  });
+}
+
+/* --- questions à poser --- */
+/* Deux sources : ce que le modèle a relevé comme mentionné sans être expliqué,
+   et les éléments dont il a marqué le sens comme deviné. */
+function questionsAPoser(){
+  const out = [];
+  S.cours.forEach(c => {
+    (c.fiche.mentionnes || []).forEach((m,i) => out.push({
+      cle:"m|" + c.id + "|" + i, ueId:c.ueId, coursId:c.id, coursTitre:c.titre,
+      txt:m.txt, origine:"mentionné sans être expliqué"}));
+    RUB_IMP.forEach(r => (c.fiche[r.cle] || []).forEach((x,i) => {
+      if(!x.incertain) return;
+      const t = r.cle === "definitions" ? x.terme + " — " + x.def
+        : r.cle === "sigles" ? x.sigle + " — " + x.sens : (x.txt || "");
+      out.push({cle:"i|" + c.id + "|" + r.cle + "|" + i, ueId:c.ueId, coursId:c.id, coursTitre:c.titre,
+        txt:t, origine:"sens deviné au déchiffrage"});
+    }));
+  });
+  return out;
+}
+function questionsRestantes(){ return questionsAPoser().filter(q => !S.questionsPosees[q.cle]); }
+function imprimerQuestions(){
+  const l = questionsRestantes();
+  if(!l.length) return;
+  const parUE = {};
+  l.forEach(q => (parUE[q.ueId] = parUE[q.ueId] || []).push(q));
+  let h = `<div class="f-print couleur"><div class="bandeau"></div>
+    <div class="f-entete"><div class="f-code">QUESTIONS<br>À POSER<br>${l.length}</div>
+      <div><h1>Mes questions</h1>
+      <div class="f-sous">Notions restées en suspens ou dont le sens a été deviné · ${dateFr(new Date().toISOString())}</div></div></div>`;
+  Object.keys(parUE).forEach(id => {
+    const u = UE(id);
+    h += `<div class="rub"><div class="rub-t">${u ? esc(u.id) : esc(id)}<br>${u ? esc(tronquer(u.nom,40)) : ""}</div><div class="rub-c">`;
+    parUE[id].forEach((q,i) => h += `<div class="el"><span class="num">${i+1}</span><span class="co">
+      ${esc(q.txt)}<br><span class="ex">${esc(q.coursTitre)} · ${esc(q.origine)}</span></span></div>`);
+    h += `</div></div>`;
+  });
+  $("#impression").innerHTML = h + piedImp() + `</div>`;
+  window.print();
+}
+
+/* --- lexique bilingue (UE14) --- */
+const ID_LEXIQUE = "lexique-ue14";
+const SEPARATEURS = [/\t+/, /\s*;\s*/, /\s*=\s*/, /\s+-\s+/];
+/* Quatre séparateurs acceptés, plus une phrase d'appui facultative entre parenthèses. */
+function lireLigneLexique(ligne){
+  let t = String(ligne || "").trim();
+  if(!t) return null;
+  let appui = "";
+  const m = t.match(/\(([^)]{3,160})\)\s*$/);
+  if(m){ appui = m[1].trim(); t = t.slice(0, m.index).trim(); }
+  for(const sep of SEPARATEURS){
+    const p = t.split(sep);
+    if(p.length === 2 && p[0].trim() && p[1].trim())
+      return {fr:p[0].trim(), en:p[1].trim(), appui};
+  }
+  return null;
+}
+function coursLexique(){
+  let c = S.cours.find(x => x.id === ID_LEXIQUE);
+  if(!c){
+    c = {id:ID_LEXIQUE, titre:"Lexique anglais", ueId:"UE14", date:new Date().toISOString(),
+      origine:"lexique", texte:"", tableaux:[], visuels:[], lexique:[],
+      fiche:{resume:"", definitions:[], points:[], chiffres:[], normes:[], pieges:[], sigles:[],
+        procedures:[], saillants:[], mentionnes:[], sections:[], complements:null},
+      items:[]};
+    S.cours.push(c);
+  }
+  if(!Array.isArray(c.lexique)) c.lexique = [];
+  return c;
+}
+/* Chaque entrée produit deux exercices, un dans chaque sens, qui entrent dans les mêmes boîtes. */
+function ajouterEntreeLexique(fr, en, appui){
+  const c = coursLexique();
+  const cle = normaliser(fr) + "|" + normaliser(en);
+  if(c.lexique.some(e => e.cle === cle)) return null;
+  const idFr = uid(), idEn = uid();
+  c.lexique.push({cle, fr, en, appui:appui || "", idFr, idEn});
+  const src = fr + " = " + en + (appui ? " (" + appui + ")" : "");
+  c.items.push({id:idFr, ueId:"UE14", type:"flash", cree:Date.now(), origine:"lexique",
+    famille:"memo", recto:fr, verso:en + (appui ? " — " + appui : ""), source:src, sens:"fr-en"});
+  c.items.push({id:idEn, ueId:"UE14", type:"flash", cree:Date.now(), origine:"lexique",
+    famille:"memo", recto:en, verso:fr + (appui ? " — " + appui : ""), source:src, sens:"en-fr"});
+  return c.lexique[c.lexique.length - 1];
+}
+function supprimerEntreeLexique(cle){
+  const c = coursLexique();
+  const e = c.lexique.find(x => x.cle === cle);
+  if(!e) return;
+  [e.idFr, e.idEn].forEach(id => delete S.progres[id]);
+  c.items = c.items.filter(i => i.id !== e.idFr && i.id !== e.idEn);
+  c.lexique = c.lexique.filter(x => x.cle !== cle);
+}
+function boiteDe(id){ const p = S.progres[id]; return p ? p.boite : 0; }
+
+const evalVierge = () => ({titre:"", poids:1, note:null});
+
+/* Sauvegarde en deux versions. Seule la complète, qui embarque les schémas
+   encodés, permet de tout retrouver sur un autre appareil. */
+async function exporter(complet){
+  const o = JSON.parse(JSON.stringify(S));
+  o.export = {version:VERSION, date:new Date().toISOString(), complet:!!complet};
+  if(complet){
+    o.images = {};
+    let n = 0;
+    for(const c of S.cours){
+      for(const v of (c.visuels || [])){
+        const b = await lireImage(v.id);
+        if(b){ o.images[v.id] = await enBase64(b); n++; }
+      }
+    }
+    o.export.nbImages = n;
+  }
+  telecharger("prepa-depph-" + (complet ? "complet-" : "leger-") + new Date().toISOString().slice(0,10) + ".json",
+    JSON.stringify(o));
+  ui.message = {type:"info", titre: complet ? "Export complet" : "Export léger",
+    txt: complet ? (o.export.nbImages || 0) + " schéma(s) inclus." : "Les schémas ne sont pas dans ce fichier."};
+  rendre();
+}
+function base64EnBlob(b64, type){
+  const bin = atob(b64), n = bin.length, t = new Uint8Array(n);
+  for(let i = 0; i < n; i++) t[i] = bin.charCodeAt(i);
+  return new Blob([t], {type: type || "image/jpeg"});
+}
+async function restaurerImages(o){
+  if(!o || !o.images) return 0;
+  let n = 0;
+  for(const id of Object.keys(o.images)){
+    try{ await ecrireImage(id, base64EnBlob(o.images[id])); n++; }catch(e){}
+  }
+  return n;
+}
+
+function ecranMoyennes(){
+  const cible = Number(S.reglages.cible) || 10;
+  let h = `<div class="ecran">` + retour("accueil", "Moyennes");
+  h += encartRegle();
+  h += `<label class="champ" for="m-cible">Moyenne visée par UE</label>
+    <input type="number" id="m-cible" data-bind="cible" min="0" max="20" step="0.5" value="${esc(String(cible))}">`;
+  h += `<p class="kick" style="margin-top:18px">Par domaine</p>`;
+  for(let d = 1; d <= 5; d++){
+    const md = moyenneDomaine(d);
+    h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
+      <span class="bloc-nom">${esc(DOMAINES[d].nom)}</span>
+      <span class="bloc-meta" style="color:${md ? (md.valide ? "var(--menthe-fonce)" : "var(--rouge)") : "var(--encre3)"}">
+        ${md ? md.moyenne.toFixed(2) + "/20" : "—"}</span></div>`;
+    if(md){
+      h += `<div style="font-size:13px;color:var(--encre2)">
+        ${md.valide ? "Au-dessus de 10, aucune UE sous 8" : (md.bloquantes.length
+          ? "Non compensable en l'état : " + md.bloquantes.join(", ") + " sous 8/20"
+          : "Sous la barre des 10/20")}${md.partiel ? " · calcul partiel, toutes les UE ne sont pas saisies" : ""}</div>`;
+    } else h += `<div style="font-size:13px;color:var(--encre3)">Aucune note saisie dans ce domaine.</div>`;
+    UES.filter(u => u.dom === d).forEach(u => {
+      const m = moyenneUE(u.id), rest = poidsRestant(u.id);
+      const b = besoinPourCible(u.id, cible);
+      h += `<button class="carteAct" style="margin:8px 0 0" data-act="ouvrir-ue-notes" data-ue="${u.id}">
+        <span class="ic" style="font-family:'IBM Plex Mono',monospace;font-size:12px">${u.id.replace("UE","")}</span>
+        <span class="tx"><b>${esc(tronquer(u.nom, 30))}</b><small>${
+          m === null ? "aucune note · coefficient " + u.ects
+          : m.toFixed(2) + "/20 · coefficient " + u.ects + (rest ? " · " + rest + " en attente" : "")}</small></span>
+        <span class="fl">›</span></button>`;
+      if(b.etat === "impossible")
+        h += `<div class="avis err" style="margin:6px 0 0"><b>${u.id} : cible hors d'atteinte</b>
+          Il faudrait ${b.besoin.toFixed(1)}/20 en moyenne sur ce qui reste. Ce n'est plus possible : visez plus bas ou comptez sur la compensation.</div>`;
+      else if(b.etat === "possible" && ui.ueNotes === u.id)
+        h += `<div class="avis info" style="margin:6px 0 0"><b>Pour atteindre ${cible}/20</b>
+          ${b.besoin.toFixed(1)}/20 en moyenne sur les évaluations restantes.</div>`;
+    });
+    h += `</div>`;
+  }
+  if(ui.ueNotes){
+    const u = UE(ui.ueNotes);
+    h += `<p class="kick" style="margin-top:18px">${esc(u.id)} · ${esc(tronquer(u.nom, 34))}</p>`;
+    evals(ui.ueNotes).forEach((e,i) => {
+      h += `<div class="bloc">
+        <label class="champ" for="ev-t-${i}">Intitulé</label>
+        <input type="text" id="ev-t-${i}" data-act="eval" data-champ="titre" data-i="${i}" value="${esc(e.titre||"")}" placeholder="Contrôle écrit">
+        <div class="duo" style="margin-top:9px">
+          <div><label class="champ" for="ev-p-${i}">Poids</label>
+            <input type="number" id="ev-p-${i}" data-act="eval" data-champ="poids" data-i="${i}" min="0.5" max="20" step="0.5" value="${esc(String(e.poids||1))}"></div>
+          <div><label class="champ" for="ev-n-${i}">Note /20</label>
+            <input type="number" id="ev-n-${i}" data-act="eval" data-champ="note" data-i="${i}" min="0" max="20" step="0.25" value="${e.note===null?"":esc(String(e.note))}" placeholder="à venir"></div></div>
+        <div class="rang"><button class="btn mini" data-act="suppr-eval" data-i="${i}" style="color:var(--rouge)">Retirer</button></div></div>`;
+    });
+    h += `<div class="rang"><button class="btn plein mini" data-act="ajout-eval">Ajouter une évaluation</button>
+      <button class="btn mini" data-act="fermer-ue-notes">Fermer</button></div>`;
+  }
+  h += `<p class="kick" style="margin-top:18px">Sources</p>` + listeSources(SOURCES_REGLE);
+  h += `<p style="font-size:12.5px;color:var(--encre3);margin-top:10px">Calcul pur, à partir des seules notes que vous saisissez. Ce n'est pas une simulation de jury.</p>`;
+  return h + `</div>`;
+}
+
+function ecranTravaux(){
+  let h = `<div class="ecran">` + retour("accueil", "Travaux à rendre");
+  h += `<div class="rang"><button class="btn plein mini" data-act="ajout-travail">Ajouter</button></div>`;
+  const l = travauxTries();
+  if(!l.length) return h + `<div class="vide"><div class="em">▤</div><h3>Rien de prévu</h3>
+    <p>Périodes de stage, travaux écrits, mémoire, épreuves pratiques : ce que vous y mettez, rien d'autre.</p></div>
+    <div class="avis info" style="margin-top:14px"><b>Repère</b>Le parcours comprend 20 semaines en milieu professionnel, une semaine valant 1 ECTS.</div></div>`;
+  l.forEach(t => {
+    const j = joursAvantEcheance(t.echeance);
+    const urgent = t.etat !== "rendu" && j !== null && j <= 7;
+    h += `<div class="bloc"${urgent ? ' style="border-left:4px solid var(--rouge)"' : ""}>
+      <label class="champ" for="tv-t-${esc(t.id)}">Intitulé</label>
+      <input type="text" id="tv-t-${esc(t.id)}" data-act="travail" data-champ="titre" data-id="${esc(t.id)}" value="${esc(t.titre||"")}" placeholder="Rapport de stage">
+      <div class="duo" style="margin-top:9px">
+        <div><label class="champ" for="tv-y-${esc(t.id)}">Type</label>
+          <select id="tv-y-${esc(t.id)}" data-act="travail" data-champ="type" data-id="${esc(t.id)}">${
+            Object.keys(TYPES_TRAVAIL).map(k => `<option value="${k}"${t.type===k?" selected":""}>${esc(TYPES_TRAVAIL[k])}</option>`).join("")}</select></div>
+        <div><label class="champ" for="tv-d-${esc(t.id)}">Échéance</label>
+          <input type="date" id="tv-d-${esc(t.id)}" data-act="travail" data-champ="echeance" data-id="${esc(t.id)}" value="${esc(t.echeance||"")}"></div></div>
+      <label class="champ" for="tv-u-${esc(t.id)}" style="margin-top:9px">Unité rattachée</label>
+      <select id="tv-u-${esc(t.id)}" data-act="travail" data-champ="ueId" data-id="${esc(t.id)}">
+        <option value="">— aucune —</option>${UES.map(u =>
+        `<option value="${u.id}"${t.ueId===u.id?" selected":""}>${u.id} · ${esc(tronquer(u.nom,34))}</option>`).join("")}</select>
+      <div class="liste-puces" style="margin-top:10px">${Object.keys(ETATS_TRAVAIL).map(k =>
+        `<button class="puce${t.etat===k?" on":""}" data-act="etat-travail" data-id="${esc(t.id)}" data-v="${k}">${esc(ETATS_TRAVAIL[k])}</button>`).join("")}
+        ${j !== null ? `<span class="puce mono" style="${urgent?"background:var(--rouge);color:#fff":""}">${
+          j < 0 ? "dépassé de " + (-j) + " j" : "J–" + j}</span>` : ""}</div>
+      <p class="kick" style="margin-top:12px">Livrables</p>
+      ${(t.livrables||[]).map((lv,k) => `<button class="ligneCoche${lv.fait?" on":""}" data-act="livrable" data-id="${esc(t.id)}" data-k="${k}">
+        <span class="case">${lv.fait ? "✓" : ""}</span><span class="tx">${esc(lv.txt)}</span></button>`).join("")}
+      <div class="rang"><input type="text" id="lv-${esc(t.id)}" placeholder="Ajouter un livrable" style="flex:1;min-width:140px">
+        <button class="btn mini" data-act="ajout-livrable" data-id="${esc(t.id)}">Ajouter</button>
+        <button class="btn mini" data-act="suppr-travail" data-id="${esc(t.id)}" style="color:var(--rouge)">Supprimer</button></div></div>`;
+  });
+  return h + `</div>`;
+}
+
+function ecranQuestions(){
+  const tous = questionsAPoser(), reste = questionsRestantes();
+  let h = `<div class="ecran">` + retour("accueil", "Questions à poser");
+  if(!tous.length) return h + `<div class="vide"><div class="em">?</div><h3>Aucune question en attente</h3>
+    <p>Elles viennent de ce que vos cours mentionnent sans l'expliquer, et de ce dont le déchiffrage a deviné le sens.</p></div></div>`;
+  h += `<p class="sousTitre">${reste.length} en attente sur ${tous.length}. Cochez celles que vous avez posées : seules les autres partent à l'impression.</p>`;
+  const parUE = {};
+  tous.forEach(q => (parUE[q.ueId] = parUE[q.ueId] || []).push(q));
+  Object.keys(parUE).forEach(id => {
+    const u = UE(id);
+    h += `<p class="kick" style="margin-top:16px">${esc(u ? u.id + " · " + tronquer(u.nom, 34) : id)}</p>`;
+    parUE[id].forEach(q => {
+      const pose = !!S.questionsPosees[q.cle];
+      h += `<button class="ligneCoche${pose?" on":""}" data-act="question-posee" data-k="${esc(q.cle)}">
+        <span class="case">${pose ? "✓" : ""}</span>
+        <span class="tx">${esc(q.txt)}<em class="drapeau">${esc(q.coursTitre)} · ${esc(q.origine)}</em></span></button>`;
+    });
+  });
+  h += `<div class="rang"><button class="btn plein mini" data-act="imprimer-questions"${reste.length?"":" disabled"}>Imprimer les ${reste.length} restantes</button></div>`;
+  return h + `</div>`;
+}
+
+function ecranLexique(){
+  const c = coursLexique();
+  let h = `<div class="ecran">` + retour("accueil", "Lexique anglais");
+  h += `<p class="sousTitre">UE14. Chaque entrée donne deux exercices, français vers anglais puis l'inverse, dans les mêmes boîtes que le reste.</p>`;
+  h += `<div class="duo"><div><label class="champ" for="lx-fr">Français</label>
+      <input type="text" id="lx-fr" placeholder="ordonnance"></div>
+    <div><label class="champ" for="lx-en">Anglais</label>
+      <input type="text" id="lx-en" placeholder="prescription"></div></div>
+    <label class="champ" for="lx-ap" style="margin-top:9px">Phrase d'appui (facultative)</label>
+    <input type="text" id="lx-ap" placeholder="the pharmacist checked the prescription">
+    <div class="rang"><button class="btn plein mini" data-act="ajout-mot">Ajouter</button></div>`;
+  h += `<label class="champ" for="lx-lot" style="margin-top:12px">Ou coller une liste</label>
+    <textarea id="lx-lot" style="min-height:110px" placeholder="ordonnance = prescription (the pharmacist checked the prescription)&#10;stérilisation ; sterilisation&#10;péremption - expiry date"></textarea>
+    <div class="rang"><button class="btn mini" data-act="coller-lot">Importer la liste</button>
+      <span class="puce mono">tabulation, point-virgule, égal, tiret</span></div>`;
+  if(!c.lexique.length) return h + `<div class="vide"><div class="em">▤</div><h3>Lexique vide</h3>
+    <p>Ajoutez un mot, ou collez une liste.</p></div></div>`;
+  h += `<p class="kick" style="margin-top:18px">${c.lexique.length} entrée${c.lexique.length>1?"s":""}</p>`;
+  h += `<div class="rang"><button class="btn plein mini" data-act="session" data-source="cours" data-id="${ID_LEXIQUE}">Réviser le lexique</button></div>`;
+  c.lexique.forEach(e => {
+    h += `<div class="bloc"><div class="bloc-t">
+      <span class="bloc-nom">${esc(e.fr)} · ${esc(e.en)}</span>
+      <span class="bloc-meta">
+        <span class="puce mono" title="français vers anglais">FR→EN b${boiteDe(e.idFr)}</span>
+        <span class="puce mono" title="anglais vers français">EN→FR b${boiteDe(e.idEn)}</span></span></div>
+      ${e.appui ? `<div style="font-size:13px;color:var(--encre2);font-style:italic">${esc(e.appui)}</div>` : ""}
+      <div class="rang"><button class="btn mini" data-act="suppr-mot" data-k="${esc(e.cle)}" style="color:var(--rouge)">Retirer</button></div></div>`;
+  });
+  return h + `</div>`;
 }
 
 /* =========================================================================
@@ -4926,8 +6576,28 @@ function ecranStats(){
   const its = tousItems();
   if(!its.length) return h + `<div class="vide"><div class="em">▥</div><h3>Rien à mesurer</h3>
     <p>Les statistiques se construisent sur vos exercices.</p></div></div>`;
+  /* Les deux banques sont comptées séparément : mélanger fausse la lecture
+     de sa propre progression sur ses propres cours. */
+  const prepIts = UES_EXOS.flatMap(u => itemsExos(u));
+  const compte = l => { let vus = 0, ok = 0, sus = 0;
+    l.forEach(i => { const p = S.progres[i.id]; if(!p || !p.vus) return;
+      vus += p.vus; ok += p.ok; if(p.boite === 3) sus++; });
+    return {total:l.length, vus, ok, sus, part: vus ? Math.round(ok/vus*100) : 0}; };
+  const cRev = compte(its), cPrep = compte(prepIts);
+  h += `<p class="kick">Par onglet</p>
+    <div class="bloc"><div class="bloc-t"><span class="point" style="background:var(--menthe)"></span>
+      <span class="bloc-nom">Révision · vos cours</span><span class="bloc-meta">${cRev.total} ex.</span></div>
+      <div class="jauge"><i style="width:${cRev.part}%"></i></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);margin-top:5px">
+        ${cRev.part}% de réussite · ${cRev.sus} acquis</div></div>
+    <div class="bloc"><div class="bloc-t"><span class="point" style="background:var(--d1)"></span>
+      <span class="bloc-nom">Préparation · exercices intégrés</span><span class="bloc-meta">${cPrep.total} ex.</span></div>
+      <div class="jauge"><i style="width:${cPrep.part}%;background:var(--d1)"></i></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);margin-top:5px">
+        ${cPrep.part}% de réussite · ${cPrep.sus} acquis</div></div>
+    <p style="font-size:12.5px;color:var(--encre3);margin-bottom:14px">Les deux ne sont jamais additionnés : les exercices intégrés ne mesurent pas votre travail sur vos propres cours.</p>`;
   const parType = {};
-  its.concat(UES_EXOS.flatMap(u => itemsExos(u))).forEach(i => {
+  its.concat(prepIts).forEach(i => {
     const p = S.progres[i.id]; if(!p || !p.vus) return;
     const e = parType[i.type] = parType[i.type] || {vus:0, ok:0};
     e.vus += p.vus; e.ok += p.ok;
@@ -5074,8 +6744,19 @@ function ecranReglages(){
         <span class="bloc-meta">${ui.testCle.fini ? "terminé" : "en cours…"}</span></div>
         <ul class="vocab">${ui.testCle.etapes.map(x => `<li><b>${x.etat==="ok"?"✓":"✗"} ${esc(x.nom)}</b><span>${esc(x.detail)}</span></li>`).join("")}</ul>
         </div>` : ""}
-      <p style="font-size:13px;color:var(--encre2)">La clé reste sur cet appareil. Sur l'offre gratuite, Google peut utiliser les contenus transmis pour entraîner ses modèles : aucune donnée de patient.</p>`;
+      <p style="font-size:13px;color:var(--encre2)">La clé reste sur cet appareil. Sur l'offre gratuite, Google peut utiliser les contenus transmis pour entraîner ses modèles : aucune donnée de patient.</p>
+      <label class="champ" style="margin-top:14px">Compléments hors cours</label>
+      <div class="liste-puces">
+        <button class="puce${r.complements!==false?" on":""}" data-act="complements-reglage" data-v="1">Proposés</button>
+        <button class="puce${r.complements===false?" on":""}" data-act="complements-reglage" data-v="0">Masqués</button></div>
+      <p style="font-size:13px;color:var(--encre2)">Un bouton apparaît alors sur les fiches dont le cours laisse des notions en suspens. La recherche ne part jamais toute seule, et seuls les liens renvoyés par le moteur sont conservés.</p>`;
   }
+  h += `<p class="kick" style="margin-top:20px">Révision</p>
+    <div class="liste-puces">
+      <button class="puce${r.martelage!==false?" on":""}" data-act="martelage" data-v="1">Martelage activé</button>
+      <button class="puce${r.martelage===false?" on":""}" data-act="martelage" data-v="0">Désactivé</button></div>
+    <p style="font-size:13px;color:var(--encre2)">Un exercice raté revient dans la même session jusqu'à deux réussites d'affilée, au plus quatre fois. Seul le premier passage fait monter ou descendre la boîte.</p>`;
+
   h += `<p class="kick" style="margin-top:20px">Lecture audio</p>
     <label class="champ" for="v-voix">Voix</label>
     <select id="v-voix" data-bind="voix"><option value="">Voix par défaut</option>
@@ -5084,7 +6765,8 @@ function ecranReglages(){
     <input type="number" id="v-deb" data-bind="debitVoix" min="0.5" max="2" step="0.1" value="${r.debitVoix}">`;
   const poids = poidsDonnees();
   h += `<p class="kick" style="margin-top:20px">Sauvegarde</p>
-    <div class="rang"><button class="btn mini" data-act="exporter">Exporter</button>
+    <div class="rang"><button class="btn mini" data-act="exporter" data-v="leger">Export léger</button>
+      <button class="btn mini" data-act="exporter" data-v="complet">Export complet</button>
       <label class="btn mini" for="i-json">Importer</label>
       <input type="file" id="i-json" accept=".json" style="display:none"></div>
     <label class="champ" for="r-rap">Me rappeler d'exporter toutes les</label>
@@ -5117,7 +6799,8 @@ function ecranReglages(){
 /* =========================================================================
    25. ACTIONS ET ÉVÉNEMENTS
    ========================================================================= */
-async function analyser(){
+/* Premier temps : on relève la matière et on s'arrête. Rien n'est enregistré. */
+async function releverPoints(){
   const texte = (ui.importTexte||"").trim();
   if(texte.length < 200){
     ui.message = {titre:"Texte trop court", txt:"Quelques paragraphes au minimum pour produire une fiche utile."};
@@ -5125,46 +6808,120 @@ async function analyser(){
   }
   const al = sonderDonnees(texte);
   if(al.length && !ui.rgpdIgnore){ ui.avisRGPD = al; rendre(); return; }
-  const emp = empreinte(texte);
-  const jumeau = S.cours.find(c => c.emp === emp);
-  if(jumeau && !ui.doublonIgnore){
-    ui.message = {titre:"Ce cours semble déjà importé",
-      txt:"Un cours au contenu identique existe déjà sous le titre « " + jumeau.titre + " ». Réimporter créerait des exercices en double. Relancez l'analyse pour passer outre."};
-    ui.doublonIgnore = true; rendre(); return;
-  }
   const ueId = ui.importUE || detecterUE(texte);
   if(!ueId){ ui.message = {titre:"Unité à préciser", txt:"Elle n'a pas pu être déduite du texte : choisissez-la dans la liste."}; rendre(); return; }
   ui.occupe = true; ui.message = null; rendre();
-  let res, origine = S.reglages.moteur;
+  const origine = S.reglages.moteur;
+  let fiche, phr = [];
   try{
     if(origine === "gemini"){
       if(!S.reglages.cleGemini || !S.reglages.modele) throw new Error("Renseignez la clé et le modèle dans les réglages, ou repassez en mode local.");
-      const morceaux = decouperTexte(texte, 16000);
-      if(morceaux.length > 1){
-        const parts = [];
-        for(let k = 0; k < morceaux.length; k++){
-          ui.message = {type:"info", titre:"Cours long", txt:"Analyse du morceau " + (k+1) + " sur " + morceaux.length + "…"};
-          rendre();
-          parts.push(await analyseGemini(morceaux[k], ueId, S.reglages.cleGemini, S.reglages.modele));
-        }
-        res = fusionnerAnalyses(parts);
-      } else res = await analyseGemini(texte, ueId, S.reglages.cleGemini, S.reglages.modele);
-    } else res = analyseLocale(texte, ueId);
+      fiche = await analyseGeminiPoints(texte, ueId, S.reglages.cleGemini, S.reglages.modele);
+    } else {
+      const r = analyseLocale(texte, ueId);
+      fiche = r.fiche; phr = r.phr;
+    }
   }catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Analyse interrompue", txt:e.message}; rendre(); return; }
-  if(!res.items.length){
-    ui.occupe = false;
-    ui.message = {titre:"Aucun exercice tiré de ce texte",
+  ui.occupe = false;
+  if(!nbPoints(fiche)){
+    ui.message = {titre:"Aucun point relevé",
       txt:"Un cours structuré — définitions, listes, valeurs chiffrées — donne de bien meilleurs résultats."};
     rendre(); return;
   }
-  const titre = (ui.importTitre||"").trim() || res.fiche.titreDetecte || UE(ueId).nom;
-  const c = {id:uid(), titre, ueId, date:new Date().toISOString(), origine, fiche:res.fiche,
-    items:res.items.map(i => Object.assign(i, {ueId})), texte, emp:empreinte(texte)};
+  ui.brouillon = {texte, phr, ueId, origine, fiche, garde:{},
+    titre:(ui.importTitre||"").trim() || fiche.titreDetecte || UE(ueId).nom,
+    tableaux:(ui.importTableaux||[]).slice(), images:(ui.importImages||[]).slice()};
+  RUBRIQUES.forEach(r => (fiche[r.cle]||[]).forEach((_,i) => ui.brouillon.garde[r.cle + ":" + i] = true));
+  ui.ecran = "verifier"; rendre(); window.scrollTo(0,0);
+}
+
+const RUBRIQUES = [
+  {cle:"definitions", nom:"Définitions",        aff:x => "<b>" + esc(x.terme) + "</b> — " + esc(x.def)},
+  {cle:"sigles",      nom:"Sigles",             aff:x => "<b>" + esc(x.sigle) + "</b> — " + esc(x.sens)},
+  {cle:"points",      nom:"Points à retenir",   aff:x => esc(x.txt)},
+  {cle:"chiffres",    nom:"Valeurs chiffrées",  aff:x => esc(x.txt)},
+  {cle:"normes",      nom:"Textes et normes",   aff:x => esc(x.txt)},
+  {cle:"pieges",      nom:"Pièges",             aff:x => esc(x.txt)},
+  {cle:"procedures",  nom:"Suites d'étapes",    aff:x => esc((x.etapes||[]).join(" → "))}
+];
+function nbPoints(f){ return RUBRIQUES.reduce((s,r) => s + ((f[r.cle]||[]).length), 0); }
+function nbRetenus(b){ return Object.keys(b.garde).filter(k => b.garde[k]).length; }
+/* La fiche enregistrée ne contient que ce qui a été coché. Un point décoché disparaît. */
+function ficheRetenue(b){
+  const f = {resume:b.fiche.resume, saillants:b.fiche.saillants || [],
+    mentionnes:b.fiche.mentionnes || [], sections:b.fiche.sections || [],
+    complements:b.fiche.complements || null};
+  RUBRIQUES.forEach(r => f[r.cle] = (b.fiche[r.cle]||[]).filter((_,i) => b.garde[r.cle + ":" + i]));
+  return f;
+}
+
+/* Second temps : les exercices sont fabriqués sur les seuls points retenus. */
+async function fabriquer(){
+  const b = ui.brouillon;
+  if(!b) { ui.ecran = "import"; rendre(); return; }
+  if(!nbRetenus(b)){ ui.message = {titre:"Aucun point retenu", txt:"Cochez au moins un point avant de fabriquer les exercices."}; rendre(); return; }
+  const f = ficheRetenue(b);
+  ui.occupe = true; ui.message = null; rendre();
+  let items;
+  try{
+    if(b.origine === "gemini") items = await analyseGeminiExercices(f, b.ueId, S.reglages.cleGemini, S.reglages.modele);
+    else items = itemsLocaux(f, b.phr, b.ueId);
+  }catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Fabrication interrompue", txt:e.message}; rendre(); return; }
+  ui.occupe = false;
+  if(!items.length){
+    ui.message = {titre:"Aucun exercice produit", txt:"Les points retenus ne s'y prêtent pas. Élargissez la sélection ou complétez le cours."};
+    rendre(); return;
+  }
+  const c = {id:uid(), titre:b.titre, ueId:b.ueId, date:new Date().toISOString(), origine:b.origine,
+    fiche:f, items:items.map(i => Object.assign(i, {ueId:b.ueId})), texte:b.texte, tableaux:b.tableaux,
+    visuels:[]};
+  // les images du document n'entrent en base qu'ici : un abandon n'en laisse aucune
+  let enMemoire = false;
+  for(const im of (b.images || [])){
+    const id = uid();
+    if(await ecrireImage(id, im.blob) === "memoire") enMemoire = true;
+    c.visuels.push({id, legende:"", place:"fin", w:im.w, h:im.h, origine:"docx"});
+  }
   S.cours.push(c); sauver();
-  ui.occupe = false; ui.importTexte = ""; ui.importTitre = ""; ui.importUE = "";
-  ui.avisRGPD = null; ui.rgpdIgnore = false; ui.fiche = c.id; ui.ecran = "fiche";
-  ui.message = {type:"info", titre:"Fiche créée", txt:res.items.length + " exercices générés."};
+  if(enMemoire) ui.message = {type:"err", titre:"Images non conservées",
+    txt:"Le navigateur refuse la base d'images : elles resteront visibles jusqu'à la fermeture de l'onglet, puis seront perdues."};
+  prechargerVisuels(c);
+  ui.brouillon = null; ui.importTexte = ""; ui.importTitre = ""; ui.importUE = "";
+  ui.importTableaux = []; ui.importImages = []; ui.avertFichier = "";
+  ui.avisRGPD = null; ui.rgpdIgnore = false; ui.transcritIllisibles = null;
+  viderPhotos();
+  ui.fiche = c.id; ui.ecran = "fiche";
+  if(!ui.message) ui.message = {type:"info", titre:"Fiche créée",
+    txt:items.length + " exercices sur " + nbRetenus(b) + " points retenus" +
+      (c.visuels.length ? ", " + c.visuels.length + " image" + (c.visuels.length>1?"s":"") + " jointe" + (c.visuels.length>1?"s":"") : "") + "."};
   rendre(); window.scrollTo(0,0);
+}
+/* Déclenchée à la main, jamais automatiquement. Le résultat est rangé
+   dans une rubrique distincte du cours, avec la date et les liens vérifiés. */
+async function lancerComplements(id){
+  const c = S.cours.find(x => x.id === id);
+  if(!c) return;
+  const men = (c.fiche.mentionnes||[]).map(m => m.txt).slice(0,10);
+  if(!men.length) return;
+  if(!S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Configuration incomplète", txt:"Renseignez la clé et le modèle dans les réglages."};
+    rendre(); return;
+  }
+  ui.occupe = true; ui.message = null; rendre();
+  try{
+    c.fiche.complements = await chercherComplements(c.ueId, men, S.reglages.cleGemini, S.reglages.modele);
+    sauver();
+    ui.message = {type:"info", titre:"Compléments ajoutés",
+      txt:(c.fiche.complements.liens||[]).length + " source" + ((c.fiche.complements.liens||[]).length>1?"s":"") + " retenue" + ((c.fiche.complements.liens||[]).length>1?"s":"") + ". Ils ne remplacent pas votre cours."};
+  }catch(e){ ui.message = {type:"err", titre:"Recherche interrompue", txt:e.message}; }
+  ui.occupe = false; rendre();
+}
+
+function abandonner(){
+  // les images n'ont jamais été écrites en base : les oublier suffit
+  ui.brouillon = null; ui.importTableaux = []; ui.importImages = []; ui.avertFichier = "";
+  ui.ecran = "import"; ui.message = {type:"info", titre:"Analyse abandonnée", txt:"Rien n'a été enregistré."};
+  rendre();
 }
 
 document.addEventListener("click", async e => {
@@ -5213,6 +6970,7 @@ document.addEventListener("click", async e => {
       if(confirm("Supprimer ce cours, sa fiche et ses exercices ?")){
         const c = S.cours.find(x => x.id === el.dataset.id);
         if(c) c.items.forEach(i => delete S.progres[i.id]);
+        effacerImages(((S.cours.find(x => x.id === el.dataset.id)||{}).visuels || []).map(v => v.id));
         S.cours = S.cours.filter(x => x.id !== el.dataset.id);
         sauver(); ui.ecran = "fiches"; rendre();
       } break;
@@ -5223,7 +6981,7 @@ document.addEventListener("click", async e => {
 
     /* --- sessions --- */
     case "exos": lancerExosPrep(el.dataset.ue, el.dataset.mode || ""); break;
-    case "session": lancerSession(el.dataset.source, el.dataset.ue, el.dataset.id); break;
+    case "session": lancerSession(el.dataset.source, el.dataset.ue, el.dataset.id, {niveau:el.dataset.niveau}); break;
     case "choix": {
       const it = s.liste[s.i];
       if(it.type === "qcmMulti"){ const k = Number(el.dataset.k); s.choix = s.choix || [];
@@ -5325,9 +7083,107 @@ document.addEventListener("click", async e => {
     case "exporter":
       telecharger("prepa-depph-" + new Date().toISOString().slice(0,10) + ".json", JSON.stringify(S, null, 1));
       S.meta.dernierExport = Date.now(); S.meta.sessionsExport = 0; sauver(); rendre(); break;
+    case "ecran-tri": { ui.fiche = el.dataset.id; ui.ecran = "tri"; rendre(); window.scrollTo(0,0);
+      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerVisuels(c); break; }
+    case "ecran-lecture": { ui.fiche = el.dataset.id; ui.lecture = 0; ui.ecran = "lecture"; rendre(); window.scrollTo(0,0);
+      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerVisuels(c); break; }
+    case "ecran-visuels": { ui.fiche = el.dataset.id; ui.ecran = "visuels"; rendre(); window.scrollTo(0,0);
+      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerVisuels(c); break; }
+    case "suppr-visuel": { const c = S.cours.find(x => x.id === ui.fiche);
+      if(c && confirm("Supprimer ce schéma ?")){
+        await effacerImages([el.dataset.id]);
+        c.visuels = (c.visuels||[]).filter(v => v.id !== el.dataset.id);
+        delete triDe(c).exclus["visuel:" + el.dataset.id];
+        sauver(); rendre(); } break; }
+    case "page-prec": if(ui.decoupe && ui.decoupe.page > 1){ ui.decoupe.page--; rendre(); await dessinerPage(); } break;
+    case "page-suiv": if(ui.decoupe && ui.decoupe.page < ui.decoupe.total){ ui.decoupe.page++; rendre(); await dessinerPage(); } break;
+    case "extraire": await extraireZone(); break;
+    case "transcrire": await lancerTranscription(); break;
+    case "retirer-photo": { const i = Number(el.dataset.i);
+      const p = (ui.photos||[])[i];
+      if(p){ libererUrl(p.url); ui.photos.splice(i, 1); rendre(); } break; }
+    case "lecture-suiv": ui.lecture++; rendre(); window.scrollTo(0,0); break;
+    case "lecture-prec": if(ui.lecture > 0) ui.lecture--; rendre(); window.scrollTo(0,0); break;
+    case "tri-coche": { const c = S.cours.find(x => x.id === ui.fiche);
+      if(c){ const t = triDe(c), k = el.dataset.k;
+        if(t.exclus[k]) delete t.exclus[k]; else t.exclus[k] = true;
+        sauver(); rendre(); } break; }
+    case "tri-valeur": { const c = S.cours.find(x => x.id === ui.fiche);
+      if(c){ const t = triDe(c); if(el.dataset.v) t.valeur[el.dataset.k] = el.dataset.v; else delete t.valeur[el.dataset.k];
+        sauver(); rendre(); } break; }
+    case "tri-tout": { const c = S.cours.find(x => x.id === ui.fiche);
+      if(c){ const t = triDe(c), v = el.dataset.v === "1";
+        RUB_IMP.forEach(r => (c.fiche[r.cle]||[]).forEach((_,i) => {
+          if(v) delete t.exclus[cleTri(r.cle,i)]; else t.exclus[cleTri(r.cle,i)] = true; }));
+        sauver(); rendre(); } break; }
+    case "cocher": { const b2 = ui.brouillon; if(b2){ b2.garde[el.dataset.k] = !b2.garde[el.dataset.k]; rendre(); } break; }
+    case "tout-cocher": { const b2 = ui.brouillon;
+      if(b2){ const v = el.dataset.v === "1";
+        RUBRIQUES.forEach(r => (b2.fiche[r.cle]||[]).forEach((_,i) => b2.garde[r.cle + ":" + i] = v)); rendre(); }
+      break; }
+    case "fabriquer": await fabriquer(); break;
+    case "abandon": abandonner(); break;
+    case "complements": await lancerComplements(el.dataset.id); break;
+    case "oublier-complements": { const c = S.cours.find(x => x.id === el.dataset.id);
+      if(c){ c.fiche.complements = null; sauver(); rendre(); } break; }
+    case "ranger": s.assoc[Number(el.dataset.i)] = Number(el.dataset.c); rendre(); break;
+    case "martelage": S.reglages.martelage = el.dataset.v === "1"; sauver(); rendre(); break;
+    case "complements-reglage": S.reglages.complements = el.dataset.v === "1"; sauver(); rendre(); break;
+    case "ouvrir-ue-notes": ui.ueNotes = el.dataset.ue; if(!evals(ui.ueNotes).length) evals(ui.ueNotes).push(evalVierge()); sauver(); rendre(); break;
+    case "fermer-ue-notes": ui.ueNotes = null; rendre(); break;
+    case "ajout-eval": if(ui.ueNotes){ evals(ui.ueNotes).push(evalVierge()); sauver(); rendre(); } break;
+    case "suppr-eval": if(ui.ueNotes){ evals(ui.ueNotes).splice(Number(el.dataset.i), 1); sauver(); rendre(); } break;
+
+    /* --- travaux --- */
+    case "ajout-travail": S.travaux.push({id:uid(), titre:"", type:"ecrit", ueId:"", echeance:"", etat:"afaire", livrables:[]});
+      sauver(); rendre(); break;
+    case "suppr-travail": if(confirm("Supprimer ce travail ?")){ S.travaux = S.travaux.filter(t => t.id !== el.dataset.id); sauver(); rendre(); } break;
+    case "etat-travail": { const t = S.travaux.find(x => x.id === el.dataset.id);
+      if(t){ t.etat = el.dataset.v; sauver(); rendre(); } break; }
+    case "ajout-livrable": { const t = S.travaux.find(x => x.id === el.dataset.id);
+      const ch = document.getElementById("lv-" + el.dataset.id);
+      if(t && ch && ch.value.trim()){ t.livrables = t.livrables || [];
+        t.livrables.push({txt:ch.value.trim(), fait:false}); sauver(); rendre(); } break; }
+    case "livrable": { const t = S.travaux.find(x => x.id === el.dataset.id), k = Number(el.dataset.k);
+      if(t && t.livrables && t.livrables[k]){ t.livrables[k].fait = !t.livrables[k].fait; sauver(); rendre(); } break; }
+
+    /* --- questions --- */
+    case "question-posee": { const k = el.dataset.k;
+      if(S.questionsPosees[k]) delete S.questionsPosees[k]; else S.questionsPosees[k] = true;
+      sauver(); rendre(); break; }
+    case "imprimer-questions": imprimerQuestions(); break;
+
+    /* --- lexique --- */
+    case "ajout-mot": {
+      const fr = (document.getElementById("lx-fr")||{}).value || "";
+      const en = (document.getElementById("lx-en")||{}).value || "";
+      const ap = (document.getElementById("lx-ap")||{}).value || "";
+      if(!fr.trim() || !en.trim()){ ui.message = {titre:"Entrée incomplète", txt:"Il faut les deux langues."}; rendre(); break; }
+      const r = ajouterEntreeLexique(fr.trim(), en.trim(), ap.trim());
+      sauver();
+      ui.message = r ? {type:"info", titre:"Entrée ajoutée", txt:"Deux exercices créés, un dans chaque sens."}
+                     : {titre:"Déjà présente", txt:"Cette entrée figure déjà dans le lexique."};
+      rendre(); break;
+    }
+    case "coller-lot": {
+      const brut = (document.getElementById("lx-lot")||{}).value || "";
+      let ok = 0, refus = 0;
+      brut.split("\n").forEach(l => {
+        if(!l.trim()) return;
+        const e = lireLigneLexique(l);
+        if(!e){ refus++; return; }
+        if(ajouterEntreeLexique(e.fr, e.en, e.appui)) ok++; else refus++;
+      });
+      sauver();
+      ui.message = {type: ok ? "info" : "err", titre: ok + " entrée" + (ok>1?"s":"") + " ajoutée" + (ok>1?"s":""),
+        txt: refus ? refus + " ligne" + (refus>1?"s":"") + " ignorée" + (refus>1?"s":"") + " : séparateur absent ou entrée déjà présente." : "Deux exercices par entrée."};
+      rendre(); break;
+    }
+    case "suppr-mot": supprimerEntreeLexique(el.dataset.k); sauver(); rendre(); break;
     case "tout-effacer":
       if(confirm("Effacer vos cours, fiches, exercices et résultats ? La progression des leçons est conservée.")){
         const prep = S.prep, regl = S.reglages;
+        effacerImages(tousVisuels());
         S = etatVierge(); S.prep = prep; S.reglages = regl;
         sauver(); ui.fiche = null; aller("rev", "accueil");
       } break;
@@ -5340,8 +7196,19 @@ document.addEventListener("change", async e => {
     const f = t.files[0];
     ui.message = {type:"info", titre:"Lecture du fichier", txt:f.name}; rendre();
     try{
-      const txt = await lireFichier(f);
+      const r = await lireFichier(f);
+      const txt = r.texte || "";
       ui.importTexte = txt;
+      ui.importTableaux = r.tableaux || [];
+      ui.avertFichier = r.avertissement || "";
+      ui.importImages = [];
+      for(const src of (r.images || []).slice(0, 12)){
+        try{ ui.importImages.push(await redimensionner(src)); }catch(e){}
+      }
+      if(ui.importImages.length) ui.avertFichier += (ui.avertFichier ? " " : "") +
+        ui.importImages.length + " image" + (ui.importImages.length>1?"s":"") + " du document retaillée" +
+        (ui.importImages.length>1?"s":"") + " : elle" + (ui.importImages.length>1?"s seront jointes":" sera jointe") +
+        " à la fiche une fois les exercices fabriqués.";
       if(!ui.importTitre) ui.importTitre = f.name.replace(/\.[^.]+$/,"");
       if(!ui.importUE) ui.importUE = detecterUE(txt) || "";
       const al = sonderDonnees(txt);
@@ -5350,6 +7217,37 @@ document.addEventListener("change", async e => {
         txt: txt.length + " caractères" + (ui.importUE ? " · unité proposée : " + ui.importUE : "") + "."};
     }catch(err){ ui.message = {type:"err", titre:"Lecture impossible", txt:err.message}; }
     rendre(); return;
+  }
+  if(t.id === "v-gal" && t.files.length){
+    const c = S.cours.find(x => x.id === ui.fiche);
+    if(c){
+      ui.message = {type:"info", titre:"Ajout des images", txt:t.files.length + " fichier(s)"}; rendre();
+      let mem = false;
+      for(const f of Array.from(t.files).slice(0, 12)){
+        try{ if(await ajouterVisuel(c, await redimensionner(f), "galerie") === "memoire") mem = true; }
+        catch(err){ ui.message = {type:"err", titre:"Image ignorée", txt:f.name + " : " + err.message}; }
+      }
+      ui.message = mem
+        ? {type:"err", titre:"Images non conservées", txt:"Le navigateur refuse la base d'images : elles seront perdues à la fermeture de l'onglet."}
+        : {type:"info", titre:"Images ajoutées", txt:"Donnez-leur une légende et un emplacement."};
+      rendre();
+    }
+    t.value = ""; return;
+  }
+  if(t.id === "v-pdf" && t.files[0]){ await ouvrirDecoupe(t.files[0]); t.value = ""; return; }
+  if(t.id === "p-photo" && t.files.length){
+    if(!ui.photos) ui.photos = [];
+    const place = PHOTO_MAX - ui.photos.length;
+    if(place <= 0){ ui.message = {titre:"Lot complet", txt:"Retirez une page avant d'en ajouter une autre."}; rendre(); t.value = ""; return; }
+    ui.message = {type:"info", titre:"Préparation des pages", txt:"Retaille en cours…"}; rendre();
+    for(const f of Array.from(t.files).slice(0, place)){
+      try{
+        const im = await redimensionner(f, PHOTO_PX, PHOTO_QUALITE);
+        ui.photos.push({blob:im.blob, url: await urlPour(im.blob), w:im.w, h:im.h});
+      }catch(err){ ui.message = {type:"err", titre:"Page ignorée", txt:f.name + " : " + err.message}; }
+    }
+    if(ui.message && ui.message.titre === "Préparation des pages") ui.message = null;
+    rendre(); t.value = ""; return;
   }
   if(t.id === "i-json" && t.files[0]){
     try{
@@ -5369,8 +7267,32 @@ document.addEventListener("change", async e => {
   }
   const act = t.closest("[data-act]");
   if(act && act.dataset.act === "assoc"){ ui.session.assoc[Number(act.dataset.i)] = t.value; return; }
+  if(act && act.dataset.act === "eval" && ui.ueNotes){
+    const e = evals(ui.ueNotes)[Number(act.dataset.i)];
+    if(e){
+      const ch = act.dataset.champ;
+      if(ch === "note") e.note = t.value === "" ? null : Math.max(0, Math.min(20, Number(t.value)));
+      else if(ch === "poids") e.poids = Math.max(0.5, Number(t.value) || 1);
+      else e.titre = t.value;
+      sauver(); rendre();
+    }
+    return;
+  }
+  if(act && act.dataset.act === "travail"){
+    const tr = S.travaux.find(x => x.id === act.dataset.id);
+    if(tr){ tr[act.dataset.champ] = t.value; sauver(); rendre(); }
+    return;
+  }
+  if(act && (act.dataset.act === "legende" || act.dataset.act === "place")){
+    const c = S.cours.find(x => x.id === ui.fiche);
+    const v = c && (c.visuels||[]).find(x => x.id === act.dataset.id);
+    if(v){ if(act.dataset.act === "legende") v.legende = t.value; else v.place = t.value; sauver(); }
+    return;
+  }
   const b = t.dataset.bind;
   if(!b) return;
+  if(b === "brouillonTitre"){ if(ui.brouillon) ui.brouillon.titre = t.value; return; }
+  if(b === "brouillonUE"){ if(ui.brouillon) ui.brouillon.ueId = t.value; rendre(); return; }
   if(b in ui){
     ui[b] = t.value;
     if(b === "importTexte"){
@@ -5388,6 +7310,7 @@ document.addEventListener("change", async e => {
 document.addEventListener("input", e => {
   const b = e.target.dataset.bind;
   if(b === "importTexte" || b === "importTitre") ui[b] = e.target.value;
+  if(b === "brouillonTitre" && ui.brouillon) ui.brouillon.titre = e.target.value;
   if(b === "requete"){
     ui.requete = e.target.value;
     clearTimeout(window.__rech);
@@ -5400,12 +7323,14 @@ document.addEventListener("input", e => {
   }
 });
 document.addEventListener("keydown", e => {
-  if(e.key === "Enter" && e.target.id === "rep" && e.target.tagName === "INPUT"){ e.preventDefault(); valider(); }
+  if(e.key === "Enter" && e.target.id === "rep-cloze"){ e.preventDefault(); valider(); }
 });
 window.addEventListener("resize", () => { if((S.reglages.affichage || "auto") === "auto") appliquerAffichage(); });
 if(window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { if(ui.ecran === "reglages") rendre(); };
 
 charger();
+migrer();
+verifierEtancheite();
 if(!S.prep) S.prep = {};
 rendre();
 </script>
