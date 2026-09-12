@@ -1119,16 +1119,42 @@ async function testerCle(){
   ui.testCle.fini = true; rendre();
 }
 
+/* Délai maximal par appel. Sans cela, une requête qui reste en attente bloque
+   l'application sans aucun message : l'écran semble figé indéfiniment. */
+const DELAI_APPEL = 120000;
+let annulation = null;
+function annulerAppel(){
+  if(annulation){ try{ annulation.abort(); }catch(e){} annulation = null; }
+}
 async function appelGemini(corps, modele, cle){
-  const r = await fetch(API + "/models/" + encodeURIComponent(modele) + ":generateContent?key=" + encodeURIComponent(cle),
-    {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(corps)});
+  const ctrl = (typeof AbortController === "function") ? new AbortController() : null;
+  annulation = ctrl;
+  const minuterie = ctrl ? setTimeout(() => { try{ ctrl.abort(); }catch(e){} }, DELAI_APPEL) : null;
+  let r;
+  try{
+    r = await fetch(API + "/models/" + encodeURIComponent(modele) + ":generateContent?key=" + encodeURIComponent(cle),
+      {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(corps),
+       signal: ctrl ? ctrl.signal : undefined});
+  }catch(e){
+    if(e && (e.name === "AbortError" || /abort/i.test(e.message || "")))
+      throw new Error("Pas de réponse au bout de " + Math.round(DELAI_APPEL/1000) + " secondes. Vérifiez la connexion, ou découpez le cours en deux.");
+    throw new Error("La requête n'a pas abouti : " + (e && e.message ? e.message : "réseau indisponible") + ".");
+  }finally{
+    if(minuterie) clearTimeout(minuterie);
+    annulation = null;
+  }
   if(!r.ok){
     let d = ""; try{ d = (await r.json()).error.message; }catch(e){}
+    if(r.status === 429) throw new Error("Quota Google atteint (429). Attendez une minute, ou passez en mode local.");
     throw new Error("Gemini a renvoyé une erreur " + r.status + (d ? " : " + d : "") + ".");
   }
   const d = await r.json();
   const cand = (d.candidates || [])[0];
   if(!cand) throw new Error("Gemini n'a rien renvoyé. Le texte est peut-être trop long : découpez-le en deux.");
+  if(cand.finishReason === "MAX_TOKENS")
+    throw new Error("La réponse a été coupée avant la fin : le morceau de cours est trop gros. Découpez-le en deux.");
+  if(cand.finishReason === "SAFETY" || cand.finishReason === "PROHIBITED_CONTENT")
+    throw new Error("Le modèle a refusé de traiter ce passage. Réessayez sur une autre partie du cours.");
   return cand;
 }
 function lireJson(cand){
@@ -1138,10 +1164,12 @@ function lireJson(cand){
 }
 
 /* Le relevé accepte les cours longs : ils sont découpés et les fiches réunies. */
-async function analyseGeminiPoints(texte, ueId, cle, modele){
-  const morceaux = decouperTexte(texte, 24000);
+async function analyseGeminiPoints(texte, ueId, cle, modele, avancement){
+  const morceaux = decouperTexte(texte, 18000);
   const fiches = [];
-  for(const m of morceaux){
+  for(let k = 0; k < morceaux.length; k++){
+    const m = morceaux[k];
+    if(avancement) avancement(k + 1, morceaux.length);
     const cand = await appelGemini({
       systemInstruction:{parts:[{text:consignePoints(ueId)}]},
       contents:[{role:"user", parts:[{text:"COURS :\n\n" + m}]}],
@@ -4755,7 +4783,7 @@ let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtre
   brouillon:null, pdfFichier:null, decoupe:null, photos:[], transcritIllisibles:null,
   ueNotes:null, lecture:0,
   avisRGPD:null, rgpdIgnore:false,
-  occupe:false, message:null, resultat:null, quizRep:null};
+  occupe:false, avancement:null, message:null, resultat:null, quizRep:null};
 
 function progLecon(ue){
   if(!S.prep[ue]) S.prep[ue] = {index:0, termine:false, quiz:{}};
@@ -5477,7 +5505,9 @@ function ecranImport(){
       ${ia ? `<button class="btn mini" data-act="ecran" data-e="photos">Photographier des notes</button>` : ""}
       ${ui.importTableaux.length ? `<span class="puce mono">${ui.importTableaux.length} tableau${ui.importTableaux.length>1?"x":""}</span>` : ""}
       <span class="puce mono">${ia ? "Gemini" : "local"}</span></div>
-    <button class="cta" data-act="analyser"${ui.occupe?" disabled":""}>${ui.occupe?"Lecture en cours…":"Relever les points"}</button>`;
+    <button class="cta" data-act="analyser"${ui.occupe?" disabled":""}>${ui.occupe?("Lecture en cours… " + (ui.avancement || "")):"Relever les points"}</button>`;
+  if(ui.occupe) h += `<div class="rang"><button class="btn mini" data-act="annuler-appel" style="color:var(--rouge)">Annuler</button>
+    <span class="puce mono">délai maximal ${Math.round(DELAI_APPEL/1000)} s par appel</span></div>`;
   if(!ia) h += `<div class="avis info" style="margin-top:14px"><b>En mode local</b>
     Fiche, flashcards, textes à trous, appariements, QCM et vrai-faux, tirés de phrases du cours. La chasse à l'erreur et les mises en situation demandent Gemini.</div>`;
   return h + `</div>`;
@@ -6816,13 +6846,15 @@ async function releverPoints(){
   try{
     if(origine === "gemini"){
       if(!S.reglages.cleGemini || !S.reglages.modele) throw new Error("Renseignez la clé et le modèle dans les réglages, ou repassez en mode local.");
-      fiche = await analyseGeminiPoints(texte, ueId, S.reglages.cleGemini, S.reglages.modele);
+      fiche = await analyseGeminiPoints(texte, ueId, S.reglages.cleGemini, S.reglages.modele,
+        (k, n) => { ui.avancement = n > 1 ? "morceau " + k + " sur " + n : "en cours"; rendre(); });
     } else {
       const r = analyseLocale(texte, ueId);
       fiche = r.fiche; phr = r.phr;
     }
-  }catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Analyse interrompue", txt:e.message}; rendre(); return; }
-  ui.occupe = false;
+  }catch(e){ ui.occupe = false; ui.avancement = null;
+    ui.message = {type:"err", titre:"Analyse interrompue", txt:e.message}; rendre(); return; }
+  ui.occupe = false; ui.avancement = null;
   if(!nbPoints(fiche)){
     ui.message = {titre:"Aucun point relevé",
       txt:"Un cours structuré — définitions, listes, valeurs chiffrées — donne de bien meilleurs résultats."};
@@ -6975,6 +7007,7 @@ document.addEventListener("click", async e => {
         sauver(); ui.ecran = "fiches"; rendre();
       } break;
     case "analyser": await releverPoints(); break;
+    case "annuler-appel": annulerAppel(); break;
     case "anonymiser": ui.importTexte = anonymiser(ui.importTexte); ui.avisRGPD = null; ui.rgpdIgnore = true;
       ui.message = {type:"info", titre:"Texte anonymisé", txt:"Relisez-le avant de lancer l'analyse."}; rendre(); break;
     case "rgpd-ignorer": ui.rgpdIgnore = true; ui.avisRGPD = null; rendre(); break;
