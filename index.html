@@ -834,7 +834,7 @@ function itemsLocaux(fiche, phr, ueId){
   fiche.chiffres.slice(0,10).forEach((c,i) => {
     const m = c.txt.match(RE_CHIFFRE);
     if(!m) return;
-    const vrai = i % 2 === 0;
+    const vrai = Math.random() < 0.5;   // tirage au sort : une alternance régulière se devine
     let enonce = c.txt;
     if(!vrai){
       const n = parseFloat(m[1].replace(",","."));
@@ -978,7 +978,11 @@ contexteUE(ueId),
 "- Pour \"ordre\", les étapes sont données DANS L'ORDRE CORRECT : l'application les mélangera.",
 "- Pour \"erreur\" et \"situation\", la situation reste strictement dans le champ décrit par la fiche.",
 "",
-"Vise 18 à 30 exercices, à peu près la moitié dans chaque famille, et couvre les quatre niveaux quand la fiche le permet."
+"VOLUME ATTENDU :",
+"- Chaque point de la fiche doit donner AU MOINS deux exercices, de formats différents.",
+"- Tu recevras une consigne de quantité chiffrée : respecte-la. Mieux vaut varier les formats sur un même point que d'en laisser un sans exercice.",
+"- Réserve environ un cinquième des exercices à des exercices TRANSVERSAUX, qui font travailler plusieurs points ensemble : classements en deux colonnes, appariements, remises en ordre, comparaisons. Ce sont eux qui font relier les notions entre elles.",
+"- Pour les exercices à options, place la bonne réponse à une position variable : jamais systématiquement la première."
   ].join("\n");
 }
 
@@ -1180,23 +1184,80 @@ async function analyseGeminiPoints(texte, ueId, cle, modele, avancement){
   return fiches.length === 1 ? fiches[0] : fusionnerFiches(fiches);
 }
 
-async function analyseGeminiExercices(fiche, ueId, cle, modele){
-  const cand = await appelGemini({
-    systemInstruction:{parts:[{text:consigneExercices(ueId)}]},
-    contents:[{role:"user", parts:[{text:"FICHE VALIDÉE :\n\n" + ficheEnTexte(fiche)}]}],
-    generationConfig:{temperature:0.2, responseMimeType:"application/json", maxOutputTokens:8192}
-  }, modele, cle);
-  return normaliserItems(lireJson(cand).items, ueId);
+/* Deux exercices par point au minimum. Une grosse fiche demande donc plusieurs
+   appels : un seul ne tiendrait pas dans la limite de jetons de sortie. */
+const EXOS_PAR_POINT = 2, EXOS_PAR_APPEL = 24;
+function pointsDeFiche(f){
+  return RUBRIQUES.reduce((n, r) => n + ((f[r.cle] || []).length), 0);
+}
+/* Découpe la fiche en tranches, chacune donnant un appel. Les points transversaux
+   restent groupés : un classement n'a de sens qu'entre points d'une même tranche. */
+function tranchesDeFiche(f, parAppel){
+  const n = pointsDeFiche(f);
+  const cible = Math.max(EXOS_PAR_POINT * n, 12);
+  const nbAppels = Math.max(1, Math.ceil(cible / parAppel));
+  if(nbAppels === 1) return [{fiche:f, cible}];
+  const tranches = [];
+  for(let k = 0; k < nbAppels; k++){
+    const t = {resume:f.resume};
+    RUBRIQUES.forEach(r => {
+      const l = f[r.cle] || [];
+      t[r.cle] = l.filter((_, i) => i % nbAppels === k);
+    });
+    const np = pointsDeFiche(t);
+    if(np) tranches.push({fiche:t, cible: Math.max(EXOS_PAR_POINT * np, 6)});
+  }
+  return tranches;
+}
+async function analyseGeminiExercices(fiche, ueId, cle, modele, avancement, dejaVus){
+  const tranches = tranchesDeFiche(fiche, EXOS_PAR_APPEL);
+  const out = [];
+  for(let k = 0; k < tranches.length; k++){
+    if(avancement) avancement(k + 1, tranches.length);
+    const t = tranches[k];
+    let corps = "FICHE VALIDÉE :\n\n" + ficheEnTexte(t.fiche) +
+      "\n\nQUANTITÉ DEMANDÉE : " + t.cible + " exercices pour cette fiche.";
+    if(dejaVus && dejaVus.length){
+      corps += "\n\nEXERCICES DÉJÀ EXISTANTS, à ne pas refaire — produis-en d'autres, " +
+        "sur d'autres angles et d'autres formats :\n" +
+        dejaVus.slice(0, 60).map(q => "- " + tronquer(q, 120)).join("\n");
+    }
+    const cand = await appelGemini({
+      systemInstruction:{parts:[{text:consigneExercices(ueId)}]},
+      contents:[{role:"user", parts:[{text:corps}]}],
+      generationConfig:{temperature: dejaVus && dejaVus.length ? 0.7 : 0.35,
+        responseMimeType:"application/json", maxOutputTokens:8192}
+    }, modele, cle);
+    normaliserItems(lireJson(cand).items, ueId).forEach(x => out.push(x));
+  }
+  return out;
 }
 
 /* Compléments : mode texte obligatoire, et seules les adresses renvoyées par
    groundingMetadata sont conservées. Aucune URL écrite par le modèle n'est retenue. */
 async function chercherComplements(ueId, mentionnes, cle, modele){
-  const cand = await appelGemini({
+  /* Deux noms d'outil coexistent : google_search pour les modèles Gemini 2 et suivants,
+     google_search_retrieval pour les 1.5. On tente l'un puis l'autre plutôt que
+     d'imposer un modèle à l'utilisateur. */
+  const base = {
     contents:[{role:"user", parts:[{text:consigneComplements(ueId, mentionnes)}]}],
-    tools:[{google_search:{}}],
     generationConfig:{temperature:0.2, maxOutputTokens:2048}
-  }, modele, cle);
+  };
+  const outils = [{google_search:{}}, {google_search_retrieval:{}}];
+  let cand = null, derniere = null;
+  for(const o of outils){
+    try{ cand = await appelGemini(Object.assign({tools:[o]}, base), modele, cle); break; }
+    catch(e){
+      derniere = e;
+      // on ne réessaie que si l'outil lui-même a été refusé
+      if(!/tool|google_search|not supported|INVALID_ARGUMENT|400/i.test(e.message || "")) throw e;
+    }
+  }
+  if(!cand){
+    throw new Error("Ce modèle ne sait pas chercher sur le web" +
+      (derniere ? " (" + derniere.message + ")" : "") +
+      " Choisissez un modèle Gemini plus récent dans les réglages.");
+  }
   const txt = (cand.content && cand.content.parts || []).map(p => p.text || "").join("").trim();
   const chunks = (cand.groundingMetadata && cand.groundingMetadata.groundingChunks) || [];
   const vues = new Set(), liens = [];
@@ -1224,6 +1285,57 @@ function ficheEnTexte(f){
   bloc("Pièges", f.pieges, x => x.txt);
   (f.procedures || []).forEach(p => { l.push("", "SUITE D'ÉTAPES"); p.etapes.forEach((e,i) => l.push((i+1) + ". " + e)); });
   return l.join("\n");
+}
+
+/* Questions à poser au formateur. On ne cherche pas ce que le modèle n'a pas compris,
+   mais ce qu'il faut demander pour aller plus loin que le support. Une question
+   n'est pas une affirmation : elle ne doit présupposer aucun fait absent du cours. */
+const CAT_QUESTIONS = {
+  justification:"Ce que le cours affirme sans dire pourquoi",
+  limite:"Cas limites et exceptions non traités",
+  terrain:"Ce qui change d'un établissement à l'autre",
+  lien:"Liens avec les autres UE",
+  actualite:"Ce qui a pu évoluer depuis le support"
+};
+function consigneQuestions(ueId){
+  return [
+"Tu aides un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière à préparer les questions qu'il posera à son formateur.",
+contexteUE(ueId),
+"On te donne la fiche qu'il a validée à partir de son cours. Produis les questions qui lui permettraient d'aller plus loin que ce support.",
+"",
+"RÈGLES ABSOLUES :",
+"1. Produis des QUESTIONS, jamais des réponses ni des affirmations.",
+"2. Une question ne doit présupposer aucun fait qui ne figure pas dans la fiche. N'introduis ni valeur chiffrée, ni norme, ni texte réglementaire, ni date.",
+"3. Chaque question porte sur un point précis de la fiche, rappelé dans le champ ancre.",
+"4. Pas de question dont la réponse est déjà écrite dans la fiche.",
+"5. Formule des questions courtes, qui se posent à l'oral.",
+"6. Réponds en français.",
+"",
+"CINQ CATÉGORIES, à répartir équitablement :",
+'- "justification" : ce que le cours affirme sans dire pourquoi, ni d\'où ça vient.',
+'- "limite" : les cas limites, les exceptions, ce que le cours ne traite pas.',
+'- "terrain" : ce qui peut varier d\'un établissement à l\'autre, et comment ça se passe ici.',
+'- "lien" : les rapprochements avec d\'autres unités d\'enseignement que le cours n\'établit pas.',
+'- "actualite" : ce qui a pu évoluer depuis la rédaction du support.',
+"",
+"Réponds UNIQUEMENT par un objet JSON valide :",
+'{"questions":[{"txt":"la question, telle qu\'elle se pose","categorie":"justification","ancre":"le point de la fiche concerné"}]}',
+"",
+"Vise 10 à 18 questions."
+  ].join("\n");
+}
+async function genererQuestions(fiche, ueId, cle, modele){
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consigneQuestions(ueId)}]},
+    contents:[{role:"user", parts:[{text:"FICHE VALIDÉE :\n\n" + ficheEnTexte(fiche)}]}],
+    generationConfig:{temperature:0.6, responseMimeType:"application/json", maxOutputTokens:4096}
+  }, modele, cle);
+  const o = lireJson(cand);
+  return (Array.isArray(o.questions) ? o.questions : [])
+    .filter(q => q && q.txt)
+    .map(q => ({id:uid(), txt:String(q.txt), ancre:String(q.ancre || ""),
+      categorie: CAT_QUESTIONS[q.categorie] ? q.categorie : "justification",
+      origine:"gemini", posee:false, reponse:""}));
 }
 
 const ANGLES = {
@@ -1308,13 +1420,20 @@ function normaliserItems(liste, ueId){
     const b = poser({id:uid(), ueId, type:it.type, cree:Date.now(), origine:"gemini",
       source: it.source || "", correction: it.correction || ""}, it);
     if((it.type === "qcm" || it.type === "choix") && Array.isArray(it.options) && it.options.length >= 2){
-      const o = Object.assign(b, {question:it.question, options:it.options,
-        reponse: Math.max(0, Math.min(it.options.length - 1, Number(it.reponse) || 0))});
+      /* Le modèle place presque toujours la bonne réponse en première position :
+         on mélange les options et on recalcule l'index. */
+      const iBon = Math.max(0, Math.min(it.options.length - 1, Number(it.reponse) || 0));
+      const marque = it.options.map((x, k) => ({x, bon: k === iBon}));
+      const mel = melanger(marque);
+      const o = Object.assign(b, {question:it.question, options: mel.map(m => m.x),
+        reponse: mel.findIndex(m => m.bon)});
       if(it.type === "choix") o.angle = ANGLES[it.angle] ? it.angle : "explication";
       items.push(o);
     } else if(it.type === "qcmMulti" && Array.isArray(it.options) && Array.isArray(it.reponses) && it.reponses.length){
-      items.push(Object.assign(b, {question:it.question, options:it.options,
-        reponses: it.reponses.map(Number).filter(n => n >= 0 && n < it.options.length)}));
+      const bons = new Set(it.reponses.map(Number));
+      const mel2 = melanger(it.options.map((x, k) => ({x, bon: bons.has(k)})));
+      items.push(Object.assign(b, {question:it.question, options: mel2.map(m => m.x),
+        reponses: mel2.map((m, k) => m.bon ? k : -1).filter(k => k >= 0)}));
     } else if(it.type === "vf"){
       items.push(Object.assign(b, {question:it.question, reponse: it.reponse === true || it.reponse === "true"}));
     } else if(it.type === "flash" && it.recto && it.verso){
@@ -1323,7 +1442,7 @@ function normaliserItems(liste, ueId){
       items.push(Object.assign(b, {question:it.question, reponse:it.reponse}));
     } else if(it.type === "paires" && Array.isArray(it.paires) && it.paires.length >= 2){
       const p = it.paires.filter(x => Array.isArray(x) && x[0] && x[1]).map(x => [String(x[0]), String(x[1])]);
-      if(p.length >= 2) items.push(Object.assign(b, {question: it.question || "Associez chaque terme à sa définition.", paires:p}));
+      if(p.length >= 2) items.push(Object.assign(b, {question: it.question || "Associez chaque terme à sa définition.", paires:melanger(p)}));
     } else if(it.type === "classer" && Array.isArray(it.colonnes) && it.colonnes.length === 2 && Array.isArray(it.elements)){
       const el = it.elements.filter(e => e && e.txt && (Number(e.col) === 0 || Number(e.col) === 1))
         .map(e => ({txt:String(e.txt), col:Number(e.col)}));
@@ -1381,16 +1500,23 @@ function statsUE(ueId){
   return {total:its.length, vus:vus.length, sus:sus.length,
     part: its.length ? Math.round(sus.length / its.length * 100) : 0};
 }
-function statsFamille(f){
-  const l = tousItems().filter(i => familleDe(i) === f);
+/* Deux chiffres distincts : « travaillés » compte ce qui a été vu au moins une fois,
+   « acquis » ce qui a atteint la troisième boîte. Après une première session,
+   le second est forcément nul : n'afficher que lui donne l'impression de n'avoir rien fait. */
+function compter(l){
+  const vus = l.filter(i => S.progres[i.id] && S.progres[i.id].vus > 0);
   const sus = l.filter(i => S.progres[i.id] && S.progres[i.id].boite === 3);
-  return {total:l.length, sus:sus.length, part: l.length ? Math.round(sus.length/l.length*100) : 0};
+  return {total:l.length, vus:vus.length, sus:sus.length,
+    part: l.length ? Math.round(sus.length/l.length*100) : 0,
+    partVus: l.length ? Math.round(vus.length/l.length*100) : 0};
 }
-function statsNiveau(n){
-  const l = tousItems().filter(i => familleDe(i) === "comp" && niveauDe(i) === n);
-  const sus = l.filter(i => S.progres[i.id] && S.progres[i.id].boite === 3);
-  return {total:l.length, sus:sus.length, part: l.length ? Math.round(sus.length/l.length*100) : 0};
+function libelleAvancement(s){
+  if(!s.total) return "aucun exercice";
+  if(!s.vus) return s.total + " exercices, aucun encore travaillé";
+  return s.vus + "/" + s.total + " travaillés · " + s.sus + " acquis";
 }
+function statsFamille(f){ return compter(tousItems().filter(i => familleDe(i) === f)); }
+function statsNiveau(n){ return compter(tousItems().filter(i => familleDe(i) === "comp" && niveauDe(i) === n)); }
 function statsDomaine(d){
   const ues = UES.filter(u => u.dom === d);
   let total = 0, sus = 0, ects = 0, ectsCouverts = 0;
@@ -1810,6 +1936,38 @@ function docxVersTexte(html){
     else out.push(t, "");
   });
   return {texte: out.join("\n").replace(/\n{3,}/g,"\n\n").trim(), tableaux, images};
+}
+
+/* Un document de cours contient surtout des logos, des filets et des en-têtes.
+   On écarte ce qui ne peut pas être un schéma : trop petit, trop allongé,
+   ou répété à l'identique d'une page à l'autre. */
+const IMG_MIN = 200, IMG_RATIO_MAX = 4;
+function trierImages(liste){
+  const gardees = [], rejets = {petite:0, allongee:0, repetee:0};
+  const vues = new Map();
+  liste.forEach(im => {
+    const grand = Math.max(im.w, im.h), petit = Math.min(im.w, im.h);
+    if(grand < IMG_MIN){ rejets.petite++; return; }
+    if(petit > 0 && grand / petit > IMG_RATIO_MAX){ rejets.allongee++; return; }
+    const empreinte = im.blob.size + "x" + im.w + "x" + im.h;
+    vues.set(empreinte, (vues.get(empreinte) || 0) + 1);
+    gardees.push(Object.assign({empreinte}, im));
+  });
+  // une image qui revient plusieurs fois à l'identique est un logo, pas un schéma
+  const finales = gardees.filter(im => {
+    if(vues.get(im.empreinte) > 1){ rejets.repetee++; return false; }
+    return true;
+  });
+  return {images:finales, rejets, total:liste.length};
+}
+function resumeTri(t){
+  const r = t.rejets, n = r.petite + r.allongee + r.repetee;
+  if(!n) return "";
+  const d = [];
+  if(r.petite) d.push(r.petite + " trop petite" + (r.petite>1?"s":""));
+  if(r.allongee) d.push(r.allongee + " en bandeau");
+  if(r.repetee) d.push(r.repetee + " répétée" + (r.repetee>1?"s":"") + " sur plusieurs pages");
+  return n + " image" + (n>1?"s":"") + " écartée" + (n>1?"s":"") + " (" + d.join(", ") + ") : logos et filets de mise en page.";
 }
 
 async function lireFichier(f){
@@ -4905,7 +5063,7 @@ function ecranPrep(){
       const err = itemsExos(u).filter(i => { const p = S.progres[i.id]; return p && p.ko > 0 && p.boite === 1; }).length;
       h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
         <span class="bloc-nom">${u} · ${esc(tronquer(ue ? ue.nom : "", 28))}</span>
-        <span class="bloc-meta">${st.sus}/${st.total} acquis</span></div>
+        <span class="bloc-meta">${st.vus}/${st.total} travaillés · ${st.sus} acquis</span></div>
         <div class="jauge"><i style="width:${st.total ? Math.round(st.sus / st.total * 100) : 0}%"></i></div>
         <div class="rang" style="margin-bottom:0">
           <button class="btn plein mini" data-act="exos" data-ue="${u}">Tout (${st.total})</button>
@@ -5101,7 +5259,7 @@ function ecranVerifier(){
       <ul class="vocab">${b.fiche.mentionnes.map(m => `<li><span>${esc(m.txt)}</span></li>`).join("")}</ul>`;
   }
   h += `<button class="cta" data-act="fabriquer"${ui.occupe||!ret?" disabled":""}>
-    ${ui.occupe ? "Fabrication en cours…" : "Fabriquer les exercices sur " + ret + " point" + (ret>1?"s":"")}</button>
+    ${ui.occupe ? ("Fabrication en cours… " + (ui.avancement || "")) : "Fabriquer les exercices sur " + ret + " point" + (ret>1?"s":"")}</button>
     <div class="rang"><button class="btn mini" data-act="abandon" style="color:var(--rouge)">Abandonner</button></div>`;
   return h + `</div>`;
 }
@@ -5458,9 +5616,9 @@ function ecranNiveaux(){
         <span class="bloc-nom">${nv.n}. ${esc(nv.nom)}</span>
         <span class="bloc-meta">${s.total ? s.total + " ex." : "—"}</span></div>
       <div style="font-size:13.5px;color:var(--encre2);line-height:1.45;margin-bottom:8px">${esc(nv.desc)}</div>
-      <div class="jauge"><i style="width:${s.part}%"></i></div>
+      <div class="jauge"><i style="width:${s.partVus}%"></i><u style="display:block;height:100%;width:${s.part}%;background:var(--menthe-fonce);margin-top:-7px;border-radius:4px"></u></div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--encre3);margin-top:5px">
-        ${s.total ? s.sus + "/" + s.total + " acquis" : "aucun exercice de ce niveau"}</div></button>`;
+        ${esc(libelleAvancement(s))}</div></button>`;
   });
   h += `<button class="cta" data-act="session" data-source="comp">Tout mélanger (${tot.total} exercices)</button>`;
   h += `<div class="avis" style="margin-top:14px"><b>Le niveau 4 se corrige par l'API</b>
@@ -5559,6 +5717,8 @@ function ecranFiche(){
       <button class="btn mini" data-act="ecran-tri" data-id="${c.id}">Trier et imprimer</button>
       <button class="btn mini" data-act="ecran-lecture" data-id="${c.id}">Mode lecture</button>
       <button class="btn mini" data-act="ecran-visuels" data-id="${c.id}">Schémas${(c.visuels||[]).length ? " · " + c.visuels.length : ""}</button>
+      <button class="btn mini" data-act="nouvelle-vague" data-id="${c.id}"${ui.occupe?" disabled":""}>
+        ${ui.occupe ? "Fabrication… " + (ui.avancement||"") : "Créer de nouveaux exercices"}</button>
       <select data-bind="densite" style="width:auto;padding:7px 10px;font-size:13px">
         <option value="detail"${ui.densite==="detail"?" selected":""}>Détaillée</option>
         <option value="dense"${ui.densite==="dense"?" selected":""}>Compacte</option></select>
@@ -5599,6 +5759,7 @@ function ecranFiche(){
   if(men.length){
     h += `<p class="kick" style="margin-top:16px">Mentionné sans être expliqué</p>
       <ul class="vocab">${men.map(m => `<li><span>${esc(m)}</span></li>`).join("")}</ul>`;
+    h += `<div class="rang"><button class="btn mini" data-act="ecran" data-e="questions">Préparer mes questions</button></div>`;
     if(S.reglages.moteur === "gemini" && S.reglages.complements !== false){
       h += `<div class="rang"><button class="btn mini" data-act="complements" data-id="${c.id}"${ui.occupe?" disabled":""}>
         ${ui.occupe ? "Recherche en cours…" : "Chercher des précisions sur le web"}</button></div>
@@ -5669,11 +5830,28 @@ function enregistrer(it, juste){
   marteler(it, juste);
 }
 
+/* Rotation : sur un gros stock, une session n'en présente qu'une portion, en
+   commençant par ce qui a été vu le moins souvent et le plus anciennement.
+   Sans cela, les mêmes exercices reviennent séance après séance. */
+const PORTION = 20;
+function portionner(liste){
+  if(liste.length <= PORTION) return liste;
+  const cle = i => { const p = S.progres[i.id];
+    return [p ? p.vus : 0, p ? p.dernier : 0]; };
+  const tri = liste.slice().sort((a, b) => {
+    const ca = cle(a), cb = cle(b);
+    return ca[0] - cb[0] || ca[1] - cb[1];
+  });
+  return tri.slice(0, PORTION);
+}
+
 function ouvrirSession(liste, mode, limite, retour){
   if(!liste.length){ ui.message = {titre:"Rien ici", txt:"Aucun exercice ne correspond à ce filtre."}; rendre(); return; }
+  const stock = liste.length;
+  if(mode !== "examen" && mode !== "sprint") liste = portionner(liste);
   ui.session = {liste:melanger(liste), i:0, mode, limite:limite||null, debut:Date.now(),
     etat:"q", choix:null, sur:null, ordre:[], assoc:{}, resultats:[], melangeD:null, retour:retour||null,
-    martel:{}, reprises:0};
+    martel:{}, reprises:0, stock:stock};
   if(mode === "sprint") ui.session.liste = ui.session.liste.slice(0,10);
   preparerQuestion();
   ui.ecran = "session"; ui.tab = retour ? retour.tab : "rev"; rendre(); lancerMinuteur();
@@ -5706,8 +5884,8 @@ function ecranReviser(){
   h += carteSession("↻", "Révision du jour", dus + " à échéance", "dus", dus);
   const sm = statsFamille("memo"), sfc = statsFamille("comp");
   h += `<p class="kick" style="margin-top:18px">Par famille</p>`;
-  h += carteSession("▣", "Mémoriser", sm.total ? sm.total + " exercices · " + sm.part + " % acquis" : "aucun exercice", "memo", sm.total);
-  h += carteSession("◈", "Comprendre", sfc.total ? sfc.total + " exercices · " + sfc.part + " % acquis" : "aucun exercice", "niveaux", sfc.total);
+  h += carteSession("▣", "Mémoriser", libelleAvancement(sm), "memo", sm.total);
+  h += carteSession("◈", "Comprendre", libelleAvancement(sfc), "niveaux", sfc.total);
   h += `<p class="kick" style="margin-top:18px">Reprises</p>`;
   h += carteSession("⏱", "Sprint chronométré", "dix questions contre la montre", "sprint", 1);
   h += carteSession("✎", "Carnet d'erreurs", err + " en attente", "erreurs", err);
@@ -6038,25 +6216,13 @@ function travauxTries(){
 }
 
 /* --- questions à poser --- */
-/* Deux sources : ce que le modèle a relevé comme mentionné sans être expliqué,
-   et les éléments dont il a marqué le sens comme deviné. */
-function questionsAPoser(){
-  const out = [];
-  S.cours.forEach(c => {
-    (c.fiche.mentionnes || []).forEach((m,i) => out.push({
-      cle:"m|" + c.id + "|" + i, ueId:c.ueId, coursId:c.id, coursTitre:c.titre,
-      txt:m.txt, origine:"mentionné sans être expliqué"}));
-    RUB_IMP.forEach(r => (c.fiche[r.cle] || []).forEach((x,i) => {
-      if(!x.incertain) return;
-      const t = r.cle === "definitions" ? x.terme + " — " + x.def
-        : r.cle === "sigles" ? x.sigle + " — " + x.sens : (x.txt || "");
-      out.push({cle:"i|" + c.id + "|" + r.cle + "|" + i, ueId:c.ueId, coursId:c.id, coursTitre:c.titre,
-        txt:t, origine:"sens deviné au déchiffrage"});
-    }));
-  });
-  return out;
+/* Les questions appartiennent au cours. Elles viennent du modèle, ou de vous. */
+function questionsDe(c){ if(!Array.isArray(c.questions)) c.questions = []; return c.questions; }
+function toutesQuestions(){
+  return S.cours.flatMap(c => questionsDe(c).map(q =>
+    Object.assign({coursId:c.id, coursTitre:c.titre, ueId:c.ueId}, q)));
 }
-function questionsRestantes(){ return questionsAPoser().filter(q => !S.questionsPosees[q.cle]); }
+function questionsRestantes(){ return toutesQuestions().filter(q => !q.posee); }
 function imprimerQuestions(){
   const l = questionsRestantes();
   if(!l.length) return;
@@ -6065,16 +6231,38 @@ function imprimerQuestions(){
   let h = `<div class="f-print couleur"><div class="bandeau"></div>
     <div class="f-entete"><div class="f-code">QUESTIONS<br>À POSER<br>${l.length}</div>
       <div><h1>Mes questions</h1>
-      <div class="f-sous">Notions restées en suspens ou dont le sens a été deviné · ${dateFr(new Date().toISOString())}</div></div></div>`;
+      <div class="f-sous">À poser au formateur · ${dateFr(new Date().toISOString())}</div></div></div>`;
   Object.keys(parUE).forEach(id => {
     const u = UE(id);
     h += `<div class="rub"><div class="rub-t">${u ? esc(u.id) : esc(id)}<br>${u ? esc(tronquer(u.nom,40)) : ""}</div><div class="rub-c">`;
     parUE[id].forEach((q,i) => h += `<div class="el"><span class="num">${i+1}</span><span class="co">
-      ${esc(q.txt)}<br><span class="ex">${esc(q.coursTitre)} · ${esc(q.origine)}</span></span></div>`);
+      ${esc(q.txt)}<br><span class="ex">${esc(CAT_QUESTIONS[q.categorie] || "")}${q.ancre ? " · " + esc(tronquer(q.ancre, 60)) : ""}</span>
+      <div class="lignes"></div><div class="lignes"></div></span></div>`);
     h += `</div></div>`;
   });
   $("#impression").innerHTML = h + piedImp() + `</div>`;
   window.print();
+}
+async function preparerQuestions(id){
+  const c = S.cours.find(x => x.id === id);
+  if(!c) return;
+  if(S.reglages.moteur !== "gemini" || !S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Mode Gemini nécessaire",
+      txt:"Préparer des questions demande le mode Gemini. Vous pouvez toujours les écrire vous-même."};
+    rendre(); return;
+  }
+  ui.occupe = true; ui.message = null; rendre();
+  let q;
+  try{ q = await genererQuestions(c.fiche, c.ueId, S.reglages.cleGemini, S.reglages.modele); }
+  catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Préparation interrompue", txt:e.message}; rendre(); return; }
+  ui.occupe = false;
+  const vus = new Set(questionsDe(c).map(x => normaliser(x.txt)));
+  const neuves = q.filter(x => { const k = normaliser(x.txt); if(vus.has(k)) return false; vus.add(k); return true; });
+  c.questions = questionsDe(c).concat(neuves);
+  sauver();
+  ui.message = {type:"info", titre: neuves.length + " question" + (neuves.length>1?"s":"") + " préparée" + (neuves.length>1?"s":""),
+    txt:"Relisez-les, retirez ce qui ne vous sert pas, ajoutez les vôtres."};
+  rendre();
 }
 
 /* --- lexique bilingue (UE14) --- */
@@ -6266,24 +6454,43 @@ function ecranTravaux(){
 }
 
 function ecranQuestions(){
-  const tous = questionsAPoser(), reste = questionsRestantes();
+  const tous = toutesQuestions(), reste = questionsRestantes();
   let h = `<div class="ecran">` + retour("accueil", "Questions à poser");
-  if(!tous.length) return h + `<div class="vide"><div class="em">?</div><h3>Aucune question en attente</h3>
-    <p>Elles viennent de ce que vos cours mentionnent sans l'expliquer, et de ce dont le déchiffrage a deviné le sens.</p></div></div>`;
-  h += `<p class="sousTitre">${reste.length} en attente sur ${tous.length}. Cochez celles que vous avez posées : seules les autres partent à l'impression.</p>`;
-  const parUE = {};
-  tous.forEach(q => (parUE[q.ueId] = parUE[q.ueId] || []).push(q));
-  Object.keys(parUE).forEach(id => {
-    const u = UE(id);
-    h += `<p class="kick" style="margin-top:16px">${esc(u ? u.id + " · " + tronquer(u.nom, 34) : id)}</p>`;
-    parUE[id].forEach(q => {
-      const pose = !!S.questionsPosees[q.cle];
-      h += `<button class="ligneCoche${pose?" on":""}" data-act="question-posee" data-k="${esc(q.cle)}">
-        <span class="case">${pose ? "✓" : ""}</span>
-        <span class="tx">${esc(q.txt)}<em class="drapeau">${esc(q.coursTitre)} · ${esc(q.origine)}</em></span></button>`;
+  h += `<p class="sousTitre">Ce qu'il faut demander pour aller plus loin que le support : ce qui est affirmé sans être justifié, les cas que le cours ne traite pas, ce qui varie d'un établissement à l'autre.</p>`;
+  if(!S.cours.length) return h + `<div class="vide"><div class="em">?</div><h3>Aucun cours importé</h3>
+    <p>Les questions se préparent à partir d'une fiche validée.</p></div></div>`;
+  h += `<div class="progLigne"><div class="jauge"><i style="width:${tous.length?Math.round((tous.length-reste.length)/tous.length*100):0}%"></i></div>
+    <span>${reste.length} à poser</span></div>
+    <div class="rang"><button class="btn plein mini" data-act="imprimer-questions"${reste.length?"":" disabled"}>Imprimer les ${reste.length} restantes</button></div>`;
+  S.cours.forEach(c => {
+    const l = questionsDe(c), u = UE(c.ueId);
+    h += `<div class="bloc"><div class="bloc-t">
+      <span class="point" style="background:${DOMAINES[u?u.dom:1].coul}"></span>
+      <span class="bloc-nom">${esc(tronquer(c.titre, 28))}</span>
+      <span class="bloc-meta">${u?u.id:""} · ${l.filter(q=>!q.posee).length}/${l.length}</span></div>`;
+    h += `<div class="rang"><button class="btn mini" data-act="preparer-questions" data-id="${c.id}"${ui.occupe?" disabled":""}>
+      ${ui.occupe ? "Préparation…" : (l.length ? "En préparer d'autres" : "Préparer des questions")}</button></div>`;
+    l.forEach(q => {
+      h += `<div class="ligneCoche${q.posee?" on":""}" style="flex-direction:column;align-items:stretch;gap:7px">
+        <button style="display:flex;gap:11px;align-items:flex-start;text-align:left;width:100%" data-act="question-posee" data-c="${c.id}" data-q="${esc(q.id)}">
+          <span class="case">${q.posee ? "✓" : ""}</span>
+          <span class="tx">${esc(q.txt)}<em class="drapeau">${esc(CAT_QUESTIONS[q.categorie] || "")}${q.origine === "moi" ? " · la vôtre" : ""}${q.ancre ? " · " + esc(tronquer(q.ancre, 44)) : ""}</em></span></button>
+        ${q.posee ? `<input type="text" data-act="reponse-question" data-c="${c.id}" data-q="${esc(q.id)}"
+          value="${esc(q.reponse||"")}" placeholder="Ce qu'on vous a répondu">` : ""}
+        <div><button class="btn mini" data-act="suppr-question" data-c="${c.id}" data-q="${esc(q.id)}" style="color:var(--rouge)">Retirer</button></div>
+      </div>`;
     });
+    h += `<div class="rang"><input type="text" id="mq-${c.id}" placeholder="Écrire ma propre question" style="flex:1;min-width:150px">
+      <button class="btn mini" data-act="ajout-question" data-id="${c.id}">Ajouter</button></div>`;
+    const men = (c.fiche.mentionnes || []);
+    h += `<p class="kick" style="margin-top:12px">Notions en suspens</p>
+      <p style="font-size:12.5px;color:var(--encre3)">Ce que le cours cite sans l'expliquer. Ajoutez les vôtres.</p>`;
+    h += men.length ? `<ul class="vocab">${men.map((m,i) =>
+      `<li><span>${esc(m.txt)}</span> <button class="src" data-act="suppr-suspens" data-id="${c.id}" data-i="${i}">retirer</button></li>`).join("")}</ul>` : "";
+    h += `<div class="rang"><input type="text" id="ms-${c.id}" placeholder="Notion restée obscure" style="flex:1;min-width:150px">
+      <button class="btn mini" data-act="ajout-suspens" data-id="${c.id}">Ajouter</button></div>`;
+    h += `</div>`;
   });
-  h += `<div class="rang"><button class="btn plein mini" data-act="imprimer-questions"${reste.length?"":" disabled"}>Imprimer les ${reste.length} restantes</button></div>`;
   return h + `</div>`;
 }
 
@@ -6896,10 +7103,12 @@ async function fabriquer(){
   ui.occupe = true; ui.message = null; rendre();
   let items;
   try{
-    if(b.origine === "gemini") items = await analyseGeminiExercices(f, b.ueId, S.reglages.cleGemini, S.reglages.modele);
+    if(b.origine === "gemini") items = await analyseGeminiExercices(f, b.ueId, S.reglages.cleGemini, S.reglages.modele,
+      (k, n) => { ui.avancement = n > 1 ? "lot " + k + " sur " + n : "en cours"; rendre(); });
     else items = itemsLocaux(f, b.phr, b.ueId);
-  }catch(e){ ui.occupe = false; ui.message = {type:"err", titre:"Fabrication interrompue", txt:e.message}; rendre(); return; }
-  ui.occupe = false;
+  }catch(e){ ui.occupe = false; ui.avancement = null;
+    ui.message = {type:"err", titre:"Fabrication interrompue", txt:e.message}; rendre(); return; }
+  ui.occupe = false; ui.avancement = null;
   if(!items.length){
     ui.message = {titre:"Aucun exercice produit", txt:"Les points retenus ne s'y prêtent pas. Élargissez la sélection ou complétez le cours."};
     rendre(); return;
@@ -6949,6 +7158,47 @@ async function lancerComplements(id){
   ui.occupe = false; rendre();
 }
 
+/* Nouvelle vague : on ajoute des exercices à une fiche déjà faite, sans toucher
+   aux anciens ni à leur progression. Les énoncés existants sont transmis au
+   modèle pour qu'il produise autre chose. */
+async function nouvelleVague(id){
+  const c = S.cours.find(x => x.id === id);
+  if(!c) return;
+  if(c.origine !== "gemini" || S.reglages.moteur !== "gemini"){
+    ui.message = {type:"err", titre:"Mode Gemini nécessaire",
+      txt:"Produire une nouvelle vague demande le mode Gemini. En mode local, refaites un import."};
+    rendre(); return;
+  }
+  if(!S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Configuration incomplète", txt:"Renseignez la clé et le modèle dans les réglages."};
+    rendre(); return;
+  }
+  ui.occupe = true; ui.message = null; rendre();
+  let neufs;
+  try{
+    const dejaVus = c.items.map(i => i.question || i.recto || "").filter(Boolean);
+    neufs = await analyseGeminiExercices(c.fiche, c.ueId, S.reglages.cleGemini, S.reglages.modele,
+      (k, n) => { ui.avancement = n > 1 ? "lot " + k + " sur " + n : "en cours"; rendre(); }, dejaVus);
+  }catch(e){ ui.occupe = false; ui.avancement = null;
+    ui.message = {type:"err", titre:"Fabrication interrompue", txt:e.message}; rendre(); return; }
+  ui.occupe = false; ui.avancement = null;
+  // on écarte ce qui répète un énoncé déjà présent
+  const vus = new Set(c.items.map(i => normaliser(i.question || i.recto || "")));
+  const gardes = neufs.filter(i => { const k = normaliser(i.question || i.recto || "");
+    if(!k || vus.has(k)) return false; vus.add(k); return true; });
+  if(!gardes.length){
+    ui.message = {titre:"Rien de nouveau", txt:"Le modèle n'a produit que des exercices déjà présents. Réessayez, ou enrichissez la fiche."};
+    rendre(); return;
+  }
+  gardes.forEach(i => { i.ueId = c.ueId; i.vague = (c.vague || 1) + 1; });
+  c.vague = (c.vague || 1) + 1;
+  c.items = c.items.concat(gardes);
+  sauver();
+  ui.message = {type:"info", titre:"Nouvelle vague ajoutée",
+    txt: gardes.length + " exercices de plus, les anciens sont conservés avec leur progression."};
+  rendre();
+}
+
 function abandonner(){
   // les images n'ont jamais été écrites en base : les oublier suffit
   ui.brouillon = null; ui.importTableaux = []; ui.importImages = []; ui.avertFichier = "";
@@ -6994,7 +7244,7 @@ document.addEventListener("click", async e => {
 
     /* --- fiches --- */
     case "ouvrir-fiche": ui.fiche = el.dataset.id; ui.ecran = "fiche"; rendre(); window.scrollTo(0,0); break;
-    case "imprimer": imprimerFiche(el.dataset.id); break;
+    case "imprimer": imprimerFiche(el.dataset.id, el.dataset.mode); break;
     case "fiche-erreurs": imprimerErreurs(); break;
     case "lire": { const c = S.cours.find(x => x.id === el.dataset.id); if(c) lire(texteFiche(c)); break; }
     case "stop-lecture": if(window.speechSynthesis) speechSynthesis.cancel(); break;
@@ -7008,6 +7258,7 @@ document.addEventListener("click", async e => {
       } break;
     case "analyser": await releverPoints(); break;
     case "annuler-appel": annulerAppel(); break;
+    case "nouvelle-vague": await nouvelleVague(el.dataset.id); break;
     case "anonymiser": ui.importTexte = anonymiser(ui.importTexte); ui.avisRGPD = null; ui.rgpdIgnore = true;
       ui.message = {type:"info", titre:"Texte anonymisé", txt:"Relisez-le avant de lancer l'analyse."}; rendre(); break;
     case "rgpd-ignorer": ui.rgpdIgnore = true; ui.avisRGPD = null; rendre(); break;
@@ -7181,9 +7432,30 @@ document.addEventListener("click", async e => {
       if(t && t.livrables && t.livrables[k]){ t.livrables[k].fait = !t.livrables[k].fait; sauver(); rendre(); } break; }
 
     /* --- questions --- */
-    case "question-posee": { const k = el.dataset.k;
-      if(S.questionsPosees[k]) delete S.questionsPosees[k]; else S.questionsPosees[k] = true;
-      sauver(); rendre(); break; }
+    case "question-posee": { const c = S.cours.find(x => x.id === el.dataset.c);
+      const q = c && questionsDe(c).find(x => x.id === el.dataset.q);
+      if(q){ q.posee = !q.posee; sauver(); rendre(); } break; }
+    case "suppr-question": { const c = S.cours.find(x => x.id === el.dataset.c);
+      if(c){ c.questions = questionsDe(c).filter(x => x.id !== el.dataset.q); sauver(); rendre(); } break; }
+    case "ajout-question": { const c = S.cours.find(x => x.id === el.dataset.id);
+      const ch = document.getElementById("mq-" + el.dataset.id);
+      if(c && ch && ch.value.trim()){
+        questionsDe(c).push({id:uid(), txt:ch.value.trim(), ancre:"", categorie:"justification",
+          origine:"moi", posee:false, reponse:""});
+        sauver(); rendre();
+      } break; }
+    case "preparer-questions": await preparerQuestions(el.dataset.id); break;
+    case "ajout-suspens": { const c = S.cours.find(x => x.id === el.dataset.id);
+      const ch = document.getElementById("ms-" + el.dataset.id);
+      if(c && ch && ch.value.trim()){
+        if(!Array.isArray(c.fiche.mentionnes)) c.fiche.mentionnes = [];
+        c.fiche.mentionnes.push({txt:ch.value.trim(), src:"", origine:"moi"});
+        sauver(); rendre();
+      } break; }
+    case "suppr-suspens": { const c = S.cours.find(x => x.id === el.dataset.id);
+      if(c && Array.isArray(c.fiche.mentionnes)){
+        c.fiche.mentionnes.splice(Number(el.dataset.i), 1); sauver(); rendre();
+      } break; }
     case "imprimer-questions": imprimerQuestions(); break;
 
     /* --- lexique --- */
@@ -7234,14 +7506,18 @@ document.addEventListener("change", async e => {
       ui.importTexte = txt;
       ui.importTableaux = r.tableaux || [];
       ui.avertFichier = r.avertissement || "";
-      ui.importImages = [];
-      for(const src of (r.images || []).slice(0, 12)){
-        try{ ui.importImages.push(await redimensionner(src)); }catch(e){}
+      const brutes = [];
+      for(const src of (r.images || []).slice(0, 30)){
+        try{ brutes.push(await redimensionner(src)); }catch(e){}
       }
+      const tri = trierImages(brutes);
+      ui.importImages = tri.images.slice(0, 12);
+      const dit = resumeTri(tri);
+      if(dit) ui.avertFichier += (ui.avertFichier ? " " : "") + dit;
       if(ui.importImages.length) ui.avertFichier += (ui.avertFichier ? " " : "") +
-        ui.importImages.length + " image" + (ui.importImages.length>1?"s":"") + " du document retaillée" +
+        ui.importImages.length + " image" + (ui.importImages.length>1?"s":"") + " retenue" +
         (ui.importImages.length>1?"s":"") + " : elle" + (ui.importImages.length>1?"s seront jointes":" sera jointe") +
-        " à la fiche une fois les exercices fabriqués.";
+        " à la fiche une fois les exercices fabriqués. Vous pourrez les trier dans Schémas.";
       if(!ui.importTitre) ui.importTitre = f.name.replace(/\.[^.]+$/,"");
       if(!ui.importUE) ui.importUE = detecterUE(txt) || "";
       const al = sonderDonnees(txt);
@@ -7309,6 +7585,12 @@ document.addEventListener("change", async e => {
       else e.titre = t.value;
       sauver(); rendre();
     }
+    return;
+  }
+  if(act && act.dataset.act === "reponse-question"){
+    const c = S.cours.find(x => x.id === act.dataset.c);
+    const q = c && questionsDe(c).find(x => x.id === act.dataset.q);
+    if(q){ q.reponse = t.value; sauver(); }
     return;
   }
   if(act && act.dataset.act === "travail"){
