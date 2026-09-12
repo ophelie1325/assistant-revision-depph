@@ -378,38 +378,45 @@ const DOMAINES = {
      complet:"Mettre en œuvre des travaux de recherche et une démarche d'amélioration continue"}
 };
 
+/* Unités d'enseignement, arrêté du 31 juillet 2024. Les intitulés, les codes et les
+   semestres sont ceux du référentiel présenté par le centre de formation.
+   Treize UE, dont deux se subdivisent : UE4.1 / UE4.2 et UE12.1 / UE12.2. */
 const UES = [
-  {id:"UE1", dom:1, ects:3, nom:"Préparation et délivrance des produits de santé",
+  {id:"UE1", code:"1.01.S1", sem:[1], dom:1, ects:3, nom:"Préparation et délivrance des produits de santé",
    cles:["ordonnance","délivrance","dispensation","prescription","nominative","globale","reconstitution","stupéfiant","posologie","logiciel d'aide","rétrocession","interaction"]},
-  {id:"UE2", dom:1, ects:2, nom:"Bilans médicamenteux, conciliation et pharmacie clinique",
+  {id:"UE2", code:"1.02.S1", sem:[1], dom:1, ects:2, nom:"Bilans médicamenteux, conciliation des traitements médicamenteux et actions de pharmacie clinique",
    cles:["conciliation","bilan médicamenteux","transition","pharmacie clinique","divergence","anamnèse","iatrogén"]},
-  {id:"UE3", dom:1, ects:4, nom:"Prévention, information et éducation thérapeutique du patient",
+  {id:"UE3", code:"1.03.S1", sem:[1], dom:1, ects:4, nom:"Prévention, information et éducation thérapeutique du patient",
    cles:["éducation thérapeutique","etp","observance","entretien","prévention","promotion de la santé","diagnostic éducatif","compétence d'auto-soin"]},
-  {id:"UE4", dom:2, ects:4, nom:"Chimiothérapie, nutrition parentérale, préparations stériles et non stériles",
+  {id:"UE4.1", code:"2.04.1.S2", sem:[2], dom:2, ects:4, nom:"Chimiothérapie, nutrition parentérale, préparations stériles et non stériles",
    cles:["cytotoxique","chimiothérapie","nutrition parentérale","isolateur","hotte","zac","zone à atmosphère contrôlée","préparation stérile","asepsie","habillage","poche","flux laminaire","bpp"]},
-  {id:"UE5", dom:2, ects:3, nom:"Radiopharmacie et radioprotection",
+  {id:"UE4.2", code:"2.04.2.S1", sem:[1], dom:2, ects:3, nom:"Radiopharmacie et radioprotection",
    cles:["radiopharmac","radioprotection","radioactiv","décroissance","becquerel","générateur","scintigraph","dosimètre","période","isotope","rayonnement","zone contrôlée"]},
-  {id:"UE6", dom:2, ects:2, nom:"Contrôles des préparations",
+  {id:"UE5", code:"2.05.S1", sem:[1], dom:2, ects:2, nom:"Contrôles des préparations",
    cles:["contrôle","matière première","produit fini","étalonnage","validation analytique","spectrophotom","conformité analytique","microbiologique","essai"]},
-  {id:"UE7", dom:3, ects:4, nom:"Bon usage et référencement des dispositifs médicaux",
+  {id:"UE6", code:"3.06.S2", sem:[2], dom:3, ects:4, nom:"Évaluation et référentiels de bon usage des dispositifs médicaux, dispositifs médicaux stériles et implantables, circuits et référencement",
    cles:["dispositif médical","dmi","implantable","marquage ce","référencement","matériovigilance","classe i","classe iii","achat","commission"]},
-  {id:"UE8", dom:3, ects:3, nom:"Préparation et contrôles du processus de stérilisation",
+  {id:"UE7", code:"3.07.S2", sem:[2], dom:3, ects:3, nom:"Préparation et contrôles des étapes du processus de stérilisation des dispositifs médicaux",
    cles:["stérilisation","autoclave","prédésinfection","lavage","conditionnement","thermosoudeuse","bowie","indicateur","cycle","vapeur d'eau","recomposition","libération"]},
-  {id:"UE9", dom:3, ects:2, nom:"Prévention du risque infectieux et contrôle de l'environnement",
+  {id:"UE8", code:"3.08.S2", sem:[2], dom:3, ects:2, nom:"Prévention du risque infectieux, surveillance et contrôle de l'environnement et des équipements en stérilisation",
    cles:["risque infectieux","biocontamination","particulaire","classe iso","surveillance de l'environnement","prion","hygiène des mains","salle propre","empoussièrement"]},
-  {id:"UE10", dom:4, ects:2, nom:"Gestion des flux et stocks de médicaments, dispositifs et fluides médicaux",
+  {id:"UE9", code:"4.09.S1", sem:[1], dom:4, ects:2, nom:"Gestion des flux et stocks de médicaments, dispositifs et fluides médicaux",
    cles:["stock","inventaire","approvisionnement","commande","marché","fluide médical","rupture","péremption","logistique","comptabilité","budget","plein-vide"]},
-  {id:"UE11", dom:4, ects:2, nom:"Santé publique, économie de la santé, droit, éthique et communication",
+  {id:"UE10", code:"4.10.S1", sem:[1], dom:4, ects:2, nom:"Santé publique, économie de la santé, droit et éthique, communication et travail interdisciplinaire",
    cles:["santé publique","économie de la santé","t2a","droit des usagers","éthique","déontologie","secret professionnel","assurance maladie","démographie","communication"]},
-  {id:"UE12", dom:4, ects:2, nom:"Pédagogie, tutorat, projet personnel et engagement",
+  {id:"UE11", code:"4.11.S1 + 4.11.S2", sem:[1,2], dom:4, ects:2, nom:"Pédagogie, tutorat, projet personnel et engagement de l'étudiant",
    cles:["tutorat","tuteur","pédagogie","apprentissage","encadrement","portfolio","démarche réflexive","projet professionnel"]},
-  {id:"UE13", dom:5, ects:3, nom:"Initiation à la démarche de recherche",
+  {id:"UE12.1", code:"5.12.1.S1 + 5.12.1.S2", sem:[1,2], dom:5, ects:3, nom:"Initiation à la démarche de recherche",
    cles:["recherche","publication","littérature","méthodologie","problématique","bibliograph","niveau de preuve","protocole","essai clinique"]},
-  {id:"UE14", dom:5, ects:2, nom:"Anglais",
+  {id:"UE12.2", code:"5.12.2.S1 + 5.12.2.S2", sem:[1,2], dom:5, ects:2, nom:"Langue étrangère : Anglais",
    cles:["english","abstract","drug","the ","of the","dosage form","review","patient safety"]},
-  {id:"UE15", dom:5, ects:2, nom:"Démarche qualité et gestion des risques",
+  {id:"UE13", code:"5.13.S1 + 5.13.S2", sem:[1,2], dom:5, ects:2, nom:"Démarche qualité et gestion des risques",
    cles:["qualité","gestion des risques","capa","non-conformité","évènement indésirable","événement indésirable","certification","accréditation","vigilance","pharmacovigilance","audit","procédure","cartographie"]}
 ];
+/* Deux UE sont évaluées sur les deux semestres : chaque note de semestre doit alors
+   atteindre 8/20, indépendamment de la moyenne. */
+const surDeuxSemestres = id => { const u = UE(id); return !!u && (u.sem || []).length > 1; };
+
 const UE = id => UES.find(u => u.id === id) || null;
 const TOTAL_ECTS_UE = UES.reduce((s,u) => s + u.ects, 0);
 
@@ -465,7 +472,7 @@ const CLE = "depph_v2";
 let memoire = null;            // repli si le stockage du navigateur est indisponible
 let stockageOk = true;
 
-const VERSION = 2;
+const VERSION = 3;
 
 /* Étanchéité des deux onglets. Les exercices de préparation portent un identifiant
    déterministe préfixé « px- », ceux de la révision un identifiant aléatoire.
@@ -509,12 +516,48 @@ function charger(){
     if(brut) S = fusionnerEtat(JSON.parse(brut));
   }catch(e){ stockageOk = false; }
 }
+/* Le référentiel compte treize UE, dont deux subdivisées. Les versions antérieures
+   en comptaient quinze, numérotées à la suite : tout ce qui porte un identifiant
+   d'unité doit être renommé, sans perdre la moindre progression. */
+const RENUM_V3 = {UE4:"UE4.1", UE5:"UE4.2", UE6:"UE5", UE7:"UE6", UE8:"UE7", UE9:"UE8",
+  UE10:"UE9", UE11:"UE10", UE12:"UE11", UE13:"UE12.1", UE14:"UE12.2", UE15:"UE13"};
+function renumeroter(){
+  const n = id => RENUM_V3[id] || id;
+  let touches = 0;
+  S.cours.forEach(c => {
+    if(RENUM_V3[c.ueId]){ c.ueId = n(c.ueId); touches++; }
+    (c.items || []).forEach(it => { if(RENUM_V3[it.ueId]) it.ueId = n(it.ueId); });
+  });
+  // progression des exercices de préparation : leur identifiant contient le code d'UE
+  const prog2 = {};
+  Object.keys(S.progres).forEach(k => {
+    const m = /^px-(UE\d+)-(\d+)$/.exec(k);
+    prog2[m && RENUM_V3[m[1]] ? "px-" + RENUM_V3[m[1]] + "-" + m[2] : k] = S.progres[k];
+    if(m && RENUM_V3[m[1]]) touches++;
+  });
+  S.progres = prog2;
+  // avancement des leçons, notes saisies, dates d'examen par UE
+  ["prep","notes"].forEach(cle => {
+    const o = {};
+    Object.keys(S[cle] || {}).forEach(k => { o[n(k)] = S[cle][k]; if(RENUM_V3[k]) touches++; });
+    S[cle] = o;
+  });
+  const d = {};
+  Object.keys(S.reglages.datesUE || {}).forEach(k => { d[n(k)] = S.reglages.datesUE[k]; });
+  S.reglages.datesUE = d;
+  S.travaux.forEach(t => { if(RENUM_V3[t.ueId]) { t.ueId = n(t.ueId); touches++; } });
+  S.examens.forEach(e => (e.ues || []).forEach(u => { if(RENUM_V3[u.id]) u.id = n(u.id); }));
+  return touches;
+}
 function migrer(){
   if(Number(S.version) >= VERSION) return false;
+  const n = renumeroter();
   S.version = VERSION;
   sauver();
+  if(n) messageMigration = n;
   return true;
 }
+let messageMigration = 0;
 /* Contrôle d'étanchéité : une progression orpheline, qui ne correspond ni à un
    exercice de préparation ni à un exercice importé, est retirée et signalée. */
 function verifierEtancheite(){
@@ -1562,7 +1605,7 @@ function nbImprimes(c){ return RUB_IMP.reduce((n,r) => n + retenusImp(c, r.cle).
 function enteteImp(c, sousTitre){
   const u = UE(c.ueId), d = u ? u.dom : 1;
   return `<div class="bandeau" style="background:${u ? DOMAINES[d].coul : "#17B890"}"></div>
-    <div class="f-entete"><div class="f-code">${u ? esc(u.id) : ""}<br>${u ? u.ects + " ECTS" : ""}<br>D${u ? u.dom : "—"}</div>
+    <div class="f-entete"><div class="f-code">${u ? esc(u.id) : ""}<br>${u ? esc(u.code) : ""}<br>${u ? u.ects + " ECTS" : ""}<br>D${u ? u.dom : "—"}</div>
       <div><h1>${esc(c.titre)}</h1>
       <div class="f-sous">${u ? esc(u.nom) : ""} · ${dateFr(c.date)}${sousTitre ? " · " + esc(sousTitre) : ""}</div></div></div>`;
 }
@@ -2010,7 +2053,7 @@ async function lireFichier(f){
    ========================================================================= */
 const LECONS = {
 
-UE1: {titre:"Préparation et délivrance des produits de santé", duree:"12 min", diapos:[
+"UE1": {titre:"Préparation et délivrance des produits de santé", duree:"12 min", diapos:[
  {t:"intro", kick:"UE1 · pour commencer", titre:"Délivrer, c'est bien plus que sortir une boîte",
   texte:"Le préparateur en pharmacie hospitalière seconde le pharmacien pour la gestion, l'approvisionnement, la délivrance et la préparation des médicaments et des dispositifs médicaux stériles. Il exerce sous la responsabilité et le contrôle effectif d'un pharmacien : cette phrase du code de la santé publique commande tout le reste."},
 
@@ -2116,7 +2159,7 @@ UE1: {titre:"Préparation et délivrance des produits de santé", duree:"12 min"
   note:"Consulté le 8 août 2026. Les textes évoluent : en cas d'écart avec votre cours, c'est le cours de votre centre de formation qui fait foi pour l'examen — mais signalez l'écart à votre formateur."}
 ]},
 
-UE2: {titre:"Bilans médicamenteux, conciliation et pharmacie clinique", duree:"10 min", diapos:[
+"UE2": {titre:"Bilans médicamenteux, conciliation et pharmacie clinique", duree:"10 min", diapos:[
  {t:"intro", kick:"UE2 · pour commencer", titre:"Empêcher qu'un traitement disparaisse en chemin",
   texte:"Un patient arrive aux urgences avec sept médicaments à domicile. Il en ressort avec cinq, sans que personne n'ait décidé d'arrêter les deux autres. La conciliation médicamenteuse existe pour que cela n'arrive pas — et le préparateur y tient un rôle concret."},
 
@@ -2200,7 +2243,7 @@ UE2: {titre:"Bilans médicamenteux, conciliation et pharmacie clinique", duree:"
   note:"Consulté le 8 août 2026. Les chiffres de l'étude Med'Rec sont ceux publiés lors de la parution du guide HAS."}
 ]},
 
-UE3: {titre:"Prévention, information et éducation thérapeutique du patient", duree:"11 min", diapos:[
+"UE3": {titre:"Prévention, information et éducation thérapeutique du patient", duree:"11 min", diapos:[
  {t:"intro", kick:"UE3 · pour commencer", titre:"Apprendre à vivre avec sa maladie",
   texte:"L'éducation thérapeutique ne consiste pas à expliquer une ordonnance plus lentement. C'est un processus continu, intégré aux soins, qui vise à ce que le patient acquière les compétences dont il a besoin pour gérer sa vie avec une maladie chronique."},
 
@@ -2284,7 +2327,7 @@ UE3: {titre:"Prévention, information et éducation thérapeutique du patient", 
   note:"Consulté le 8 août 2026."}
 ]},
 
-UE4: {titre:"Chimiothérapie, nutrition parentérale, préparations stériles et non stériles", duree:"16 min", diapos:[
+"UE4.1": {titre:"Chimiothérapie, nutrition parentérale, préparations stériles et non stériles", duree:"16 min", diapos:[
  {t:"intro", kick:"UE4 · pour commencer", titre:"Fabriquer un médicament qui n'existe pas",
   texte:"Quand aucune spécialité n'est adaptée au patient, la pharmacie fabrique. Une poche de chimiothérapie, un mélange de nutrition parentérale pour un nouveau-né, une gélule dosée pour un enfant : ce sont des médicaments sans autorisation de mise sur le marché, dont la seule garantie de qualité est le procédé suivi. D'où un référentiel opposable : les bonnes pratiques de préparation.",
   img:{f:"ue4-01-preparation.jpg", leg:"Préparation pharmaceutique en établissement de santé"}},
@@ -2403,7 +2446,7 @@ UE4: {titre:"Chimiothérapie, nutrition parentérale, préparations stériles et
   note:"Textes consultés le 9 août 2026, guide BPP lu dans son texte intégral. En cas d'écart avec le cours de votre centre de formation, c'est le cours qui fait foi pour l'examen — mais signalez l'écart à votre formateur."}
 ]},
 
-UE5: {titre:"Radiopharmacie et radioprotection", duree:"16 min", diapos:[
+"UE4.2": {titre:"Radiopharmacie et radioprotection", duree:"16 min", diapos:[
  {t:"intro", kick:"UE5 · pour commencer", titre:"Un médicament qui décroît pendant qu'on le prépare",
   texte:"Un médicament radiopharmaceutique perd son activité minute après minute, ne peut pas être stérilisé dans son récipient final, et expose celui qui le manipule. Trois contraintes qui ne se retrouvent nulle part ailleurs à la pharmacie, et qui expliquent que la radiopharmacie ait son propre référentiel et son propre corps de règles de radioprotection."},
 
@@ -2519,7 +2562,7 @@ UE5: {titre:"Radiopharmacie et radioprotection", duree:"16 min", diapos:[
   note:"Textes consultés le 9 août 2026. Les valeurs de dose sont celles du code du travail en vigueur ; vérifiez la date de votre support de cours avant de réviser des chiffres de radioprotection."}
 ]},
 
-UE6: {titre:"Contrôles des préparations", duree:"14 min", diapos:[
+"UE5": {titre:"Contrôles des préparations", duree:"14 min", diapos:[
  {t:"intro", kick:"UE6 · pour commencer", titre:"Prouver que ce qu'on a fabriqué est bien ce qu'on croit",
   texte:"Une préparation n'a pas d'autorisation de mise sur le marché. Personne n'a validé sa formule, sa stabilité ou sa pureté avant vous. Le contrôle est donc la seule chose qui sépare une intention thérapeutique d'un médicament réellement conforme. Le chapitre 6 des bonnes pratiques de préparation lui est entièrement consacré."},
 
@@ -2620,7 +2663,7 @@ UE6: {titre:"Contrôles des préparations", duree:"14 min", diapos:[
   note:"Textes consultés le 9 août 2026, chapitre 6 et LD1 lus dans leur texte intégral. En cas d'écart avec le cours de votre centre de formation, c'est le cours qui fait foi pour l'examen."}
 ]},
 
-UE7: {titre:"Bon usage et référencement des dispositifs médicaux", duree:"15 min", diapos:[
+"UE6": {titre:"Bon usage et référencement des dispositifs médicaux", duree:"15 min", diapos:[
  {t:"intro", kick:"UE7 · pour commencer", titre:"Un médicament agit, un dispositif fonctionne",
   texte:"Une compresse, un stent, une prothèse de hanche, un logiciel d'aide à la décision : ce sont tous des dispositifs médicaux. Ils ne relèvent ni de l'autorisation de mise sur le marché ni de la pharmacovigilance, mais d'un marquage CE et d'une vigilance qui leur est propre. Confondre les deux régimes est l'erreur qui coûte le plus cher en examen.",
   img:{f:"ue7-01-dispositifs.jpg", leg:"Dispositifs médicaux stériles conditionnés"}},
@@ -2711,7 +2754,7 @@ UE7: {titre:"Bon usage et référencement des dispositifs médicaux", duree:"15 
   note:"Textes consultés le 9 août 2026. Le calendrier du règlement a été modifié à plusieurs reprises depuis 2017 : vérifiez les dates avant l'épreuve si votre support est antérieur à 2024."}
 ]},
 
-UE8: {titre:"Préparation et contrôles du processus de stérilisation", duree:"15 min", diapos:[
+"UE7": {titre:"Préparation et contrôles du processus de stérilisation", duree:"15 min", diapos:[
  {t:"intro", kick:"UE8 · pour commencer", titre:"Un état qu'on ne peut pas vérifier sur chaque pièce",
   texte:"On ne peut pas ouvrir un sachet pour vérifier qu'il est stérile : le vérifier, c'est le contaminer. La stérilité d'un dispositif ne se contrôle donc pas à l'arrivée, elle se construit à chaque étape et se prouve par la maîtrise du procédé. Tout le métier de la stérilisation tient dans cette contrainte.",
   img:{f:"ue8-01-sterilisation.jpg", leg:"Unité de stérilisation hospitalière"}},
@@ -2800,7 +2843,7 @@ UE8: {titre:"Préparation et contrôles du processus de stérilisation", duree:"
   note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas des tests de routine des autoclaves ni des indicateurs de passage et de stérilisation : je n'ai pas pu en lire une source primaire accessible, et je préfère ne rien écrire plutôt qu'une approximation. Reportez-vous au cours de votre centre pour ce point."}
 ]},
 
-UE9: {titre:"Prévention du risque infectieux et contrôle de l'environnement", duree:"14 min", diapos:[
+"UE8": {titre:"Prévention du risque infectieux et contrôle de l'environnement", duree:"14 min", diapos:[
  {t:"intro", kick:"UE9 · pour commencer", titre:"Ce qu'on ne voit pas se compte quand même",
   texte:"Une salle propre n'est pas une salle qui a l'air propre. C'est une salle dont on connaît le nombre de particules par mètre cube et le nombre d'unités formant colonie par boîte de Petri, mesurés selon des normes, à des fréquences définies. Le risque infectieux se gère avec des chiffres, pas avec une impression."},
 
@@ -2875,7 +2918,7 @@ UE9: {titre:"Prévention du risque infectieux et contrôle de l'environnement", 
   note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas de la norme NF S 90-351 sur le traitement de l'air des établissements de santé ni de la classification des zones à risque qui en découle : je n'ai pas pu en consulter le texte, et je ne l'écris donc pas."}
 ]},
 
-UE10: {titre:"Gestion des flux et stocks de médicaments, dispositifs et fluides médicaux", duree:"13 min", diapos:[
+"UE9": {titre:"Gestion des flux et stocks de médicaments, dispositifs et fluides médicaux", duree:"13 min", diapos:[
  {t:"intro", kick:"UE10 · pour commencer", titre:"Le stock, c'est du soin immobilisé",
   texte:"Un stock trop faible, et le service manque le jour où il faut. Un stock trop élevé, et l'argent dort pendant que des produits périment. Entre les deux, il n'y a pas d'intuition : il y a des règles de gestion, des inventaires, des dates de péremption et des procédures d'achat.",
   img:{f:"ue10-01-stock.jpg", leg:"Rayonnages de stockage d'une pharmacie à usage intérieur"}},
@@ -2965,7 +3008,7 @@ UE10: {titre:"Gestion des flux et stocks de médicaments, dispositifs et fluides
   note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas de la comptabilité hospitalière ni du suivi budgétaire, qui figurent pourtant parmi les objectifs de l'UE : je n'ai pas pu consulter de source primaire à jour sur ce point et je préfère ne rien écrire. Reportez-vous au cours de votre centre."}
 ]},
 
-UE11: {titre:"Santé publique, économie de la santé, droit, éthique et communication", duree:"13 min", diapos:[
+"UE10": {titre:"Santé publique, économie de la santé, droit, éthique et communication", duree:"13 min", diapos:[
  {t:"intro", kick:"UE11 · pour commencer", titre:"Le patient n'est pas un dossier",
   texte:"Cette UE ne parle pas de technique. Elle parle de ce qui encadre la technique : les droits de la personne soignée, le secret que vous devez, les règles de transmission d'informations dans une équipe, et la manière de communiquer sans trahir ni l'un ni l'autre."},
 
@@ -3039,7 +3082,7 @@ UE11: {titre:"Santé publique, économie de la santé, droit, éthique et commun
   note:"Textes consultés le 9 août 2026. Cette leçon ne traite pas de l'économie de la santé ni des modalités de financement des soins, qui figurent parmi les objectifs de l'UE : je n'ai pas pu consulter de source primaire à jour et je préfère ne rien écrire plutôt qu'un chiffre approximatif. Reportez-vous au cours de votre centre pour cette partie."}
 ]},
 
-UE12: {titre:"Pédagogie, tutorat, projet personnel et engagement", duree:"13 min", diapos:[
+"UE11": {titre:"Pédagogie, tutorat, projet personnel et engagement", duree:"13 min", diapos:[
  {t:"intro", kick:"UE12 · pour commencer", titre:"Un jour, ce sera vous le tuteur",
   texte:"Vous êtes en formation aujourd'hui ; dans quelques mois, un étudiant vous suivra en stage et le texte prévoit que ce soit un préparateur en pharmacie hospitalière qui l'encadre. Cette UE prépare ce basculement, et elle porte aussi sur votre propre parcours : portfolio, démarche réflexive, projet professionnel.",
   img:{f:"ue12-01-tutorat.jpg", leg:"Accompagnement d'un étudiant en milieu professionnel"}},
@@ -3117,7 +3160,7 @@ UE12: {titre:"Pédagogie, tutorat, projet personnel et engagement", duree:"13 mi
   note:"Textes consultés le 9 août 2026, arrêté lu dans son texte intégral. C'est la seule leçon dont la source principale décrit directement votre propre formation : en cas de doute sur une modalité, c'est ce texte qui fait foi, et votre centre qui l'applique."}
 ]},
 
-UE13: {titre:"Initiation à la démarche de recherche", duree:"13 min", diapos:[
+"UE12.1": {titre:"Initiation à la démarche de recherche", duree:"13 min", diapos:[
  {t:"intro", kick:"UE13 · pour commencer", titre:"Savoir d'où vient ce qu'on vous affirme",
   texte:"Un fournisseur vous montre une étude, un collègue cite un article, une revue annonce un résultat. Cette UE apprend deux choses : comment une recherche impliquant des personnes est encadrée en France, et comment juger le poids réel d'un résultat avant de changer une pratique."},
 
@@ -3200,7 +3243,7 @@ UE13: {titre:"Initiation à la démarche de recherche", duree:"13 min", diapos:[
   note:"Textes consultés le 9 août 2026. Les catégories de RIPH et les circuits d'autorisation évoluent régulièrement : vérifiez la date de votre support avant de réviser ce chapitre."}
 ]},
 
-UE14: {titre:"Anglais", duree:"12 min", diapos:[
+"UE12.2": {titre:"Anglais", duree:"12 min", diapos:[
  {t:"intro", kick:"UE14 · pour commencer", titre:"Reading, not speaking",
   texte:"L'objectif de cette UE n'est pas de tenir une conversation : c'est d'acquérir les connaissances en anglais permettant d'appréhender la lecture d'articles scientifiques, et de communiquer en anglais dans le domaine de la santé et des soins. Autrement dit, comprendre un résumé, une notice, un étiquetage — pas discuter météo."},
 
@@ -3278,7 +3321,7 @@ UE14: {titre:"Anglais", duree:"12 min", diapos:[
   note:"Consulté le 9 août 2026. Cette leçon est volontairement centrée sur le vocabulaire réglementaire vérifiable et sur les faux amis : je n'ai pas construit de cours de grammaire ni de liste d'expressions toutes faites, faute de source institutionnelle sur laquelle les appuyer. Le cours de votre centre reste la référence pour la partie linguistique."}
 ]},
 
-UE15: {titre:"Démarche qualité et gestion des risques", duree:"14 min", diapos:[
+"UE13": {titre:"Démarche qualité et gestion des risques", duree:"14 min", diapos:[
  {t:"intro", kick:"UE15 · pour commencer", titre:"Ce qui transforme une erreur en enseignement",
   texte:"Toute organisation produit des erreurs. Ce qui distingue une organisation sûre d'une organisation dangereuse, ce n'est pas leur absence : c'est ce qu'elle en fait. Signaler, analyser les causes, corriger, vérifier que la correction tient. Cette UE décrit ce cycle et les instances qui le rendent obligatoire."},
 
@@ -3375,7 +3418,7 @@ const UES_PRETES = Object.keys(LECONS);
    ========================================================================= */
 const EXOS = {
 
-UE1: [
+"UE1": [
  {t:"qcm", q:"Que recouvre exactement la dispensation ?",
   o:["La remise du médicament au patient ou à l'unité de soins",
      "L'analyse de l'ordonnance, la préparation éventuelle des doses et le conseil, associés à la délivrance",
@@ -3478,7 +3521,7 @@ UE1: [
   s:"Arrêté du 6 avril 2011, remise des stupéfiants."}
 ],
 
-UE2: [
+"UE2": [
  {t:"qcm", q:"Comment la HAS définit-elle la conciliation des traitements médicamenteux ?",
   o:["Un contrôle a posteriori des ordonnances par le pharmacien",
      "Un processus formalisé qui prend en compte, lors d'une nouvelle prescription, tous les médicaments pris et à prendre par le patient",
@@ -3580,7 +3623,7 @@ UE2: [
   s:"SFPC, fiche mémo Conciliation des traitements médicamenteux."}
 ],
 
-UE3: [
+"UE3": [
  {t:"qcm", q:"Que dit l'article L. 1161-1 du code de la santé publique sur l'objectif de l'ETP ?",
   o:["Réduire les dépenses de santé",
      "Rendre le patient plus autonome en facilitant son adhésion aux traitements prescrits et en améliorant sa qualité de vie",
@@ -3687,7 +3730,7 @@ UE3: [
   r:"deux", s:"Décret n° 2010-904 du 2 août 2010, repris par la HAS."}
 ],
 
-UE7: [
+"UE6": [
  {t:"qcm", q:"Quel texte encadre la mise sur le marché des dispositifs médicaux dans l'Union européenne ?",
   o:["La directive 93/42/CEE","Le règlement (UE) 2017/745","Le règlement (UE) 2017/746","La directive 90/385/CEE"], r:1,
   c:"Le règlement 2017/746 vise les dispositifs médicaux de diagnostic in vitro. Les deux directives citées sont abrogées.",
@@ -3796,7 +3839,7 @@ UE7: [
   s:"Calendrier d'application du règlement (UE) 2017/745."}
 ],
 
-UE8: [
+"UE7": [
  {t:"qcm", q:"Quel texte contient la ligne directrice particulière n° 1 relative à la préparation des dispositifs médicaux stériles ?",
   o:["L'arrêté du 3 juin 2002","L'arrêté du 22 juin 2001 relatif aux bonnes pratiques de pharmacie hospitalière","Les bonnes pratiques de préparation 2023","L'instruction du 1er décembre 2011"], r:1,
   c:"L'arrêté du 3 juin 2002 fixe les normes opposables ; les BPP 2023 visent les préparations de médicaments, pas les dispositifs.",
@@ -3908,7 +3951,7 @@ UE8: [
   s:"SF2H, guide de traitement des dispositifs médicaux 2022, citant le code de la santé publique."}
 ],
 
-UE9: [
+"UE8": [
  {t:"qcm", q:"À qui s'appliquent les précautions standard ?",
   o:["Aux seuls patients porteurs d'une bactérie multirésistante",
      "À tout patient, quel que soit son statut infectieux, par tout professionnel",
@@ -4008,7 +4051,7 @@ UE9: [
   s:"BPP 2023, ligne directrice LD1 ; normes NF ISO 14644 et NF EN 17141."}
 ],
 
-UE10: [
+"UE9": [
  {t:"qcm", q:"Quel est le stock de sécurité minimal imposé pour un médicament d'intérêt thérapeutique majeur ?",
   o:["Une semaine","Un mois","Deux mois","Quatre mois"], r:2,
   c:"Une semaine correspond aux autres médicaments, un mois aux non-MITM contribuant à une politique de santé publique, quatre mois au plafond que l'ANSM peut imposer.",
@@ -4116,7 +4159,7 @@ UE10: [
   s:"ANSM, dispositif de stock de sécurité et sanctions financières."}
 ],
 
-UE11: [
+"UE10": [
  {t:"qcm", q:"Quelle loi a consacré l'accès direct du patient à son dossier médical ?",
   o:["La loi du 4 mars 2002","La loi HPST du 21 juillet 2009","La loi du 26 janvier 2016","La loi du 24 juillet 2019"], r:0,
   c:"La loi n° 2002-303 relative aux droits des malades et à la qualité du système de santé. Le décret du 29 avril 2002 en précise les modalités.",
@@ -4220,7 +4263,7 @@ UE11: [
   s:"Guide méthodologique sur les droits du patient, loi du 4 mars 2002."}
 ],
 
-UE12: [
+"UE11": [
  {t:"qcm", q:"Qui est, en principe, le tuteur de stage d'un étudiant préparateur en pharmacie hospitalière ?",
   o:["Un cadre de santé","Un préparateur en pharmacie hospitalière","Un pharmacien praticien hospitalier","Le directeur du centre de formation"], r:1,
   c:"En l'absence de préparateur dans la structure d'accueil, un cadre de santé ou un pharmacien praticien hospitalier peut être désigné.",
@@ -4322,7 +4365,7 @@ UE12: [
   s:"Arrêté du 31 juillet 2024, annexe II, compétence C12."}
 ],
 
-UE13: [
+"UE12.1": [
  {t:"qcm", q:"Quelle loi encadre aujourd'hui les recherches impliquant la personne humaine ?",
   o:["La loi Huriet-Sérusclat de 1988","La loi Jardé du 5 mars 2012","La loi HPST de 2009","La loi du 4 mars 2002"], r:1,
   c:"Ses décrets d'application ont été promulgués le 16 novembre 2016 par le décret n° 2016-1537.",
@@ -4418,7 +4461,7 @@ UE13: [
   s:"Documentation sur la mise en œuvre de la loi Jardé."}
 ],
 
-UE14: [
+"UE12.2": [
  {t:"qcm", q:"Comment dit-on « forme pharmaceutique » dans la terminologie officielle européenne ?",
   o:["Drug shape","Pharmaceutical dose form","Medicine format","Galenic type"], r:1,
   c:"C'est le terme des Standard Terms de l'EDQM, utilisé dans les autorisations de mise sur le marché et les étiquetages.",
@@ -4517,7 +4560,7 @@ UE14: [
   s:"EDQM, Standard Terms, historique de la base."}
 ],
 
-UE15: [
+"UE13": [
  {t:"qcmMulti", q:"Quelles vigilances la compétence C13 nomme-t-elle expressément ?",
   o:["Pharmacovigilance et matériovigilance","Réactovigilance et identitovigilance",
      "Vigilance informatique","Cosmétovigilance"], r:[0,1,2],
@@ -4625,7 +4668,7 @@ UE15: [
   s:"Article R. 1413-73 du code de la santé publique ; décret n° 2016-1606."}
 ],
 
-UE4: [
+"UE4.1": [
  {t:"qcm", q:"À partir de quelle date les bonnes pratiques de préparation de 2007 ont-elles cessé de s'appliquer ?",
   o:["Le 20 septembre 2022","Le 21 juillet 2023","Le 20 septembre 2023","Le 1er janvier 2024"], r:2,
   c:"La décision du 21 juillet 2023 est la date de la décision ; son article 3 fixe l'entrée en vigueur au 20 septembre 2023.",
@@ -4723,7 +4766,7 @@ UE4: [
   s:"BPP 2023, champ d'application, renvoi à l'article L. 5125-1-1 du CSP."}
 ],
 
-UE5: [
+"UE4.2": [
  {t:"qcm", q:"Quelle est la valeur limite d'exposition d'un travailleur pour l'organisme entier, sur douze mois consécutifs ?",
   o:["6 mSv","20 mSv","50 mSv","100 mSv"], r:1,
   c:"6 mSv est le seuil de classement en catégorie A, pas une limite d'exposition. La limite est de 20 mSv de dose efficace.",
@@ -4815,7 +4858,7 @@ UE5: [
   s:"BPP 2023, LD4 tableau 2."}
 ],
 
-UE6: [
+"UE5": [
  {t:"ordre", q:"Remettez dans l'ordre les référentiels de contrôle, du plus prioritaire au moins prioritaire.",
   e:["Pharmacopée européenne","Pharmacopée française et Formulaire national","Pharmacopées et formulaires des autres États membres de l'Union européenne","Pharmacopées et formulaires de pays tiers","Méthodes internes, méthodes des fabricants, littérature"],
   s:"BPP 2023, points 6.6 à 6.8."},
@@ -5001,6 +5044,9 @@ function rendre(){
   if(ui.ecran !== "lecon" && ui.ecran !== "session" && ui.ecran !== "lecture"){
     if(ui.message) h += `<div class="ecran" style="padding-bottom:0"><div class="avis ${ui.message.type||"info"}">
       <b>${esc(ui.message.titre)}</b>${esc(ui.message.txt)}</div></div>`;
+    if(messageMigration) h += `<div class="ecran" style="padding-bottom:0"><div class="avis info">
+      <b>Référentiel mis à jour</b>Le diplôme compte treize unités d'enseignement, dont UE4.1, UE4.2, UE12.1 et UE12.2.
+      ${messageMigration} élément${messageMigration>1?"s":""} de vos données ${messageMigration>1?"ont":"a"} été renuméroté${messageMigration>1?"s":""}. Rien n'a été perdu.</div></div>`;
     if(alerteEtancheite) h += `<div class="ecran" style="padding-bottom:0"><div class="avis err">
       <b>Contrôle d'étanchéité</b>${alerteEtancheite} entrée${alerteEtancheite>1?"s":""} de progression sans exercice correspondant ${alerteEtancheite>1?"ont":"a"} été écartée${alerteEtancheite>1?"s":""}. Vos cours sont intacts.</div></div>`;
     if(!stockageOk) h += `<div class="ecran" style="padding-bottom:0"><div class="avis"><b>Rien ne sera conservé</b>
@@ -5008,6 +5054,7 @@ function rendre(){
   }
   $("#app").innerHTML = h + f();
   alerteEtancheite = null;
+  messageMigration = 0;
 }
 function entete(titre, sous, badge){
   return `<div class="enTete"><div><h1>${titre}</h1></div>
@@ -5710,6 +5757,7 @@ function ecranFiche(){
   const u = UE(c.ueId), f = c.fiche;
   let h = `<div class="ecran">` + retour("fiches", esc(tronquer(c.titre, 22)));
   h += `<div class="liste-puces"><span class="puce mono">${u?u.id:"—"}</span>
+    ${u ? `<span class="puce mono">${esc(u.code)}</span>` : ""}
     <span class="puce mono">${u?u.ects:0} ECTS</span><span class="puce mono">${c.items.length} exercices</span>
     <span class="puce mono">${c.origine === "gemini" ? "Gemini" : "local"}</span></div>
     <div class="rang">
@@ -6165,8 +6213,69 @@ function listeSources(l){
     `<li><b>${esc(s.titre)}</b>${esc(s.ref)}<br><a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(tronquer(s.url,58))}</a></li>`).join("")}</ul>`;
 }
 
+/* Évaluations de référence, telles qu'annoncées par le centre de formation.
+   Elles ne sont qu'un point de départ : les poids restent modifiables. */
+const EVALS_REF = {
+  "UE1":  [{titre:"Écrit individuel QCM/QROC", poids:1}, {titre:"Exercice pratique : commentaire d'ordonnance", poids:1}],
+  "UE2":  [{titre:"Écrit individuel QCM/QROC", poids:1}, {titre:"Exercice pratique : conciliation / BMO", poids:1}],
+  "UE3":  [{titre:"Écrit individuel QCM/QROC", poids:4}, {titre:"Exercice en groupe", poids:6}],
+  "UE4.1":[{titre:"Écrit individuel QCM/QROC", poids:7}, {titre:"TD en groupe", poids:3}],
+  "UE4.2":[{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}],
+  "UE5":  [{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}],
+  "UE6":  [{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}],
+  "UE7":  [{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}],
+  "UE8":  [{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}],
+  "UE9":  [{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}],
+  "UE10": [{titre:"Écrit individuel QCM/QROC/Cas pratiques", poids:1}, {titre:"Évaluation du service sanitaire", poids:1}],
+  "UE11": [{titre:"S1 · Écrit individuel QCM/QROC/Cas pratiques", poids:1, sem:1},
+           {titre:"S2 · Moyenne des 4 analyses de situation", poids:1, sem:2},
+           {titre:"S2 · Engagement dans la formation", poids:1, sem:2}],
+  "UE12.1":[{titre:"S1 · Écrit individuel QCM/QROC/Cas pratique", poids:1, sem:1},
+           {titre:"S2 · Lecture critique d'article", poids:1, sem:2},
+           {titre:"S2 · Numérique en santé (ANS, 42 modules)", poids:1, sem:2},
+           {titre:"S2 · Poster scientifique et présentation orale", poids:1, sem:2}],
+  "UE12.2":[{titre:"S1 · Quiz et assiduité", poids:1, sem:1},
+           {titre:"S1 · Dialogue en groupe, mis en vidéo", poids:1, sem:1},
+           {titre:"S2 · Quiz et assiduité", poids:1, sem:2},
+           {titre:"S2 · Poster en anglais, en groupe", poids:1, sem:2}],
+  "UE13": [{titre:"S1 · Écrit individuel QCM/QROC/Cas pratiques", poids:1, sem:1},
+           {titre:"S2 · Présentation orale d'une démarche individuelle", poids:1, sem:2}]
+};
+/* Périodes en milieu professionnel : vingt semaines, une semaine valant un crédit. */
+const STAGES_REF = [
+  {code:"P1", sem:7, lieu:"PUI et services de soins",
+   missions:"Médicaments et dispositifs médicaux, gestion, approvisionnement, réception, stockage, dispensation, éducation thérapeutique, conciliation, qualité, recherche, essais cliniques, tutorat"},
+  {code:"P2.1", sem:3, lieu:"Unité de pharmacotechnie",
+   missions:"Reconstitution des chimiothérapies (2 semaines obligatoires), préparations stériles et non stériles, contrôles, gestion, dispensation, qualité"},
+  {code:"P2.2", sem:2, lieu:"Médecine nucléaire, unité de radiopharmacie",
+   missions:"Préparations, contrôles, gestion, approvisionnement, dispensation, qualité, recherche, tutorat"},
+  {code:"P3", sem:5, lieu:"Stérilisation, blocs opératoires, hygiène, plateaux techniques",
+   missions:"Gestion, approvisionnement, stockage, pose DMI/DMS/DMR, risque infectieux, processus de stérilisation, qualité"},
+  {code:"P4", sem:3, lieu:"Service sanitaire et stage préprofessionnel",
+   missions:"1 semaine de service sanitaire répartie dans l'année, 2 semaines dans l'unité de votre choix après accord de l'établissement"}
+];
+
 /* --- moyennes --- */
 function evals(ueId){ if(!S.notes[ueId]) S.notes[ueId] = []; return S.notes[ueId]; }
+/* Pré-remplit les évaluations d'une UE d'après le référentiel du centre. */
+function prerremplirEvals(ueId){
+  const ref = EVALS_REF[ueId];
+  if(!ref || evals(ueId).length) return 0;
+  ref.forEach(e => S.notes[ueId].push({titre:e.titre, poids:e.poids, note:null, sem:e.sem || null}));
+  sauver();
+  return ref.length;
+}
+/* Chaque note de semestre doit atteindre 8/20 pour les UE évaluées sur deux semestres. */
+function moyenneSemestre(ueId, sem){
+  const l = evals(ueId).filter(e => Number(e.sem) === sem &&
+    e.note !== null && e.note !== "" && isFinite(Number(e.note)));
+  const p = l.reduce((a,e) => a + (Number(e.poids) || 1), 0);
+  return p ? l.reduce((a,e) => a + Number(e.note) * (Number(e.poids) || 1), 0) / p : null;
+}
+function semestresSousHuit(ueId){
+  if(!surDeuxSemestres(ueId)) return [];
+  return [1,2].filter(k => { const m = moyenneSemestre(ueId, k); return m !== null && m < 8; });
+}
 function moyenneUE(ueId){
   const l = evals(ueId).filter(e => e.note !== null && e.note !== "" && isFinite(Number(e.note)));
   const p = l.reduce((s2,e) => s2 + (Number(e.poids) || 1), 0);
@@ -6379,12 +6488,15 @@ function ecranMoyennes(){
     UES.filter(u => u.dom === d).forEach(u => {
       const m = moyenneUE(u.id), rest = poidsRestant(u.id);
       const b = besoinPourCible(u.id, cible);
+      const sous8 = semestresSousHuit(u.id);
       h += `<button class="carteAct" style="margin:8px 0 0" data-act="ouvrir-ue-notes" data-ue="${u.id}">
-        <span class="ic" style="font-family:'IBM Plex Mono',monospace;font-size:12px">${u.id.replace("UE","")}</span>
-        <span class="tx"><b>${esc(tronquer(u.nom, 30))}</b><small>${
+        <span class="ic" style="font-family:'IBM Plex Mono',monospace;font-size:11px">${esc(u.id.replace("UE",""))}</span>
+        <span class="tx"><b>${esc(tronquer(u.nom, 30))}</b><small>${esc(u.code)} · ${
           m === null ? "aucune note · coefficient " + u.ects
           : m.toFixed(2) + "/20 · coefficient " + u.ects + (rest ? " · " + rest + " en attente" : "")}</small></span>
         <span class="fl">›</span></button>`;
+      if(sous8.length) h += `<div class="avis err" style="margin:6px 0 0"><b>${u.id} : semestre ${sous8.join(" et ")} sous 8/20</b>
+        Cette UE est évaluée sur les deux semestres : chaque note de semestre doit atteindre 8/20, quelle que soit la moyenne.</div>`;
       if(b.etat === "impossible")
         h += `<div class="avis err" style="margin:6px 0 0"><b>${u.id} : cible hors d'atteinte</b>
           Il faudrait ${b.besoin.toFixed(1)}/20 en moyenne sur ce qui reste. Ce n'est plus possible : visez plus bas ou comptez sur la compensation.</div>`;
@@ -6406,10 +6518,18 @@ function ecranMoyennes(){
             <input type="number" id="ev-p-${i}" data-act="eval" data-champ="poids" data-i="${i}" min="0.5" max="20" step="0.5" value="${esc(String(e.poids||1))}"></div>
           <div><label class="champ" for="ev-n-${i}">Note /20</label>
             <input type="number" id="ev-n-${i}" data-act="eval" data-champ="note" data-i="${i}" min="0" max="20" step="0.25" value="${e.note===null?"":esc(String(e.note))}" placeholder="à venir"></div></div>
+        ${surDeuxSemestres(ui.ueNotes) ? `<label class="champ" for="ev-s-${i}" style="margin-top:9px">Semestre</label>
+          <select id="ev-s-${i}" data-act="eval" data-champ="sem" data-i="${i}">
+            <option value=""${!e.sem?" selected":""}>— non précisé —</option>
+            <option value="1"${Number(e.sem)===1?" selected":""}>Semestre 1</option>
+            <option value="2"${Number(e.sem)===2?" selected":""}>Semestre 2</option></select>` : ""}
         <div class="rang"><button class="btn mini" data-act="suppr-eval" data-i="${i}" style="color:var(--rouge)">Retirer</button></div></div>`;
     });
     h += `<div class="rang"><button class="btn plein mini" data-act="ajout-eval">Ajouter une évaluation</button>
+      ${EVALS_REF[ui.ueNotes] ? `<button class="btn mini" data-act="prerremplir" data-ue="${esc(ui.ueNotes)}">Reprendre les évaluations annoncées</button>` : ""}
       <button class="btn mini" data-act="fermer-ue-notes">Fermer</button></div>`;
+    if(surDeuxSemestres(ui.ueNotes)) h += `<div class="avis info"><b>Évaluée sur deux semestres</b>
+      Chaque note de semestre doit atteindre 8/20. Indiquez le semestre de chaque évaluation pour que ce contrôle s'applique.</div>`;
   }
   h += `<p class="kick" style="margin-top:18px">Sources</p>` + listeSources(SOURCES_REGLE);
   h += `<p style="font-size:12.5px;color:var(--encre3);margin-top:10px">Calcul pur, à partir des seules notes que vous saisissez. Ce n'est pas une simulation de jury.</p>`;
@@ -6418,11 +6538,12 @@ function ecranMoyennes(){
 
 function ecranTravaux(){
   let h = `<div class="ecran">` + retour("accueil", "Travaux à rendre");
-  h += `<div class="rang"><button class="btn plein mini" data-act="ajout-travail">Ajouter</button></div>`;
+  h += `<div class="rang"><button class="btn plein mini" data-act="ajout-travail">Ajouter</button>
+    ${S.travaux.some(t => t.type === "stage") ? "" : `<button class="btn mini" data-act="prerremplir-stages">Reprendre les cinq périodes</button>`}</div>`;
   const l = travauxTries();
   if(!l.length) return h + `<div class="vide"><div class="em">▤</div><h3>Rien de prévu</h3>
     <p>Périodes de stage, travaux écrits, mémoire, épreuves pratiques : ce que vous y mettez, rien d'autre.</p></div>
-    <div class="avis info" style="margin-top:14px"><b>Repère</b>Le parcours comprend 20 semaines en milieu professionnel, une semaine valant 1 ECTS.</div></div>`;
+    <div class="avis info" style="margin-top:14px"><b>Repère</b>Le parcours comprend 20 semaines en milieu professionnel, une semaine valant 1 ECTS : P1 7 semaines, P2.1 3 semaines, P2.2 2 semaines, P3 5 semaines, P4 3 semaines.</div></div>`;
   l.forEach(t => {
     const j = joursAvantEcheance(t.echeance);
     const urgent = t.etat !== "rendu" && j !== null && j <= 7;
@@ -7415,10 +7536,24 @@ document.addEventListener("click", async e => {
     case "complements-reglage": S.reglages.complements = el.dataset.v === "1"; sauver(); rendre(); break;
     case "ouvrir-ue-notes": ui.ueNotes = el.dataset.ue; if(!evals(ui.ueNotes).length) evals(ui.ueNotes).push(evalVierge()); sauver(); rendre(); break;
     case "fermer-ue-notes": ui.ueNotes = null; rendre(); break;
+    case "prerremplir": { const n = prerremplirEvals(el.dataset.ue);
+      ui.message = n ? {type:"info", titre:n + " évaluations reprises", txt:"Ajustez les poids et les notes."}
+                     : {titre:"Déjà renseignée", txt:"Retirez les évaluations existantes avant de reprendre le référentiel."};
+      rendre(); break; }
     case "ajout-eval": if(ui.ueNotes){ evals(ui.ueNotes).push(evalVierge()); sauver(); rendre(); } break;
     case "suppr-eval": if(ui.ueNotes){ evals(ui.ueNotes).splice(Number(el.dataset.i), 1); sauver(); rendre(); } break;
 
     /* --- travaux --- */
+    case "prerremplir-stages": {
+      STAGES_REF.forEach(st => S.travaux.push({id:uid(),
+        titre:st.code + " · " + st.lieu + " (" + st.sem + " semaines)", type:"stage", ueId:"",
+        echeance:"", etat:"afaire",
+        livrables:[{txt:"Portfolio rempli et remis au CFPPH", fait:false},
+                   {txt:"Feuille d'évaluation signée en présence de l'apprenant", fait:false}]}));
+      sauver();
+      ui.message = {type:"info", titre:"Cinq périodes ajoutées",
+        txt:"Complétez les dates et les lieux. " + STAGES_REF.map(x => x.code + " " + x.sem + " sem.").join(", ") + "."};
+      rendre(); break; }
     case "ajout-travail": S.travaux.push({id:uid(), titre:"", type:"ecrit", ueId:"", echeance:"", etat:"afaire", livrables:[]});
       sauver(); rendre(); break;
     case "suppr-travail": if(confirm("Supprimer ce travail ?")){ S.travaux = S.travaux.filter(t => t.id !== el.dataset.id); sauver(); rendre(); } break;
@@ -7581,6 +7716,7 @@ document.addEventListener("change", async e => {
     if(e){
       const ch = act.dataset.champ;
       if(ch === "note") e.note = t.value === "" ? null : Math.max(0, Math.min(20, Number(t.value)));
+      else if(ch === "sem") e.sem = t.value ? Number(t.value) : null;
       else if(ch === "poids") e.poids = Math.max(0.5, Number(t.value) || 1);
       else e.titre = t.value;
       sauver(); rendre();
