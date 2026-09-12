@@ -6974,7 +6974,7 @@ document.addEventListener("click", async e => {
         S.cours = S.cours.filter(x => x.id !== el.dataset.id);
         sauver(); ui.ecran = "fiches"; rendre();
       } break;
-    case "analyser": await analyser(); break;
+    case "analyser": await releverPoints(); break;
     case "anonymiser": ui.importTexte = anonymiser(ui.importTexte); ui.avisRGPD = null; ui.rgpdIgnore = true;
       ui.message = {type:"info", titre:"Texte anonymisé", txt:"Relisez-le avant de lancer l'analyse."}; rendre(); break;
     case "rgpd-ignorer": ui.rgpdIgnore = true; ui.avisRGPD = null; rendre(); break;
