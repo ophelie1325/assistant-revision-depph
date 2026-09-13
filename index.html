@@ -264,6 +264,75 @@ body.vueLarge .opt{font-size:16px}
 .horsCours a{display:block;color:var(--d1);font-family:'IBM Plex Mono',monospace;font-size:11.5px;
   text-decoration:none;word-break:break-all;margin-top:5px}
 
+.reform{display:block;margin-top:6px;padding-left:9px;border-left:2px solid var(--or);
+  font-size:13.5px;color:var(--encre2);line-height:1.45}
+.anneau3{display:block;flex:none}
+.grandAnneau{display:flex;align-items:center;gap:18px;border-radius:26px;padding:20px 22px;
+  margin:12px 0 14px;color:#fff;background:linear-gradient(135deg,#0D6E55 0%,#109272 48%,#17B890 100%);
+  box-shadow:0 10px 26px rgba(16,146,114,.28);animation:surgit .35s cubic-bezier(.2,.8,.3,1) both}
+.grandAnneau .anneau3 circle:first-child{stroke:rgba(255,255,255,.22)}
+.grandAnneau .anneau3 text{fill:#fff}
+.grandAnneau .chiffres{flex:1;min-width:0}
+.grandAnneau .chiffres b{display:block;font-size:25px;line-height:1.1;font-weight:700;letter-spacing:-.02em}
+.grandAnneau .chiffres small{display:block;font-size:12.5px;opacity:.82;margin-bottom:2px}
+.anneaux{display:flex;gap:6px;justify-content:space-between;margin-bottom:10px}
+.anneauD{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:3px;
+  background:var(--carte);border-radius:16px;padding:10px 2px 9px;box-shadow:var(--ombre)}
+.anneauD .lab{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600}
+.anneauD .lab2{font-size:10px;color:var(--encre3)}
+.legSeg{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:11.5px;
+  color:var(--encre2);margin:0 0 16px}
+.legSeg span{display:inline-flex;align-items:center;gap:5px}
+.legSeg i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.ligneUE{display:flex;align-items:flex-start;gap:11px;background:var(--carte);border-radius:var(--r);
+  padding:12px 13px;margin-bottom:8px;box-shadow:var(--ombre)}
+.ligneUE .pastUE{flex:none;width:34px;height:34px;border-radius:11px;color:#fff;display:grid;
+  place-items:center;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600}
+.ligneUE .tx{flex:1;min-width:0}
+.ligneUE .tx b{display:block;font-size:14px;font-weight:600;line-height:1.3}
+.ligneUE .tx small{display:block;font-size:12px;color:var(--encre2);margin-top:2px}
+.ligneUE .fin{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ligneUE .coef{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--encre3)}
+.grilleOutils{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.outil{position:relative;background:var(--carte);border-radius:18px;padding:13px 6px 11px;
+  box-shadow:var(--ombre);display:flex;flex-direction:column;align-items:center;gap:7px;
+  min-height:82px;justify-content:center}
+.outil .ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:16px}
+.outil .nom{font-size:11.5px;font-weight:500;text-align:center;line-height:1.25;color:var(--encre2)}
+.outil .pastille{position:absolute;top:7px;right:9px;font-family:'IBM Plex Mono',monospace;
+  font-size:10px;background:var(--menthe);color:#fff;border-radius:999px;padding:1px 6px}
+.graphe{display:flex;align-items:flex-end;gap:2px;height:70px;margin:10px 0 4px;
+  padding:0 2px;border-bottom:1px solid var(--trait)}
+.graphe .barre{display:flex;align-items:flex-end;height:100%;min-width:3px}
+.graphe .barre i{display:block;width:100%;height:0;border-radius:3px 3px 0 0;background:var(--menthe);
+  opacity:.85;animation:pousse .5s cubic-bezier(.2,.8,.3,1) var(--d,0ms) forwards}
+@keyframes pousse{from{height:0}to{height:var(--h)}}
+.grapheLeg{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;
+  font-size:10px;color:var(--encre3);margin-bottom:12px}
+.serie{display:flex;align-items:center;gap:10px;background:var(--carte);border-radius:var(--r);
+  padding:13px 15px;margin-bottom:11px;box-shadow:var(--ombre)}
+.serie .gros{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600;color:var(--menthe-fonce);
+  line-height:1;animation:monte .45s cubic-bezier(.2,.9,.3,1)}
+@keyframes monte{from{opacity:0;transform:translateY(6px) scale(.9)}to{opacity:1;transform:none}}
+.serie .tx{flex:1;min-width:0;font-size:13.5px;color:var(--encre2);line-height:1.4}
+
+/* Animations d'interface : franches mais courtes, et désactivées si le système le demande. */
+@keyframes surgit{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.carteAct,.bloc{animation:surgit .3s cubic-bezier(.2,.8,.3,1) both}
+.ecran .carteAct:nth-of-type(2),.ecran .bloc:nth-of-type(2){animation-delay:.04s}
+.ecran .carteAct:nth-of-type(3),.ecran .bloc:nth-of-type(3){animation-delay:.08s}
+.ecran .carteAct:nth-of-type(4),.ecran .bloc:nth-of-type(4){animation-delay:.12s}
+.ecran .carteAct:nth-of-type(5),.ecran .bloc:nth-of-type(5){animation-delay:.16s}
+@keyframes bat{0%{transform:scale(.96)}55%{transform:scale(1.02)}100%{transform:scale(1)}}
+.verdict.ok{animation:bat .34s cubic-bezier(.3,1.2,.4,1)}
+@keyframes tremble{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.verdict.ko{animation:tremble .28s ease-in-out}
+.opt.juste{animation:bat .3s cubic-bezier(.3,1.2,.4,1)}
+.jauge i{transition:width .6s cubic-bezier(.2,.8,.3,1)}
+.puce,.btn,.opt,.carteAct{transition:transform .12s ease, background .15s ease}
+.puce:active,.btn:active{transform:scale(.95)}
+.pts span.f{animation:bat .3s cubic-bezier(.3,1.2,.4,1)}
+
 .vis{margin:10px 0}
 .vis img{width:100%;height:auto;border-radius:var(--r2);border:1px solid var(--trait);background:#fff;display:block}
 .vis figcaption{font-size:13px;color:var(--encre2);margin-top:6px;line-height:1.4}
@@ -489,7 +558,7 @@ const etatVierge = () => ({
     datesUE:{}, minutesJour:45, joursOff:[],
     martelage:true, complements:true, cible:10},
   cours:[], progres:{}, examens:[], prep:{},
-  notes:{}, travaux:[], questionsPosees:{},
+  notes:{}, travaux:[], questionsPosees:{}, journal:{}, journalPrep:{},
   meta:{sessions:0, dernierExport:0, sessionsExport:0}
 });
 let S = etatVierge();
@@ -500,12 +569,13 @@ function fusionnerEtat(o){
   n.reglages = Object.assign(etatVierge().reglages, (o && o.reglages) || {});
   n.meta = Object.assign(etatVierge().meta, (o && o.meta) || {});
   if(!Array.isArray(n.reglages.modeles)) n.reglages.modeles = [];
+  if(!Array.isArray(n.reglages.modelesVoix)) n.reglages.modelesVoix = [];
   if(!Array.isArray(n.reglages.joursOff)) n.reglages.joursOff = [];
   if(!n.reglages.datesUE || typeof n.reglages.datesUE !== "object") n.reglages.datesUE = {};
   if(!Array.isArray(n.cours)) n.cours = [];
   if(!Array.isArray(n.examens)) n.examens = [];
   if(!Array.isArray(n.travaux)) n.travaux = [];
-  ["progres","prep","notes","questionsPosees"].forEach(k => {
+  ["progres","prep","notes","questionsPosees","journal","journalPrep"].forEach(k => {
     if(!n[k] || typeof n[k] !== "object") n[k] = {};
   });
   return n;
@@ -624,7 +694,9 @@ function motsCles(t, n=6){
   return out.slice(0, n);
 }
 function telecharger(nom, contenu, type){
-  const b = new Blob([contenu], {type: type || "application/json"});
+  // un contenu déjà binaire (audio, image) est utilisé tel quel
+  const b = (typeof Blob !== "undefined" && contenu instanceof Blob)
+    ? contenu : new Blob([contenu], {type: type || "application/json"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(b); a.download = nom;
   document.body.appendChild(a); a.click();
@@ -1503,6 +1575,250 @@ function normaliserItems(liste, ueId){
   });
   return items;
 }
+const VOIX = [
+ ["Zephyr","lumineuse"],["Puck","entraînante"],["Charon","informative"],["Kore","ferme"],
+ ["Fenrir","enthousiaste"],["Leda","jeune"],["Orus","ferme"],["Aoede","détendue"],
+ ["Callirrhoe","détendue"],["Autonoe","lumineuse"],["Enceladus","calme"],["Iapetus","claire"],
+ ["Umbriel","détendue"],["Algieba","douce"],["Despina","douce"],["Erinome","claire"],
+ ["Algenib","graveleuse"],["Rasalgethi","informative"],["Laomedeia","entraînante"],["Achernar","douce"],
+ ["Alnilam","ferme"],["Schedar","équilibrée"],["Gacrux","mature"],["Pulcherrima","directe"],
+ ["Achird","amicale"],["Zubenelgenubi","décontractée"],["Vindemiatrix","douce"],["Sadachbia","vive"],
+ ["Sadaltager","informée"],["Sulafat","chaleureuse"]
+];
+/* Phrase d'essai pour comparer les voix, tirée du vocabulaire du diplôme. */
+const EXTRAIT_VOIX = "Prédésinfection, lavage, conditionnement, stérilisation. Voilà les grandes étapes du traitement d'un dispositif médical.";
+const DUREES_PODCAST = {court:"environ 3 minutes", moyen:"environ 6 minutes", long:"environ 10 minutes"};
+const MOTS_PODCAST = {court:400, moyen:800, long:1300};
+
+const LANGUE_PODCAST = {
+  cours:"Emploie exactement les termes du cours. C'est le vocabulaire qui sera exigé en évaluation : ne le remplace jamais par un équivalent plus courant. Tu peux expliquer un terme, mais tu dois le prononcer.",
+  simple:"Emploie un vocabulaire courant. Quand un terme technique est indispensable, dis-le puis explique-le aussitôt en mots simples.",
+  tres:"Explique comme à quelqu'un qui découvre le sujet. Phrases très courtes, pas de terme technique sans explication immédiate. L'objectif est de saisir le fond, pas de retenir le vocabulaire."
+};
+function consignePodcast(ueId, duree, langue){
+  const r = UE(ueId);
+  return [
+"Tu écris le texte d'un podcast de révision, destiné à être écouté en voiture par un étudiant",
+"préparant le diplôme d'État de préparateur en pharmacie hospitalière.",
+r ? "Unité d'enseignement : « " + r.nom + " »." : "",
+"",
+"RÈGLES ABSOLUES :",
+"1. Tu ne dis QUE ce que contient le contenu fourni. Aucun ajout, aucun chiffre, aucun exemple inventé.",
+"2. Si le contenu ne suffit pas à tenir la durée, fais plus court. Ne meuble jamais.",
+"3. Le texte est lu à voix haute par une machine : écris pour l'oreille.",
+"",
+"ÉCRIRE POUR L'OREILLE :",
+"— Phrases courtes. Une idée par phrase.",
+"— Aucune énumération à puces, aucun titre, aucun tiret, aucune parenthèse, aucun symbole.",
+"— Les nombres et les abréviations sont écrits en toutes lettres.",
+"— Annonce ce qui vient, développe, puis récapitule. L'auditrice ne peut pas revenir en arrière.",
+"— Tutoiement, ton posé, comme quelqu'un qui explique à côté de toi. Pas de ton commercial.",
+"— Pas de salutation d'animateur radio, pas de musique décrite, pas de mention de sponsor.",
+"",
+"STRUCTURE :",
+"— Une phrase d'ouverture qui annonce la matière et ce qu'on va voir.",
+"— Le corps, notion par notion, avec une transition parlée entre chacune.",
+"— Un récapitulatif final de trois ou quatre points, introduit clairement.",
+"",
+"NIVEAU DE LANGUE :",
+LANGUE_PODCAST[langue] || LANGUE_PODCAST.cours,
+"",
+"Vise " + (MOTS_PODCAST[duree] || 800) + " mots environ, soit " + (DUREES_PODCAST[duree] || "") + " de lecture.",
+"",
+"Réponds UNIQUEMENT par le texte à lire, sans titre, sans commentaire, sans mise en forme."
+  ].filter(Boolean).join("\n");
+}
+
+/* Le contenu de départ : une fiche importée, ou une leçon de préparation. */
+async function scriptPodcast(m, duree, cle, modele, langue){
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consignePodcast(m.ueId, duree, langue)}]},
+    contents:[{role:"user", parts:[{text:"CONTENU À RESTITUER :\n\n" + m.texte}]}],
+    generationConfig:{temperature:0.35, maxOutputTokens:4096}
+  }, modele, cle);
+  const txt = ((cand.content && cand.content.parts) || []).map(p => p.text || "").join("").trim();
+  if(txt.length < 200) throw new Error("Le texte produit est trop court pour un podcast.");
+  return txt;
+}
+
+/* ---- synthèse vocale par l'API ---- */
+async function modelesVoix(cle){
+  const r = await fetch(API + "/models?key=" + encodeURIComponent(cle));
+  if(!r.ok) throw new Error("La clé a été refusée (code " + r.status + ").");
+  const d = await r.json();
+  return (d.models || [])
+    .filter(m => /tts/i.test(m.name))
+    .filter(m => (m.supportedGenerationMethods || []).includes("generateContent"))
+    .map(m => ({id:m.name.replace(/^models\//,""), nom:m.displayName || m.name}));
+}
+function base64VersOctets(b64){
+  const bin = atob(b64);
+  const o = new Uint8Array(bin.length);
+  for(let i = 0; i < bin.length; i++) o[i] = bin.charCodeAt(i);
+  return o;
+}
+/* L'API renvoie du son brut : on lui ajoute l'en-tête d'un fichier WAV. */
+function wavDepuisPcm(pcm, taux){
+  const n = pcm.length, buf = new ArrayBuffer(44 + n), v = new DataView(buf);
+  const txt = (o, s) => { for(let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  txt(0, "RIFF"); v.setUint32(4, 36 + n, true); txt(8, "WAVE");
+  txt(12, "fmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 1, true);
+  v.setUint32(24, taux, true); v.setUint32(28, taux * 2, true); v.setUint16(32, 2, true); v.setUint16(34, 16, true);
+  txt(36, "data"); v.setUint32(40, n, true);
+  new Uint8Array(buf, 44).set(pcm);
+  return new Blob([buf], {type:"audio/wav"});
+}
+/* Découpe en segments courts, sur des fins de phrase, pour rester sous les limites. */
+function segmenter(texte, max){
+  const out = [];
+  let courant = "";
+  String(texte || "").split(/(?<=[.!?])\s+/).forEach(p => {
+    if((courant + " " + p).trim().length > (max || 1400) && courant){ out.push(courant.trim()); courant = p; }
+    else courant += " " + p;
+  });
+  if(courant.trim()) out.push(courant.trim());
+  return out;
+}
+async function synthetiser(texte, cle, modele, voix, avance){
+  const seg = segmenter(texte, 1400);
+  const blocs = [];
+  let taux = 24000;
+  for(let i = 0; i < seg.length; i++){
+    if(avance) avance(i + 1, seg.length);
+    const corps = {
+      contents:[{role:"user", parts:[{text: seg[i]}]}],
+      generationConfig:{responseModalities:["AUDIO"]}
+    };
+    if(voix) corps.generationConfig.speechConfig =
+      {voiceConfig:{prebuiltVoiceConfig:{voiceName: voix}}};
+    const cand = await appelGemini(corps, modele, cle);
+    const part = cand && cand.content && (cand.content.parts || [])
+      .find(p => p.inlineData && p.inlineData.data);
+    if(!part) throw new Error("Aucun son renvoyé pour le passage " + (i + 1) + ".");
+    const mt = part.inlineData.mimeType || "";
+    const m = mt.match(/rate=(\d+)/);
+    if(m) taux = Number(m[1]);
+    blocs.push(base64VersOctets(part.inlineData.data));
+  }
+  const total = blocs.reduce((s, b) => s + b.length, 0);
+  const tout = new Uint8Array(total);
+  let o = 0;
+  blocs.forEach(b => { tout.set(b, o); o += b.length; });
+  return {blob: wavDepuisPcm(tout, taux), secondes: Math.round(total / 2 / taux)};
+}
+
+/* =========================================================================
+   8 quinquies. REFORMULATION
+   Trois niveaux, stockés à côté de l'original et jamais à sa place :
+   le vocabulaire du cours reste la référence en évaluation.
+   ========================================================================= */
+const NIVEAUX_REFORM = {
+  autres:{nom:"Autres mots", desc:"Même niveau d'exigence, formulation différente",
+    consigne:"Reformule avec d'autres mots, en gardant EXACTEMENT le même niveau de précision et les mêmes termes techniques. Change la construction des phrases, pas le fond."},
+  simple:{nom:"Plus simple", desc:"Vocabulaire courant, phrases courtes",
+    consigne:"Reformule en vocabulaire courant, avec des phrases courtes. Tu peux remplacer un terme technique par son équivalent ordinaire, mais tu dois alors le rappeler entre parenthèses."},
+  tres:{nom:"Très simple", desc:"Comme à quelqu'un qui découvre le sujet",
+    consigne:"Explique comme à quelqu'un qui découvre complètement le sujet, sans aucun prérequis. Une ou deux phrases très directes. Tu peux utiliser une comparaison concrète, à condition qu'elle ne trahisse pas le sens."}
+};
+
+function consigneReformuler(niveau){
+  const n = NIVEAUX_REFORM[niveau] || NIVEAUX_REFORM.simple;
+  return [
+"Tu reformules des définitions issues du cours d'un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière.",
+"",
+n.consigne,
+"",
+"RÈGLES ABSOLUES :",
+"1. Tu ne changes JAMAIS le sens. Une reformulation qui dit autre chose est inutilisable.",
+"2. Tu n'ajoutes aucune information absente de la définition d'origine : ni exemple du monde réel,",
+"   ni chiffre, ni précision que le cours ne donne pas.",
+"3. Tu ne supprimes aucun élément constitutif : si la définition énumère trois critères, les trois restent.",
+"4. Si une définition est déjà aussi simple que possible, renvoie-la presque telle quelle plutôt que de la dénaturer.",
+"5. Pas de phrase d'introduction, pas de commentaire.",
+"",
+"Réponds UNIQUEMENT par un objet JSON :",
+'{"reformulations":[{"i":0,"txt":"…"},{"i":1,"txt":"…"}]}',
+"où \"i\" est le numéro de la définition tel qu'il t'est donné."
+  ].join("\n");
+}
+
+async function reformulerGemini(notions, niveau, cle, modele){
+  const liste = notions.map((n,i) => i + ". " + n.terme + " : " + n.def).join("\n");
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consigneReformuler(niveau)}]},
+    contents:[{role:"user", parts:[{text:"DÉFINITIONS À REFORMULER :\n\n" + liste}]}],
+    generationConfig:{temperature:0.4, responseMimeType:"application/json", maxOutputTokens:4096}
+  }, modele, cle);
+  const brut = ((cand.content && cand.content.parts) || []).map(p => p.text || "").join("");
+  let o;
+  try{ o = JSON.parse(brut.replace(/^```json\s*|```\s*$/g,"").trim()); }
+  catch(e){ throw new Error("La réponse n'était pas exploitable. Relance."); }
+  const out = {};
+  (Array.isArray(o.reformulations) ? o.reformulations : []).forEach(r => {
+    const i = Number(r.i);
+    if(i >= 0 && i < notions.length && r.txt && String(r.txt).trim().length > 5)
+      out[i] = String(r.txt).trim();
+  });
+  return out;
+}
+
+
+/* =========================================================================
+   7 ter. JOURNAL D'ACTIVITÉ
+   Ce qui a été travaillé chaque jour, banque par banque. Ce n'est pas un score :
+   c'est un relevé, qui montre la régularité plutôt qu'une performance.
+   ========================================================================= */
+function noterJournal(banque, juste){
+  const cle = banque === "prep" ? "journalPrep" : "journal";
+  if(!S[cle]) S[cle] = {};
+  const j = new Date().toISOString().slice(0,10);
+  if(!S[cle][j]) S[cle][j] = {n:0, ok:0};
+  S[cle][j].n++;
+  if(juste) S[cle][j].ok++;
+}
+/* Série de jours renvoyée du plus ancien au plus récent, banques cumulées ou non. */
+function activite(jours, banque){
+  const out = [];
+  for(let k = jours - 1; k >= 0; k--){
+    const d = new Date(Date.now() - k * JOUR).toISOString().slice(0,10);
+    const a = (banque !== "prep" && S.journal ? S.journal[d] : null) || {n:0, ok:0};
+    const b = (banque !== "rev" && S.journalPrep ? S.journalPrep[d] : null) || {n:0, ok:0};
+    out.push({jour:d, n:a.n + b.n, ok:a.ok + b.ok});
+  }
+  return out;
+}
+/* Jours consécutifs travaillés, en s'arrêtant à hier pour ne pas punir la journée en cours. */
+function serieJours(){
+  let n = 0;
+  for(let k = 0; k < 400; k++){
+    const d = new Date(Date.now() - k * JOUR).toISOString().slice(0,10);
+    const a = (S.journal && S.journal[d]) || {n:0}, b = (S.journalPrep && S.journalPrep[d]) || {n:0};
+    if(a.n + b.n > 0) n++;
+    else if(k > 0) break;
+  }
+  return n;
+}
+function totalJour(){
+  const d = new Date().toISOString().slice(0,10);
+  const a = (S.journal && S.journal[d]) || {n:0, ok:0}, b = (S.journalPrep && S.journalPrep[d]) || {n:0, ok:0};
+  return {n:a.n + b.n, ok:a.ok + b.ok};
+}
+/* Graphe en barres, dessiné à la main : pas de bibliothèque, pas de dépendance. */
+function grapheActivite(jours, banque){
+  const l = activite(jours || 30, banque);
+  const haut = Math.max(4, ...l.map(x => x.n));
+  const larg = 100 / l.length;
+  let h = `<div class="graphe" role="img" aria-label="Activité des ${l.length} derniers jours">`;
+  l.forEach((x,i) => {
+    const p = Math.round(x.n / haut * 100);
+    const reussite = x.n ? Math.round(x.ok / x.n * 100) : 0;
+    h += `<span class="barre" style="width:${larg}%;--h:${p}%;--d:${i * 14}ms"
+      title="${esc(dateFr(x.jour))} · ${x.n} exercice${x.n>1?"s":""}${x.n?", "+reussite+" % de réussite":""}"><i></i></span>`;
+  });
+  h += `</div><div class="grapheLeg"><span>${esc(dateFr(l[0].jour))}</span><span>${haut} max</span><span>aujourd'hui</span></div>`;
+  return h;
+}
+
 /* =========================================================================
    8. PROGRESSION — trois boîtes, carnet d'erreurs, niveau de confiance
    ========================================================================= */
@@ -4984,7 +5300,9 @@ let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtre
   brouillon:null, pdfFichier:null, decoupe:null, photos:[], transcritIllisibles:null,
   ueNotes:null, lecture:0,
   avisRGPD:null, rgpdIgnore:false,
-  occupe:false, avancement:null, message:null, resultat:null, quizRep:null};
+  occupe:false, avancement:null, etape:"", message:null, resultat:null, quizRep:null,
+  podcast:null, podSrc:"", podDuree:"moyen", podNiveau:"cours", podScript:"", essaiUrl:null,
+  voirReform:""};
 
 function progLecon(ue){
   if(!S.prep[ue]) S.prep[ue] = {index:0, termine:false, quiz:{}};
@@ -5032,7 +5350,7 @@ function rendre(){
     "rev/planning":ecranPlanning, "rev/stats":ecranStats, "rev/recherche":ecranRecherche,
     "rev/verifier":ecranVerifier, "rev/niveaux":ecranNiveaux, "rev/tri":ecranTri,
     "rev/lecture":ecranLecture, "rev/visuels":ecranVisuels, "rev/decoupe":ecranDecoupe,
-    "rev/photos":ecranPhotos, "rev/moyennes":ecranMoyennes, "rev/travaux":ecranTravaux,
+    "rev/photos":ecranPhotos, "rev/podcast":ecranPodcast, "prep/podcast":ecranPodcast, "rev/moyennes":ecranMoyennes, "rev/travaux":ecranTravaux,
     "rev/questions":ecranQuestions, "rev/lexique":ecranLexique,
     "reglages":ecranReglages
   };
@@ -5070,58 +5388,126 @@ function joursRentree(){
 /* =========================================================================
    20. ONGLET PRÉPARATION
    ========================================================================= */
-function ecranPrep(){
-  const j = joursRentree();
-  const faites = leconsFaites();
-  let h = `<div class="ecran">` + entete("Préparation",
-    "Voir l'essentiel de chaque UE avant le premier cours", j !== null ? "J–" + j : null);
-  h += `<div class="progLigne"><div class="jauge"><i style="width:${UES_PRETES.length ? Math.round(faites/UES_PRETES.length*100) : 0}%"></i></div>
-    <span>${faites}/${UES_PRETES.length} leçons</span></div>`;
-
+/* =========================================================================
+   19 bis. TABLEAU DE BORD
+   Un anneau à trois segments : acquis, fait sans être acquis, jamais fait.
+   ========================================================================= */
+function repartition(l, table){
+  const t = table || S.progres;
+  let jamais = 0, encours = 0, acquis = 0;
+  l.forEach(i => { const p = t[i.id];
+    if(!p || !p.vus) jamais++; else if(p.boite === 3) acquis++; else encours++; });
+  return {total:l.length, jamais, encours, acquis};
+}
+function anneau3(c, taille, centre){
+  const t = Math.max(1, c.total);
+  const r = (taille - 9) / 2, circ = 2 * Math.PI * r;
+  const seg = (n, coul, debut) => {
+    const l = circ * n / t;
+    if(l <= 0) return "";
+    return `<circle cx="${taille/2}" cy="${taille/2}" r="${r}" fill="none" stroke="${coul}"
+      stroke-width="7" stroke-dasharray="${l.toFixed(1)} ${(circ - l).toFixed(1)}"
+      stroke-dashoffset="${(-circ * debut / t).toFixed(1)}"
+      transform="rotate(-90 ${taille/2} ${taille/2})"></circle>`;
+  };
+  const val = centre !== undefined ? centre : (c.total ? Math.round(c.acquis / c.total * 100) + "%" : "—");
+  return `<svg width="${taille}" height="${taille}" viewBox="0 0 ${taille} ${taille}" class="anneau3"
+    role="img" aria-label="${c.acquis} acquis, ${c.encours} à reprendre, ${c.jamais} jamais faits">
+    <circle cx="${taille/2}" cy="${taille/2}" r="${r}" fill="none" stroke="var(--trait2)" stroke-width="7"></circle>
+    ${seg(c.acquis, "var(--menthe)", 0)}
+    ${seg(c.encours, "var(--or)", c.acquis)}
+    <text x="${taille/2}" y="${taille/2}" text-anchor="middle" dominant-baseline="central"
+      font-family="'IBM Plex Mono',monospace" font-size="${Math.round(taille/4.6)}"
+      font-weight="600" fill="var(--encre)">${esc(String(val))}</text></svg>`;
+}
+function legendeSegments(){
+  return `<div class="legSeg">
+    <span><i style="background:var(--menthe)"></i>acquis</span>
+    <span><i style="background:var(--or)"></i>à reprendre</span>
+    <span><i style="background:var(--trait2)"></i>jamais fait</span></div>`;
+}
+/* Couverture d'une unité : combien d'exercices existent, et dans quel état. */
+function couvertureUE(ueId, banque){
+  const l = banque === "prep" ? itemsExos(ueId) : tousItems().filter(i => i.ueId === ueId);
+  const c = repartition(l);
+  c.part = c.total ? Math.round(c.acquis / c.total * 100) : 0;
+  c.cours = banque === "prep" ? 0 : S.cours.filter(x => x.ueId === ueId).length;
+  return c;
+}
+/* Ce qui pèse lourd en crédits et qui n'est pas su passe devant. */
+function urgenceUE(u, banque){ return u.ects * (1 - couvertureUE(u.id, banque).part / 100); }
+function bandeauDomaines(banque){
+  let h = `<div class="anneaux">`;
   for(let d = 1; d <= 5; d++){
-    const ues = UES.filter(u => u.dom === d);
-    const ects = ues.reduce((s,u) => s + u.ects, 0);
-    h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
-      <span class="bloc-nom">${esc(DOMAINES[d].nom)}</span><span class="bloc-meta">${ects} ECTS</span></div>
-      <div class="alv">`;
-    ues.forEach(u => {
-      const pret = !!LECONS[u.id];
-      const p = pret ? progLecon(u.id) : null;
-      let cl = "a vide", etat = "bientôt";
-      if(pret){
-        if(p.termine){ cl = "a fait"; etat = "revoir"; }
-        else if(p.index > 0){ cl = "a dispo"; etat = "reprendre"; }
-        else { cl = "a dispo"; etat = nbDiapos(u.id) + " écrans"; }
-      }
-      h += `<button class="${cl}" ${pret ? `data-act="ouvrir-lecon" data-ue="${u.id}"` : "disabled"}>
-        <b>${u.id}</b><small>${etat}</small></button>`;
-    });
-    h += `</div></div>`;
+    const l = banque === "prep"
+      ? UES.filter(u => u.dom === d).flatMap(u => itemsExos(u.id))
+      : tousItems().filter(i => { const u = UE(i.ueId); return u && u.dom === d; });
+    h += `<button class="anneauD" data-act="ecran" data-e="${banque === "prep" ? "accueil" : "reviser"}">
+      ${anneau3(repartition(l), 64)}
+      <span class="lab" style="color:${DOMAINES[d].coul}">D${d}</span>
+      <span class="lab2">${l.length ? l.length + " ex." : "aucun"}</span></button>`;
   }
+  return h + `</div>` + legendeSegments();
+}
+function ligneUE(u, banque){
+  const c = couvertureUE(u.id, banque);
+  let etat, bouton = "";
+  if(banque === "prep"){
+    const L = LECONS[u.id], p = L ? progLecon(u.id) : null;
+    if(!L) etat = "leçon à venir";
+    else if(!p.termine) etat = p.index > 0 ? "leçon commencée · écran " + (p.index + 1) + " sur " + L.diapos.length : "leçon à lire";
+    else etat = c.acquis + " acquis · " + c.encours + " à reprendre · " + c.jamais + " jamais faits";
+    if(L) bouton = `<button class="btn mini" data-act="ouvrir-lecon" data-ue="${esc(u.id)}">${p.termine ? "Revoir" : (p.index ? "Reprendre" : "Lire")}</button>`;
+  } else {
+    etat = c.total ? c.acquis + " acquis · " + c.encours + " à reprendre · " + c.jamais + " jamais faits"
+      : (c.cours ? "cours importé, aucun exercice" : "rien d'importé");
+    if(c.total) bouton = `<button class="btn mini" data-act="session" data-source="ue" data-ue="${esc(u.id)}">Réviser</button>`;
+  }
+  return `<div class="ligneUE"><span class="pastUE" style="background:${DOMAINES[u.dom].coul}">${esc(u.id.replace("UE",""))}</span>
+    <span class="tx"><b>${esc(tronquer(u.nom, 42))}</b><small>${esc(etat)}</small>
+      <span class="jauge" style="margin-top:6px"><i style="width:${c.part}%"></i></span></span>
+    <span class="fin"><span class="coef">${u.ects}</span>${bouton}</span></div>`;
+}
+function listeUE(banque){
+  return UES.slice().sort((a,b) => urgenceUE(b, banque) - urgenceUE(a, banque))
+    .map(u => ligneUE(u, banque)).join("");
+}
+function grilleOutils(l){
+  return `<div class="grilleOutils">${l.map(x =>
+    `<button class="outil" data-act="ecran" data-e="${x.e}">
+      <span class="ic" style="background:${x.c}1A;color:${x.c}">${x.ic}</span>
+      <span class="nom">${esc(x.n)}</span>
+      ${x.b ? `<span class="pastille">${esc(String(x.b))}</span>` : ""}</button>`).join("")}</div>`;
+}
+
+function ecranPrep(){
+  const jr = joursRentree();
+  const faites = leconsFaites();
+  const items = UES_EXOS.flatMap(u => itemsExos(u));
+  const glob = repartition(items);
+  const dus = items.filter(i => { const p = S.progres[i.id]; return !p || p.prochain <= Date.now(); }).length;
+
+  let h = `<div class="ecran">` + entete("Préparation",
+    "Voir l'essentiel de chaque UE avant le premier cours", jr !== null ? "J–" + jr : null);
+
+  h += `<div class="grandAnneau">${anneau3({total:UES_PRETES.length, jamais:UES_PRETES.length - faites, encours:0, acquis:faites}, 92, faites + "/" + UES_PRETES.length)}
+    <div class="chiffres"><b>${faites} leçon${faites>1?"s":""}</b><small>terminée${faites>1?"s":""} sur ${UES_PRETES.length}</small>
+    <b style="font-size:17px;margin-top:8px">${glob.acquis}</b><small>exercices acquis sur ${items.length}</small></div></div>`;
+
   const suivante = UES_PRETES.find(u => !S.prep[u] || !S.prep[u].termine);
   h += suivante
-    ? `<button class="cta" data-act="ouvrir-lecon" data-ue="${suivante}">${S.prep[suivante] && S.prep[suivante].index > 0 ? "Reprendre" : "Commencer"} ${suivante} · ${esc(tronquer(LECONS[suivante].titre, 34))}</button>`
-    : `<div class="avis info"><b>Les trois premières leçons sont faites</b>Les UE suivantes s'ajouteront au fil des mises à jour. En attendant, l'onglet Révision travaille sur vos propres cours.</div>`;
-  if(UES_EXOS.length){
-    h += `<p class="kick" style="margin-top:20px">Entraînement</p>
-      <p class="sousTitre">Exercices d'application, corrigés et rattachés au texte source. Ils ne remplacent pas la leçon : faites-la d'abord.</p>`;
-    UES_EXOS.forEach(u => {
-      const st = statsExos(u), ue = UE(u), d = ue ? ue.dom : 1;
-      const err = itemsExos(u).filter(i => { const p = S.progres[i.id]; return p && p.ko > 0 && p.boite === 1; }).length;
-      h += `<div class="bloc"><div class="bloc-t"><span class="point" style="background:${DOMAINES[d].coul}"></span>
-        <span class="bloc-nom">${u} · ${esc(tronquer(ue ? ue.nom : "", 28))}</span>
-        <span class="bloc-meta">${st.vus}/${st.total} travaillés · ${st.sus} acquis</span></div>
-        <div class="jauge"><i style="width:${st.total ? Math.round(st.sus / st.total * 100) : 0}%"></i></div>
-        <div class="rang" style="margin-bottom:0">
-          <button class="btn plein mini" data-act="exos" data-ue="${u}">Tout (${st.total})</button>
-          <button class="btn mini" data-act="exos" data-ue="${u}" data-mode="neufs">Jamais vus</button>
-          <button class="btn mini" data-act="exos" data-ue="${u}" data-mode="erreurs"${err ? "" : " disabled"}>Mes erreurs${err ? " (" + err + ")" : ""}</button>
-        </div></div>`;
-    });
-  }
+    ? `<button class="cta" data-act="ouvrir-lecon" data-ue="${suivante}">${S.prep[suivante] && S.prep[suivante].index > 0 ? "Reprendre" : "Commencer"} ${suivante} · ${esc(tronquer(LECONS[suivante].titre, 30))}</button>`
+    : `<button class="cta" data-act="prep-dus"${dus?"":" disabled"}>${dus ? "Reprendre " + dus + " exercice" + (dus>1?"s":"") : "Toutes les leçons sont faites"}</button>`;
+
+  if(UES_PRETES.some(u => S.prep[u] && S.prep[u].termine))
+    h += `<div class="rang" style="justify-content:center">
+      <button class="btn mini" data-act="ecran" data-e="podcast">Faire un podcast d'une leçon</button></div>`;
+
+  h += `<p class="kick" style="margin-top:18px">Par domaine</p>` + bandeauDomaines("prep");
+  h += `<p class="kick">Unité par unité</p>
+    <p class="sousTitre">Les plus lourdes en crédits et les moins sues d'abord.</p>` + listeUE("prep");
   h += `<div class="avis" style="margin-top:14px"><b>Ce que sont ces leçons</b>
     Une mise en route, pas un cours. Chaque leçon finit par ses sources et la date de vérification : en cas d'écart avec le cours de votre centre, c'est le cours qui fait foi.</div>`;
-  h += legendeUE();
   return h + `</div>`;
 }
 
@@ -5223,42 +5609,62 @@ function rappelSauvegarde(){
     <button class="btn mini" data-act="rappel-plus-tard">Plus tard</button></div></div>`;
 }
 function ecranRev(){
-  const items = tousItems().length, dus = itemsDus().length, err = carnetErreurs().length;
+  const items = tousItems(), dus = itemsDus().length;
+  const err = carnetErreurs().length, conf = erreursConfiantes().length;
+  const glob = repartition(items);
+  const alimentees = new Set(S.cours.map(c => c.ueId)).size;
+  const sj = serieJours(), tj = totalJour();
+
   let h = `<div class="ecran">` + entete("Révision",
-    "Fiches et exercices tirés de vos propres cours", items ? items + " exercices" : null);
-  h += rappelSauvegarde();
-  h += bandeauEcheances();
-  const _urg = uesUrgentes();
-  if(_urg.length) h += `<div class="avis info"><b>Moins de 72 heures</b>
-    ${_urg.join(", ")} : les délais de répétition espacée sont suspendus pour ces unités, tout revient en circulation.</div>`;
-  if(!S.cours.length){
-    h += `<div class="vide"><div class="em">◇</div><h3>Rien à réviser pour l'instant</h3>
-      <p>Cet onglet ne contient que ce que vous y déposez : importez un cours et il en tire une fiche imprimable et des exercices.</p></div>
-      <button class="cta" data-act="ecran" data-e="import">Importer un premier cours</button>`;
-    return h + `</div>`;
+    "Vos cours, vos fiches, vos exercices", items.length ? items.length + " exercices" : null);
+  h += `<button class="cta" data-act="ecran" data-e="import">＋ Importer un cours</button>`;
+
+  if(!items.length){
+    h += `<div class="avis info" style="margin-top:14px"><b>Rien d'importé pour l'instant</b>
+      Cet onglet ne contient que ce que vous y déposez. Le tableau de bord ci-dessous montre les quinze unités : il se remplira au fur et à mesure.</div>`;
+  } else {
+    h += `<div class="grandAnneau">${anneau3(glob, 92)}
+      <div class="chiffres"><b>${glob.acquis} / ${items.length}</b><small>exercices acquis</small>
+      <b style="font-size:17px;margin-top:8px">${dus}</b><small>à revoir aujourd'hui</small></div></div>`;
+    h += dus
+      ? `<button class="cta" data-act="session" data-source="dus">Réviser mes ${dus} exercice${dus>1?"s":""} du jour</button>`
+      : `<div class="avis info"><b>Rien à revoir aujourd'hui</b>Les exercices reviennent selon leur boîte : le jour même, à deux jours, puis à une semaine.</div>`;
+    h += `<div class="rang" style="justify-content:center"><button class="btn mini" data-act="ecran" data-e="reviser">Choisir un autre mode de révision</button></div>`;
   }
-  h += `<div class="progLigne"><div class="jauge"><i style="width:${items ? Math.round((items - dus)/items*100) : 0}%"></i></div>
-    <span>${dus} à revoir</span></div>`;
-  h += carte("↻", "Réviser maintenant", dus + " exercice" + (dus>1?"s":"") + " à échéance", "reviser");
-  h += carte("✎", "Carnet d'erreurs", err ? err + " à reprendre" : "aucune erreur en attente", "reviser");
-  h += carte("▤", "Mes fiches", S.cours.length + " cours importé" + (S.cours.length>1?"s":""), "fiches");
-  h += carte("＋", "Importer un cours", "coller un texte ou déposer un fichier", "import");
-  h += carte("◷", "Examen blanc", "épreuve chronométrée sur vos exercices", "examen");
-  const _ech = prochainesEcheances(1)[0];
-  h += carte("▦", "Planning", _ech ? _ech.u.id + " dans " + _ech.j + " jour" + (_ech.j > 1 ? "s" : "") + " · séance du jour prête"
-    : "définir les dates des épreuves", "planning");
-  h += `<p class="kick" style="margin-top:18px">Suivi</p>`;
+
+  h += `<p class="kick" style="margin-top:18px">Par domaine</p>` + bandeauDomaines("rev");
+
+  if(items.length){
+    h += `<div class="serie"><span class="gros">${sj}</span><span class="tx">
+      ${sj === 0 ? "Aucun jour travaillé pour l'instant." :
+        (sj === 1 ? "jour d'affilée. Revenez demain pour en faire deux." :
+          "jours d'affilée." + (tj.n ? " " + tj.n + " exercice" + (tj.n>1?"s":"") + " aujourd'hui." : " Rien encore aujourd'hui."))}</span></div>`;
+    h += `<p class="kick">Ces trente jours</p>` + grapheActivite(30);
+    if(err || conf) h += `<div class="avis" style="margin-bottom:14px"><b>Ce qui résiste</b>
+      ${err} exercice${err>1?"s":""} dans le carnet d'erreurs${conf ? ", dont " + conf + " raté" + (conf>1?"s":"") + " en vous croyant sûre" : ""}
+      <div class="rang" style="margin-bottom:0"><button class="btn plein mini" data-act="session" data-source="erreurs">Les reprendre</button></div></div>`;
+  }
+
+  h += `<p class="kick">Unité par unité</p>
+    <p class="sousTitre">Les plus lourdes en crédits et les moins sues d'abord. ${alimentees} unité${alimentees>1?"s":""} alimentée${alimentees>1?"s":""} sur ${UES.length}.</p>`
+    + listeUE("rev");
+
   const nq = questionsRestantes().length;
   const nt = S.travaux.filter(t => t.etat !== "rendu").length;
-  h += carte("∑", "Moyennes", "calcul par UE et par domaine", "moyennes");
-  h += carte("▣", "Travaux à rendre", nt ? nt + " en cours" : "stages, écrits, mémoire, épreuves", "travaux");
-  h += carte("?", "Questions à poser", nq ? nq + " en attente" : "rien en suspens", "questions");
-  h += carte("EN", "Lexique anglais", coursLexique().lexique.length + " entrées · UE14", "lexique");
-  h += carte("▥", "Statistiques", "réussite par type, acquis par UE, examens", "stats");
-  h += carte("⌕", "Recherche", "retrouver une notion dans tout ce que contient l'application", "recherche");
-  h += legendeUE();
+  h += `<p class="kick" style="margin-top:20px">Le reste</p>` + grilleOutils([
+    {ic:"▤", n:"Mes fiches", e:"fiches", b:S.cours.length || "", c:"#2F6FB2"},
+    {ic:"◷", n:"Épreuve blanche", e:"examen", c:"#B33B4A"},
+    {ic:"▦", n:"Planning", e:"planning", c:"#0E8577"},
+    {ic:"∑", n:"Mes moyennes", e:"moyennes", c:"#B2711A"},
+    {ic:"▣", n:"Travaux", e:"travaux", b:nt || "", c:"#7A3E9D"},
+    {ic:"?", n:"Mes questions", e:"questions", b:nq || "", c:"#D6452F"},
+    {ic:"EN", n:"Lexique", e:"lexique", b:coursLexique().lexique.length || "", c:"#17B890"},
+    {ic:"◉", n:"Podcast", e:"podcast", c:"#7A3E9D"},
+    {ic:"⌕", n:"Recherche", e:"recherche", c:"#5A6B65"}
+  ]);
   return h + `</div>`;
 }
+
 function carte(ic, titre, sous, ecran){
   return `<button class="carteAct" data-act="ecran" data-e="${ecran}">
     <span class="ic">${ic}</span><span class="tx"><b>${esc(titre)}</b><small>${esc(sous)}</small></span>
@@ -5444,6 +5850,175 @@ async function ajouterVisuel(c, im, origine){
 function visHtml(c, place, pourImpression){
   const l = visuelsA(c, place);
   return l.length ? l.map(v => imgHtml(v, pourImpression)).join("") : "";
+}
+
+/* =========================================================================
+   PODCAST — transformer un contenu en audio à écouter hors ligne
+   ========================================================================= */
+/* La matière de départ : une fiche importée, ou une leçon de préparation terminée. */
+function matierePodcast(source){
+  if(source.kind === "cours"){
+    const c = S.cours.find(x => x.id === source.id);
+    if(!c) return null;
+    const f = c.fiche;
+    const bl = (t, l) => l && l.length ? "\n" + t + "\n" + l.join("\n") : "";
+    return {ueId:c.ueId, titre:c.titre, texte:
+      (f.resume ? f.resume + "\n" : "") +
+      bl("DÉFINITIONS :", (f.definitions||[]).map(x => {
+        let t = "- " + x.terme + " : " + x.def;
+        const r = x.reform && (x.reform.tres || x.reform.simple);
+        if(r) t += "\n  [dit plus simplement : " + r + "]";
+        return t;
+      })) +
+      bl("SIGLES :", (f.sigles||[]).map(x => "- " + x.sigle + " : " + x.sens)) +
+      bl("À SAVOIR PAR CŒUR :", (f.points||[]).map(x => "- " + x.txt)) +
+      bl("CHIFFRES CLÉS :", (f.chiffres||[]).map(x => "- " + x.txt)) +
+      bl("TEXTES ET NORMES :", (f.normes||[]).map(x => "- " + x.txt)) +
+      bl("PIÈGES :", (f.pieges||[]).map(x => "- " + x.txt)) +
+      bl("SUITES D'ÉTAPES :", (f.procedures||[]).map(x => "- " + (x.etapes||[]).join(" puis ")))};
+  }
+  const L = LECONS[source.id];
+  if(!L) return null;
+  const morceaux = [];
+  L.diapos.forEach(d => {
+    if(d.t === "sources" || d.t === "quiz") return;
+    if(d.titre) morceaux.push("## " + d.titre);
+    if(d.texte) morceaux.push(d.texte);
+    if(d.paras) morceaux.push(d.paras.join(" "));
+    if(d.mots) d.mots.forEach(m => morceaux.push("- " + m.m + " : " + m.d));
+    if(d.etapes) d.etapes.forEach((e,i) => morceaux.push((i+1) + ". " + e));
+    if(d.lignes) d.lignes.forEach(l => morceaux.push("- " + l.v + " : " + l.l));
+    if(d.encart) morceaux.push((d.encart.titre ? d.encart.titre + " : " : "") + d.encart.texte);
+    if(d.note) morceaux.push(d.note);
+  });
+  return {ueId:source.id, titre:L.titre, texte:morceaux.join("\n")};
+}
+function sourcesPodcast(){
+  if(ui.tab === "prep"){
+    return UES_PRETES.filter(u => S.prep[u] && S.prep[u].termine)
+      .map(u => ({kind:"lecon", id:u, titre:u + " · " + tronquer(LECONS[u].titre, 32)}));
+  }
+  return S.cours.map(c => ({kind:"cours", id:c.id, titre:tronquer(c.titre, 38)}));
+}
+function ecranPodcast(){
+  const ia = S.reglages.moteur === "gemini";
+  const src = sourcesPodcast();
+  const p = ui.podcast || {};
+  let h = `<div class="ecran">` + retour("accueil", "Podcast");
+  h += `<p class="sousTitre">Transformer un contenu en audio à écouter en voiture. Le fichier se télécharge : il continue à jouer écran éteint, contrairement à la lecture du navigateur.</p>`;
+  if(!ia) return h + `<div class="avis"><b>Gemini est nécessaire</b>
+    Écrire un texte fait pour l'oreille et le synthétiser demandent l'API. En mode local, seule la lecture à voix haute des fiches est disponible, et elle s'arrête dès que l'écran s'éteint.</div></div>`;
+  if(!src.length) return h + `<div class="vide"><div class="em">◉</div><h3>Aucun contenu disponible</h3>
+    <p>${ui.tab === "prep" ? "Terminez une leçon pour pouvoir en faire un podcast." : "Importez un cours pour pouvoir en faire un podcast."}</p></div></div>`;
+
+  h += `<label class="champ" for="p-src">Contenu</label>
+    <select id="p-src" data-bind="podSrc"><option value="">— choisir —</option>${
+      src.map(x => `<option value="${esc(x.kind + ":" + x.id)}"${ui.podSrc === x.kind + ":" + x.id ? " selected" : ""}>${esc(x.titre)}</option>`).join("")}</select>`;
+  h += `<label class="champ" style="margin-top:12px">Durée</label><div class="liste-puces">${
+    Object.keys(DUREES_PODCAST).map(k => `<button class="puce${(ui.podDuree||"moyen")===k?" on":""}" data-act="pod-duree" data-v="${k}">${esc(DUREES_PODCAST[k])}</button>`).join("")}</div>`;
+  h += `<label class="champ">Niveau de langue</label><div class="liste-puces">${
+    [["cours","Les mots du cours"],["simple","Simplifié"],["tres","Très simple"]].map(x =>
+      `<button class="puce${(ui.podNiveau||"cours")===x[0]?" on":""}" data-act="pod-niveau" data-v="${x[0]}">${esc(x[1])}</button>`).join("")}</div>
+    <p style="font-size:12.5px;color:var(--encre3);margin:-6px 0 4px">Les mots du cours pour réviser le vocabulaire exigible à l'examen ; simplifié pour comprendre le fond.</p>`;
+  h += `<label class="champ" for="p-voix">Voix</label>
+    <select id="p-voix" data-bind="voixIA"><option value="">Voix par défaut</option>${
+      VOIX.map(v => `<option value="${esc(v[0])}"${S.reglages.voixIA===v[0]?" selected":""}>${esc(v[0] + " · " + v[1])}</option>`).join("")}</select>
+    <div class="rang"><button class="btn mini" data-act="pod-essai"${ui.occupe?" disabled":""}>
+      ${ui.occupe && ui.etape === "essai" ? "Un instant…" : "Écouter un extrait"}</button>
+      ${ui.essaiUrl ? `<audio controls src="${esc(ui.essaiUrl)}" style="flex:1;min-width:150px;height:34px"></audio>` : ""}</div>`;
+  if(!S.reglages.modeleVoix) h += `<div class="avis"><b>Aucun modèle vocal choisi</b>
+    Allez dans les réglages, section Podcast, et chargez la liste des modèles de synthèse vocale.</div>`;
+  h += `<button class="cta" data-act="pod-faire"${ui.occupe || !ui.podSrc || !S.reglages.modeleVoix ? " disabled" : ""}>
+    ${ui.occupe && ui.etape !== "essai" ? esc(ui.etape || "En cours…") : (p.url ? "Refaire le podcast" : "Faire le podcast")}</button>`;
+  if(p.url){
+    const mots = (p.script || "").trim().split(/\s+/).length;
+    h += `<p class="kick" style="margin-top:20px">${esc(tronquer(p.titre || "Podcast", 34))} · ${mmss(p.secondes || 0)}</p>
+      <div class="bloc"><audio controls src="${esc(p.url)}" style="width:100%"></audio></div>
+      <div class="rang"><button class="btn plein mini" data-act="pod-telecharger">Télécharger</button></div>
+      <p style="font-size:12.5px;color:var(--encre3);margin-top:-4px">Enregistrez le fichier sur votre téléphone : il s'écoute alors comme n'importe quel morceau, écran éteint.</p>
+      <p class="kick" style="margin-top:16px">Le texte lu · ${mots} mots</p>
+      <textarea id="p-txt" data-bind="podScript" style="min-height:170px">${esc(p.script || "")}</textarea>
+      <div class="rang"><button class="btn mini" data-act="pod-revoix"${ui.occupe?" disabled":""}>Refaire la voix sur ce texte</button></div>
+      <p style="font-size:12.5px;color:var(--encre3);margin-top:-6px">Utile pour corriger un mot mal prononcé : changez son orthographe et relancez la voix.</p>`;
+  }
+  return h + `</div>`;
+}
+async function podcastFaire(){
+  const parts = String(ui.podSrc || "").split(":");
+  const m = matierePodcast({kind:parts[0], id:parts.slice(1).join(":")});
+  if(!m){ ui.message = {type:"err", titre:"Contenu introuvable", txt:"Choisissez un autre point de départ."}; rendre(); return; }
+  if(!S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Clé manquante", txt:"Renseignez la clé et le modèle dans les réglages."}; rendre(); return; }
+  if(!S.reglages.modeleVoix){
+    ui.message = {type:"err", titre:"Modèle vocal manquant", txt:"Chargez la liste dans les réglages, section Podcast."}; rendre(); return; }
+  ui.occupe = true; ui.etape = "Écriture du texte…"; ui.message = null; rendre();
+  try{
+    const s2 = await scriptPodcast(m, ui.podDuree || "moyen", S.reglages.cleGemini, S.reglages.modele, ui.podNiveau || "cours");
+    ui.etape = "Mise en voix…"; rendre();
+    const r = await synthetiser(s2, S.reglages.cleGemini, S.reglages.modeleVoix, S.reglages.voixIA,
+      (n, t) => { ui.etape = "Mise en voix · passage " + n + " sur " + t + "…"; rendre(); });
+    if(ui.podcast && ui.podcast.url) libererUrl(ui.podcast.url);
+    ui.podcast = {script:s2, titre:m.titre, ueId:m.ueId, blob:r.blob,
+      url: await urlPour(r.blob), secondes:r.secondes};
+    ui.podScript = s2;
+    ui.message = {type:"info", titre:"Podcast prêt", txt:mmss(r.secondes) + " d'audio. Téléchargez-le pour l'écouter hors ligne."};
+  }catch(e){ ui.message = {type:"err", titre:"Interrompu", txt:e.message}; }
+  ui.occupe = false; ui.etape = ""; rendre(); window.scrollTo(0,0);
+}
+async function podcastRevoix(){
+  const p = ui.podcast;
+  if(!p) return;
+  const texte = (ui.podScript || p.script || "").trim();
+  if(texte.length < 100){ ui.message = {type:"err", titre:"Texte trop court", txt:"Il ne reste presque rien à lire."}; rendre(); return; }
+  ui.occupe = true; ui.etape = "Mise en voix…"; ui.message = null; rendre();
+  try{
+    const r = await synthetiser(texte, S.reglages.cleGemini, S.reglages.modeleVoix, S.reglages.voixIA,
+      (n, t) => { ui.etape = "Mise en voix · passage " + n + " sur " + t + "…"; rendre(); });
+    if(p.url) libererUrl(p.url);
+    p.script = texte; p.blob = r.blob; p.url = await urlPour(r.blob); p.secondes = r.secondes;
+    ui.message = {type:"info", titre:"Voix refaite", txt:mmss(r.secondes) + " d'audio."};
+  }catch(e){ ui.message = {type:"err", titre:"Interrompu", txt:e.message}; }
+  ui.occupe = false; ui.etape = ""; rendre(); window.scrollTo(0,0);
+}
+async function podcastEssai(){
+  if(!S.reglages.cleGemini || !S.reglages.modeleVoix){
+    ui.message = {type:"err", titre:"Réglages incomplets", txt:"Il faut la clé et un modèle vocal."}; rendre(); return; }
+  ui.occupe = true; ui.etape = "essai"; ui.message = null; rendre();
+  try{
+    const r = await synthetiser(EXTRAIT_VOIX, S.reglages.cleGemini, S.reglages.modeleVoix, S.reglages.voixIA);
+    if(ui.essaiUrl) libererUrl(ui.essaiUrl);
+    ui.essaiUrl = await urlPour(r.blob);
+  }catch(e){
+    ui.message = {type:"err", titre:"Voix indisponible",
+      txt:e.message + " Si le nom de voix est refusé, choisissez-en un autre dans la liste."};
+  }
+  ui.occupe = false; ui.etape = ""; rendre();
+}
+/* Reformule toutes les définitions retenues en un seul appel. */
+async function reformuler(niveau){
+  const c = S.cours.find(x => x.id === ui.fiche);
+  if(!c || !(c.fiche.definitions || []).length) return;
+  if(S.reglages.moteur !== "gemini" || !S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Gemini est nécessaire", txt:"Reformuler demande l'API. Renseignez la clé dans les réglages."};
+    rendre(); return;
+  }
+  ui.occupe = true; ui.etape = "Reformulation en cours…"; ui.message = null; rendre();
+  try{
+    const out = await reformulerGemini(c.fiche.definitions, niveau, S.reglages.cleGemini, S.reglages.modele);
+    let n = 0;
+    Object.keys(out).forEach(i => {
+      const x = c.fiche.definitions[Number(i)];
+      if(!x) return;
+      if(!x.reform) x.reform = {};
+      x.reform[niveau] = out[i]; n++;
+    });
+    sauver();
+    ui.voirReform = niveau;
+    ui.message = n ? {type:"info", titre:"Reformulé",
+      txt: n + " définition" + (n>1?"s":"") + " en « " + NIVEAUX_REFORM[niveau].nom.toLowerCase() + " ». Le texte du cours reste affiché au-dessus."}
+      : {titre:"Rien n'est revenu", txt:"Relancez, ou essayez un autre niveau."};
+  }catch(e){ ui.message = {type:"err", titre:"Reformulation interrompue", txt:e.message}; }
+  ui.occupe = false; ui.etape = ""; rendre();
 }
 
 function ecranTri(){
@@ -5775,8 +6350,18 @@ function ecranFiche(){
       <button class="btn mini" data-act="supprimer" data-id="${c.id}">Supprimer</button></div>`;
   if(f.resume) h += `<p style="margin-bottom:14px">${esc(f.resume)}</p>`;
   const sect = (t, corps) => corps ? `<p class="kick" style="margin-top:16px">${t}</p>${corps}` : "";
-  h += sect("Définitions", f.definitions.length ? `<ul class="vocab">${f.definitions.map((x,i) =>
-    `<li><b>${esc(x.terme)}</b><span>${esc(x.def)}</span>${ligneSrc(x,"df"+i)}</li>`).join("")}</ul>` : "");
+  h += sect("Définitions", f.definitions.length ? `<ul class="vocab">${f.definitions.map((x,i) => {
+    const r = x.reform && ui.voirReform ? x.reform[ui.voirReform] : "";
+    return `<li><b>${esc(x.terme)}</b><span>${esc(x.def)}</span>${
+      r ? `<span class="reform">${esc(NIVEAUX_REFORM[ui.voirReform].nom)} · ${esc(r)}</span>` : ""}${ligneSrc(x,"df"+i)}</li>`;
+  }).join("")}</ul>` : "");
+  if(f.definitions.length && S.reglages.moteur === "gemini"){
+    const faits = Object.keys(NIVEAUX_REFORM).filter(k => f.definitions.some(x => x.reform && x.reform[k]));
+    h += `<p style="font-size:12.5px;color:var(--encre3);margin-top:-4px">Dire autrement, sans changer le sens :</p>
+      <div class="liste-puces">${Object.keys(NIVEAUX_REFORM).map(k =>
+        `<button class="btn mini" data-act="reformuler" data-v="${k}"${ui.occupe?" disabled":""} title="${esc(NIVEAUX_REFORM[k].desc)}">${esc(NIVEAUX_REFORM[k].nom)}</button>`).join("")}
+      ${faits.map(k => `<button class="puce${ui.voirReform===k?" on":""}" data-act="voir-reform" data-v="${k}">voir ${esc(NIVEAUX_REFORM[k].nom.toLowerCase())}</button>`).join("")}</div>`;
+  }
   h += visHtml(c, "rub:definitions");
   h += sect("Sigles", (f.sigles||[]).length ? `<ul class="vocab">${f.sigles.map(x =>
     `<li><b>${esc(x.sigle)}</b><span>${esc(x.sens)}</span></li>`).join("")}</ul>` : "");
@@ -5872,6 +6457,7 @@ function marteler(it, juste){
 function enregistrer(it, juste){
   const s = ui.session;
   if(!it.reprise){
+    noterJournal(estPrep(it.id) ? "prep" : "rev", juste);
     majProg(it.id, juste, s.sur);
     s.resultats.push({id:it.id, ueId:it.ueId, juste:!!juste});
   }
@@ -6942,6 +7528,11 @@ function ecranStats(){
       vus += p.vus; ok += p.ok; if(p.boite === 3) sus++; });
     return {total:l.length, vus, ok, sus, part: vus ? Math.round(ok/vus*100) : 0}; };
   const cRev = compte(its), cPrep = compte(prepIts);
+  h += `<p class="kick">Activité des 60 derniers jours</p>` + grapheActivite(60) +
+    `<div class="liste-puces" style="margin-top:-4px">
+      <span class="puce mono">série : ${serieJours()} j</span>
+      <span class="puce mono">aujourd'hui : ${totalJour().n}</span>
+      <span class="puce mono">30 j : ${activite(30).reduce((a,x) => a + x.n, 0)}</span></div>`;
   h += `<p class="kick">Par onglet</p>
     <div class="bloc"><div class="bloc-t"><span class="point" style="background:var(--menthe)"></span>
       <span class="bloc-nom">Révision · vos cours</span><span class="bloc-meta">${cRev.total} ex.</span></div>
@@ -7115,6 +7706,15 @@ function ecranReglages(){
       <button class="puce${r.martelage===false?" on":""}" data-act="martelage" data-v="0">Désactivé</button></div>
     <p style="font-size:13px;color:var(--encre2)">Un exercice raté revient dans la même session jusqu'à deux réussites d'affilée, au plus quatre fois. Seul le premier passage fait monter ou descendre la boîte.</p>`;
 
+  if(r.moteur === "gemini"){
+    h += `<p class="kick" style="margin-top:20px">Podcast</p>
+      <label class="champ" for="v-mod">Modèle de synthèse vocale</label>
+      <select id="v-mod" data-bind="modeleVoix">${r.modelesVoix.length ? r.modelesVoix.map(m =>
+        `<option value="${esc(m.id)}"${r.modeleVoix===m.id?" selected":""}>${esc(m.nom)}</option>`).join("")
+        : `<option value="">— charger la liste —</option>`}</select>
+      <div class="rang"><button class="btn mini" data-act="charger-voix">Charger les modèles vocaux</button></div>
+      <p style="font-size:13px;color:var(--encre2)">La synthèse vocale est facturée séparément du texte. Un podcast de six minutes consomme nettement plus qu'une analyse de cours.</p>`;
+  }
   h += `<p class="kick" style="margin-top:20px">Lecture audio</p>
     <label class="champ" for="v-voix">Voix</label>
     <select id="v-voix" data-bind="voix"><option value="">Voix par défaut</option>
@@ -7378,7 +7978,32 @@ document.addEventListener("click", async e => {
         sauver(); ui.ecran = "fiches"; rendre();
       } break;
     case "analyser": await releverPoints(); break;
+    case "prep-dus": {
+      const l = UES_EXOS.flatMap(u => itemsExos(u))
+        .filter(i => { const p = S.progres[i.id]; return !p || p.prochain <= Date.now(); });
+      ouvrirSession(l, "libre", null, {tab:"prep", ecran:"accueil"}); break; }
     case "annuler-appel": annulerAppel(); break;
+    case "pod-duree": ui.podDuree = el.dataset.v; rendre(); break;
+    case "pod-niveau": ui.podNiveau = el.dataset.v; rendre(); break;
+    case "pod-essai": await podcastEssai(); break;
+    case "pod-faire": await podcastFaire(); break;
+    case "pod-revoix": await podcastRevoix(); break;
+    case "pod-telecharger": { const p2 = ui.podcast;
+      if(p2 && p2.blob) telecharger((p2.titre || "podcast").replace(/[^\w -]/g,"").slice(0,40) + ".wav", p2.blob, "audio/wav");
+      break; }
+    case "charger-voix": {
+      if(!S.reglages.cleGemini){ ui.message = {titre:"Clé manquante", txt:"Collez d'abord votre clé Google AI Studio."}; rendre(); break; }
+      el.textContent = "Chargement…";
+      try{
+        const m = await modelesVoix(S.reglages.cleGemini);
+        S.reglages.modelesVoix = m;
+        if(!S.reglages.modeleVoix && m.length) S.reglages.modeleVoix = m[0].id;
+        sauver(); ui.message = {type:"info", titre:"Modèles vocaux chargés", txt:m.length + " disponibles."};
+      }catch(err){ ui.message = {type:"err", titre:"Chargement impossible", txt:err.message}; }
+      rendre(); break;
+    }
+    case "reformuler": await reformuler(el.dataset.v); break;
+    case "voir-reform": ui.voirReform = ui.voirReform === el.dataset.v ? "" : el.dataset.v; rendre(); break;
     case "nouvelle-vague": await nouvelleVague(el.dataset.id); break;
     case "anonymiser": ui.importTexte = anonymiser(ui.importTexte); ui.avisRGPD = null; ui.rgpdIgnore = true;
       ui.message = {type:"info", titre:"Texte anonymisé", txt:"Relisez-le avant de lancer l'analyse."}; rendre(); break;
@@ -7742,6 +8367,9 @@ document.addEventListener("change", async e => {
   }
   const b = t.dataset.bind;
   if(!b) return;
+  if(b === "podSrc"){ ui.podSrc = t.value; rendre(); return; }
+  if(b === "podScript"){ ui.podScript = t.value; return; }
+  if(b === "voixIA"){ S.reglages.voixIA = t.value; sauver(); return; }
   if(b === "brouillonTitre"){ if(ui.brouillon) ui.brouillon.titre = t.value; return; }
   if(b === "brouillonUE"){ if(ui.brouillon) ui.brouillon.ueId = t.value; rendre(); return; }
   if(b in ui){
@@ -7761,6 +8389,7 @@ document.addEventListener("change", async e => {
 document.addEventListener("input", e => {
   const b = e.target.dataset.bind;
   if(b === "importTexte" || b === "importTitre") ui[b] = e.target.value;
+  if(b === "podScript") ui.podScript = e.target.value;
   if(b === "brouillonTitre" && ui.brouillon) ui.brouillon.titre = e.target.value;
   if(b === "requete"){
     ui.requete = e.target.value;
