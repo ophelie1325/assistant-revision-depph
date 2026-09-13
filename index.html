@@ -333,6 +333,10 @@ body.vueLarge .opt{font-size:16px}
 .puce:active,.btn:active{transform:scale(.95)}
 .pts span.f{animation:bat .3s cubic-bezier(.3,1.2,.4,1)}
 
+.schema{margin:10px 0;overflow-x:auto;background:var(--carte);border:1px solid var(--trait);
+  border-radius:var(--r2);padding:12px 10px;text-align:center}
+.schema svg{max-width:100%;height:auto}
+.schema figcaption{font-size:13px;color:var(--encre2);margin-top:8px;line-height:1.4;text-align:left}
 .vis{margin:10px 0}
 .vis img{width:100%;height:auto;border-radius:var(--r2);border:1px solid var(--trait);background:#fff;display:block}
 .vis figcaption{font-size:13px;color:var(--encre2);margin-top:6px;line-height:1.4}
@@ -383,6 +387,9 @@ body.vueLarge .opt{font-size:16px}
   .f-print .t-imp{width:100%;border-collapse:collapse;font-size:9.5pt;margin-bottom:5pt;break-inside:avoid}
   .f-print .t-imp th,.f-print .t-imp td{border:.5pt solid #666;padding:2.5pt 4pt;text-align:left;vertical-align:top}
   .f-print .t-imp th{font-weight:600}
+  .f-print .schema-imp{margin:4pt 0;break-inside:avoid;text-align:center}
+  .f-print .schema-imp svg{max-width:100%;max-height:95mm;height:auto}
+  .f-print .schema-imp figcaption{font-size:9pt;font-style:italic;margin-top:2pt;text-align:left}
   .f-print .vis-imp{margin:4pt 0;break-inside:avoid}
   .f-print .vis-imp img{max-width:100%;max-height:85mm;height:auto;display:block}
   .f-print .vis-imp figcaption{font-size:9pt;font-style:italic;margin-top:2pt}
@@ -1820,6 +1827,98 @@ function grapheActivite(jours, banque){
 }
 
 /* =========================================================================
+   7 quater. SCHÉMAS
+   Le modèle ne dessine pas : il écrit le code d'un schéma, que l'application rend
+   elle-même. Le code reste lisible et corrigeable à la main, et le rendu est
+   toujours géométriquement juste.
+   ========================================================================= */
+const TYPES_SCHEMA = {
+  flux:{nom:"Enchaînement", desc:"Étapes qui se suivent, avec embranchements",
+    consigne:"Utilise « flowchart TD » (de haut en bas). Chaque étape est un nœud. Les décisions sont des losanges avec {texte}."},
+  arbre:{nom:"Arborescence", desc:"Une notion et ses subdivisions",
+    consigne:"Utilise « flowchart LR » (de gauche à droite), en partant d'un nœud racine qui se subdivise."},
+  compare:{nom:"Comparaison", desc:"Deux notions voisines, mises côte à côte",
+    consigne:"Utilise « flowchart LR » avec deux sous-graphes « subgraph », un par notion comparée, et les points de distinction à l'intérieur."},
+  carte:{nom:"Carte mentale", desc:"Une notion centrale et ce qui s'y rattache",
+    consigne:"Utilise « mindmap » avec la notion centrale à la racine et deux niveaux au maximum."}
+};
+function consigneSchema(ueId, type){
+  const t = TYPES_SCHEMA[type] || TYPES_SCHEMA.flux;
+  return [
+"Tu écris le code d'un schéma au format Mermaid, pour un étudiant préparant le diplôme d'État de préparateur en pharmacie hospitalière.",
+contexteUE(ueId),
+"On te donne la fiche qu'il a validée à partir de son cours.",
+"",
+"RÈGLES ABSOLUES :",
+"1. Le schéma ne contient QUE ce qui figure dans la fiche. Aucune étape, aucune catégorie, aucun lien qui n'en vienne pas.",
+"2. N'ajoute aucune valeur chiffrée, aucune norme, aucune date absente de la fiche.",
+"3. Si la fiche ne permet pas de construire ce type de schéma, renvoie un code vide et explique pourquoi dans \"note\".",
+"4. Quinze nœuds au maximum. Au-delà, le schéma devient illisible sur un téléphone.",
+"5. Libellés courts : six mots au maximum par nœud.",
+"6. Réponds en français.",
+"",
+"TYPE DEMANDÉ : " + t.nom + ". " + t.consigne,
+"",
+"CONTRAINTES DE SYNTAXE, à respecter à la lettre :",
+"- N'emploie ni parenthèses, ni crochets, ni accolades, ni guillemets À L'INTÉRIEUR d'un libellé : ils cassent le rendu. Remplace-les par une virgule.",
+"- Pas d'accent dans les identifiants de nœuds. Les accents sont autorisés dans les libellés.",
+"- Un seul schéma, sans balise de code autour.",
+"",
+"Réponds UNIQUEMENT par un objet JSON valide :",
+'{"titre":"titre court du schéma","code":"le code Mermaid, avec de vrais retours à la ligne","note":""}'
+  ].join("\n");
+}
+async function schemaGemini(fiche, ueId, type, cle, modele){
+  const cand = await appelGemini({
+    systemInstruction:{parts:[{text:consigneSchema(ueId, type)}]},
+    contents:[{role:"user", parts:[{text:"FICHE VALIDÉE :\n\n" + ficheEnTexte(fiche)}]}],
+    generationConfig:{temperature:0.3, responseMimeType:"application/json", maxOutputTokens:3072}
+  }, modele, cle);
+  const o = lireJson(cand);
+  const code = nettoyerMermaid(String(o.code || ""));
+  if(!code) throw new Error(o.note ? String(o.note) : "Aucun schéma n'a pu être construit sur cette fiche.");
+  return {titre:String(o.titre || "Schéma"), code, note:String(o.note || "")};
+}
+/* Les ponctuations fermantes dans un libellé cassent le rendu : on les neutralise
+   avant même d'essayer, plutôt que d'afficher une erreur de syntaxe. */
+function nettoyerMermaid(code){
+  let c = code.replace(/^```[a-z]*\s*|```\s*$/g, "").trim();
+  c = c.replace(/\[([^\]\n]*)\]/g, (m, t) => "[" + t.replace(/[()\[\]{}"]/g, ",") + "]");
+  c = c.replace(/\{([^}\n]*)\}/g, (m, t) => "{" + t.replace(/[()\[\]{}"]/g, ",") + "}");
+  return c;
+}
+/* Mermaid n'est chargé qu'au moment où un schéma doit être rendu. */
+let mermaidPret = false;
+async function chargerMermaid(){
+  if(mermaidPret) return;
+  await scriptExterne("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js");
+  if(!window.mermaid) throw new Error("Mermaid n'a pas pu être chargé : une connexion est nécessaire la première fois.");
+  window.mermaid.initialize({startOnLoad:false, securityLevel:"strict", theme:"base",
+    fontFamily:"Outfit, system-ui, sans-serif",
+    themeVariables:{
+      primaryColor:"#DFF3EC", primaryTextColor:"#16241F", primaryBorderColor:"#17B890",
+      lineColor:"#5A6B65", secondaryColor:"#FFF6E3", tertiaryColor:"#F1F6F2",
+      fontSize:"14px"}});
+  mermaidPret = true;
+}
+const SVG_SCHEMA = {};
+async function rendreSchema(id, code){
+  await chargerMermaid();
+  const r = await window.mermaid.render("mmd-" + id.replace(/[^\w-]/g,""), code);
+  SVG_SCHEMA[id] = r.svg;
+  return r.svg;
+}
+async function prechargerSchemas(c){
+  const l = (c.schemas || []).filter(x => !SVG_SCHEMA[x.id] && !x.erreur);
+  if(!l.length) return;
+  for(const x of l){
+    try{ await rendreSchema(x.id, x.code); }
+    catch(e){ x.erreur = String(e && e.message || e).slice(0, 160); }
+  }
+  sauver(); rendre();
+}
+
+/* =========================================================================
    8. PROGRESSION — trois boîtes, carnet d'erreurs, niveau de confiance
    ========================================================================= */
 const DELAIS = {1:0, 2:2, 3:7};   // jours avant la prochaine présentation
@@ -1978,7 +2077,8 @@ function construireFiche(c, mode){
       ${(cp.liens||[]).map(l => `<div class="ex">${esc(l.titre || l.url)}</div>`).join("")}</span></div></div></div>`;
   }
   const vfin = visHtml(c, "fin", true);
-  if(vfin) h += `<div class="rub"><div class="rub-t">Schémas</div><div class="rub-c">${vfin}</div></div>`;
+  const scin = schemasDe(c).filter(x => !x.erreur && SVG_SCHEMA[x.id]).map(x => schemaHtml(x, true)).join("");
+  if(vfin || scin) h += `<div class="rub"><div class="rub-t">Schémas</div><div class="rub-c">${scin}${vfin}</div></div>`;
   h += blocQuestions(mode === "compacte" ? 3 : 6);
   return h + piedImp() + `</div>`;
 }
@@ -5302,7 +5402,7 @@ let ui = {tab:"prep", ecran:"accueil", ue:null, fiche:null, session:null, filtre
   avisRGPD:null, rgpdIgnore:false,
   occupe:false, avancement:null, etape:"", message:null, resultat:null, quizRep:null,
   podcast:null, podSrc:"", podDuree:"moyen", podNiveau:"cours", podScript:"", essaiUrl:null,
-  voirReform:""};
+  voirReform:"", codeOuvert:"", codeSchema:""};
 
 function progLecon(ue){
   if(!S.prep[ue]) S.prep[ue] = {index:0, termine:false, quiz:{}};
@@ -5350,7 +5450,7 @@ function rendre(){
     "rev/planning":ecranPlanning, "rev/stats":ecranStats, "rev/recherche":ecranRecherche,
     "rev/verifier":ecranVerifier, "rev/niveaux":ecranNiveaux, "rev/tri":ecranTri,
     "rev/lecture":ecranLecture, "rev/visuels":ecranVisuels, "rev/decoupe":ecranDecoupe,
-    "rev/photos":ecranPhotos, "rev/podcast":ecranPodcast, "prep/podcast":ecranPodcast, "rev/moyennes":ecranMoyennes, "rev/travaux":ecranTravaux,
+    "rev/photos":ecranPhotos, "rev/schemas":ecranSchemas, "rev/podcast":ecranPodcast, "prep/podcast":ecranPodcast, "rev/moyennes":ecranMoyennes, "rev/travaux":ecranTravaux,
     "rev/questions":ecranQuestions, "rev/lexique":ecranLexique,
     "reglages":ecranReglages
   };
@@ -6021,6 +6121,78 @@ async function reformuler(niveau){
   ui.occupe = false; ui.etape = ""; rendre();
 }
 
+function schemasDe(c){ if(!Array.isArray(c.schemas)) c.schemas = []; return c.schemas; }
+function schemaHtml(x, pourImpression){
+  const svg = SVG_SCHEMA[x.id];
+  if(x.erreur) return `<div class="visManquant">Ce schéma ne se rend pas : ${esc(x.erreur)}</div>`;
+  if(!svg) return `<div class="visManquant">Rendu du schéma…</div>`;
+  return `<figure class="schema${pourImpression ? " schema-imp" : ""}">${svg}
+    ${x.titre ? `<figcaption>${esc(x.titre)}</figcaption>` : ""}</figure>`;
+}
+async function faireSchema(id, type){
+  const c = S.cours.find(x => x.id === id);
+  if(!c) return;
+  if(S.reglages.moteur !== "gemini" || !S.reglages.cleGemini || !S.reglages.modele){
+    ui.message = {type:"err", titre:"Gemini est nécessaire",
+      txt:"Écrire le code d'un schéma demande l'API. Le rendu, lui, se fait sur l'appareil."};
+    rendre(); return;
+  }
+  ui.occupe = true; ui.etape = "Construction du schéma…"; ui.message = null; rendre();
+  try{
+    const r = await schemaGemini(c.fiche, c.ueId, type, S.reglages.cleGemini, S.reglages.modele);
+    const x = {id:uid(), titre:r.titre, type, code:r.code, cree:Date.now()};
+    try{ await rendreSchema(x.id, x.code); }
+    catch(e){ x.erreur = String(e && e.message || e).slice(0,160); }
+    schemasDe(c).push(x);
+    sauver();
+    ui.message = x.erreur
+      ? {type:"err", titre:"Schéma à corriger", txt:"Le code produit ne se rend pas. Ouvrez-le et corrigez la ligne fautive."}
+      : {type:"info", titre:"Schéma ajouté", txt:"Il se range dans la fiche et s'imprime avec elle."};
+  }catch(e){ ui.message = {type:"err", titre:"Construction interrompue", txt:e.message}; }
+  ui.occupe = false; ui.etape = ""; rendre();
+}
+async function reRendreSchema(idCours, idSchema){
+  const c = S.cours.find(x => x.id === idCours);
+  const x = c && schemasDe(c).find(y => y.id === idSchema);
+  if(!x) return;
+  x.code = nettoyerMermaid(ui.codeSchema || x.code);
+  delete x.erreur; delete SVG_SCHEMA[x.id];
+  ui.occupe = true; rendre();
+  try{ await rendreSchema(x.id, x.code); ui.message = {type:"info", titre:"Schéma refait", txt:"Le rendu est à jour."}; }
+  catch(e){ x.erreur = String(e && e.message || e).slice(0,160);
+    ui.message = {type:"err", titre:"Code refusé", txt:x.erreur}; }
+  ui.occupe = false; sauver(); rendre();
+}
+function ecranSchemas(){
+  const c = S.cours.find(x => x.id === ui.fiche);
+  if(!c){ ui.ecran = "fiches"; return ecranFiches(); }
+  const l = schemasDe(c), ia = S.reglages.moteur === "gemini";
+  let h = `<div class="ecran">` + retour("fiche", "Schémas de la fiche");
+  h += `<p class="sousTitre">Le modèle écrit le code du schéma, l'application le dessine. Rien n'y figure qui ne soit dans la fiche validée.</p>`;
+  if(!ia) h += `<div class="avis"><b>Gemini est nécessaire pour construire</b>
+    Le rendu se fait sur l'appareil, mais l'écriture du code demande l'API.</div>`;
+  else {
+    h += `<p class="kick">Construire un schéma</p><div class="liste-puces">${
+      Object.keys(TYPES_SCHEMA).map(k => `<button class="btn mini" data-act="faire-schema" data-id="${c.id}" data-v="${k}"${ui.occupe?" disabled":""}
+        title="${esc(TYPES_SCHEMA[k].desc)}">${esc(TYPES_SCHEMA[k].nom)}</button>`).join("")}</div>
+      ${ui.occupe ? `<p style="font-size:13px;color:var(--encre2)">${esc(ui.etape || "En cours…")}</p>` : ""}`;
+  }
+  if(!l.length) return h + `<div class="vide"><div class="em">◈</div><h3>Aucun schéma</h3>
+    <p>Un enchaînement d'étapes, une arborescence, une comparaison ou une carte mentale, construits sur les points que vous avez retenus.</p></div></div>`;
+  l.forEach(x => {
+    h += `<div class="bloc">${schemaHtml(x)}
+      <label class="champ" for="sc-${esc(x.id)}" style="margin-top:10px">Titre</label>
+      <input type="text" id="sc-${esc(x.id)}" data-act="titre-schema" data-c="${c.id}" data-s="${esc(x.id)}" value="${esc(x.titre||"")}">
+      <div class="rang"><span class="puce mono">${esc((TYPES_SCHEMA[x.type]||{nom:x.type}).nom)}</span>
+        <button class="btn mini" data-act="ouvrir-code" data-s="${esc(x.id)}">${ui.codeOuvert === x.id ? "Masquer le code" : "Voir et corriger le code"}</button>
+        <button class="btn mini" data-act="suppr-schema" data-c="${c.id}" data-s="${esc(x.id)}" style="color:var(--rouge)">Supprimer</button></div>
+      ${ui.codeOuvert === x.id ? `<textarea data-bind="codeSchema" style="min-height:150px;font-family:'IBM Plex Mono',monospace;font-size:12.5px">${esc(x.code)}</textarea>
+        <div class="rang"><button class="btn plein mini" data-act="refaire-schema" data-c="${c.id}" data-s="${esc(x.id)}"${ui.occupe?" disabled":""}>Redessiner</button></div>
+        <p style="font-size:12.5px;color:var(--encre3);margin-top:-6px">Format Mermaid. Évitez les parenthèses et les guillemets dans les libellés : ils cassent le rendu.</p>` : ""}</div>`;
+  });
+  return h + `</div>`;
+}
+
 function ecranTri(){
   const c = S.cours.find(x => x.id === ui.fiche);
   if(!c){ ui.ecran = "fiches"; return ecranFiches(); }
@@ -6082,6 +6254,8 @@ function elementsLecture(c){
     out.push({rub:r.nom, titre, corps, src:o.x.src || "", incertain:!!o.x.incertain});
   }); ajouterVis("rub:" + r.cle); });
   ajouterVis("fin");
+  schemasDe(c).filter(x => !x.erreur).forEach(x =>
+    out.push({rub:"Schéma", titre:x.titre || "Schéma", corps:"", src:"", schema:x}));
   return out;
 }
 function ecranLecture(){
@@ -6098,7 +6272,7 @@ function ecranLecture(){
   } else if(i < n){
     const e = l[i];
     h += `<p class="kick">${esc(e.rub)}</p><h3>${esc(e.titre)}</h3>
-      ${e.visuel ? imgHtml(e.visuel) : `<p style="white-space:pre-line">${esc(e.corps)}</p>`}
+      ${e.schema ? schemaHtml(e.schema) : (e.visuel ? imgHtml(e.visuel) : `<p style="white-space:pre-line">${esc(e.corps)}</p>`)}
       ${e.incertain ? `<em class="drapeau">sens deviné, à vérifier dans le cours</em>` : ""}
       ${e.src ? `<button class="src" data-act="src" data-cible="lecSrc">Voir le passage du cours</button>
         <div class="srcTxt" id="lecSrc">« ${esc(tronquer(e.src, 380))} »</div>` : ""}`;
@@ -6340,6 +6514,7 @@ function ecranFiche(){
       <button class="btn mini" data-act="ecran-tri" data-id="${c.id}">Trier et imprimer</button>
       <button class="btn mini" data-act="ecran-lecture" data-id="${c.id}">Mode lecture</button>
       <button class="btn mini" data-act="ecran-visuels" data-id="${c.id}">Schémas${(c.visuels||[]).length ? " · " + c.visuels.length : ""}</button>
+      <button class="btn mini" data-act="ecran-schemas" data-id="${c.id}">Schémas${(c.schemas||[]).length ? " · " + c.schemas.length : ""}</button>
       <button class="btn mini" data-act="nouvelle-vague" data-id="${c.id}"${ui.occupe?" disabled":""}>
         ${ui.occupe ? "Fabrication… " + (ui.avancement||"") : "Créer de nouveaux exercices"}</button>
       <select data-bind="densite" style="width:auto;padding:7px 10px;font-size:13px">
@@ -6382,7 +6557,8 @@ function ecranFiche(){
     `<ol class="etapes">${p.etapes.map(e => `<li>${esc(e)}</li>`).join("")}</ol>`).join(""));
   h += visHtml(c, "rub:procedures");
   const vf = visHtml(c, "fin");
-  if(vf) h += `<p class="kick" style="margin-top:16px">Schémas</p>` + vf;
+  const sc = schemasDe(c).filter(x => !x.erreur).map(x => schemaHtml(x)).join("");
+  if(vf || sc) h += `<p class="kick" style="margin-top:16px">Schémas</p>` + sc + vf;
   h += sect("Mis en valeur dans le document", (f.saillants||[]).length
     ? `<div class="liste-puces">${f.saillants.map(x => `<span class="puce">${esc(tronquer(x.txt,60))}</span>`).join("")}</div>` : "");
   h += sect("Tableaux du document", (c.tableaux||[]).length
@@ -7982,6 +8158,18 @@ document.addEventListener("click", async e => {
       const l = UES_EXOS.flatMap(u => itemsExos(u))
         .filter(i => { const p = S.progres[i.id]; return !p || p.prochain <= Date.now(); });
       ouvrirSession(l, "libre", null, {tab:"prep", ecran:"accueil"}); break; }
+    case "ecran-schemas": { ui.fiche = el.dataset.id; ui.ecran = "schemas"; ui.codeOuvert = ""; rendre(); window.scrollTo(0,0);
+      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerSchemas(c); break; }
+    case "faire-schema": await faireSchema(el.dataset.id, el.dataset.v); break;
+    case "ouvrir-code": { const c = S.cours.find(x => x.id === ui.fiche);
+      const x = c && schemasDe(c).find(y => y.id === el.dataset.s);
+      ui.codeOuvert = ui.codeOuvert === el.dataset.s ? "" : el.dataset.s;
+      ui.codeSchema = x ? x.code : ""; rendre(); break; }
+    case "refaire-schema": await reRendreSchema(el.dataset.c, el.dataset.s); break;
+    case "suppr-schema": { const c = S.cours.find(x => x.id === el.dataset.c);
+      if(c && confirm("Supprimer ce schéma ?")){
+        c.schemas = schemasDe(c).filter(y => y.id !== el.dataset.s);
+        delete SVG_SCHEMA[el.dataset.s]; sauver(); rendre(); } break; }
     case "annuler-appel": annulerAppel(); break;
     case "pod-duree": ui.podDuree = el.dataset.v; rendre(); break;
     case "pod-niveau": ui.podNiveau = el.dataset.v; rendre(); break;
@@ -8114,11 +8302,11 @@ document.addEventListener("click", async e => {
       telecharger("prepa-depph-" + new Date().toISOString().slice(0,10) + ".json", JSON.stringify(S, null, 1));
       S.meta.dernierExport = Date.now(); S.meta.sessionsExport = 0; sauver(); rendre(); break;
     case "ecran-tri": { ui.fiche = el.dataset.id; ui.ecran = "tri"; rendre(); window.scrollTo(0,0);
-      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerVisuels(c); break; }
+      const c = S.cours.find(x => x.id === ui.fiche); if(c){ prechargerVisuels(c); prechargerSchemas(c); } break; }
     case "ecran-lecture": { ui.fiche = el.dataset.id; ui.lecture = 0; ui.ecran = "lecture"; rendre(); window.scrollTo(0,0);
-      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerVisuels(c); break; }
+      const c = S.cours.find(x => x.id === ui.fiche); if(c){ prechargerVisuels(c); prechargerSchemas(c); } break; }
     case "ecran-visuels": { ui.fiche = el.dataset.id; ui.ecran = "visuels"; rendre(); window.scrollTo(0,0);
-      const c = S.cours.find(x => x.id === ui.fiche); if(c) prechargerVisuels(c); break; }
+      const c = S.cours.find(x => x.id === ui.fiche); if(c){ prechargerVisuels(c); prechargerSchemas(c); } break; }
     case "suppr-visuel": { const c = S.cours.find(x => x.id === ui.fiche);
       if(c && confirm("Supprimer ce schéma ?")){
         await effacerImages([el.dataset.id]);
@@ -8348,6 +8536,12 @@ document.addEventListener("change", async e => {
     }
     return;
   }
+  if(act && act.dataset.act === "titre-schema"){
+    const c = S.cours.find(x => x.id === act.dataset.c);
+    const x = c && schemasDe(c).find(y => y.id === act.dataset.s);
+    if(x){ x.titre = t.value; sauver(); }
+    return;
+  }
   if(act && act.dataset.act === "reponse-question"){
     const c = S.cours.find(x => x.id === act.dataset.c);
     const q = c && questionsDe(c).find(x => x.id === act.dataset.q);
@@ -8367,6 +8561,7 @@ document.addEventListener("change", async e => {
   }
   const b = t.dataset.bind;
   if(!b) return;
+  if(b === "codeSchema"){ ui.codeSchema = t.value; return; }
   if(b === "podSrc"){ ui.podSrc = t.value; rendre(); return; }
   if(b === "podScript"){ ui.podScript = t.value; return; }
   if(b === "voixIA"){ S.reglages.voixIA = t.value; sauver(); return; }
@@ -8390,6 +8585,7 @@ document.addEventListener("input", e => {
   const b = e.target.dataset.bind;
   if(b === "importTexte" || b === "importTitre") ui[b] = e.target.value;
   if(b === "podScript") ui.podScript = e.target.value;
+  if(b === "codeSchema") ui.codeSchema = e.target.value;
   if(b === "brouillonTitre" && ui.brouillon) ui.brouillon.titre = e.target.value;
   if(b === "requete"){
     ui.requete = e.target.value;
